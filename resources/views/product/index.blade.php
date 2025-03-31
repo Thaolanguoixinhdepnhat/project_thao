@@ -35,7 +35,6 @@
                             <label for="product_code">Mã sản phẩm</label>
                             <input type="text" id="product_code" name="product_code" value="{{ request('product_code') }}">
                         </div>
-    
                         <div class="form-field">
                             <label for="product_name">Tên sản phẩm</label>
                             <input type="text" id="product_name" name="product_name" value="{{ request('product_name') }}">

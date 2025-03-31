@@ -13,7 +13,7 @@
                             <div class="product-image-wrap">
                                 @if ($item->productImages->isNotEmpty())
                                     <img src="{{ asset('storage/' . $item->productImages->first()->product_image) }}" 
-                                        alt="Product Image" class="active">
+                                        alt="load" class="active">
                                 @endif
                             </div>
                             <div class="product-info">
