@@ -12,7 +12,7 @@
                         <div class="item">
                             <div class="product-image-wrap">
                                 @if ($item->productImages->isNotEmpty())
-                                    <img src="{{ asset('storage/public/' . $item->productImages->first()->product_image) }}" 
+                                    <img src="{{ asset('storage/' . $item->productImages->first()->product_image) }}" 
                                         alt="load" class="active">
                                 @endif
                             </div>
@@ -20,7 +20,6 @@
                                 <p class="product-name active">{{ $item->product_name }}</p>
                             </div>
                             <div class="my-recommended-product__card--color" style="height: 47px;"></div>
-                
                             <div class="product-options">
                                 @foreach ($item->productClasses as $index => $class)
                                     <input type="radio" id="option-{{ $item->id }}-{{ $class->size }}" 
