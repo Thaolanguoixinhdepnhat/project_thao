@@ -95,3 +95,45 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/products', [UserProductController::class, 'index'])->name('xxx');
 Route::get('/cart', [CartController::class, 'index'])->name('xxx');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Route::get('/cart', [CartController::class, 'index'])->name('user.cart.index');
+
+// // Thêm sản phẩm vào giỏ hàng
+// Route::post('/cart/add', [CartController::class, 'addToCart'])->name('user.cart.add');
+
+// // Xóa sản phẩm khỏi giỏ hàng
+// Route::post('/cart/remove/{key}', [CartController::class, 'removeFromCart'])->name('user.cart.remove');
+
+// // Cập nhật số lượng sản phẩm trong giỏ hàng
+// Route::post('/cart/update', [CartController::class, 'updateCart'])->name('user.cart.update');
+// // Định nghĩa route "Mua ngay"
+// Route::post('/cart/buy-now', [CartController::class, 'buyNow'])->name('user.cart.buyNow');
+
+
+
+
+
+
+
+
+
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
+Route::get('/cart/remove/{key}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
+
+
+

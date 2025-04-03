@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Trang Chủ')</title>
     <link rel="stylesheet" href="{{ asset('assets/styleindex.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/style-xdNZU-c8.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/style-ClFuSgis.css') }}">
     <link rel="stylesheet" type="text/css" href="style-slider.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -700,5 +700,4 @@
 </html>
 
 
-  
   

@@ -39,9 +39,21 @@
                                 </span>
                             </div>
                 
-                            <div class="my-recommended-product__card-cta">
+                            {{-- <div class="my-recommended-product__card-cta">
                                 <a class="card-cta" href="#">Mua ngay</a>
+                            </div> --}}
+                            <div class="my-recommended-product__card-cta">
+                                <form action="{{ route('cart.add') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $item->id }}">
+                                    <input type="hidden" name="name" value="{{ $item->product_name }}">
+                                    <input type="hidden" name="size" id="selected-size-{{ $item->id }}" value="{{ $item->productClasses[0]->size }}">
+                                    <input type="hidden" name="price" id="selected-price-{{ $item->id }}" value="{{ $item->productClasses[0]->price }}">
+                                    <input type="hidden" name="image" value="{{ asset('storage/' . $item->productImages->first()->product_image) }}">
+                                    <button type="submit" class="card-cta">Mua ngay</button>
+                                </form>
                             </div>
+                            
                         </div>
                     @endforeach
                 </div>
