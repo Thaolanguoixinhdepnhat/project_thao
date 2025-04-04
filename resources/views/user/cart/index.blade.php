@@ -231,46 +231,56 @@
 
 
 
+ 
+
 
 @extends('layout.master')
 
 @section('title', 'Danh sách sản phẩm')
 
 @section('content')
-<div class="container">
-    <h2>Giỏ hàng</h2>
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
+    <div class="container">
+        <h1>Giỏ hàng</h1>
 
-    @if(empty($cart))
-        <p>Giỏ hàng trống.</p>
-    @else
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Tên sản phẩm</th>
-                    <th>Số lượng</th>
-                    <th>Giá</th>
-                    <th>Thành tiền</th>
-                    <th>Thao tác</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($cart as $key => $item)
-                <tr>
-                    <td>{{ $item['product_name'] }}</td>
-                    <td>{{ $item['quantity'] }}</td>
-                    <td>{{ number_format($item['price'], 0, ',', '.') }} đ</td>
-                    <td>{{ number_format($item['quantity'] * $item['price'], 0, ',', '.') }} đ</td>
-                    <td>
-                        <a href="{{ route('cart.remove', $key) }}" class="btn btn-danger">Xóa</a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <a href="{{ route('cart.clear') }}" class="btn btn-warning">Xóa toàn bộ giỏ hàng</a>
-    @endif
-</div>
+        @foreach ($cartItems as $item)
+            <div class="item">
+                <div class="product-image-wrap">
+                    @if ($item['product']->productImages->isNotEmpty())
+                        <img src="{{ asset('storage/' . $item['product']->productImages->first()->product_image) }}" 
+                             alt="load" class="active">
+                    @endif
+                </div>
+                <div class="product-info">
+                    <p class="product-name active">{{ $item['product']->product_name }}</p>
+                </div>
+                <div class="my-recommended-product__card--color" style="height: 47px;"></div>
+                <div class="product-options">
+                    @foreach ($item['product']->productClasses as $index => $class)
+                        <input type="radio" id="option-{{ $item['product']->id }}-{{ $class->size }}" 
+                               name="product-size-{{ $item['product']->id }}" 
+                               value="{{ $class->size }}" 
+                               data-price="{{ $class->price }}"
+                               {{ $item['product_class_id'] == $class->id ? 'checked' : '' }}>
+                        <label for="option-{{ $item['product']->id }}-{{ $class->size }}" class="option-label">{{ $class->size }}</label>
+                    @endforeach
+                </div>
+
+                <div class="my-recommended-product__card--color" style="height: 30px;"></div>
+
+                <div class="product-price">
+                    <span class="current-price" id="current-price-{{ $item['product']->id }}">
+                        {{ number_format($item['product']->productClasses->first()->price, 0, ',', '.') }} VND
+                    </span>
+                </div>
+                <div class="product-quantity">
+                    <span>Số lượng: {{ $item['quantity'] }}</span>
+                </div>
+            </div>
+        @endforeach
+    </div>
 @endsection
+
+        
+      
+
+
