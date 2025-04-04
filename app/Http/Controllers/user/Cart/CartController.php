@@ -80,28 +80,61 @@ class CartController extends Controller
         // Redirect đến trang giỏ hàng sau khi thêm sản phẩm
         return redirect()->route('cart.index')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng');
     }
+    
+
+
+  
+
+    // public function viewCart()
+    // {
+    //     // Lấy giỏ hàng từ session
+    //     $cart = session()->get('cart', []);
+    
+    //     // Lấy thông tin chi tiết sản phẩm và các thuộc tính liên quan từ cơ sở dữ liệu
+    //     $cartItems = [];
+    //     foreach ($cart as $item) {
+    //         $product = Product::with(['productImages', 'productClasses'])->find($item['product_id']);
+    //         if ($product) {
+    //             $cartItems[] = [
+    //                 'product' => $product,
+    //                 'quantity' => $item['quantity'],
+    //                 'product_class_id' => $item['product_class_id']
+    //             ];
+    //         }
+    //     }
+    
+    //     return view('user.cart.index', compact('cartItems'));
+    // }
+    
 
     public function viewCart()
-    {
-        // Lấy giỏ hàng từ session
-        $cart = session()->get('cart', []);
+{
+    // Lấy giỏ hàng từ session
+    $cart = session()->get('cart', []);
     
-        // Lấy thông tin chi tiết sản phẩm và các thuộc tính liên quan từ cơ sở dữ liệu
-        $cartItems = [];
-        foreach ($cart as $item) {
-            $product = Product::with(['productImages', 'productClasses'])->find($item['product_id']);
-            if ($product) {
-                $cartItems[] = [
-                    'product' => $product,
-                    'quantity' => $item['quantity'],
-                    'product_class_id' => $item['product_class_id']
-                ];
-            }
+    // Lấy thông tin chi tiết sản phẩm và các thuộc tính liên quan từ cơ sở dữ liệu
+    $cartItems = [];
+    foreach ($cart as $item) {
+        $product = Product::with(['productImages', 'productClasses'])->find($item['product_id']);
+        if ($product) {
+            // Tìm thông tin của product_class nếu có
+            $productClass = $product->productClasses->firstWhere('id', $item['product_class_id']);
+            
+            // Thêm thông tin sản phẩm vào giỏ hàng
+            $cartItems[] = [
+                'product' => $product,
+                'product_class' => $productClass,
+                'quantity' => $item['quantity'],
+                'product_class_id' => $item['product_class_id']
+            ];
         }
-    
-        return view('user.cart.index', compact('cartItems'));
     }
-    
+
+    // Trả về view với dữ liệu giỏ hàng
+    return view('user.cart.index', compact('cartItems'));
+}
+
+
 
     public function removeFromCart($key)
     {

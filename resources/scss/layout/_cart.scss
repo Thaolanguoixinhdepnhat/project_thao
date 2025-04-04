@@ -1,12 +1,15 @@
 .cart {
     padding: 20px;
-
+    margin-top: 107px;
     .container {
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
 
         .content {
+            h6{
+                text-align: center;
+            }
             .cart__card {
                 display: flex;
                 justify-content: space-between;
