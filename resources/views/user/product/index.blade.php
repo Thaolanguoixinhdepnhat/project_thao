@@ -13,7 +13,7 @@
                             <div class="product-image-wrap">
                                 @if ($item->productImages->isNotEmpty())
                                     <img src="{{ asset('storage/' . $item->productImages->first()->product_image) }}" 
-                                        alt="load" class="active">
+                                         alt="load" class="active">
                                 @endif
                             </div>
                             <div class="product-info">
@@ -26,6 +26,8 @@
                                            name="product-size-{{ $item->id }}" 
                                            value="{{ $class->size }}" 
                                            data-price="{{ $class->price }}"
+                                           data-product-class-id="{{ $class->id }}" 
+                                           data-product-image-id="{{ $item->productImages->first()->id }}" 
                                            {{ $index === 0 ? 'checked' : '' }}>
                                     <label for="option-{{ $item->id }}-{{ $class->size }}" class="option-label">{{ $class->size }}</label>
                                 @endforeach
@@ -39,21 +41,15 @@
                                 </span>
                             </div>
                 
-                            {{-- <div class="my-recommended-product__card-cta">
-                                <a class="card-cta" href="#">Mua ngay</a>
-                            </div> --}}
                             <div class="my-recommended-product__card-cta">
-                                <form action="{{ route('cart.add') }}" method="POST">
+                                <form action="{{ route('cart.add') }}" method="POST" id="form-{{ $item->id }}">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{ $item->id }}">
-                                    <input type="hidden" name="name" value="{{ $item->product_name }}">
-                                    <input type="hidden" name="size" id="selected-size-{{ $item->id }}" value="{{ $item->productClasses[0]->size }}">
-                                    <input type="hidden" name="price" id="selected-price-{{ $item->id }}" value="{{ $item->productClasses[0]->price }}">
-                                    <input type="hidden" name="image" value="{{ asset('storage/' . $item->productImages->first()->product_image) }}">
+                                    <input type="hidden" name="product_class_id" value="{{ $item->productClasses[0]->id }}" class="product-class-id">
+                                    <input type="hidden" name="product_images_id" value="{{  $item->productImages->first()->id }}">
                                     <button type="submit" class="card-cta">Mua ngay</button>
                                 </form>
                             </div>
-                            
                         </div>
                     @endforeach
                 </div>
@@ -81,17 +77,23 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll("input[type='radio']").forEach(radio => {
-        radio.addEventListener("change", function () {
-            let productId = this.id.split('-')[1]; // Lấy ID sản phẩm
-            let price = this.dataset.price; // Lấy giá từ data-price
+        document.querySelectorAll("input[type='radio']").forEach(radio => {
+            radio.addEventListener("change", function () {
+                let productId = this.id.split('-')[1]; // Get product ID from radio button ID
+                let price = this.dataset.price; // Get price from data-price attribute
+                let productClassId = this.dataset.productClassId; // Get product_class_id from data-product-class-id
+                let productImageId = this.dataset.productImageId; // Get product_image_id from data-product-image-id
 
-            // Cập nhật giá hiển thị
-            document.getElementById(`current-price-${productId}`).innerText = 
-                new Intl.NumberFormat('vi-VN').format(price) + " VND";
+                // Update the displayed price
+                document.getElementById(`current-price-${productId}`).innerText = 
+                    new Intl.NumberFormat('vi-VN').format(price) + " VND";
+                
+                // Update the product_class_id in the corresponding form
+                let form = document.getElementById(`form-${productId}`);
+                form.querySelector('.product-class-id').value = productClassId;
+            });
         });
     });
-});
-
 </script>
+
 @endsection

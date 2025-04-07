@@ -24,139 +24,137 @@ use App\Models\ProductClass;
 use Illuminate\Support\Facades\Session;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 
 
 class CartController extends Controller
 {
+  
     public function addToCart(Request $request)
     {
-        // Validate required fields
-        $request->validate([
-            'product_id' => 'required|exists:product,id',
-            'product_class_id' => 'nullable|exists:product_classes,id',
-        ]);
-
+       
         $product_id = $request->input('product_id');
-        $product_class_id = $request->input('product_class_id', null);
-        
+        $product_class_id = $request->input('product_class_id');
+        $product_images_id = $request->input('product_images_id');
+    
         // Gán customer_id, nếu chưa đăng nhập thì mặc định là 9
         $customer_id = auth()->id() ?? 9;
-
-        // Kiểm tra sản phẩm
+    
+        // Kiểm tra sản phẩm có tồn tại không
         $product = Product::findOrFail($product_id);
+    
+        $productClass = ProductClass::where('id', $product_class_id)
+                            ->where('product_id', $product_id)
+                            ->firstOrFail();
 
-        // Lấy thông tin product_class với giá
-        $productClass = ProductClass::where('product_id', $product_id)
-                                    ->when($product_class_id, function ($query) use ($product_class_id) {
-                                        return $query->where('id', $product_class_id);
-                                    })
-                                    ->firstOrFail();
-
-        // Kiểm tra giỏ hàng hiện có
+    
+        // Kiểm tra giỏ hàng đã có sản phẩm và biến thể tương ứng chưa
         $cartItem = Cart::where('customer_id', $customer_id)
                         ->where('product_id', $product_id)
-                        ->when($product_class_id, function($query) use ($product_class_id) {
-                            $query->where('product_class_id', $product_class_id);
-                        }, function($query) {
-                            $query->whereNull('product_class_id');
-                        })
+                        ->where('product_class_id', $product_class_id)
                         ->first();
-
+    
         if ($cartItem) {
-            // Tăng số lượng nếu đã có
+            // Nếu đã có rồi thì tăng số lượng lên
             $cartItem->increment('quantity');
         } else {
-            // Tạo mới nếu chưa có
+            // Nếu chưa có thì thêm mới vào giỏ hàng
             Cart::create([
-                'customer_id' => $customer_id,
-                'product_id' => $product_id,
-                'product_class_id' => $product_class_id,
-                'quantity' => 1,
-                'created_at' => now(),
+                'customer_id'       => $customer_id,
+                'product_id'        => $product_id,
+                'product_class_id'  => $product_class_id,
+                'product_images_id' => $product_images_id,
+                'quantity'          => 1,
+                'created_at'        => now(),
             ]);
         }
-
-        // Redirect đến trang giỏ hàng sau khi thêm sản phẩm
+    
         return redirect()->route('cart.index')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng');
     }
-    
+//     public function viewCart()
+// {
+//     $customer_id = auth()->id() ?? 9;
 
+//     $cart = Cart::with([
+//                 'product',
+//                 'productClass',
+//                 'product.productImages' => function ($query) {
+//                     $query->orderBy('id'); 
+//                 }
+//             ])
+//             ->where('customer_id', $customer_id)
+//             ->orderBy('created_at', 'desc')  
+//             ->get();
 
-  
+//     return view('user.cart.index', compact('cart'));
+// }
 
-    // public function viewCart()
-    // {
-    //     // Lấy giỏ hàng từ session
-    //     $cart = session()->get('cart', []);
-    
-    //     // Lấy thông tin chi tiết sản phẩm và các thuộc tính liên quan từ cơ sở dữ liệu
-    //     $cartItems = [];
-    //     foreach ($cart as $item) {
-    //         $product = Product::with(['productImages', 'productClasses'])->find($item['product_id']);
-    //         if ($product) {
-    //             $cartItems[] = [
-    //                 'product' => $product,
-    //                 'quantity' => $item['quantity'],
-    //                 'product_class_id' => $item['product_class_id']
-    //             ];
-    //         }
-    //     }
-    
-    //     return view('user.cart.index', compact('cartItems'));
-    // }
-    
-
-    public function viewCart()
+public function viewCart()
 {
-    // Lấy giỏ hàng từ session
-    $cart = session()->get('cart', []);
-    
-    // Lấy thông tin chi tiết sản phẩm và các thuộc tính liên quan từ cơ sở dữ liệu
-    $cartItems = [];
-    foreach ($cart as $item) {
-        $product = Product::with(['productImages', 'productClasses'])->find($item['product_id']);
-        if ($product) {
-            // Tìm thông tin của product_class nếu có
-            $productClass = $product->productClasses->firstWhere('id', $item['product_class_id']);
-            
-            // Thêm thông tin sản phẩm vào giỏ hàng
-            $cartItems[] = [
-                'product' => $product,
-                'product_class' => $productClass,
-                'quantity' => $item['quantity'],
-                'product_class_id' => $item['product_class_id']
-            ];
-        }
-    }
+    $customer_id = auth()->id() ?? 9;
 
-    // Trả về view với dữ liệu giỏ hàng
-    return view('user.cart.index', compact('cartItems'));
+    $cart = Cart::with([
+                'product',
+                'productClass',
+                'product.productImages' => function ($query) {
+                    $query->orderBy('id'); 
+                }
+            ])
+            ->where('customer_id', $customer_id)
+            ->orderBy('created_at', 'desc')  
+            ->get();
+
+    $thanhTien = $cart->sum(function ($item) {
+        return ($item->productClass->price ?? 0) * $item->quantity;
+    });
+
+    return view('user.cart.index', compact('cart', 'thanhTien'));
 }
 
+  
+    
 
 
-    public function removeFromCart($key)
+    public function destroy($id)
     {
-        // Lấy giỏ hàng từ session
-        $cart = session()->get('cart', []);
+        $cartItem = Cart::findOrFail($id);
+        $cartItem->delete(); // Soft delete nếu có SoftDeletes, hoặc xóa thật nếu không
+    
+        return redirect()->route('cart.index')->with('success', 'Đã xóa sản phẩm khỏi giỏ hàng');
+    }
+    
 
-        // Nếu sản phẩm tồn tại trong giỏ hàng
-        if (isset($cart[$key])) {
-            // Xóa sản phẩm khỏi giỏ
-            unset($cart[$key]);
-            session()->put('cart', $cart); // Lưu lại giỏ hàng đã chỉnh sửa
+    
+    public function updateCart(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'cart_item_id' => 'required|exists:cart,id', // Kiểm tra id trong bảng carts
+            'quantity' => 'required|integer|min:1' // Kiểm tra quantity hợp lệ
+        ]);
+    
+        // Tìm sản phẩm trong giỏ hàng
+        $cart = Cart::find($request->cart_item_id);
+    
+        // Nếu không tìm thấy sản phẩm trong giỏ hàng
+        if (!$cart) {
+            return redirect()->route('cart.index')->with('error', 'Item not found!');
         }
-
-        return redirect()->route('cart.view')->with('success', 'Sản phẩm đã được xóa khỏi giỏ hàng');
+    
+        // Cập nhật số lượng
+        $cart->quantity = $request->quantity;
+    
+        // Cập nhật thủ công trường updated_at
+        $cart->updated_at = Carbon::now(); // Cập nhật thủ công trường updated_at với thời gian hiện tại
+    
+        // Lưu thay đổi
+        $cart->save();
+    
+        // Chuyển hướng với thông báo thành công
+        return redirect()->route('cart.index')->with('success', 'Cart updated successfully!');
     }
-
-    public function clearCart()
-    {
-        // Xóa giỏ hàng trong session
-        session()->forget('cart');
-        return redirect()->route('cart.view')->with('success', 'Giỏ hàng đã được xóa');
-    }
+    
 }
 
 

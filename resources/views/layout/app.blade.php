@@ -47,6 +47,9 @@
                                 <a href="{{ route('product.index') }}">Sản phẩm</a>
                             </li> 
                             <li class="custom_item">
+                                <a href="{{ route('status.index') }}">Trạng thái</a>
+                            </li> 
+                            <li class="custom_item">
                                 <a href="{{ route('customer.change_password') }}">Đổi mật khẩu</a>
                             </li>
                             <li class="custom_item">

@@ -3,6 +3,8 @@
   max-width: 1440px;
   margin: 0 auto;
   width: 100%;
+  position: relative;
+  top: -22px;
 }
 .sec_one .container .content .slick-slide {
   height: auto;
@@ -1554,16 +1556,27 @@ footer .container .content .footer__text:first-child {
 
 .cart {
   padding: 20px;
+  margin-top: 107px;
 }
 .cart .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
 }
+.cart .container .content h6 {
+  text-align: left;
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 1.2;
+  padding-bottom: 20px;
+}
 .cart .container .content .cart__card {
-  display: flex;
-  justify-content: space-between;
   width: 100%;
+}
+.cart .container .content .cart__card .left {
+  float: left;
+  display: flex;
+  flex-direction: column;
 }
 .cart .container .content .cart__card .left .item {
   display: flex;
@@ -1575,6 +1588,9 @@ footer .container .content .footer__text:first-child {
 .cart .container .content .cart__card .left .item .product-image-cart img {
   max-width: 120px;
   height: 150px;
+}
+.cart .container .content .cart__card .left .item .product-txt {
+  width: 357px;
 }
 .cart .container .content .cart__card .left .item .product-txt h3 {
   font-size: 22px;
@@ -1662,6 +1678,7 @@ footer .container .content .footer__text:first-child {
   background: #fff;
   border-radius: 10px;
   padding: 20px;
+  float: right;
   font-family: Arial, sans-serif;
 }
 .cart .container .content .cart__card .right h2 {

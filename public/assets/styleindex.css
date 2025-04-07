@@ -436,8 +436,26 @@ li.business {
   }
 
   .header .content .header_logo img {
-    height: auto;
+    height: 40px;
     object-fit: contain;
     mix-blend-mode: multiply;
   }
+}
+
+
+
+
+@media (max-width: 768px) {
+  body {
+    line-height: 1.2;
+    font-size: 1.2rem; /* 14px */
+    margin: 0;
+    padding: 0;
+  }
+    .header .content .header_logo img{
+      height: auto;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      height: 40px;
+    }
 }

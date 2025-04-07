@@ -11,6 +11,10 @@ use App\Http\Controllers\ProductClassController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\Product\ProductController as UserProductController;
 use App\Http\Controllers\User\Cart\CartController;
+use App\Http\Controllers\User\Order\OrderController;
+use App\Http\Controllers\User\AppController;
+
+use App\Http\Controllers\StatusController;
 
 //abc
 
@@ -90,45 +94,56 @@ Route::delete('/productclass/{id}', [ProductClassController::class, 'destroy'])-
 Route::get('/productclass/search', [ProductClassController::class, 'search'])->name('productclass.search');
 
 /* trang chủ*/
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-
-Route::get('/products', [UserProductController::class, 'index'])->name('xxx');
+// Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/products', [UserProductController::class, 'index'])->name('xxx');
 Route::get('/cart', [CartController::class, 'index'])->name('xxx');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
-// Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
-// Route::get('/cart/remove/{key}', [CartController::class, 'removeFromCart'])->name('cart.remove');
-// Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
-
-
 Route::prefix('user')->group(function () {
     Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
     Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
-    Route::get('/cart/remove/{key}', [CartController::class, 'removeFromCart'])->name('cart.remove');
-    Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
+    Route::delete('/cart/delete/{id}', [CartController::class, 'destroy'])->name('cart.delete');
+    Route::post('/update-cart', [CartController::class, 'updateCart'])->name('update.cart');
 });
+
+
+
+
+
+
+// thử tìm kiếm 
+Route::get('/products', [UserProductController::class, 'index'])->name('user.products.index');
+
+
+// status
+Route::get('/status', [StatusController::class, 'index'])->name('status.index');
+Route::delete('/status/{id}', [StatusController::class, 'destroy'])->name('status.destroy');
+Route::get('/statuss/{id}/edit', [StatusController::class, 'edit'])->name('status.edit');
+Route::put('/statuss/{id}', [StatusController::class, 'update'])->name('status.update');
+Route::get('/status/create', [StatusController::class, 'create'])->name('status.create');
+Route::post('/status/create', [StatusController::class, 'store'])->name('status.store');
+
+
+
+
+
+
+
+
+
+Route::get('/', [AppController::class, 'index'])->name('home');
+
+
+Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+
+
+
+
+
+
+
+
+
+
 
 
 
