@@ -71,7 +71,7 @@ class AuthController extends Controller
             if (Auth::attempt($request->only('username', 'password'))) {
                 $request->session()->regenerate();  
                 // Chuyển hướng đến trang admin hoặc trang trước đó nếu đăng nhập thành công
-                return redirect()->intended(route('admin'));
+                return redirect()->intended(route('home'));
             } else {
                 // Tài khoản đúng nhưng mật khẩu sai
                 return back()->withErrors([
@@ -86,19 +86,7 @@ class AuthController extends Controller
         }
     }
 
-    public function logout(Request $request)
-    {
-        Auth::logout();  // Đăng xuất người dùng
-        $request->session()->invalidate();  // Xóa toàn bộ session
-        $request->session()->regenerateToken();  // Tạo token mới để bảo vệ CSRF
-
-        return redirect('/login')->with('success', 'Bạn đã đăng xuất thành công.');
-    }
-
-    public function showChangePasswordForm()
-    {
-        return view('auth.change_password'); // Trỏ đến giao diện đổi mật khẩu
-    }
+   
 
 
     // Xử lý đổi mật khẩu

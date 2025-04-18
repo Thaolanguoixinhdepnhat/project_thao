@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="sec_one">
+<section class="sec_one">
     <div class="container">
         <div class="content">
             <div class="carousel main-class">
@@ -66,7 +66,7 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <section class="sec-product">
     <div class="container">
@@ -78,11 +78,6 @@
                 <div class="content-list__common">
                     <ul class="list">
                         <li class="item">
-                            <button role="tab" class="tab__item-title active">
-                                Ưu đãi<span class="tab__item-line"></span>
-                            </button>
-                        </li>
-                        <li class="item">
                             <button role="tab" class="tab__item-title">
                                 Điện Thoại<span class="tab__item-line"></span>
                             </button>
@@ -92,95 +87,13 @@
                                 TV&AV<span class="tab__item-line"></span>
                             </button>
                         </li>
-                        <li class="item">
-                            <button role="tab" class="tab__item-title">
-                                Gia Dụng<span class="tab__item-line"></span>
-                            </button>
-                        </li>
-                        <li class="item">
-                            <button role="tab" class="tab__item-title">
-                                Màn hình-Bộ nhớ<span class="tab__item-line"></span>
-                            </button>
-                        </li>
+                       
                     </ul>
                 </div>
             </div>
 
             <div class="content-body content-slider">
-                <div class="item">
-                    <div class="left-column">
-                        <div class="image">
-                            <span class="badge-icon">Mới</span>
-                            <img src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/684x684_2.jpg?$684_684_JPG$"
-                                alt="Ưu đãi">
-                            <div class="text-image">
-                                <span class="title">Săn E-Voucher 3TRIỆU chỉ với 100K.</span>
-                                <span class="sub-text">Áp dụng cho sản phẩm GIA DỤNG AI MỚI 2025</span>
-                                <button class="btn-register1">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="right-column">
-                        <div class="item">
-                            <div class="image">
-                                <span class="badge-icon_red">Sale</span>
-                                <img class="image__main responsive-img image--loaded" data-aem-asset-id=""
-                                    data-desktop-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/TabS10_PC_0228.jpg?$330_330_JPG$"
-                                    data-mobile-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/TabS10_MO_0228.jpg?$296_352_JPG$"
-                                    alt=""
-                                    src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/TabS10_PC_0228.jpg?$330_330_JPG$">
-
-                                <div class="txt-image">
-                                    <span>Galaxy Tab 10 Ultra<br>ưu đãi 4TR</span>
-                                </div>
-                            </div>
-                            <button class="btn-register1">Mua ngay</button>
-                        </div>
-                        <div class="item">
-                            <div class="image">
-                                <span class="badge-icon">Mới</span>
-                                <img class="image__main responsive-img image--loaded" data-aem-asset-id=""
-                                    data-desktop-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/S25_S25plus_PC_0310.jpg?$330_330_JPG$"
-                                    data-mobile-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/S25_S25plus_MO_0310.jpg?$296_352_JPG$"
-                                    alt=""
-                                    src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/S25_S25plus_PC_0310.jpg?$330_330_JPG$">
-                            </div>
-                            <div class="txt-image">
-                                <span>Galaxy S25 |S25+<br>ưu đài 1 triệu</span>
-                            </div>
-                            <button class="btn-register1">Mua ngay</button>
-                        </div>
-                        <div class="item">
-                            <div class="image">
-                                <span class="badge-icon">Mới</span>
-                                <img class="image__main responsive-img image--loaded" data-aem-asset-id=""
-                                    data-desktop-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/PC_RS90F65D2FSV.png?$330_330_PNG$"
-                                    data-mobile-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/MO_RS90F65D2FSV.png?$296_352_PNG$"
-                                    alt="Ưu đãi 11%. Nhập AIDEAL giảm thêm 10%"
-                                    src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/PC_RS90F65D2FSV.png?$330_330_PNG$">
-                            </div>
-                            <div class="txt-image">
-                                <span>Ưu đãi mở bán giá chỉ từ 41.5TR*</span>
-                            </div>
-                            <button class="btn-register1">Mua ngay</button>
-                        </div>
-                        <div class="item">
-                            <div class="image">
-                                <span class="badge-icon">Mới</span>
-                                <img class="image__main responsive-img image--loaded" data-aem-asset-id=""
-                                    data-desktop-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/PC_QA65QE1DAKXXV.png?$330_330_PNG$"
-                                    data-mobile-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/MO_QA65QE1DAKXXV.png?$296_352_PNG$"
-                                    alt="av qe1d 65inch feb 2025"
-                                    src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/PC_QA65QE1DAKXXV.png?$330_330_PNG$">
-                            </div>
-                            <div class="txt-image">
-                                <span>Mua kèm Galaxy Buds3 giảm 10% trên combo</span>
-                            </div>
-                            <button class="btn-register1">Mua ngay</button>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="item">
                     <div class="left-column">
                         <div class="image">
@@ -333,159 +246,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="left-column">
-                        <div class="image">
-                            <span class="badge-icon">Mới</span>
-                            <img src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/684x684_2.jpg?$684_684_JPG$"
-                                alt="Ưu đãi">
-                            <div class="text-image">
-                                <span class="title">Săn E-Voucher 3TRIỆU chỉ với 100K.</span>
-                                <span class="sub-text">Áp dụng cho sản phẩm GIA DỤNG AI MỚI 2025</span>
-                                <button class="btn-register1">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="right-column">
-                        <div class="item">
-                            <div class="image">
-                                <span class="badge-icon">Mới</span>
-                                <img class="image__main responsive-img image--loaded" data-aem-asset-id=""
-                                    data-desktop-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/PC_DF24CB9900CRSV1.png?$330_330_PNG$"
-                                    data-mobile-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/MO_DF24CB9900CRSV1.png?$296_352_PNG$"
-                                    alt="Tủ chăm sóc quần áo ưu đãi ngay 18%"
-                                    src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/PC_DF24CB9900CRSV1.png?$330_330_PNG$">
-                                <div class="txt-image">
-                                    <span>Tủ chăm sóc quần áo ưu đãi ngay 18%</span>
-                                </div>
-                            </div>
-                            <button class="btn-register1">Mua ngay</button>
-                        </div>
-                        <div class="item">
-                            <div class="image">
-                                <span class="badge-icon_red">Sale</span>
-                                <img class="image__main responsive-img image--loaded" data-aem-asset-id=""
-                                    data-desktop-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/PC_RF48A4010M9_SV_.png?$330_330_PNG$"
-                                    data-mobile-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/MO_RF48A4010M9_SV_.png?$296_352_PNG$"
-                                    alt="Chỉ từ 17TR khi sử dụng E-voucher"
-                                    src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/PC_RF48A4010M9_SV_.png?$330_330_PNG$">
-                            </div>
-                            <div class="txt-image">
-                                <span>Chỉ từ 22TR khi sử dụng E-Voucher</span>
-                            </div>
-                            <button class="btn-register1">Mua ngay</button>
-                        </div>
-                        <div class="item">
-                            <div class="image">
-                                <span class="badge-icon">Mới</span>
-                                <img class="image__main responsive-img image--loaded" data-aem-asset-id=""
-                                    data-desktop-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/PC_WA80F19B9BSV.png?$330_330_PNG$"
-                                    data-mobile-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/MO_WA80F19B9BSV.png?$296_352_PNG$"
-                                    alt="Ưu đãi mở bán nhận ngay Galaxy Fit3"
-                                    src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/PC_WA80F19B9BSV.png?$330_330_PNG$">
-                            </div>
-                            <div class="txt-image">
-                                <span>Ưu đãi mở bán nhận ngay Galaxy Fit3</span>
-                            </div>
-                            <button class="btn-register1">Mua ngay</button>
-                        </div>
-                        <div class="item">
-                            <div class="image">
-                                <span class="badge-icon_red">Sale</span>
-                                <img class="image__main responsive-img image--loaded" data-aem-asset-id=""
-                                    data-desktop-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/PC_F-AR09ASHZAW21.png?$330_330_PNG$"
-                                    data-mobile-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/MO_F-AR09ASHZAW21.png?$296_352_PNG$"
-                                    alt="Chỉ từ 11TR khi sử dụng E-voucher"
-                                    src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/PC_F-AR09ASHZAW21.png?$330_330_PNG$">
-                            </div>
-                            <div class="txt-image">
-                                <span>Chỉ từ 11TR khi sử dụng E-voucher</span>
-                            </div>
-                            <button class="btn-register1">Mua ngay</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="left-column">
-                        <div class="image">
-                            <span class="badge-icon">Mới</span>
-                            <img src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/684x684_2.jpg?$684_684_JPG$"
-                                alt="Ưu đãi">
-                            <div class="text-image">
-                                <span class="title">Săn E-Voucher 3TRIỆU chỉ với 100K.</span>
-                                <span class="sub-text">Áp dụng cho sản phẩm GIA DỤNG AI MỚI 2025</span>
-                                <button class="btn-register1">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="right-column">
-                        <div class="item">
-                            <div class="image">
-                                <span class="badge-icon_red">Sale</span>
-                                <img class="image__main responsive-img image--loaded" data-aem-asset-id=""
-                                    data-desktop-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/TabS10_PC_0228.jpg?$330_330_JPG$"
-                                    data-mobile-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/TabS10_MO_0228.jpg?$296_352_JPG$"
-                                    alt=""
-                                    src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/TabS10_PC_0228.jpg?$330_330_JPG$">
-
-                                <div class="txt-image">
-                                    <span>Galaxy Tab 10 Ultra<br>ưu đãi 4TR</span>
-                                </div>
-                            </div>
-                            <button class="btn-register1">Mua ngay</button>
-                        </div>
-                        <div class="item">
-                            <div class="image">
-                                <span class="badge-icon">Mới</span>
-                                <img class="image__main responsive-img image--loaded" data-aem-asset-id=""
-                                    data-desktop-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/S25_S25plus_PC_0310.jpg?$330_330_JPG$"
-                                    data-mobile-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/S25_S25plus_MO_0310.jpg?$296_352_JPG$"
-                                    alt=""
-                                    src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/S25_S25plus_PC_0310.jpg?$330_330_JPG$">
-                            </div>
-                            <div class="txt-image">
-                                <span>Galaxy S25 |S25+<br>ưu đài 1 triệu</span>
-                            </div>
-                            <button class="btn-register1">Mua ngay</button>
-                        </div>
-                        <div class="item">
-                            <div class="image">
-                                <span class="badge-icon">Mới</span>
-                                <img class="image__main responsive-img image--loaded" data-aem-asset-id=""
-                                    data-desktop-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/PC_RS90F65D2FSV.png?$330_330_PNG$"
-                                    data-mobile-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/MO_RS90F65D2FSV.png?$296_352_PNG$"
-                                    alt="Ưu đãi 11%. Nhập AIDEAL giảm thêm 10%"
-                                    src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/PC_RS90F65D2FSV.png?$330_330_PNG$">
-                            </div>
-                            <div class="txt-image">
-                                <span>Ưu đãi mở bán giá chỉ từ 41.5TR*</span>
-                            </div>
-                            <button class="btn-register1">Mua ngay</button>
-                        </div>
-                        <div class="item">
-                            <div class="image">
-                                <span class="badge-icon">Mới</span>
-                                <img class="image__main responsive-img image--loaded" data-aem-asset-id=""
-                                    data-desktop-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/PC_QA65QE1DAKXXV.png?$330_330_PNG$"
-                                    data-mobile-src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/MO_QA65QE1DAKXXV.png?$296_352_PNG$"
-                                    alt="av qe1d 65inch feb 2025"
-                                    src="//images.samsung.com/is/image/samsung/assets/vn/home/2025/PC_QA65QE1DAKXXV.png?$330_330_PNG$">
-                            </div>
-                            <div class="txt-image">
-                                <span>Mua kèm Galaxy Buds3 giảm 10% trên combo</span>
-                            </div>
-                            <button class="btn-register1">Mua ngay</button>
-                        </div>
-                    </div>
-                </div>
+               
 
             </div>
         </div>
     </div>
 </section>
 
+{{-- todo: hiển thị 10 sản phẩm mới nhất  --}}
 <section class="sec-two">
     <div class="container">
         <div class="content">
@@ -501,7 +269,13 @@
 
 </section>
 
-<div class="product">
+
+{{-- todo: hiển thị 5-10 đt mới nhất  --}}
+
+
+{{-- todo: hiển thị 5-10 tv mới nhất  --}}
+
+<section class="product">
     <div class="container">
         <div class="content">
             <div class="carousel-slider">
@@ -534,7 +308,7 @@
             
                         <div class="product-price">
                             <span class="current-price" id="current-price-{{ $item->id }}">
-                                {{ number_format($item->productClasses[0]->price, 0, ',', '.') }} VND
+                                {{ number_format($item->productClasses[0]->price, 0, ',', '.') }} VNĐ
                             </span>
                         </div>
             
@@ -553,7 +327,14 @@
             
         </div>
     </div>
-</div>
+</section>
+
+
+
+
+
+
+
 
 <script>
     $(document).ready(function() {
@@ -573,25 +354,26 @@
 
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll("input[type='radio']").forEach(radio => {
-        radio.addEventListener("change", function () {
-            let productId = this.id.split('-')[1]; // Get product ID from radio button ID
-            let price = this.dataset.price; // Get price from data-price attribute
-            let productClassId = this.dataset.productClassId; // Get product_class_id from data-product-class-id
-            let productImageId = this.dataset.productImageId; // Get product_image_id from data-product-image-id
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll("input[type='radio']").forEach(radio => {
+            radio.addEventListener("change", function () {
+                let productId = this.id.split('-')[1]; // Get product ID from radio button ID
+                let price = this.dataset.price; // Get price from data-price attribute
+                let productClassId = this.dataset.productClassId; // Get product_class_id from data-product-class-id
+                let productImageId = this.dataset.productImageId; // Get product_image_id from data-product-image-id
 
-            // Update the displayed price
-            document.getElementById(`current-price-${productId}`).innerText = 
-                new Intl.NumberFormat('vi-VN').format(price) + " VND";
-            
-            // Update the product_class_id in the corresponding form
-            let form = document.getElementById(`form-${productId}`);
-            form.querySelector('.product-class-id').value = productClassId;
+                // Update the displayed price
+                document.getElementById(`current-price-${productId}`).innerText = 
+                    new Intl.NumberFormat('vi-VN').format(price) + " VND";
+                
+                // Update the product_class_id in the corresponding form
+                let form = document.getElementById(`form-${productId}`);
+                form.querySelector('.product-class-id').value = productClassId;
+            });
         });
     });
-});
 </script>
+
 <script>
     $(document).ready(function() {
         $('.content-slider').slick({
@@ -712,5 +494,273 @@ document.addEventListener("DOMContentLoaded", function () {
         updateProgressBar(videoDuration);
     });
 </script>
+<footer>
+    <div class="container">
+        <div class="content">
+            <div class="footer__text">
+                <p>*Hình ảnh được mô phỏng. Có thể cần đăng nhập Samsung account cho một số tính năng AI nhất định.
+                    UX/UI thực tế có thể khác.</p>
+                <p>*Hình ảnh mang tính chất minh họa. Cần đăng nhập tài khoản Samsung để sử dụng một số tính năng AI
+                    nhất định.</p>
+                <p>*Hình ảnh được mô phỏng. Màu tai nghe Galaxy Buds3 Pro có sẵn có thể thay đổi theo quốc gia hoặc
+                    nhà mạng. Galaxy Buds3 Pro hỗ trợ các tính năng của Galaxy AI như Interpreter và Live Translate
+                    khi được ghép nối với các thiết bị Samsung Galaxy tương thích. Sự sẵn có của các tính năng
+                    Galaxy AI có thể thay đổi tùy theo model thiết bị. Vui lòng truy cập trang Samsung.com để biết
+                    chi tiết.</p>
+                <p>*Hình ảnh mang tính chất minh họa. Cần đăng nhậptài khoản Samsung để sử dụng một số tính năng AI
+                    nhất định.</p>
+                <p>*Tính năng Phiên Dịch Trực Tiếp Cuộc Gọi yêu cầu có kết nối mạng và đăng nhập tài khoản Samsung.
+                    Phiên Dịch Trực Tiếp Cuộc Gọi chỉ khả dụng trên ứng dụng Samsung Phone được cài đặt sẵn. Một số
+                    ngôn ngữ có thể yêu cầu phải tải xuống. Khả dụng với một số ngôn ngữ nhất định. Độ chính xác
+                    không được đảm bảo hoàn toàn.</p>
+                <p>*Galaxy S24+ so với Galaxy S24.</p>
+                <p>*Màu sắc và kiểu máy có sẵn có thể thay đổi tùy theo quốc gia hoặc nhà mạng.</p>
+                <p>*Hình ảnh được mô phỏng. Cần đăng nhập tài khoản Samsung cho một số tính năng AI nhất định.</p>
+                <p>*Yêu cầu đăng nhập tài khoản Samsung đối với một số tính năng AI nhất định.</p>
+                <p>*Hình ảnh mô phỏng chỉ mang tính chất minh họa. UX/UI thực tế có thể khác.</p>
+                <p>*S Pen Fold Edition được bán riêng và chỉ tương thích với Z Fold5, Z Fold4 và Z Fold3. Flex mode
+                    được hỗ trợ trong phạm vi góc từ 75˚ đến 115˚.</p>
 
+                <p>*Hình ảnh mô phỏng. Màu sắc và model máy có thể thay đổi tùy theo quốc gia hoặc nhà cung cấp dịch
+                    vụ.</p>
+
+                <p>*Galaxy Tab S9, Tab S9+, Tab S9 Ultra được xếp hạng IP68. Dựa trên điều kiện thử nghiệm là ngâm
+                    trong nước sâu tới 1,5 mét trong tối đa 30 phút. Không khuyến cáo sử dụng khi tắm biển hoặc bể
+                    bơi.</p>
+
+                <p>*Hình ảnh mô phỏng chỉ mang tính chất minh họa. Trải nghiệm người dùng/Giao diện người dùng thực
+                    tế có thể khác nhau. Buds Controller tương thích với Samsung Galaxy Buds+, Samsung Galaxy Watch4
+                    và các sản phẩm tương ứng sau đây. Tính năng chống ồn chủ động ANC được hỗ trợ trong Galaxy Buds
+                    Live và các sản phẩm được phát hành sau đó. Samsung Galaxy S23 Ultra, Samsung Galaxy Watch5,
+                    Samsung Galaxy Buds2 Pro được bán riêng. Tính khả dụng của màu sắc, kích thước, sản phẩm và dây
+                    đeo đồng hồ có thể thay đổi theo quốc gia hoặc nhà mạng. Wreckfest ⓒ2022 THQ Nordic AB, Sweden.
+                    Wreckfest là thương hiệu đã đăng ký của THQ Nordic AB, Sweden. Bảo lưu mọi quyền. Tất cả các
+                    thương hiệu, logo và bản quyền khác là tài sản của chủ sở hữu tương ứng. Có sẵn để mua tại
+                    Samsung Galaxy Store và các cửa hàng ứng dụng khác ở một số quốc gia. Nội dung trò chơi không
+                    phù hợp với trẻ em dưới 3 tuổi.</p>
+
+                <p>*Hình ảnh mô phỏng. S Pen Fold Edition được bán riêng và chỉ tương thích với Galaxy Z Fold4 và
+                    Galaxy Z Fold3.</p>
+
+                <p>*Hình ảnh màn hình đồng hồ được mô phỏng cho mục đích minh họa. Màu sắc, kích thước, kiểu máy và
+                    dây đeo đồng hồ có thể thay đổi tùy theo quốc gia hoặc nhà mạng.</p>
+
+                <p>*Hình ảnh được mô phỏng. Các màu hiện có của Galaxy Buds2 Pro có thể thay đổi tùy theo quốc gia
+                    hoặc nhà mạng.</p>
+
+                <p>*Chế độ Flex Mode được hỗ trợ ở các góc từ 75º đến 115º. Google Duo và YouTube là các nhãn hiệu
+                    của Google LLC. Một số ứng dụng có thể không hỗ trợ đa nhiệm. UX / UI có thể thay đổi. Hình ảnh
+                    mô phỏng.</p>
+
+                <p>*Hình ảnh được mô phỏng cho mục đích minh họa. </p>
+
+                <p>*Màu và model máy có thể thay đổi tùy theo quốc gia hoặc nhà cung cấp dịch vụ.</p>
+
+                <p>*Galaxy A53 5G được đánh giá chuẩn IP67. Kết quả dựa trên các điều kiện thử nghiệm ngâm nước ngọt
+                    với độ sâu lên đến 1m trong thời gian tối đa là 30 phút. Chỉ an toàn với nước có áp suất thấp.
+                </p>
+
+                <p>*Tính năng Galaxy S22+</p>
+
+                <p>*Hình ảnh mang tính mô phỏng. Màu sắc của sản phẩm tùy thuộc vào quốc gia và nhà cung cấp.</p>
+
+                <p>*S Pen Fold Edition được bán riêng và chỉ tương thích với Galaxy Z Fold3 5G.</p>
+
+                <p>*Hình ảnh hai điện thoại Galaxy Z Fold3 5G và S Pen Fold Edition được mô phỏng cho mục đích minh
+                    họa.</p>
+
+                <p>*Video về điện thoại Galaxy S21+ 5G màu Tím Đam Mê và Galaxy S21 5G màu Phantom Pink được mô
+                    phỏng nhằm mục đích minh họa.</p>
+
+                <p>*Hình ảnh chỉ mang tính chất minh họa. Hình ảnh thực tế có thể khác nhau.</p>
+
+                <p>*Hình ảnh mười một chiếc điện thoại Galaxy S20 FE đứng thẳng trong một vòng tròn được mô phỏng
+                    cho mục đích minh họa. </p>
+
+                <p>*Hình ảnh được mô phỏng. Màu sắc có thể thay đổi tùy thuộc vào quốc gia hoặc nhà cung cấp. Galaxy
+                    A52 and Galaxy A72 được xếp hạng IP67. Dựa trên các điều kiện thử nghiệm ngâm trong nước ở độ
+                    sâu lên đến 1 mét trong tối đa 30 phút. Không nên sử dụng ở bãi biển, bể bơi và trong nước xà
+                    phòng. Trong trường hợp làm đổ chất lỏng có đường vào điện thoại, vui lòng xả thiết bị bằng nước
+                    sạch, tránh tình trạng đọng nước khi ấn vào các phím. Chỉ an toàn đối với áp lực nước thấp. Áp
+                    lực nước cao như dòng nước chảy hoặc vòi hoa sen có thể làm hỏng thiết bị.</p>
+
+                <p>*Hình ảnh Tủ Lạnh BESPOKE 4 Cửa, BESPOKE 1 Cửa và BESPOKE 2 Cửa Ngăn Đông Dưới được mô phỏng cho
+                    mục đích minh họa.</p>
+
+                <p>*Tặng kèm bao da kèm bàn phím trị giá 7 Triệu đồng khi mua Galaxy Tab S8 Ultra.</p>
+
+                <p>*Không áp dụng cùng các chương trình quà tặng khác.</p>
+
+                <p>*Hình ảnh sản phẩm Bespoke mang tính mô phỏng. Màu sắc và model máy có thể thay đổi tùy
+                    thuộc vào quốc gia và nhà cung cấp.</p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<section class="footer__link">
+    <div class="container">
+        <div class="content">
+            <div class="footer-column">
+                <ul class="nav-footer">
+                    <p class="toggle-menu">
+                        Sản Phẩm & Dịch Vụ
+                        <span class="arrow down"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+                                <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                            </svg></span>
+                    </p>
+                    <div class="menu-content">
+                        <li><a href="#">Điện Thoại Thông Minh</a></li>
+                        <li><a href="#">Máy Tính Bảng</a></li>
+                        <li><a href="#">Thiết Bị Âm Thanh</a></li>
+                        <li><a href="#">Thiết Bị Đeo</a></li>
+                        <li><a href="#">Smart Switch</a></li>
+                        <li><a href="#">Phụ Kiện</a></li>
+                        <li><a href="#">TVs</a></li>
+                        <li><a href="#">Lifestyle TVs</a></li>
+                        <li><a href="#">Thiết Bị Nghe Nhìn</a></li>
+                        <li><a href="#">Tủ Lạnh</a></li>
+                        <li><a href="#">Máy Giặt & Máy Sấy</a></li>
+                        <li><a href="#">Giải Pháp Không Khí</a></li>
+                        <li><a href="#">Gia Dụng Nhà Bếp</a></li>
+                        <li><a href="#">Màn Hình</a></li>
+                    </div>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <ul class="nav-footer">
+                    <p class="toggle-menu">Mua Trực Tuyến
+                        <span class="arrow down"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+                                <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                            </svg></span>
+                    </p>
+                    <div class="menu-content">
+                        <li><a href="#">Ưu Đãi Độc Quyền</a></li>
+                        <li><a href="#">Cửa hàng trực tuyến doanh nghiệp</a></li>
+                        <li><a href="#">Samsung 68</a></li>
+                        <li><a href="#">Cửa Hàng Trải Nghiệm Samsung</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Tìm Cửa Hàng</a></li>
+                        <li><a href="#">Điểm tư vấn và nhận hàng trực tiếp</a></li>
+                        <li><a href="#">Samsung Care+</a></li>
+                        <li><a href="#">Samsung Rewards</a></li>
+                        <li><a href="#">Khám Phá</a></li>
+                        <li><a href="#">Điều Khoản & Điều Kiện</a></li>
+                        <li><a href="#">Samsung Club Affiliates</a></li>
+                        <li><a href="#">Giáo dục</a></li>
+                    </div>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <ul class="nav-footer">
+                    <p class="toggle-menu">Chương trình đặc quyền
+                        <span class="arrow down"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+                                <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                            </svg></span>
+                    </p>
+                    <div class="menu-content">
+                        <li><a href="#">Ưu đãi sinh viên</a></li>
+                        <li><a href="#">Ưu đãi Nhân viên đối tác (EPP)</a></li>
+                        <li><a href="#">Ưu đãi chính phủ</a></li>
+                        <li><a href="#"> VIP Mall</a></li>
+                    </div>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <ul class="nav-footer">
+                    <p class="toggle-menu">Bạn Cần Hỗ Trợ?
+                        <span class="arrow down"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+                                <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                            </svg></span>
+                    </p>
+                    <div class="menu-content">
+                        <li><a href="#">Đặt hẹn lịch sửa chữa</a></li>
+                        <li><a href="#" class="business">Tư Vấn Trực Tuyến
+                                <i class="fa-solid fa-arrow-up-long"></i>
+                            </a></li>
+                        <li><a href="#"class="business">Thư điện tử
+                                <i class="fa-solid fa-arrow-up-long"></i>
+                            </a></li>
+                        <li><a href="#" class="business">Điện Thoại </a></li>
+                        <li><a href="#" class="business">Trung Tâm Bảo Hành </a></li>
+                        <li><a href="#" class="business">Ngôn ngữ ký hiệu </a></li>
+                        <li><a href="#" class="business">Gửi ý kiến phản hồi</a></li>
+                        <li><a href="#" class="business"> Gửi thư cho Ban Giám đốc
+                                <i class="fa-solid fa-arrow-up-long"></i>
+                            </a></li>
+                    </div>
+                </ul>
+                <ul class="nav-footer">
+                    <p class="toggle-menu">Tài khoản & Cộng đồng
+                        <span class="arrow down"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+                                <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                            </svg></span>
+                    </p>
+                    <div class="menu-content">
+                        <li><a href="#">Tài Khoản Của Tôi</a></li>
+                        <li><a href="#" class="business">Đơn Hàng
+                            </a></li>
+                        <li><a href="#"class="business">Danh Sách Yêu Thích
+                            </a></li>
+                        <li><a href="#" class="business">Samsung Members </a></li>
+                        </a></li>
+                    </div>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <ul class="nav-footer">
+                    <p class="toggle-menu">Sự bền vững
+                        <span class="arrow down"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+                                <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                            </svg></span>
+                    </p>
+                    <div class="menu-content">
+                        <li><a href="#">Môi trường</a></li>
+                        <li><a href="#">Bảo mật & Quyền riêng tư</a></li>
+                        <li><a href="#">Trợ năng</a></li>
+                        <li><a href="#">Đa dạng · Công bằng · Hòa nhập</a></li>
+                        <li><a href="#"class="business">Công dân Doanh nghiệp
+                                <i class="fa-solid fa-arrow-up-long"></i>
+                            </a></li>
+                        <li><a href="#"class="business">Tính bền vững của Doanh nghiệp
+                                <i class="fa-solid fa-arrow-up-long"></i>
+                            </a></li>
+                    </div>
+                </ul>
+                <ul class="nav-footer">
+                    <p class="toggle-menu"> Giới thiệu về chúng tôi
+                        <span class="arrow down"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+                                <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                            </svg></span>
+                    </p>
+                    <div class="menu-content">
+                        <li><a href="#">Thông tin về Công ty</a></li>
+                        <li><a href="#">Lĩnh vực kinh doanh</a></li>
+                        <li><a href="#"> Nhận diện thương hiệu</a></li>
+                        <li><a href="#">Nghề nghiệp</a></li>
+                        <li><a href="#"class="business">Quan hệ với nhà đầu tư
+                                <i class="fa-solid fa-arrow-up-long"></i>
+                            </a></li>
+                        <li><a href="#" class="business">Newsroom
+                                <i class="fa-solid fa-arrow-up-long"></i>
+                            </a></li>
+                        <li><a href="#">Đạo đức </a></li>
+                        <li><a href="#" class="business">Samsung Design
+                                <i class="fa-solid fa-arrow-up-long"></i>
+                            </a></li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection

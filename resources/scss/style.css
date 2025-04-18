@@ -1,29 +1,31 @@
-@charset "UTF-8";
 .sec_one {
-  max-width: 1440px;
+  max-width: 144rem;
   margin: 0 auto;
   width: 100%;
   position: relative;
-  top: -22px;
+  top: -2.2rem;
+}
+.sec_one .container {
+  width: 100%;
 }
 .sec_one .container .content .slick-slide {
   height: auto;
 }
 .sec_one .container .content .carousel .slick-dots {
   position: absolute;
-  bottom: 10px;
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex !important;
   justify-content: center;
-  gap: 8px;
+  gap: 0.8rem;
 }
 .sec_one .container .content .carousel .slick-dots li {
   position: relative;
-  width: 100px;
-  height: 2px;
+  width: 10rem;
+  height: 0.2rem;
   background: #ccc;
-  border-radius: 10px;
+  border-radius: 1rem;
   overflow: hidden;
 }
 .sec_one .container .content .carousel .slick-dots li.slick-active::after {
@@ -49,7 +51,7 @@
   display: block;
 }
 .sec_one .container .content .carousel .carousel-item .video-main_txt {
-  margin-top: 15px;
+  margin-top: 1.5rem;
   position: absolute;
   top: 55%;
   left: 6%;
@@ -57,16 +59,16 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 10px;
+  gap: 1rem;
+  padding: 1rem;
 }
 .sec_one .container .content .carousel .carousel-item .video-main_txt h3 {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 500;
 }
 .sec_one .container .content .carousel .carousel-item .btn-group {
   display: flex;
-  gap: 10px;
+  gap: 1rem;
 }
 .sec_one .container .content .carousel .carousel-item .btn-group .btn-outline {
   position: relative;
@@ -76,14 +78,14 @@
   overflow: hidden;
   background: none;
   border: none;
-  font-size: 14px;
+  font-size: 1.4rem;
   cursor: pointer;
 }
 .sec_one .container .content .carousel .carousel-item .btn-group .btn-outline::before {
   content: "";
   position: absolute;
-  width: 100px;
-  height: 2px;
+  width: 10rem;
+  height: 0.2rem;
   bottom: 0;
   left: 50%;
   background-color: white;
@@ -94,22 +96,22 @@
   text-decoration: none;
   color: black;
   background-color: white;
-  padding: 10px 20px;
-  border-radius: 30px;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
   font-weight: 500;
   border: none;
-  font-size: 14px;
+  font-size: 1.4rem;
   cursor: pointer;
 }
 .sec_one .container .content .carousel .carousel-item .btn-group .btn-primary:hover {
   background-color: black;
   color: white;
-  border: 1px solid white;
+  border: 0.1rem solid white;
 }
 .sec_one .container .content .carousel-item {
   position: relative;
   width: 100%;
-  max-width: 1440px;
+  max-width: 144rem;
   margin: 0 auto;
 }
 .sec_one .container .content .carousel-item img {
@@ -127,31 +129,31 @@
   max-width: 80%;
 }
 .sec_one .container .content .carousel-item .banner-text h2 {
-  font-size: 36px;
+  font-size: 3.6rem;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 .sec_one .container .content .carousel-item .banner-text p {
-  font-size: 20px;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  margin-bottom: 2rem;
   font-weight: 400;
 }
 .sec_one .container .content .carousel-item .banner-text .banner-button {
   text-decoration: none;
   color: black;
   background-color: white;
-  padding: 10px 20px;
-  border-radius: 30px;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
   font-weight: 500;
   border: none;
-  font-size: 14px;
+  font-size: 1.4rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 .sec_one .container .content .carousel-item .banner-text .banner-button:hover {
   background-color: black;
   color: white;
-  border: 1px solid white;
+  border: 0.1rem solid white;
 }
 .sec_one .container .content .carousel-item .voucher-text {
   position: absolute;
@@ -159,92 +161,36 @@
   left: 5%;
   transform: translateY(-50%);
   color: white;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 500;
   text-align: left;
   max-width: 40%;
 }
 .sec_one .container .content .carousel-item .voucher-text p {
-  margin: 5px 0;
-  font-size: 20px;
+  margin: 0.5rem 0;
+  font-size: 2rem;
   font-weight: 500;
 }
 .sec_one .container .content .carousel-item .voucher-text .register-btn {
   text-decoration: none;
   color: black;
   background-color: white;
-  padding: 10px 20px;
-  border-radius: 30px;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
   font-weight: 500;
   border: none;
-  font-size: 14px;
+  font-size: 1.4rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 .sec_one .container .content .carousel-item .voucher-text .register-btn:hover {
   background-color: black;
   color: white;
-  border: 1px solid white;
+  border: 0.1rem solid white;
 }
-.sec_one .container .content .carousel-item {
-  position: relative;
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  text-align: center;
-}
-.sec_one .container .content .carousel-item .sale {
-  position: absolute;
-  top: 42%;
-  left: 20%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  max-width: 80%;
-}
-.sec_one .container .content .carousel-item .sale h1 {
-  font-size: 50px;
-  font-weight: 800;
-  margin-bottom: 10px;
-  text-align: left;
-  color: black;
-}
-.sec_one .container .content .carousel-item .sale p {
-  font-size: 20px;
-  font-weight: 500;
-  text-align: left;
-  color: black;
-  line-height: 1.3;
-}
-.sec_one .container .content .carousel-item .sale .btn-register {
-  text-decoration: none;
-  color: white;
-  background-color: black;
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-weight: 500;
-  border: none;
-  font-size: 14px;
-  position: relative;
-  top: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  float: left;
-}
-.sec_one .container .content .carousel-item .sale .btn-register:hover {
-  background-color: white;
-  color: black;
-  border: 1px solid black;
-}
-.sec_one .container .content .carousel-item {
-  position: relative;
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  text-align: center;
-}
+.sec_one .container .content .carousel-item .sale,
 .sec_one .container .content .carousel-item .voucher {
   position: absolute;
   top: 42%;
@@ -254,39 +200,43 @@
   text-align: center;
   max-width: 80%;
 }
+.sec_one .container .content .carousel-item .sale h1,
 .sec_one .container .content .carousel-item .voucher h1 {
-  font-size: 50px;
+  font-size: 5rem;
   font-weight: 800;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
   text-align: left;
   color: black;
 }
+.sec_one .container .content .carousel-item .sale p,
 .sec_one .container .content .carousel-item .voucher p {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 500;
   text-align: left;
   color: black;
   line-height: 1.3;
 }
+.sec_one .container .content .carousel-item .sale .btn-register,
 .sec_one .container .content .carousel-item .voucher .btn-register {
   text-decoration: none;
   color: white;
   background-color: black;
-  padding: 10px 20px;
-  border-radius: 30px;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
   font-weight: 500;
   border: none;
-  font-size: 14px;
+  font-size: 1.4rem;
   position: relative;
-  top: 20px;
+  top: 2rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   float: left;
 }
+.sec_one .container .content .carousel-item .sale .btn-register:hover,
 .sec_one .container .content .carousel-item .voucher .btn-register:hover {
   background-color: white;
   color: black;
-  border: 1px solid black;
+  border: 0.1rem solid black;
 }
 .sec_one .container .content .prev,
 .sec_one .container .content .next {
@@ -295,32 +245,32 @@
   transform: translateY(-50%);
   z-index: 10;
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  background: rgba(0, 0, 0, 0.5); /* Mặc định màu đen nhạt */
+  background: rgba(0, 0, 0, 0.5);
 }
 .sec_one .container .content .prev {
-  left: 20px;
+  left: 2rem;
 }
 .sec_one .container .content .next {
-  right: 20px;
+  right: 2rem;
 }
 .sec_one .container .content .prev svg,
 .sec_one .container .content .next svg {
-  width: 20px;
-  height: 20px;
-  fill: white; /* Mặc định icon màu trắng */
+  width: 2rem;
+  height: 2rem;
+  fill: white;
   transition: fill 0.3s ease-in-out;
 }
 .sec_one .container .content .prev:hover,
 .sec_one .container .content .next:hover {
-  background-color: black; /* Khi hover, nền đậm hơn */
+  background-color: black;
 }
 .sec_one .container .content .slick-prev,
 .sec_one .container .content .slick-next {
@@ -328,33 +278,38 @@
   transform: translateY(-50%) !important;
 }
 
+.sec-product {
+  transform: translateY(-2rem);
+}
 .sec-product .container .content .content-head .text_block h2 {
   text-align: center;
-  font-size: 30px;
+  font-size: 3rem;
   color: #000;
   font-weight: 700;
   line-height: 1.47;
+  padding: 1rem 0;
 }
 .sec-product .container .content .content-head .content-list__common .list {
   display: flex;
   justify-content: center;
   list-style: none;
-  gap: 30px;
+  gap: 2rem;
+  margin-top: 4rem;
   font-family: "SamsungOne", arial, sans-serif;
 }
 .sec-product .container .content .content-head .content-list__common .list .item {
-  margin: 0 15px;
+  margin: 0 1.5rem;
 }
 .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title {
   background: none;
   border: none;
   cursor: pointer;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: bold;
   color: #000;
   position: relative;
-  padding-bottom: 5px;
+  padding-bottom: 0.5rem;
   transition: all 0.3s ease;
   outline: none;
 }
@@ -362,9 +317,9 @@
   content: "";
   position: absolute;
   bottom: 0;
-  top: 21px;
+  top: 2.1rem;
   left: 50%;
-  height: 2px;
+  height: 0.2rem;
   background-color: #000;
   width: 0;
   transition: width 0.3s ease, left 0.3s ease;
@@ -373,14 +328,14 @@
   opacity: 0.7;
 }
 .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:focus {
-  outline: dotted 2px black;
+  outline: dotted 0.2rem black;
 }
 .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:focus .tab__item-line {
   left: 0;
   width: 100%;
 }
 .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:active {
-  outline: dotted 2px black;
+  outline: dotted 0.2rem black;
 }
 .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:active .tab__item-line {
   left: 0;
@@ -388,6 +343,7 @@
 }
 .sec-product .container .content .content-body .slick-slide {
   height: auto;
+  margin-top: 2rem;
 }
 .sec-product .container .content .content-body .item {
   display: flex;
@@ -396,7 +352,7 @@
 }
 .sec-product .container .content .content-body .item .left-column {
   width: 50%;
-  padding: 10px;
+  padding: 1rem;
   position: relative;
 }
 .sec-product .container .content .content-body .item .left-column .image {
@@ -409,61 +365,60 @@
 }
 .sec-product .container .content .content-body .item .left-column .image .badge-icon {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 2rem;
+  left: 2rem;
   background-color: #2189ff;
   color: white;
-  padding: 5px 10px;
-  font-size: 12px;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  border-radius: 20px;
+  border-radius: 2rem;
   z-index: 10;
 }
 .sec-product .container .content .content-body .item .left-column .image img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  border: 1px solid #ddd;
-  border-radius: 15px;
+  border: 0.1rem solid #ddd;
+  border-radius: 1.5rem;
   display: block;
   transition: transform 0.3s ease-in-out;
 }
 .sec-product .container .content .content-body .item .left-column .image .text-image {
   position: absolute;
-  bottom: 40px;
+  bottom: 4rem;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
   text-align: center;
   color: black;
-  padding: 15px;
-  border-radius: 8px;
+  padding: 1.5rem;
+  border-radius: 0.8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: all 0.3s ease-in-out;
 }
 .sec-product .container .content .content-body .item .left-column .image .text-image .title {
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 .sec-product .container .content .content-body .item .left-column .image .text-image .sub-text {
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: normal;
   line-height: 1.5;
   transition: transform 0.3s ease-in-out;
 }
 .sec-product .container .content .content-body .item .left-column .image .btn-register1 {
   position: absolute;
-  top: 70%;
   left: 50%;
-  transform: translate(-50%, 20px);
+  transform: translate(-50%, 2rem);
   color: white;
   background-color: black;
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-size: 16px;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  font-size: 1.6rem;
   font-weight: 400;
   border: none;
   cursor: pointer;
@@ -487,14 +442,14 @@
 .sec-product .container .content .content-body .item .left-column .image .btn-register1:hover {
   background-color: white;
   color: black;
-  border: 1px solid black;
+  border: 0.1rem solid black;
 }
 .sec-product .container .content .content-body .item .right-column {
   width: 50%;
-  padding: 10px;
+  padding: 1rem;
   display: grid;
   grid-template-columns: repeat(2, minmax(17rem, 1fr));
-  gap: 10px;
+  gap: 1rem;
 }
 .sec-product .container .content .content-body .item .right-column .item {
   width: 100%;
@@ -511,9 +466,9 @@
   transform: translateX(-50%);
   color: white;
   background-color: black;
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-size: 16px;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  font-size: 1.6rem;
   font-weight: 400;
   border: none;
   cursor: pointer;
@@ -524,7 +479,7 @@
 .sec-product .container .content .content-body .item .right-column .item .btn-register1:hover {
   background-color: white;
   color: black;
-  border: 1px solid black;
+  border: 0.1rem solid black;
 }
 .sec-product .container .content .content-body .item .right-column .item .image {
   position: relative;
@@ -537,34 +492,34 @@
 }
 .sec-product .container .content .content-body .item .right-column .item .image .badge-icon_red {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 2rem;
+  left: 2rem;
   background-color: #ef3434;
   color: white;
-  padding: 5px 10px;
-  font-size: 12px;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  border-radius: 20px;
+  border-radius: 2rem;
   z-index: 10;
 }
 .sec-product .container .content .content-body .item .right-column .item .image .badge-icon {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 2rem;
+  left: 2rem;
   background-color: #2189ff;
   color: white;
-  padding: 5px 10px;
-  font-size: 12px;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  border-radius: 20px;
+  border-radius: 2rem;
   z-index: 10;
 }
 .sec-product .container .content .content-body .item .right-column .item .image img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  border: 1px solid #ddd;
-  border-radius: 15px;
+  border: 0.1rem solid #ddd;
+  border-radius: 1.5rem;
   display: block;
   transition: transform 0.3s ease-in-out;
 }
@@ -573,281 +528,1588 @@
 }
 .sec-product .container .content .content-body .item .right-column .item .txt-image {
   position: absolute;
-  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: black;
-  padding: 10px 15px;
-  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  border-radius: 0.8rem;
   text-align: center;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: bold;
   width: 100%;
 }
 
-.sec-two .container .content .content-head .text_block h2 {
-  text-align: center;
-  font-size: 30px;
-  color: #000;
-  font-weight: 700;
-  line-height: 1.47;
-}
-.sec-two .container .content .content-head .content-list__common__one .list {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  gap: 30px;
-  font-family: "SamsungOne", arial, sans-serif;
-}
-.sec-two .container .content .content-head .content-list__common__one .list .item {
-  margin: 0 15px;
-}
-.sec-two .container .content .content-head .content-list__common__one .list .item .tab__item-title {
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
-  color: #000;
-  position: relative;
-  padding-bottom: 10px;
-  transition: all 0.3s ease;
-  outline: none;
-}
-.sec-two .container .content .content-head .content-list__common__one .list .item .tab__item-title .tab__item-line {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  top: 30px;
-  left: 50%;
-  height: 2px;
-  background-color: #000;
-  width: 0;
-  transition: width 0.3s ease, left 0.3s ease;
-}
-.sec-two .container .content .content-head .content-list__common__one .list .item .tab__item-title:hover {
-  opacity: 0.7;
-}
-.sec-two .container .content .content-head .content-list__common__one .list .item .tab__item-title:focus {
-  border-radius: 50px;
-  padding: 8px;
-  outline: dotted 2px black;
-}
-.sec-two .container .content .content-head .content-list__common__one .list .item .tab__item-title:focus .tab__item-line {
-  left: 0;
-  width: 100%;
-}
-.sec-two .container .content .content-head .content-list__common__one .list .item .tab__item-title:active {
-  padding: 8px;
-  border-radius: 50px;
-  outline: dotted 2px black;
-}
-.sec-two .container .content .content-head .content-list__common__one .list .item .tab__item-title:active .tab__item-line {
-  left: 0;
-  width: 100%;
-}
-.sec-two .container .content .content-body .slick-slide {
-  height: auto;
-}
-.sec-two .container .content .content-body .item {
-  display: flex;
-  width: 100%;
-  transition: 0.3s ease;
-}
-.sec-two .container .content .content-body .item .left-column {
-  width: 50%;
-  padding: 10px;
-  position: relative;
-}
-.sec-two .container .content .content-body .item .left-column .image {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
-}
-.sec-two .container .content .content-body .item .left-column .image .badge-icon {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background-color: #2189ff;
-  color: white;
-  padding: 5px 10px;
-  font-size: 12px;
-  font-weight: 700;
-  border-radius: 20px;
-  z-index: 10;
-}
-.sec-two .container .content .content-body .item .left-column .image img {
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  display: block;
-  transition: transform 0.3s ease-in-out;
-}
-.sec-two .container .content .content-body .item .left-column .image .text-image {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  text-align: center;
-  color: black;
-  padding: 15px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.3s ease-in-out;
-}
-.sec-two .container .content .content-body .item .left-column .image .text-image .title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-.sec-two .container .content .content-body .item .left-column .image .text-image .sub-text {
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.5;
-  transition: transform 0.3s ease-in-out;
-}
-.sec-two .container .content .content-body .item .left-column .image .btn-register1 {
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, 20px);
-  color: white;
-  background-color: black;
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-size: 16px;
-  font-weight: 400;
-  border: none;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: transform 0.3s ease-in-out;
-  z-index: 10;
-}
-.sec-two .container .content .content-body .item .left-column .image:hover img {
-  transform: scale(1.05);
-}
-.sec-two .container .content .content-body .item .left-column .image:hover .sub-text {
-  opacity: 0;
-  visibility: hidden;
-}
-.sec-two .container .content .content-body .item .left-column .image:hover .btn-register1 {
-  opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, 0);
-}
-.sec-two .container .content .content-body .item .left-column .image .btn-register1:hover {
-  background-color: white;
-  color: black;
-  border: 1px solid black;
-}
-.sec-two .container .content .content-body .item .right-column {
-  width: 50%;
-  padding: 10px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(17rem, 1fr));
-  gap: 10px;
-}
-.sec-two .container .content .content-body .item .right-column .item {
-  width: 100%;
-  position: relative;
-}
-.sec-two .container .content .content-body .item .right-column .item:hover .btn-register1 {
-  opacity: 1;
-  bottom: 2rem;
-}
-.sec-two .container .content .content-body .item .right-column .item .btn-register1 {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  background-color: black;
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-size: 16px;
-  font-weight: 400;
-  border: none;
-  cursor: pointer;
-  opacity: 0;
-  transition: 0.3s ease;
-  z-index: 10;
-}
-.sec-two .container .content .content-body .item .right-column .item .btn-register1:hover {
-  background-color: white;
-  color: black;
-  border: 1px solid black;
-}
-.sec-two .container .content .content-body .item .right-column .item .image {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
-}
-.sec-two .container .content .content-body .item .right-column .item .image .badge-icon_red {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background-color: #ef3434;
-  color: white;
-  padding: 5px 10px;
-  font-size: 12px;
-  font-weight: 700;
-  border-radius: 20px;
-  z-index: 10;
-}
-.sec-two .container .content .content-body .item .right-column .item .image .badge-icon {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background-color: #2189ff;
-  color: white;
-  padding: 5px 10px;
-  font-size: 12px;
-  font-weight: 700;
-  border-radius: 20px;
-  z-index: 10;
-}
-.sec-two .container .content .content-body .item .right-column .item .image img {
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  display: block;
-  transition: transform 0.3s ease-in-out;
-}
-.sec-two .container .content .content-body .item .right-column .item .image:hover img {
-  transform: scale(1.05);
-}
-.sec-two .container .content .content-body .item .right-column .item .txt-image {
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: black;
-  padding: 10px 15px;
-  border-radius: 8px;
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  width: 100%;
+.sec-two {
+  margin-top: 4rem;
 }
 
+@media (max-width: 1080px) {
+  .sec_one {
+    position: relative;
+    top: -8.9rem;
+  }
+  .sec_one .container .content .slick-slide {
+    height: auto;
+  }
+  .sec_one .container .content .carousel .slick-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex !important;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+  .sec_one .container .content .carousel .slick-dots li {
+    position: relative;
+    width: 10rem;
+    height: 0.2rem;
+    background: #ccc;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  .sec_one .container .content .carousel .slick-dots li.slick-active::after {
+    width: 100%;
+    transition: 5s linear;
+  }
+  .sec_one .container .content .carousel .slick-dots li::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: chocolate;
+  }
+  .sec_one .container .content .carousel .carousel-item {
+    position: relative;
+    width: 100%;
+  }
+  .sec_one .container .content .carousel .carousel-item video,
+  .sec_one .container .content .carousel .carousel-item img {
+    width: 100%;
+    display: block;
+  }
+  .sec_one .container .content .carousel .carousel-item .video-main_txt {
+    margin-top: 1.5rem;
+    position: absolute;
+    top: 55%;
+    left: 6%;
+    color: white;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .sec_one .container .content .carousel .carousel-item .video-main_txt h3 {
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+  .sec_one .container .content .carousel .carousel-item .btn-group .btn-outline {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    overflow: hidden;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  .sec_one .container .content .carousel .carousel-item .btn-group .btn-outline::before {
+    content: "";
+    position: absolute;
+    width: 10rem;
+    height: 0.2rem;
+    bottom: 0;
+    left: 50%;
+    background-color: white;
+    transform: translateX(-50%);
+    cursor: pointer;
+  }
+  .sec_one .container .content .carousel .carousel-item .btn-group .btn-primary {
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    font-weight: 500;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  .sec_one .container .content .carousel .carousel-item .btn-group .btn-primary:hover {
+    background-color: black;
+    color: white;
+    border: 0.1rem solid white;
+  }
+  .sec_one .container .content .carousel-item {
+    position: relative;
+    width: 100%;
+    max-width: 144rem;
+    margin: 0 auto;
+  }
+  .sec_one .container .content .carousel-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .sec_one .container .content .carousel-item .banner-text {
+    position: absolute;
+    top: 26%;
+    left: 50%;
+  }
+  .sec_one .container .content .carousel-item .banner-text h2 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  .sec_one .container .content .carousel-item .banner-text p {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+  .sec_one .container .content .carousel-item .banner-text .banner-button {
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    font-weight: 500;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  .sec_one .container .content .carousel-item .banner-text .banner-button:hover {
+    background-color: black;
+    color: white;
+    border: 0.1rem solid white;
+  }
+  .sec_one .container .content .carousel-item .voucher-text {
+    left: 6%;
+  }
+  .sec_one .container .content .carousel-item .voucher-text p {
+    margin: 0.5rem 0;
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+  .sec_one .container .content .carousel-item .voucher-text .register-btn {
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    font-weight: 500;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    margin-top: 2rem;
+  }
+  .sec_one .container .content .carousel-item .voucher-text .register-btn:hover {
+    background-color: black;
+    color: white;
+    border: 0.1rem solid white;
+  }
+  .sec_one .container .content .carousel-item {
+    position: relative;
+    width: 100%;
+    max-width: 144rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .sec_one .container .content .carousel-item .sale {
+    position: absolute;
+    top: 42%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    max-width: 80%;
+  }
+  .sec_one .container .content .carousel-item .sale h1 {
+    font-size: 3rem;
+    font-weight: 800;
+  }
+  .sec_one .container .content .carousel-item .sale p {
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-align: left;
+    color: black;
+    line-height: 1.3;
+  }
+  .sec_one .container .content .carousel-item .sale .btn-register {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    font-weight: 500;
+    border: none;
+    font-size: 1.2rem;
+    position: relative;
+    top: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    float: left;
+  }
+  .sec_one .container .content .carousel-item .sale .btn-register:hover {
+    background-color: white;
+    color: black;
+    border: 0.1rem solid black;
+  }
+  .sec_one .container .content .carousel-item {
+    position: relative;
+    width: 100%;
+    max-width: 144rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .sec_one .container .content .carousel-item .voucher h1 {
+    font-size: 3rem;
+    font-weight: 800;
+  }
+  .sec_one .container .content .carousel-item .voucher p {
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-align: left;
+    color: black;
+    line-height: 1.3;
+  }
+  .sec_one .container .content .carousel-item .voucher .btn-register {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    font-weight: 500;
+    border: none;
+    font-size: 1.2rem;
+    position: relative;
+    top: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    float: left;
+  }
+  .sec_one .container .content .carousel-item .voucher .btn-register:hover {
+    background-color: white;
+    color: black;
+    border: 0.1rem solid black;
+  }
+  .sec-product {
+    transform: translateY(-10rem);
+  }
+  .sec-product .container .content .content-head .text_block h2 {
+    font-size: 2.5rem;
+    color: #000;
+    font-weight: 700;
+    line-height: 1.2;
+    padding: 1rem 0;
+  }
+  .sec-product .container .content .content-head .content-list__common .list {
+    gap: 2rem;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item {
+    margin: 0 1rem;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title {
+    font-size: 1.5rem;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title .tab__item-line {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    top: 2.1rem;
+    left: 50%;
+    height: 0.2rem;
+    background-color: #000;
+    width: 0;
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:hover {
+    opacity: 0.7;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:focus {
+    outline: dotted 0.2rem black;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:focus .tab__item-line {
+    left: 0;
+    width: 100%;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:active {
+    outline: dotted 0.2rem black;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:active .tab__item-line {
+    left: 0;
+    width: 100%;
+  }
+  .sec-product .container .content .content-body .slick-slide {
+    height: auto;
+  }
+  .sec-product .container .content .content-body .item {
+    display: flex;
+    width: 100%;
+    transition: 0.3s ease;
+  }
+  .sec-product .container .content .content-body .item .left-column {
+    width: 50%;
+    padding: 0.5rem;
+    position: relative;
+  }
+  .sec-product .container .content .content-body .item .left-column .image .badge-icon {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background-color: #2189ff;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 2rem;
+    z-index: 10;
+  }
+  .sec-product .container .content .content-body .item .left-column .image img {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border: 0.1rem solid #ddd;
+    border-radius: 1.5rem;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+  }
+  .sec-product .container .content .content-body .item .left-column .image .text-image {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    text-align: center;
+    color: black;
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+  }
+  .sec-product .container .content .content-body .item .left-column .image .text-image .title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  .sec-product .container .content .content-body .item .left-column .image .text-image .sub-text {
+    font-size: 1.2rem;
+    font-weight: normal;
+    line-height: 1.5;
+    transition: transform 0.3s ease-in-out;
+  }
+  .sec-product .container .content .content-body .item .left-column .image .btn-register1 {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, 2rem);
+    color: white;
+    background-color: black;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    font-size: 1.6rem;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease-in-out;
+    z-index: 10;
+  }
+  .sec-product .container .content .content-body .item .left-column .image:hover img {
+    transform: scale(1.05);
+  }
+  .sec-product .container .content .content-body .item .left-column .image:hover .sub-text {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .sec-product .container .content .content-body .item .left-column .image:hover .btn-register1 {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
+  .sec-product .container .content .content-body .item .left-column .image .btn-register1:hover {
+    background-color: white;
+    color: black;
+    border: 0.1rem solid black;
+  }
+  .sec-product .container .content .content-body .item .right-column {
+    width: 50%;
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(17rem, 1fr));
+    gap: 1rem;
+  }
+  .sec-product .container .content .content-body .item .right-column .item {
+    width: 100%;
+    position: relative;
+  }
+  .sec-product .container .content .content-body .item .right-column .item:hover .btn-register1 {
+    opacity: 1;
+    bottom: 2rem;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .btn-register1 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background-color: black;
+    padding: 0.6rem 1rem;
+    border-radius: 3rem;
+    font-size: 1.6rem;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.3s ease;
+    z-index: 10;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .btn-register1:hover {
+    background-color: white;
+    color: black;
+    border: 0.1rem solid black;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .image .badge-icon_red {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background-color: #ef3434;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 2rem;
+    z-index: 10;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .image .badge-icon {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background-color: #2189ff;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 2rem;
+    z-index: 10;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .image img {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border: 0.1rem solid #ddd;
+    border-radius: 1.5rem;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .image:hover img {
+    transform: scale(1.05);
+  }
+  .sec-product .container .content .content-body .item .right-column .item .txt-image {
+    position: absolute;
+    top: 76%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    padding: 1rem 1.5rem;
+    border-radius: 0.8rem;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    width: 100%;
+  }
+  .sec-two {
+    position: relative;
+    top: -90px;
+    padding: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .sec_one {
+    position: relative;
+    top: -8.9rem;
+  }
+  .sec_one .container .content .slick-slide {
+    height: auto;
+  }
+  .sec_one .container .content .carousel .slick-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex !important;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+  .sec_one .container .content .carousel .slick-dots li {
+    position: relative;
+    width: 10rem;
+    height: 0.2rem;
+    background: #ccc;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  .sec_one .container .content .carousel .slick-dots li.slick-active::after {
+    width: 100%;
+    transition: 5s linear;
+  }
+  .sec_one .container .content .carousel .slick-dots li::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: chocolate;
+  }
+  .sec_one .container .content .carousel .carousel-item {
+    position: relative;
+    width: 100%;
+  }
+  .sec_one .container .content .carousel .carousel-item video,
+  .sec_one .container .content .carousel .carousel-item img {
+    width: 100%;
+    display: block;
+  }
+  .sec_one .container .content .carousel .carousel-item .video-main_txt {
+    margin-top: 1.5rem;
+    position: absolute;
+    top: 55%;
+    left: 6%;
+    color: white;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .sec_one .container .content .carousel .carousel-item .video-main_txt h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+  .sec_one .container .content .carousel .carousel-item .btn-group .btn-outline {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    overflow: hidden;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .sec_one .container .content .carousel .carousel-item .btn-group .btn-outline::before {
+    content: "";
+    position: absolute;
+    width: 10rem;
+    height: 0.2rem;
+    bottom: 0.6rem;
+    left: 50%;
+    background-color: white;
+    transform: translateX(-50%);
+    cursor: pointer;
+  }
+  .sec_one .container .content .carousel .carousel-item .btn-group .btn-primary {
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    font-weight: 500;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .sec_one .container .content .carousel .carousel-item .btn-group .btn-primary:hover {
+    background-color: black;
+    color: white;
+    border: 0.1rem solid white;
+  }
+  .sec_one .container .content .carousel-item {
+    position: relative;
+    width: 100%;
+    max-width: 144rem;
+    margin: 0 auto;
+  }
+  .sec_one .container .content .carousel-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .sec_one .container .content .carousel-item .banner-text {
+    position: absolute;
+    top: 31%;
+    left: 50%;
+  }
+  .sec_one .container .content .carousel-item .banner-text h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  .sec_one .container .content .carousel-item .banner-text p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+  .sec_one .container .content .carousel-item .banner-text .banner-button {
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    font-weight: 500;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  .sec_one .container .content .carousel-item .banner-text .banner-button:hover {
+    background-color: black;
+    color: white;
+    border: 0.1rem solid white;
+  }
+  .sec_one .container .content .carousel-item .voucher-text {
+    left: 6%;
+  }
+  .sec_one .container .content .carousel-item .voucher-text p {
+    margin: 0.5rem 0;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+  .sec_one .container .content .carousel-item .voucher-text .register-btn {
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    font-weight: 500;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    margin-top: 2rem;
+  }
+  .sec_one .container .content .carousel-item .voucher-text .register-btn:hover {
+    background-color: black;
+    color: white;
+    border: 0.1rem solid white;
+  }
+  .sec_one .container .content .carousel-item {
+    position: relative;
+    width: 100%;
+    max-width: 144rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .sec_one .container .content .carousel-item .sale {
+    position: absolute;
+    top: 42%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    max-width: 80%;
+  }
+  .sec_one .container .content .carousel-item .sale h1 {
+    font-size: 2rem;
+    font-weight: 800;
+  }
+  .sec_one .container .content .carousel-item .sale p {
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-align: left;
+    color: black;
+    line-height: 1.3;
+  }
+  .sec_one .container .content .carousel-item .sale .btn-register {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    font-weight: 500;
+    border: none;
+    font-size: 1.2rem;
+    position: relative;
+    top: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    float: left;
+  }
+  .sec_one .container .content .carousel-item .sale .btn-register:hover {
+    background-color: white;
+    color: black;
+    border: 0.1rem solid black;
+  }
+  .sec_one .container .content .carousel-item {
+    position: relative;
+    width: 100%;
+    max-width: 144rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .sec_one .container .content .carousel-item .voucher h1 {
+    font-size: 2rem;
+    font-weight: 800;
+  }
+  .sec_one .container .content .carousel-item .voucher p {
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-align: left;
+    color: black;
+    line-height: 1.3;
+  }
+  .sec_one .container .content .carousel-item .voucher .btn-register {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    font-weight: 500;
+    border: none;
+    font-size: 1.2rem;
+    position: relative;
+    top: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    float: left;
+  }
+  .sec_one .container .content .carousel-item .voucher .btn-register:hover {
+    background-color: white;
+    color: black;
+    border: 0.1rem solid black;
+  }
+  .sec_one .container .content .prev,
+  .sec_one .container .content .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .sec_one .container .content .prev {
+    left: 1rem;
+  }
+  .sec_one .container .content .next {
+    right: 1rem;
+  }
+  .sec_one .container .content .prev svg,
+  .sec_one .container .content .next svg {
+    width: 1rem;
+    height: 1rem;
+    fill: white;
+    transition: fill 0.3s ease-in-out;
+  }
+  .sec-product {
+    transform: translateY(-10rem);
+  }
+  .sec-product .container .content .content-head .text_block h2 {
+    font-size: 2rem;
+    color: #000;
+    font-weight: 700;
+    line-height: 1.2;
+    padding: 1rem 0;
+  }
+  .sec-product .container .content .content-head .content-list__common .list {
+    gap: 1rem;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item {
+    margin: 0 1rem;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title {
+    font-size: 1.2rem;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title .tab__item-line {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    top: 2.1rem;
+    left: 50%;
+    height: 0.2rem;
+    background-color: #000;
+    width: 0;
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:hover {
+    opacity: 0.7;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:focus {
+    outline: dotted 0.2rem black;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:focus .tab__item-line {
+    left: 0;
+    width: 100%;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:active {
+    outline: dotted 0.2rem black;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:active .tab__item-line {
+    left: 0;
+    width: 100%;
+  }
+  .sec-product .container .content .content-body .slick-slide {
+    height: auto;
+  }
+  .sec-product .container .content .content-body .item {
+    display: flex;
+    width: 100%;
+    transition: 0.3s ease;
+  }
+  .sec-product .container .content .content-body .item .left-column {
+    width: 50%;
+    padding: 0.5rem;
+    position: relative;
+  }
+  .sec-product .container .content .content-body .item .left-column .image .badge-icon {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background-color: #2189ff;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 2rem;
+    z-index: 10;
+  }
+  .sec-product .container .content .content-body .item .left-column .image img {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border: 0.1rem solid #ddd;
+    border-radius: 1.5rem;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+  }
+  .sec-product .container .content .content-body .item .left-column .image .text-image {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    text-align: center;
+    color: black;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+  }
+  .sec-product .container .content .content-body .item .left-column .image .text-image .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  .sec-product .container .content .content-body .item .left-column .image .text-image .sub-text {
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.5;
+    transition: transform 0.3s ease-in-out;
+  }
+  .sec-product .container .content .content-body .item .left-column .image .btn-register1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 2rem);
+    color: white;
+    background-color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 1.3rem;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease-in-out;
+    z-index: 10;
+  }
+  .sec-product .container .content .content-body .item .left-column .image:hover img {
+    transform: scale(1.05);
+  }
+  .sec-product .container .content .content-body .item .left-column .image:hover .sub-text {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .sec-product .container .content .content-body .item .left-column .image:hover .btn-register1 {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
+  .sec-product .container .content .content-body .item .left-column .image .btn-register1:hover {
+    background-color: white;
+    color: black;
+    border: 0.1rem solid black;
+  }
+  .sec-product .container .content .content-body .item .right-column {
+    width: 50%;
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(17rem, 1fr));
+    gap: 1rem;
+  }
+  .sec-product .container .content .content-body .item .right-column .item {
+    width: 100%;
+    position: relative;
+  }
+  .sec-product .container .content .content-body .item .right-column .item:hover .btn-register1 {
+    opacity: 1;
+    bottom: 0rem;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .btn-register1 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background-color: black;
+    padding: 0.6rem 1rem;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.3s ease;
+    z-index: 10;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .btn-register1:hover {
+    background-color: white;
+    color: black;
+    border: 0.1rem solid black;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .image .badge-icon_red {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: #ef3434;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 2rem;
+    z-index: 10;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .image .badge-icon {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: #2189ff;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 2rem;
+    z-index: 10;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .image img {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border: 0.1rem solid #ddd;
+    border-radius: 1.5rem;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .image:hover img {
+    transform: scale(1.05);
+  }
+  .sec-product .container .content .content-body .item .right-column .item .txt-image {
+    position: absolute;
+    top: 72%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+  }
+  .sec-two {
+    position: relative;
+    top: -9.6rem;
+    padding: 0.5rem;
+  }
+}
+@media (max-width: 500px) {
+  .sec_one {
+    position: relative;
+    top: -8.9rem;
+  }
+  .sec_one .container .content .slick-slide {
+    height: auto;
+  }
+  .sec_one .container .content .carousel .slick-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex !important;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+  .sec_one .container .content .carousel .slick-dots li {
+    position: relative;
+    width: 10rem;
+    height: 0.2rem;
+    background: #ccc;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  .sec_one .container .content .carousel .slick-dots li.slick-active::after {
+    width: 100%;
+    transition: 5s linear;
+  }
+  .sec_one .container .content .carousel .slick-dots li::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: chocolate;
+  }
+  .sec_one .container .content .carousel .carousel-item {
+    position: relative;
+    width: 100%;
+  }
+  .sec_one .container .content .carousel .carousel-item video,
+  .sec_one .container .content .carousel .carousel-item img {
+    width: 100%;
+    display: block;
+  }
+  .sec_one .container .content .carousel .carousel-item .video-main_txt {
+    margin-top: 0.5rem;
+    position: absolute;
+    top: 55%;
+    left: 6%;
+    color: white;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+  .sec_one .container .content .carousel .carousel-item .video-main_txt h3 {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  .sec_one .container .content .carousel .carousel-item .btn-group .btn-outline {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    overflow: hidden;
+    background: none;
+    border: none;
+    font-size: 0.7rem;
+    cursor: pointer;
+  }
+  .sec_one .container .content .carousel .carousel-item .btn-group .btn-outline::before {
+    content: "";
+    position: absolute;
+    width: 10rem;
+    height: 0.1rem;
+    bottom: 0.6rem;
+    left: 50%;
+    background-color: white;
+    transform: translateX(-50%);
+    cursor: pointer;
+  }
+  .sec_one .container .content .carousel .carousel-item .btn-group .btn-primary {
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 2rem;
+    font-weight: 500;
+    border: none;
+    font-size: 0.7rem;
+    cursor: pointer;
+  }
+  .sec_one .container .content .carousel .carousel-item .btn-group .btn-primary:hover {
+    background-color: black;
+    color: white;
+    border: 0.1rem solid white;
+  }
+  .sec_one .container .content .carousel-item {
+    position: relative;
+    width: 100%;
+    max-width: 144rem;
+    margin: 0 auto;
+  }
+  .sec_one .container .content .carousel-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .sec_one .container .content .carousel-item .banner-text {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+  }
+  .sec_one .container .content .carousel-item .banner-text h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  .sec_one .container .content .carousel-item .banner-text p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+  }
+  .sec_one .container .content .carousel-item .banner-text .banner-button {
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 2rem;
+    font-weight: 500;
+    border: none;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  .sec_one .container .content .carousel-item .banner-text .banner-button:hover {
+    background-color: black;
+    color: white;
+    border: 0.1rem solid white;
+  }
+  .sec_one .container .content .carousel-item .voucher-text {
+    left: 6%;
+    top: 70%;
+  }
+  .sec_one .container .content .carousel-item .voucher-text p {
+    margin: 0.2rem 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  .sec_one .container .content .carousel-item .voucher-text .register-btn {
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 2rem;
+    font-weight: 500;
+    border: none;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    margin-top: 0.9rem;
+  }
+  .sec_one .container .content .carousel-item .voucher-text .register-btn:hover {
+    background-color: black;
+    color: white;
+    border: 0.1rem solid white;
+  }
+  .sec_one .container .content .carousel-item {
+    position: relative;
+    width: 100%;
+    max-width: 144rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .sec_one .container .content .carousel-item .sale {
+    position: absolute;
+    top: 42%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    max-width: 80%;
+  }
+  .sec_one .container .content .carousel-item .sale h1 {
+    font-size: 1rem;
+    font-weight: 800;
+  }
+  .sec_one .container .content .carousel-item .sale p {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-align: left;
+    color: black;
+    line-height: 1;
+  }
+  .sec_one .container .content .carousel-item .sale .btn-register {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 1rem;
+    border-radius: 2rem;
+    font-weight: 500;
+    border: none;
+    font-size: 0.8rem;
+    position: relative;
+    top: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    float: left;
+  }
+  .sec_one .container .content .carousel-item .sale .btn-register:hover {
+    background-color: white;
+    color: black;
+    border: 0.1rem solid black;
+  }
+  .sec_one .container .content .carousel-item {
+    position: relative;
+    width: 100%;
+    max-width: 144rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .sec_one .container .content .carousel-item .voucher {
+    left: 20%;
+  }
+  .sec_one .container .content .carousel-item .voucher h1 {
+    font-size: 1rem;
+    font-weight: 800;
+  }
+  .sec_one .container .content .carousel-item .voucher p {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-align: left;
+    color: black;
+    line-height: 1.3;
+  }
+  .sec_one .container .content .carousel-item .voucher .btn-register {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 1rem;
+    border-radius: 2rem;
+    font-weight: 500;
+    border: none;
+    font-size: 0.8rem;
+    position: relative;
+    top: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    float: left;
+  }
+  .sec_one .container .content .carousel-item .voucher .btn-register:hover {
+    background-color: white;
+    color: black;
+    border: 0.1rem solid black;
+  }
+  .sec_one .container .content .prev,
+  .sec_one .container .content .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .sec_one .container .content .prev {
+    left: 1rem;
+  }
+  .sec_one .container .content .next {
+    right: 1rem;
+  }
+  .sec_one .container .content .prev svg,
+  .sec_one .container .content .next svg {
+    width: 1rem;
+    height: 1rem;
+    fill: white;
+    transition: fill 0.3s ease-in-out;
+  }
+  .sec-product {
+    transform: translateY(-10rem);
+  }
+  .sec-product .container .content .content-head .text_block h2 {
+    font-size: 2rem;
+    color: #000;
+    font-weight: 700;
+    line-height: 1.2;
+    padding: 1rem 0;
+  }
+  .sec-product .container .content .content-head .content-list__common .list {
+    gap: 0.5rem;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item {
+    margin: 0 1rem;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title {
+    font-size: 0.9rem;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title .tab__item-line {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    top: 2.1rem;
+    left: 50%;
+    height: 0.2rem;
+    background-color: #000;
+    width: 0;
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:hover {
+    opacity: 0.7;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:focus {
+    outline: dotted 0.2rem black;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:focus .tab__item-line {
+    left: 0;
+    width: 100%;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:active {
+    outline: dotted 0.2rem black;
+  }
+  .sec-product .container .content .content-head .content-list__common .list .item .tab__item-title:active .tab__item-line {
+    left: 0;
+    width: 100%;
+  }
+  .sec-product .container .content .content-body .slick-slide {
+    height: auto;
+  }
+  .sec-product .container .content .content-body .item {
+    display: flex;
+    width: 100%;
+    transition: 0.3s ease;
+  }
+  .sec-product .container .content .content-body .item .left-column {
+    width: 50%;
+    padding: 0.5rem;
+    position: relative;
+  }
+  .sec-product .container .content .content-body .item .left-column .image .badge-icon {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background-color: #2189ff;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 2rem;
+    z-index: 10;
+  }
+  .sec-product .container .content .content-body .item .left-column .image img {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border: 0.1rem solid #ddd;
+    border-radius: 1.5rem;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+  }
+  .sec-product .container .content .content-body .item .left-column .image .text-image {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    text-align: center;
+    color: black;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+  }
+  .sec-product .container .content .content-body .item .left-column .image .text-image .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  .sec-product .container .content .content-body .item .left-column .image .text-image .sub-text {
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.5;
+    transition: transform 0.3s ease-in-out;
+  }
+  .sec-product .container .content .content-body .item .left-column .image .btn-register1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 2rem);
+    color: white;
+    background-color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 1.3rem;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease-in-out;
+    z-index: 10;
+  }
+  .sec-product .container .content .content-body .item .left-column .image:hover img {
+    transform: scale(1.05);
+  }
+  .sec-product .container .content .content-body .item .left-column .image:hover .sub-text {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .sec-product .container .content .content-body .item .left-column .image:hover .btn-register1 {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
+  .sec-product .container .content .content-body .item .left-column .image .btn-register1:hover {
+    background-color: white;
+    color: black;
+    border: 0.1rem solid black;
+  }
+  .sec-product .container .content .content-body .item .right-column {
+    width: 50%;
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(17rem, 1fr));
+    gap: 1rem;
+  }
+  .sec-product .container .content .content-body .item .right-column .item {
+    width: 100%;
+    position: relative;
+  }
+  .sec-product .container .content .content-body .item .right-column .item:hover .btn-register1 {
+    opacity: 1;
+    bottom: 0rem;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .btn-register1 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background-color: black;
+    padding: 0.6rem 1rem;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.3s ease;
+    z-index: 10;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .btn-register1:hover {
+    background-color: white;
+    color: black;
+    border: 0.1rem solid black;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .image .badge-icon_red {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: #ef3434;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 2rem;
+    z-index: 10;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .image .badge-icon {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: #2189ff;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 2rem;
+    z-index: 10;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .image img {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border: 0.1rem solid #ddd;
+    border-radius: 1.5rem;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+  }
+  .sec-product .container .content .content-body .item .right-column .item .image:hover img {
+    transform: scale(1.05);
+  }
+  .sec-product .container .content .content-body .item .right-column .item .txt-image {
+    position: absolute;
+    top: 72%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+  }
+  .sec-two {
+    position: relative;
+    top: -9.6rem;
+    padding: 0.5rem;
+  }
+}
 html {
   font-size: min(10px, 2.42vw);
+}
+
+body {
+  padding-top: 13rem;
 }
 
 img,
@@ -875,10 +2137,12 @@ a:hover {
 }
 
 footer {
+  margin-top: 4rem;
   padding-left: 96px;
   padding-right: 96px;
   font-size: 13px;
   color: #555;
+  margin-bottom: 4rem;
 }
 footer .container {
   width: 100%;
@@ -928,6 +2192,7 @@ footer .container .content .footer__text:first-child {
   list-style: none;
 }
 .footer__link .container .content .footer-column .nav-footer p {
+  padding: 10px;
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 10px;
@@ -936,7 +2201,7 @@ footer .container .content .footer__text:first-child {
   display: none;
 }
 .footer__link .container .content .footer-column .nav-footer li {
-  padding: 7px 0;
+  padding: 10px;
 }
 .footer__link .container .content .footer-column .nav-footer li a {
   text-decoration: none;
@@ -1556,7 +2821,6 @@ footer .container .content .footer__text:first-child {
 
 .cart {
   padding: 20px;
-  margin-top: 107px;
 }
 .cart .container {
   width: 100%;

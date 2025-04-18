@@ -31,7 +31,7 @@
                 </div>
             @endif --}}
 
-            <form method="POST" class="change-form" action="{{ route('customer.change_password.post') }}">
+            <form method="POST" class="change-form" action="{{ route('admin.change_password.post') }}">
                 @csrf
                 <div class="form-group">
                     <label for="current_password">Mật khẩu hiện tại</label>

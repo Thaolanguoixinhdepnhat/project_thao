@@ -20,7 +20,11 @@ class Product extends Model
         'maker_id',
         'category_id',
         'note',
-        'product_image'
+        'product_image',
+        'create_staff',
+        'update_staff',
+        'delete_staff',
+        
     ];
     public $timestamps = false;
     

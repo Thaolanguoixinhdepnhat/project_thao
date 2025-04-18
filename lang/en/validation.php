@@ -189,5 +189,7 @@ return [
         'category_id'          => 'Tên loại sản phẩm',
         'product_code'          => 'Mã sản phẩm',
         'product_name'          => 'Tên sản phẩm',
+        'role_name'          => 'Chức vụ',
+        'role_id'          => 'Chức vụ',
     ],
 ];

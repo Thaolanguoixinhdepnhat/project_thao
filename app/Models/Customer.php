@@ -24,5 +24,5 @@ class Customer extends Authenticatable
 
     public $timestamps = false;
     // Định nghĩa cột cho xóa mềm
-    protected $dates = ['deleted_at']; // Thêm cột deleted_at vào đâyz
+    protected $dates = ['deleted_at']; // Thêm cột deleted_at vào đây
 }

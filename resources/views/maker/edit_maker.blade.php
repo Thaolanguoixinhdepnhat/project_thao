@@ -26,6 +26,8 @@
                             });
                         });
                         </script>
+
+
                         <div class="form-group">
                             <label for="maker_name" class="form-group__label">Tên nhà sản xuất</label>
                             <input type="text" id="maker_name" name="maker_name" value="{{ old('maker_name', $maker->maker_name) }}" class="form-group__input">

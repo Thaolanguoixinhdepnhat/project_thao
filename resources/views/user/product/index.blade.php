@@ -4,6 +4,11 @@
 
 @section('content')
    
+    {{-- 
+        todo: hiển thị lọc  
+        k dùng slider 1 page max 20 product
+    --}}
+    
     <div class="product">
         <div class="container">
             <div class="content">
@@ -37,7 +42,7 @@
                 
                             <div class="product-price">
                                 <span class="current-price" id="current-price-{{ $item->id }}">
-                                    {{ number_format($item->productClasses[0]->price, 0, ',', '.') }} VND
+                                    {{ number_format($item->productClasses[0]->price, 0, ',', '.') }} VNĐ
                                 </span>
                             </div>
                 
@@ -74,26 +79,25 @@
         });
     </script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll("input[type='radio']").forEach(radio => {
+                radio.addEventListener("change", function () {
+                    let productId = this.id.split('-')[1]; // Get product ID from radio button ID
+                    let price = this.dataset.price; // Get price from data-price attribute
+                    let productClassId = this.dataset.productClassId; // Get product_class_id from data-product-class-id
+                    let productImageId = this.dataset.productImageId; // Get product_image_id from data-product-image-id
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll("input[type='radio']").forEach(radio => {
-            radio.addEventListener("change", function () {
-                let productId = this.id.split('-')[1]; // Get product ID from radio button ID
-                let price = this.dataset.price; // Get price from data-price attribute
-                let productClassId = this.dataset.productClassId; // Get product_class_id from data-product-class-id
-                let productImageId = this.dataset.productImageId; // Get product_image_id from data-product-image-id
-
-                // Update the displayed price
-                document.getElementById(`current-price-${productId}`).innerText = 
-                    new Intl.NumberFormat('vi-VN').format(price) + " VND";
-                
-                // Update the product_class_id in the corresponding form
-                let form = document.getElementById(`form-${productId}`);
-                form.querySelector('.product-class-id').value = productClassId;
+                    // Update the displayed price
+                    document.getElementById(`current-price-${productId}`).innerText = 
+                        new Intl.NumberFormat('vi-VN').format(price) + " VND";
+                    
+                    // Update the product_class_id in the corresponding form
+                    let form = document.getElementById(`form-${productId}`);
+                    form.querySelector('.product-class-id').value = productClassId;
+                });
             });
         });
-    });
-</script>
+    </script>
 
 @endsection

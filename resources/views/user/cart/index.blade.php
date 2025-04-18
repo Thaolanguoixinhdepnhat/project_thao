@@ -39,10 +39,10 @@
                                     <div class="cart-price">
                                         <span
                                             class="current-price">{{ number_format($item->productClass->price, 0, ',', '.') }}
-                                            VND</span>
+                                            VNĐ</span>
                                         <span
                                             class="original-price">{{ number_format($item->productClass->cost, 0, ',', '.') }}
-                                            VND</span>
+                                            VNĐ</span>
                                     </div>
                                     <div class="delete">
                                         <form action="{{ route('cart.delete', $item->id) }}" method="POST"
@@ -85,7 +85,7 @@
                         <h2>Bản tóm tắt</h2>
                         <div class="summary-item">
                             <span>Thuế GTGT</span>
-                            <span>0 VND</span>
+                            <span>0 VNĐ</span>
                         </div>
                         <hr>
                         <div class="total">
@@ -96,7 +96,7 @@
                             <div class="total2">
                                 <span
                                     class="item-total-price"> {{ number_format($thanhTien, 0, ',', '.') }}
-                                    VND</span>
+                                    VNĐ</span>
                             </div>
                         </div>
                         <div class="txt">

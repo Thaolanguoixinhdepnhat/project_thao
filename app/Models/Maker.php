@@ -16,6 +16,10 @@ class Maker extends Model
 
     // Định nghĩa cột cho xóa mềm
     protected $dates = ['deleted_at']; 
+
+
+
+
 }
 
 
