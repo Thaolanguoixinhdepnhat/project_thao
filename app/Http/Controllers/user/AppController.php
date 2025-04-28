@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\ProductClass;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 
@@ -12,55 +13,60 @@ class AppController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Product::select('product.*') // Thay 'products.*' thành 'product.*'
-        ->join('product_class', 'product.id', '=', 'product_class.product_id') // Thay 'products' thành 'product'
-        ->with(['productClasses', 'productImages']) // giữ nguyên nếu quan hệ là productClasses
-        ->groupBy('product.id');  // Thay 'products.id' thành 'product.id'
+        // Lấy sản phẩm với category_id = 1
+        $tv = Product::where('category_id', 1)
+                    ->with('productClasses')
+                    ->take(5)
+                    ->get();
 
-    // Tìm kiếm theo keyword (tên hoặc size)
-    if ($request->filled('keyword')) {
-        $keyword = $request->keyword;
+        // Lấy sản phẩm với category_id = 2
+        $dt = Product::where('category_id', 2)
+                    ->with('productClasses')
+                    ->take(5)
+                    ->get();
 
-        $query->where(function ($q) use ($keyword) {
-            $q->where('product.product_name', 'like', "%$keyword%")  // Thay 'products' thành 'product'
-              ->orWhere('product_class.size', 'like', "%$keyword%");  // Thay 'products' thành 'product'
-        });
-    }
+        // Lấy 10 sản phẩm mới nhất
+        $news = Product::orderBy('id', 'desc')->take(10)->get();
 
+        // Lấy tất cả danh mục sản phẩm
+        $categories = Category::all();
 
-
+        // Loại bỏ các màu sắc trùng lặp (unique color_code)
+        foreach ($tv as $product) {
+            $product->productClasses = $product->productClasses->unique('color_code');
+            $product->productClasses = $product->productClasses->unique('size');
+        }
+        foreach ($dt as $product) {
+            $product->productClasses = $product->productClasses->unique('color_code');
+            $product->productClasses = $product->productClasses->unique('size');
+        }
         
-    
-
-
-    // Lọc theo khoảng giá
-    if ($request->filled('min_price')) {
-        $min = (int)$request->min_price;
-        $query->havingRaw('MIN(product_class.price) >= ?', [$min]);
-    }
-
-    if ($request->filled('max_price')) {
-        $max = (int)$request->max_price;
-        $query->havingRaw('MIN(product_class.price) <= ?', [$max]);
-    }
-
-    // Sắp xếp theo giá tăng/giảm
-    if ($request->filled('sort_price') && in_array($request->sort_price, ['asc', 'desc'])) {
-        $query->orderBy(DB::raw('MIN(product_class.price)'), $request->sort_price);
+        foreach ($news as $product) {
+            $product->productClasses = $product->productClasses->unique('color_code');
+            $product->productClasses = $product->productClasses->unique('size');
+        }
+        // Trả về view với dữ liệu
+        return view('user.index', compact('tv', 'dt', 'news', 'categories'));
     }
 
 
-    // $products = $query->get();
-    // $products = Product::latest() // Sắp xếp theo trường 'created_at' giảm dần mới nhất
-    // ->take(5) 
-    // ->get();
-    $products = Product::oldest()
-    ->take(5)
-    ->get();
-
-    $categories = Category::all(); 
-
-    return view('user.index', compact('products','categories'));
-        // return view('user.index');
+    public function home(){
+        return view('user.home.index');
     }
+
+    public function getProductClassByColorAndSize(Request $request)
+    {
+        // Truy vấn bảng ProductClass với color_code và size
+        $productClass = ProductClass::where('color_code', $request->color_code)
+                                    ->where('size', $request->size)
+                                    ->first();
+
+        // Nếu tìm thấy, trả về product_class_id
+        if ($productClass) {
+            return response()->json(['product_class_id' => $productClass->id,'price' => $productClass->price]);
+        }
+
+        return response()->json(['product_class_id' => null]);
+    }
+
 }

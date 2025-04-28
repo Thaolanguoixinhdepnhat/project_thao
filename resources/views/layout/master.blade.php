@@ -443,9 +443,10 @@
                             </li>
                         </ul>
                     </div>
+                    
                     <div class="nav-right">
                         <div class="search-wrapper" id="searchWrapper">
-                            <form action="{{ route('user.products.index') }}" method="GET" class="search-box" id="searchForm">
+                            <form action="" method="GET" class="search-box" id="searchForm">
                                 <button type="button" class="btn-search" id="toggleSearch">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                                         fill="#666666">
@@ -458,16 +459,32 @@
                                        placeholder="Tìm kiếm..." autocomplete="off">
                             </form>
                         </div>
-                        <svg id="cartIcon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                        width="24px" fill="#666666" style="cursor: pointer;">
-                       <path
-                           d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z" />
-                   </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                            width="24px" fill="#666666">
-                            <path
-                                d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z" />
-                        </svg>
+                        <a href="{{ route('cart_index')}}">
+                            <svg id="cartIcon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#666666" style="cursor: pointer;">
+                                <path
+                                    d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z" />
+                            </svg>
+                        </a>
+                        @if (Auth::user())
+                            <a href="{{ route('home_user')}}">
+                                <svg width="24px" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#666666">
+                                    <path
+                                        d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z" />
+                                </svg>
+                            </a>
+                        @else
+                            <a href="{{route('index_login')}}">
+                                <svg width="24px" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#666666">
+                                    <path
+                                        d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z" />
+                                </svg>
+                            </a>
+                        @endif
+                        
+
                         <div role="button" id="toggle-menu">
                             <div class="wrap">
                                 <span></span>
@@ -514,6 +531,7 @@
                 </div>
             </div>
         </section>
+
         <section class="footer__menu">
             <div class="container">
                 <div class="content">
@@ -618,20 +636,34 @@ seacher co vào giãn ra --}}
       
 
 
-{{-- khi ấn vào nút cart tới trang cart --}}
-      <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          const cartIcon = document.getElementById("cartIcon");
-          cartIcon.addEventListener("click", function () {
-            window.location.href = "{{ route('cart.index') }}"; // Đúng tên route
-          });
+      
+    {{-- check login  --}}
+    <script>
+       document.querySelectorAll('.formAddToCart').forEach(function(form) {
+            form.addEventListener('submit', function(e) {
+                @if (!Auth::check())
+                    e.preventDefault();
+                    alert('Bạn phải đăng nhập để mua hàng!');
+                    window.location.href = "{{ route('login') }}";
+                @endif
+            });
         });
-      </script>
+
+    </script>
+
+      @if (session('error'))
+            <script>
+                alert("{{ session('error') }}");
+            </script>
+        </div>
+    @endif
       
-    
-    
-      
-      
+    @if (session('success'))
+        <script>
+            alert("{{ session('success') }}");
+        </script>
+    @endif
+
 </body>
 
 </html>

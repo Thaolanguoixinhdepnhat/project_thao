@@ -38,7 +38,7 @@ use App\Http\Controllers\StatusController;
 Route::get('/', [UsersController::class, 'index']);
 Route::post('/store-customer', [AuthController::class, 'store'])->name('store');
 
-Route::get('/link/{id}', [UsersController::class, 'link'])->name('dk');
+
 
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::get('/login', [AuthController::class, 'index_login'])->name('index_login');
@@ -84,39 +84,12 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
 });
 
-
-
-
-
-// // Route delete
-// Route::delete('/productclass/{id}', [ProductClassController::class, 'destroy'])->name('productclass.destroy');
-// Route::get('/productclass/search', [ProductClassController::class, 'search'])->name('productclass.search');
-
-
-
-/* trang chủ*/
-// Route::get('/', [HomeController::class, 'index'])->name('home');
-// Route::get('/products', [UserProductController::class, 'index'])->name('xxx');
-Route::get('/cart', [CartController::class, 'index'])->name('xxx');
-Route::prefix('user')->group(function () {
-    Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
-    Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
-    Route::delete('/cart/delete/{id}', [CartController::class, 'destroy'])->name('cart.delete');
-    Route::post('/update-cart', [CartController::class, 'updateCart'])->name('update.cart');
-});
-
-
-Route::get('/productclass/edit/{id}', [ProductClassController::class, 'edit'])->name('productclass.edit');
-Route::put('/productclass/{id}', [ProductClassController::class, 'update'])->name('productclass.update');
-Route::delete('/productclass/{id}', [ProductClassController::class, 'destroy'])->name('productclass.destroy');
-Route::get('/productclass/search', [ProductClassController::class, 'search'])->name('productclass.search');
-
-
-
-
-// thử tìm kiếm 
-Route::get('/products', [UserProductController::class, 'index'])->name('user.products.index');
-
+Route::get('/admin/login', [StaffController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/admin/login', [StaffController::class, 'login'])->name('admin.login.submit');
+Route::post('/admin/logout', [StaffController::class, 'logout'])->name('admin.logout');
+Route::post('/admin/register', [StaffController::class, 'register'])->name('admin.register.submit');
+Route::get('/admin/change-password', [StaffController::class, 'showChangePasswordForm'])->name('admin.change_password');
+Route::post('/admin/change-password', [StaffController::class, 'changePassword'])->name('admin.change_password.post');
 
 // status
 Route::get('/status', [StatusController::class, 'index'])->name('status.index');
@@ -126,10 +99,49 @@ Route::put('/statuss/{id}', [StatusController::class, 'update'])->name('status.u
 Route::get('/status/create', [StatusController::class, 'create'])->name('status.create');
 Route::post('/status/create', [StatusController::class, 'store'])->name('status.store');
 
+Route::get('/productclass/edit/{id}', [ProductClassController::class, 'edit'])->name('productclass.edit');
+Route::put('/productclass/{id}', [ProductClassController::class, 'update'])->name('productclass.update');
+Route::delete('/productclass/{id}', [ProductClassController::class, 'destroy'])->name('productclass.destroy');
+Route::get('/productclass/search', [ProductClassController::class, 'search'])->name('productclass.search');
+
+// Danh sách nhân viên
+Route::get('/staff', [StaffController::class, 'index'])->name('admin.register_index');
+// Hiển thị form tạo mới
+Route::get('/staff/create', [StaffController::class, 'create'])->name('staff.create');
+// Lưu nhân viên mới
+Route::post('/staff/create', [StaffController::class, 'store'])->name('staff.store');
+// Hiển thị form chỉnh sửa
+Route::get('/staff/{id}/edit', [StaffController::class, 'edit'])->name('staff.edit');
+Route::put('/staff/{id}', [StaffController::class, 'update'])->name('staff.update');
+// Xóa nhân viên
+Route::delete('/staff/{id}', [StaffController::class, 'destroy'])->name('staff.destroy');
 
 
 
 
+
+/* trang chủ*/
+// Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/products', [UserProductController::class, 'index'])->name('xxx');
+Route::get('/cart', [CartController::class, 'index'])->name('xxx');
+Route::prefix('user')->group(function () {
+    Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::get('/cart', [CartController::class, 'viewCart'])->name('cart_index');
+    Route::delete('/cart/delete/{id}', [CartController::class, 'destroy'])->name('cart.delete');
+    Route::post('/update-cart', [CartController::class, 'updateCart'])->name('update.cart');
+});
+
+
+
+
+
+
+// thử tìm kiếm 
+Route::get('/products', [UserProductController::class, 'index'])->name('user.products.index');
+
+
+Route::get('/get-product-class', [AppController::class, 'getProductClassByColorAndSize'])->name('getProductClassByColorAndSize');
+Route::get('/home', [AppController::class, 'home'])->name('home_user');
 
 
 
@@ -139,31 +151,6 @@ Route::get('/', [AppController::class, 'index'])->name('home');
 
 Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
 Route::get('/order', [OrderController::class, 'index'])->name('order.index');
-
-
-
-
-// lọc sản phẩm
-Route::get('/products/by-category', [ProductController::class, 'showByCategories']);
-
-
-
-
-
-
-
-
-
-
-
-Route::get('/admin/login', [StaffController::class, 'showLoginForm'])->name('admin.login');
-Route::post('/admin/login', [StaffController::class, 'login'])->name('admin.login.submit');
-Route::post('/admin/logout', [StaffController::class, 'logout'])->name('admin.logout');
-Route::post('/admin/register', [StaffController::class, 'register'])->name('admin.register.submit');
-Route::get('/admin/change-password', [StaffController::class, 'showChangePasswordForm'])->name('admin.change_password');
-Route::post('/admin/change-password', [StaffController::class, 'changePassword'])->name('admin.change_password.post');
-
-
 
 
 
@@ -180,21 +167,7 @@ Route::get('/layout', function () {
 
 
 
-// Danh sách nhân viên
-Route::get('/staff', [StaffController::class, 'index'])->name('admin.register_index');
 
-// Hiển thị form tạo mới
-Route::get('/staff/create', [StaffController::class, 'create'])->name('staff.create');
-
-// Lưu nhân viên mới
-Route::post('/staff/create', [StaffController::class, 'store'])->name('staff.store');
-
-// Hiển thị form chỉnh sửa
-Route::get('/staff/{id}/edit', [StaffController::class, 'edit'])->name('staff.edit');
-Route::put('/staff/{id}', [StaffController::class, 'update'])->name('staff.update');
-
-// Xóa nhân viên
-Route::delete('/staff/{id}', [StaffController::class, 'destroy'])->name('staff.destroy');
 
 
 

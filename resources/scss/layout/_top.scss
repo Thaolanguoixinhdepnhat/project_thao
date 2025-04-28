@@ -316,7 +316,7 @@
     }
 }
 .sec-product {
-  transform: translateY(-2rem);
+    margin: 10rem 0;
     .container {
         .content {
             .content-head {
@@ -618,9 +618,7 @@
         }
     }
 }
-.sec-two{
-    margin-top: 4rem;
-}
+
 @media (max-width: 1080px) {
     .sec_one {
         position: relative;
@@ -1212,12 +1210,7 @@
             }
         }
     }
-    .sec-two{
-        position: relative;
-    top: -90px;
-    padding: 10px;
-                            
-    }       
+         
  }
 
  @media (max-width: 768px) {
@@ -1839,12 +1832,7 @@
             }
         }
     }
-    .sec-two{
-        position: relative;
-    top: -9.6rem;
-    padding: 0.5rem;
-                            
-    }       
+       
  }
  @media (max-width: 500px) {
     .sec_one {
@@ -2467,10 +2455,5 @@
             }
         }
     }
-    .sec-two{
-        position: relative;
-    top: -9.6rem;
-    padding: 0.5rem;
-                            
-    }       
+     
  }

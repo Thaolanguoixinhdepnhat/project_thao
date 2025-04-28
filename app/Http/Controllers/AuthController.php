@@ -46,7 +46,7 @@ class AuthController extends Controller
         $customer->save();
     
         // Chuyển hướng sau khi đăng ký thành công
-        return redirect()->route('dk', ['id' => $customer->id])
+        return redirect()->route('login')
                          ->with('success', 'Cảm ơn bạn đã đăng ký thành công tài khoản. Vui lòng đăng nhập để sử dụng dịch vụ.');
     }
 

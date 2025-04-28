@@ -1,21 +1,6 @@
 <?php
 
-// namespace App\Http\Controllers\User\Cart;
-
-// use App\Http\Controllers\Controller;
-// use Illuminate\Http\Request;
-
-// class CartController extends Controller
-// {
-//     public function index()
-//     {
-//         return view('user.cart.index');
-//     }
-// } 
-
-
-
-namespace App\Http\Controllers\User\Cart;
+namespace App\Http\Controllers\user\Cart;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -26,20 +11,16 @@ use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
-
-
 class CartController extends Controller
 {
-  
     public function addToCart(Request $request)
     {
-       
         $product_id = $request->input('product_id');
         $product_class_id = $request->input('product_class_id');
-        $product_images_id = $request->input('product_images_id');
+        // $product_images_id = $request->input('product_images_id');
     
         // Gán customer_id, nếu chưa đăng nhập thì mặc định là 9
-        $customer_id = auth()->id() ?? 9;
+        $customer_id = auth()->id();
     
         // Kiểm tra sản phẩm có tồn tại không
         $product = Product::findOrFail($product_id);
@@ -64,7 +45,7 @@ class CartController extends Controller
                 'customer_id'       => $customer_id,
                 'product_id'        => $product_id,
                 'product_class_id'  => $product_class_id,
-                'product_images_id' => $product_images_id,
+                // 'product_images_id' => $product_images_id,
                 'quantity'          => 1,
                 'created_at'        => now(),
             ]);
@@ -72,49 +53,28 @@ class CartController extends Controller
     
         return redirect()->route('cart.index')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng');
     }
-//     public function viewCart()
-// {
-//     $customer_id = auth()->id() ?? 9;
 
-//     $cart = Cart::with([
-//                 'product',
-//                 'productClass',
-//                 'product.productImages' => function ($query) {
-//                     $query->orderBy('id'); 
-//                 }
-//             ])
-//             ->where('customer_id', $customer_id)
-//             ->orderBy('created_at', 'desc')  
-//             ->get();
+    public function viewCart()
+    {
+        $customer_id = auth()->id() ?? 9;
 
-//     return view('user.cart.index', compact('cart'));
-// }
+        $cart = Cart::with([
+                    'product',
+                    'productClass',
+                    'product.productImages' => function ($query) {
+                        $query->orderBy('id'); 
+                    }
+                ])
+                ->where('customer_id', $customer_id)
+                ->orderBy('created_at', 'desc')  
+                ->get();
 
-public function viewCart()
-{
-    $customer_id = auth()->id() ?? 9;
+        $thanhTien = $cart->sum(function ($item) {
+            return ($item->productClass->price ?? 0) * $item->quantity;
+        });
 
-    $cart = Cart::with([
-                'product',
-                'productClass',
-                'product.productImages' => function ($query) {
-                    $query->orderBy('id'); 
-                }
-            ])
-            ->where('customer_id', $customer_id)
-            ->orderBy('created_at', 'desc')  
-            ->get();
-
-    $thanhTien = $cart->sum(function ($item) {
-        return ($item->productClass->price ?? 0) * $item->quantity;
-    });
-
-    return view('user.cart.index', compact('cart', 'thanhTien'));
-}
-
-  
-    
-
+        return view('user.cart.index', compact('cart', 'thanhTien'));
+    }
 
     public function destroy($id)
     {
