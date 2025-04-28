@@ -135,22 +135,22 @@ class MakerController extends Controller
 
     public function create()
     {
-        // Kiểm tra quyền của người dùng
-        if (Auth::guard('admin')->user()->role_id == 1) {
-            // Nhân viên không có quyền tạo nhà sản xuất
-            return redirect()->route('maker.index')->with('error', 'Bạn không có quyền tạo nhà sản xuất.');
-        }
+        // // Kiểm tra quyền của người dùng
+        // if (Auth::guard('admin')->user()->role_id == 1) {
+        //     // Nhân viên không có quyền tạo nhà sản xuất
+        //     return redirect()->route('maker.index')->with('error', 'Bạn không có quyền tạo nhà sản xuất.');
+        // }
     
         return view('maker.create_maker');
     }
     
     public function store(Request $request)
 {
-    // Kiểm tra quyền của người dùng
-    if (Auth::guard('admin')->user()->role_id == 1) {
-        // Nhân viên không có quyền tạo nhà sản xuất
-        return redirect()->route('maker.index')->with('error', 'Bạn không có quyền tạo nhà sản xuất.');
-    }
+    // // Kiểm tra quyền của người dùng
+    // if (Auth::guard('admin')->user()->role_id == 1) {
+    //     // Nhân viên không có quyền tạo nhà sản xuất
+    //     return redirect()->route('maker.index')->with('error', 'Bạn không có quyền tạo nhà sản xuất.');
+    // }
 
     $request->validate([
         'maker_name' => 'required',
@@ -181,11 +181,11 @@ class MakerController extends Controller
 
 public function edit($id)
 {
-    // Kiểm tra quyền của người dùng
-    if (Auth::guard('admin')->user()->role_id == 1) {
-        // Nhân viên không có quyền chỉnh sửa nhà sản xuất
-        return redirect()->route('maker.index')->with('error', 'Bạn không có quyền sửa thông tin nhà sản xuất.');
-    }
+    // // Kiểm tra quyền của người dùng
+    // if (Auth::guard('admin')->user()->role_id == 1) {
+    //     // Nhân viên không có quyền chỉnh sửa nhà sản xuất
+    //     return redirect()->route('maker.index')->with('error', 'Bạn không có quyền sửa thông tin nhà sản xuất.');
+    // }
 
     $maker = Maker::findOrFail($id);
     return view('maker.edit_maker', compact('maker'));
@@ -193,11 +193,11 @@ public function edit($id)
 
 public function update(Request $request, $id)
 {
-    // Kiểm tra quyền của người dùng
-    if (Auth::guard('admin')->user()->role_id == 1) {
-        // Nhân viên không có quyền sửa nhà sản xuất
-        return redirect()->route('maker.index')->with('error', 'Bạn không có quyền sửa thông tin nhà sản xuất.');
-    }
+    // // Kiểm tra quyền của người dùng
+    // if (Auth::guard('admin')->user()->role_id == 1) {
+    //     // Nhân viên không có quyền sửa nhà sản xuất
+    //     return redirect()->route('maker.index')->with('error', 'Bạn không có quyền sửa thông tin nhà sản xuất.');
+    // }
 
     $request->validate([
         'maker_name' => 'required',
@@ -228,11 +228,11 @@ public function update(Request $request, $id)
 
 public function destroy($id)
 {
-    // Kiểm tra quyền của người dùng
-    if (Auth::guard('admin')->user()->role_id == 1) {
-        // Nhân viên không có quyền xóa nhà sản xuất
-        return redirect()->route('maker.index')->with('error', 'Bạn không có quyền xóa nhà sản xuất.');
-    }
+    // // Kiểm tra quyền của người dùng
+    // if (Auth::guard('admin')->user()->role_id == 1) {
+    //     // Nhân viên không có quyền xóa nhà sản xuất
+    //     return redirect()->route('maker.index')->with('error', 'Bạn không có quyền xóa nhà sản xuất.');
+    // }
 
     $maker = Maker::findOrFail($id);
     $maker->delete_staff = Auth::guard('admin')->id(); // Gán người xóa

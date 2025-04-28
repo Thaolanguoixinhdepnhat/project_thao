@@ -398,6 +398,9 @@
   flex-direction: column;
   align-items: center;
   transition: all 0.3s ease-in-out;
+  max-width: 22rem;
+  white-space: normal;
+  word-break: break-word;
 }
 .sec-product .container .content .content-body .item .left-column .image .text-image .title {
   font-size: 2.4rem;
@@ -894,6 +897,9 @@
     flex-direction: column;
     align-items: center;
     transition: all 0.3s ease-in-out;
+    max-width: 20rem;
+    white-space: normal;
+    word-break: break-word;
   }
   .sec-product .container .content .content-body .item .left-column .image .text-image .title {
     font-size: 2rem;

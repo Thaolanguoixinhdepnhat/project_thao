@@ -70,7 +70,7 @@
                             {{ str_pad($customer->id, 8, '0', STR_PAD_LEFT) }}
                         </a>
                     </td>
-                    <script>
+                    {{-- <script>
                         document.addEventListener("DOMContentLoaded", function () {
                             // Lấy thông tin người dùng hiện tại từ hệ thống (trong ví dụ này, sử dụng Blade để truyền role_id vào JavaScript)
                             const roleId = @json(Auth::guard('admin')->user()->role_id); // Truyền role_id từ PHP sang JS
@@ -89,7 +89,7 @@
                                 }
                             });
                         });
-                    </script>
+                    </script> --}}
                     
                     <td>{{ $customer->username }}</td>
                     <td>{{ $customer->email }}</td>

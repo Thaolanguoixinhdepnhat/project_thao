@@ -13,7 +13,7 @@
                     <div class="form-group__row">
                     <div class="form-group">
                         <label for="id" class="form-group__label">Mã sản phẩm</label>
-                        <input type="text" id="id" name="id" 
+                        <input type="text" id="id1" name="id" 
                         value="{{ old('id', str_pad($product->id, 8, '0', STR_PAD_LEFT)) }}" 
                         class="form-group__input" readonly>
                     </div>
@@ -221,10 +221,71 @@
                         
                             initializeDoubleClickForExistingItems();
                         </script> 
-                         
+                        
+                        
+{{-- 
+                        <div class="form-group">
+                            <span>Ảnh đại diện</span>
+                            <div class="image-item">
+                                @if (!empty($product->product_image))
+                                    <img src="{{ asset('storage/' . $product->product_image) }}" alt="Ảnh đại diện sản phẩm" style="width: 150px;">
+                                @else
+                                    <p>Không có ảnh đại diện</p>
+                                @endif
+                            </div>
+                        </div> --}}
+
+
+
+                        <div class="form-group">
+                            <span>Ảnh đại diện</span>
+                            <div style="margin-top: 15px;">
+                                <input type="file" name="main_image" onchange="handleImageChange(event)">
+                                <div class="image-item" id="main_image">
+                                    @if (!empty($product->product_image))
+                                        <img id="current-avatar" src="{{ asset('storage/' . $product->product_image) }}" alt="Ảnh đại diện sản phẩm" style="width: 150px;">
+                                    @else
+                                        <p id="no-avatar-text">Không có ảnh đại diện</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <script>
+                       function handleImageChange(event) {
+    const fileInput = event.target;
+    const imageArea = document.getElementById("main_image");
+
+    // Xóa toàn bộ ảnh cũ trong vùng preview
+    imageArea.innerHTML = '';
+
+    // Thêm ảnh mới xem trước
+    if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const newImg = document.createElement("img");
+            newImg.src = e.target.result;
+            newImg.style.width = "150px";
+            newImg.alt = "Ảnh đại diện mới";
+            imageArea.appendChild(newImg);
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+    }
+}
+
+                        </script>
+                        
+
+
                         
 
                         
+
+                        
+
+
+
+
        <div class="form-group">
         <span>Ảnh hiện tại</span>
         <div class="current-images">
@@ -314,6 +375,26 @@ function softDeleteImage(imageId) {
                         </td>                                              
                         
                     </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            // Lấy thông tin người dùng hiện tại từ hệ thống (trong ví dụ này, sử dụng Blade để truyền role_id vào JavaScript)
+                            const roleId = @json(Auth::guard('admin')->user()->role_id); // Truyền role_id từ PHP sang JS
+                    
+                            // Chọn liên kết có class 'edit-id'
+                            const editLink = document.querySelector(".btn-update");
+                            
+                            // Lắng nghe sự kiện 'click' vào liên kết
+                            editLink.addEventListener("click", function (event) {
+                                // Nếu người dùng là Nhân viên (role_id = 1), ngừng hành động và hiển thị thông báo
+                                if (roleId === 1) {
+                                    alert("Bạn không có quyền cập nhập vào trang này!");
+                                    
+                                    // Ngừng hành động mặc định của liên kết (không chuyển hướng)
+                                    event.preventDefault();
+                                }
+                            });
+                        });
+                    </script> 
                 </form>
                 
                 {{-- @if ($errors->any())

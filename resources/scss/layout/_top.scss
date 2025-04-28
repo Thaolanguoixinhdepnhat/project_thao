@@ -450,6 +450,9 @@
                                 flex-direction: column;
                                 align-items: center;
                                 transition: all 0.3s ease-in-out;
+                                max-width: 22rem;     
+                                 white-space: normal;
+                                word-break: break-word;
 
                                 .title {
                                     font-size: 2.4rem;
@@ -1035,8 +1038,15 @@
                                     flex-direction: column;
                                     align-items: center;
                                     transition: all 0.3s ease-in-out;
+                                    max-width: 20rem;     
+                                    white-space: normal;
+                                    word-break: break-word;
+
+
+                                    
     
                                     .title {
+                                       
                                         font-size: 2rem;
                                         font-weight: bold;
                                         margin-bottom: 2rem;
@@ -1661,6 +1671,7 @@
                                     flex-direction: column;
                                     align-items: center;
                                     transition: all 0.3s ease-in-out;
+                                 
     
                                     .title {
                                         font-size: 1.5rem;
@@ -2288,6 +2299,7 @@
                                     flex-direction: column;
                                     align-items: center;
                                     transition: all 0.3s ease-in-out;
+                                 
     
                                     .title {
                                         font-size: 1.5rem;

@@ -28,6 +28,7 @@
                             });
                         });
                         </script>
+
                     <div class="form-group-row">
                         <div class="form-group-custom">
                             <label for="username">Tên tài khoản</label>
@@ -72,6 +73,26 @@
                     <div class="customer-actions">
                         <button type="submit" class="btn-update">Cập nhật</button>
                     </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            // Lấy thông tin người dùng hiện tại từ hệ thống (trong ví dụ này, sử dụng Blade để truyền role_id vào JavaScript)
+                            const roleId = @json(Auth::guard('admin')->user()->role_id); // Truyền role_id từ PHP sang JS
+                    
+                            // Chọn liên kết có class 'edit-id'
+                            const editLink = document.querySelector(".btn-update");
+                            
+                            // Lắng nghe sự kiện 'click' vào liên kết
+                            editLink.addEventListener("click", function (event) {
+                                // Nếu người dùng là Nhân viên (role_id = 1), ngừng hành động và hiển thị thông báo
+                                if (roleId === 1) {
+                                    alert("Bạn không có quyền cập nhập trang này!");
+                                    
+                                    // Ngừng hành động mặc định của liên kết (không chuyển hướng)
+                                    event.preventDefault();
+                                }
+                            });
+                        });
+                    </script>
                 </form>
                 
                 

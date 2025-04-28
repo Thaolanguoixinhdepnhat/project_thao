@@ -43,10 +43,26 @@
                     <div class="form-buttons">
                         <button type="submit" class="btn-primery">Tìm kiếm</button>
                         <button type="button" class="btn btn-danger">
-                            <a href="{{ route('product.create') }}" style="color: white; text-decoration: none;">
+                            <a href="{{ route('product.create') }}" class="register-maker-link" style="color: white; text-decoration: none;">
                                 Đăng ký nhà sản xuất
                             </a>
                         </button>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                const roleId = @json(Auth::guard('admin')->user()->role_id); 
+                        
+                                const registerLink = document.querySelector(".register-maker-link");
+                                
+                                if (registerLink) {
+                                    registerLink.addEventListener("click", function (event) {
+                                        if (roleId === 1) { // 1 = Nhân viên
+                                            alert("Bạn không có quyền truy cập chức năng đăng ký sản phẩm!");
+                                            event.preventDefault();
+                                        }
+                                    });
+                                }
+                            });
+                        </script>
                         
                         
                     </div>
@@ -128,7 +144,7 @@
                                 <!-- Kích cỡ -->
                                 <td>{{ $product->productClasses->first()->size ?? 'Không có dữ liệu' }}</td>
                                  --}}
-                                <td>
+                                {{-- <td>
                                     @if($product->productImages->isNotEmpty())
                                         @foreach($product->productImages as $image)
                                             <img src="{{ asset('storage/' . $image->product_image) }}" width="50" height="50" style="margin-right: 5px;">
@@ -136,8 +152,25 @@
                                     @else
                                         Không có ảnh
                                     @endif
-                                </td>
+                                </td> --}}
+                              
+                                    <td>
+                                        @if($product->product_image)
+                                            <img src="{{ asset('storage/' . $product->product_image) }}" width="50" height="50" style="margin-right: 5px;">
+                                        @else
+                                            Không có ảnh
+                                        @endif
+                                    </td>
+                               
                                        
+                                {{-- <td>
+                                    <form action="{{ route('product.destroy', $product->id) }}" method="POST" style="display: flex; justify-content: center;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="deleted" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
+                                    </form>
+                                </td> --}}
+                                @if(Auth::guard('admin')->user()->role_id == 3)
                                 <td>
                                     <form action="{{ route('product.destroy', $product->id) }}" method="POST" style="display: flex; justify-content: center;">
                                         @csrf
@@ -145,6 +178,9 @@
                                         <button type="submit" class="deleted" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
                                     </form>
                                 </td>
+                            @else
+                                <td></td> 
+                            @endif
                             </tr>
                             @empty
                             <tr>

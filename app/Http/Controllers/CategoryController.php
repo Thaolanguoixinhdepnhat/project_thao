@@ -99,18 +99,18 @@ class CategoryController extends Controller
 
     public function create()
 {
-    if (Auth::guard('admin')->user()->role_id == 1) {
-        return redirect()->route('category.index')->with('error', 'Bạn không có quyền tạo loại sản phẩm.');
-    }
+    // if (Auth::guard('admin')->user()->role_id == 1) {
+    //     return redirect()->route('category.index')->with('error', 'Bạn không có quyền tạo loại sản phẩm.');
+    // }
 
     return view('category.create_category');
 }
 
 public function store(Request $request)
 {
-    if (Auth::guard('admin')->user()->role_id == 1) {
-        return redirect()->route('category.index')->with('error', 'Bạn không có quyền tạo loại sản phẩm.');
-    }
+    // if (Auth::guard('admin')->user()->role_id == 1) {
+    //     return redirect()->route('category.index')->with('error', 'Bạn không có quyền tạo loại sản phẩm.');
+    // }
 
     $request->validate([
         'category_name' => 'required', 
@@ -132,9 +132,9 @@ public function store(Request $request)
 
 public function edit($id)
 {
-    if (Auth::guard('admin')->user()->role_id == 1) {
-        return redirect()->route('category.index')->with('error', 'Bạn không có quyền sửa loại sản phẩm.');
-    }
+    // if (Auth::guard('admin')->user()->role_id == 1) {
+    //     return redirect()->route('category.index')->with('error', 'Bạn không có quyền sửa loại sản phẩm.');
+    // }
 
     $category = Category::findOrFail($id);
     return view('category.edit_category', compact('category'));
@@ -142,9 +142,9 @@ public function edit($id)
 
 public function update(Request $request, $id)
 {
-    if (Auth::guard('admin')->user()->role_id == 1) {
-        return redirect()->route('category.index')->with('error', 'Bạn không có quyền sửa loại sản phẩm.');
-    }
+    // if (Auth::guard('admin')->user()->role_id == 1) {
+    //     return redirect()->route('category.index')->with('error', 'Bạn không có quyền sửa loại sản phẩm.');
+    // }
 
     $request->validate([
         'category_name' => 'required',
@@ -166,9 +166,9 @@ public function update(Request $request, $id)
 
 public function destroy($id)
 {
-    if (Auth::guard('admin')->user()->role_id == 1) {
-        return redirect()->route('category.index')->with('error', 'Bạn không có quyền xóa loại sản phẩm.');
-    }
+    // if (Auth::guard('admin')->user()->role_id == 1) {
+    //     return redirect()->route('category.index')->with('error', 'Bạn không có quyền xóa loại sản phẩm.');
+    // }
 
     $category = Category::findOrFail($id);
     $category->delete_staff = Auth::guard('admin')->id(); // Gán người xóa

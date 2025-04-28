@@ -79,6 +79,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::put('/product/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product/create', [ProductController::class, 'store'])->name('product.store');
+
+
+
 });
 
 
@@ -89,10 +92,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 // Route::delete('/productclass/{id}', [ProductClassController::class, 'destroy'])->name('productclass.destroy');
 // Route::get('/productclass/search', [ProductClassController::class, 'search'])->name('productclass.search');
 
-Route::get('/productclass/edit/{id}', [ProductClassController::class, 'edit'])->name('productclass.edit');
-Route::put('/productclass/{id}', [ProductClassController::class, 'update'])->name('productclass.update');
-Route::delete('/productclass/{id}', [ProductClassController::class, 'destroy'])->name('productclass.destroy');
-Route::get('/productclass/search', [ProductClassController::class, 'search'])->name('productclass.search');
+
 
 /* trang chủ*/
 // Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -106,6 +106,10 @@ Route::prefix('user')->group(function () {
 });
 
 
+Route::get('/productclass/edit/{id}', [ProductClassController::class, 'edit'])->name('productclass.edit');
+Route::put('/productclass/{id}', [ProductClassController::class, 'update'])->name('productclass.update');
+Route::delete('/productclass/{id}', [ProductClassController::class, 'destroy'])->name('productclass.destroy');
+Route::get('/productclass/search', [ProductClassController::class, 'search'])->name('productclass.search');
 
 
 
@@ -135,6 +139,12 @@ Route::get('/', [AppController::class, 'index'])->name('home');
 
 Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
 Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+
+
+
+
+// lọc sản phẩm
+Route::get('/products/by-category', [ProductController::class, 'showByCategories']);
 
 
 

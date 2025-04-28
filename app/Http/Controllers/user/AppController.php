@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 class AppController extends Controller
 {
@@ -25,6 +27,12 @@ class AppController extends Controller
         });
     }
 
+
+
+        
+    
+
+
     // Lọc theo khoảng giá
     if ($request->filled('min_price')) {
         $min = (int)$request->min_price;
@@ -41,9 +49,18 @@ class AppController extends Controller
         $query->orderBy(DB::raw('MIN(product_class.price)'), $request->sort_price);
     }
 
-    $products = $query->get();
 
-    return view('user.index', compact('products'));
+    // $products = $query->get();
+    // $products = Product::latest() // Sắp xếp theo trường 'created_at' giảm dần mới nhất
+    // ->take(5) 
+    // ->get();
+    $products = Product::oldest()
+    ->take(5)
+    ->get();
+
+    $categories = Category::all(); 
+
+    return view('user.index', compact('products','categories'));
         // return view('user.index');
     }
 }

@@ -30,10 +30,10 @@ class CustomerController extends Controller
     {
         $currentUser = Auth::guard('admin')->user();
     
-        // Kiểm tra nếu người dùng không phải là Quản trị viên (role_id = 3) hoặc Quản lý (role_id = 2), không cho phép chỉnh sửa
-        if ($currentUser->role_id == 1) { // Nhân viên không có quyền sửa
-            return view('customer.edit', ['error' => 'Bạn không có quyền chỉnh sửa thông tin khách hàng.']);
-        }
+        // // Kiểm tra nếu người dùng không phải là Quản trị viên (role_id = 3) hoặc Quản lý (role_id = 2), không cho phép chỉnh sửa
+        // if ($currentUser->role_id == 1) { // Nhân viên không có quyền sửa
+        //     return view('customer.edit', ['error' => 'Bạn không có quyền chỉnh sửa thông tin khách hàng.']);
+        // }
     
         // Lấy thông tin khách hàng theo ID
         $customer = Customer::findOrFail($id);
@@ -48,10 +48,10 @@ class CustomerController extends Controller
     {
         $currentUser = Auth::guard('admin')->user();
     
-        // Kiểm tra nếu người dùng không phải là Quản trị viên (role_id = 3) hoặc Quản lý (role_id = 2), không cho phép cập nhật
-        if ($currentUser->role_id == 1) { // Nhân viên không có quyền sửa
-            return back()->withErrors(['error' => 'Bạn không có quyền sửa thông tin khách hàng.']);
-        }
+        // // Kiểm tra nếu người dùng không phải là Quản trị viên (role_id = 3) hoặc Quản lý (role_id = 2), không cho phép cập nhật
+        // if ($currentUser->role_id == 1) { // Nhân viên không có quyền sửa
+        //     return back()->withErrors(['error' => 'Bạn không có quyền sửa thông tin khách hàng.']);
+        // }
     
         // Xác thực dữ liệu đầu vào
         $request->validate([
@@ -92,10 +92,10 @@ class CustomerController extends Controller
 {
     $currentUser = Auth::guard('admin')->user();
 
-    // Kiểm tra nếu người dùng không phải là Quản trị viên (role_id = 3), không cho xóa
-    if ($currentUser->role_id != 3) {
-        return back()->withErrors(['error' => 'Bạn không có quyền xóa khách hàng.']);
-    }
+    // // Kiểm tra nếu người dùng không phải là Quản trị viên (role_id = 3), không cho xóa
+    // if ($currentUser->role_id != 3) {
+    //     return back()->withErrors(['error' => 'Bạn không có quyền xóa khách hàng.']);
+    // }
 
     // Lấy thông tin khách hàng theo ID
     $customer = Customer::findOrFail($id);

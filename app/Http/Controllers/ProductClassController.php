@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use App\Models\Product;
 use App\Models\Maker;
+use App\Models\Staff;
+use Illuminate\Support\Facades\Auth;
 class ProductClassController extends Controller
 {
     // public function search(Request $request)
@@ -88,117 +90,33 @@ class ProductClassController extends Controller
 
 
     public function destroy($id)
-    {
-        try {
-            $productClass = ProductClass::findOrFail($id);
-            $productId = $productClass->product_id;
-            $productClass->delete();
-    
-            // Tìm biến thể còn lại để redirect tiếp tục chỉnh sửa nếu có
-            $otherProductClass = ProductClass::where('product_id', $productId)->first();
-    
-            if ($otherProductClass) {
-                return redirect()->route('productclass.edit', ['id' => $otherProductClass->id])
-                                 ->with('success', 'Xóa thành công!');
-            } else {
-                return redirect()->route('productclass.index') // Nếu không còn biến thể nào
-                                 ->with('success', 'Xóa thành công, không còn biến thể nào!');
-            }
-        } catch (\Exception $e) {
-            Log::error('Lỗi xóa sản phẩm: ' . $e->getMessage());
-            return redirect()->back()->with('error', 'Xóa thất bại!');
+{
+    try {
+        $productClass = ProductClass::findOrFail($id);
+        $productId = $productClass->product_id;
+        $adminId = Auth::guard('admin')->id();
+
+        // Gán người xóa vào delete_staff trước khi xóa
+        $productClass->delete_staff = $adminId;
+        $productClass->save();
+
+        $productClass->delete(); // Sau khi đã gán delete_staff
+
+        // Tìm biến thể còn lại để redirect tiếp tục chỉnh sửa nếu có
+        $otherProductClass = ProductClass::where('product_id', $productId)->first();
+
+        if ($otherProductClass) {
+            return redirect()->route('productclass.edit', ['id' => $otherProductClass->id])
+                             ->with('success', 'Xóa thành công!');
+        } else {
+            return redirect()->route('productclass.index') 
+                             ->with('success', 'Xóa thành công, không còn biến thể nào!');
         }
+    } catch (\Exception $e) {
+        Log::error('Lỗi xóa sản phẩm: ' . $e->getMessage());
+        return redirect()->back()->with('error', 'Xóa thất bại!');
     }
-
-
-
-    
-// public function edit($id)
-// {
-//     try {
-//         $productClass = ProductClass::findOrFail($id);
-
-//         // Lấy tiền tố từ product_code
-//         $prefix = substr($productClass->product_code, 0, strpos($productClass->product_code, '-') + 1);
-//         $xxx = ProductClass::select('id')->distinct()->pluck('id');
-
-//         // return $xxx;
-//         // Lấy tất cả các biến thể có cùng tiền tố (bao gồm cả chính nó)
-//         $productClasses = ProductClass::where('product_code', 'like', $prefix . '%')
-//             ->orderBy('id')
-//             ->get();
-
-//         return view('productclass.edit_productclass', compact('productClass', 'productClasses', 'xxx'));
-//     } catch (\Exception $e) {
-//         Log::error('Lỗi khi lấy dữ liệu ProductClass: ' . $e->getMessage());
-//         return redirect()->back()->with('error', 'Không tìm thấy dữ liệu!');
-//     }
-// }
-
-
-
-
-// public function update(Request $request, $id)
-// {
-//     // dd($request->all());
-//     DB::beginTransaction();
-
-//     try {
-//         $validatedData = $request->validate([
-//             'product_classes'               => 'required|array|min:1',
-//             'product_classes.*.id'          => 'required|exists:product_class,id',
-//             'product_classes.*.cost'        => 'sometimes|required|numeric|min:0', 
-//             'product_classes.*.price'       => 'sometimes|required|numeric|min:0', 
-//             'product_classes.*.stock_quantity' => 'sometimes|required|numeric|min:0', 
-//             'product_classes.*.note' => 'nullable|string|max:255',
-
-//         ]);
-        
-//         foreach ($validatedData['product_classes'] as $data) {
-//             $updateData = array_filter([
-//                 'cost'           => $data['cost'] ?? null,
-//                 'price'          => $data['price'] ?? null,
-//                 'stock_quantity' => $data['stock_quantity'] ?? null, 
-//                 'note'           => $data['note'] ?? null,
-//                 'updated_at'     => now()
-//             ], fn($value) => !is_null($value));
-
-//             if (!empty($updateData)) {
-//                 ProductClass::where('id', $data['id'])->update($updateData);
-//             }
-//         }
-
-//         DB::commit();
-
-//         //  Chuyển hướng về trang chỉnh sửa của sản phẩm sau khi cập nhật
-//         return redirect()->route('productclass.edit', ['id' => $id])->with('success', 'Cập nhật thành công!');
-
-//     } catch (ValidationException $e) {
-//         DB::rollBack();
-//         return redirect()->back()
-//             ->withErrors($e->validator)
-//             ->withInput()
-//             ->with('error', 'Dữ liệu không hợp lệ, vui lòng kiểm tra lại!');
-//     } catch (\Exception $e) {
-//         DB::rollBack();
-
-//         //  Ghi log chi tiết để debug
-//         Log::error('Lỗi cập nhật ProductClass:', [
-//             'message'      => $e->getMessage(),
-//             'file'         => $e->getFile(),
-//             'line'         => $e->getLine(),
-//             'trace'        => $e->getTraceAsString(),
-//             'request_data' => $request->all()
-//         ]);
-
-//         return redirect()->back()
-//             ->withInput()
-//             ->with('error', 'Lỗi hệ thống: ' . $e->getMessage() . ' - File: ' . $e->getFile() . ' - Dòng: ' . $e->getLine());
-//     }
-// }
-
-
-
+}
 public function update(Request $request, $id)
 {
     DB::beginTransaction();
@@ -230,7 +148,8 @@ public function update(Request $request, $id)
                 'price'          => !empty($data['price']) ? $data['price'] : null,
                 'stock_quantity' => !empty($data['stock_quantity']) ? $data['stock_quantity'] : null,
                 'note'           => !empty($data['note']) ? $data['note'] : null,
-                'updated_at'     => now()
+                'updated_at'     => now(),
+                'update_staff'   => Auth::guard('admin')->id() 
             ], fn($value) => $value !== null && $value !== '');
 
             if (!empty($updateData)) {

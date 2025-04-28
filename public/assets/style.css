@@ -1317,6 +1317,9 @@ label.form-group__labels {
     cursor: pointer;
     margin-top: 20px;
 }
+input#id1.form-group__input.form-group__input{
+    max-width: 400px;
+ }
 /* eidtproductclass*/
 .edit-productclass {
     width: 100%;

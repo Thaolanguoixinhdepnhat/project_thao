@@ -1,8 +1,5 @@
 <?php
 namespace App\Http\Controllers;
-
-namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
@@ -14,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Staff;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -55,29 +53,29 @@ class ProductController extends Controller
             
             return view('product.create', compact('makers', 'categories'));
         }
-    
         public function store(Request $request)
         {
-            // 🛠️ Kiểm tra dữ liệu đầu vào
+    //   // Kiểm tra quyền của người dùng
+    // if (Auth::guard('admin')->user()->role_id == 1) {
+    //     // Nhân viên không có quyền tạo sản phẩm
+    //     return redirect()->route('product.index')->with('error', 'Bạn không có quyền tạo sản phẩm.');
+    // }
             $request->validate([
-                'product_code'  => 'required|unique:product,product_code',
-                'product_name'  => 'required|string|max:255',
-                'maker_id'      => 'required|exists:maker,id',
-                'category_id'   => 'required|exists:category,id',
-                'note'          => 'nullable|string',
-                 'product_image' => 'nullable|array|min:1',
-                'product_image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'color'         => 'nullable|array',
-                'size'          => 'nullable|array',
-                'color_code'    => 'nullable|array',
+                'product_code'      => 'required|unique:product,product_code',
+                'product_name'      => 'required|string|max:255',
+                'maker_id'          => 'required|exists:maker,id',
+                'category_id'       => 'required|exists:category,id',
+                'note'              => 'nullable|string',
+                'product_image'     => 'nullable|array|min:1',
+                'product_image.*'   => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'color'             => 'nullable|array',
+                'size'              => 'nullable|array',
+                'color_code'        => 'nullable|array',
             ]);
         
-            // return $request->color;
-    
             DB::beginTransaction();
-    
+        
             try {
-                // 🔹 Tạo sản phẩm trong bảng `products`
                 $product = new Product();
                 $product->product_code = $request->product_code;
                 $product->product_name = $request->product_name;
@@ -85,65 +83,22 @@ class ProductController extends Controller
                 $product->category_id = $request->category_id;
                 $product->note = $request->note;
                 $product->create_staff = Auth::guard('admin')->id();
-                $product->save();
-                $colors = $request->input('color', []);
-                $sizes = $request->input('size', []);
-                $color_codes = $request->input('color_code', []);
-        
-               
-               // Chuẩn hóa dữ liệu để tránh lỗi số lượng phần tử không đồng nhất
-    
-    $colors = array_values(array_filter($colors, fn($c) => !empty($c))); 
-    $color_codes = array_values(array_filter($color_codes, fn($c) => !empty($c))); 
-    $sizes = array_values(array_filter($sizes, fn($s) => !empty($s))); 
-    
-    // Xác định số lượng sản phẩm cần tạo
-    $totalColors = count($colors);
-    $totalColorCodes = count($color_codes);
-    $totalSizes = count($sizes);
-    
-    // Lấy số phần tử nhỏ nhất để tránh lỗi lặp dư
-    $minCount = min($totalColors, $totalColorCodes, $totalSizes);
-    
-    // Đảm bảo danh sách có cùng số phần tử
-    $colors = array_slice($colors, 0, $minCount);
-    $color_codes = array_slice($color_codes, 0, $minCount);
-    $sizes = array_slice($sizes, 0, $minCount);
-    
-    $uniqueCombinations = [];
-    $codeCounter = 1;
-    
-    // Chỉ duyệt theo số màu có trong danh sách
-    for ($i = 0; $i < $minCount; $i++) {
-        $colorValue = $colors[$i] ?? '-'; 
-        $colorCodeValue = $color_codes[$i] ?? '-';
-        $sizeValue = $sizes[$i] ?? '-';
-    
-        // Kiểm tra dữ liệu hợp lệ trước khi lưu
-        if ($colorValue === '-' || $colorCodeValue === '-' || $sizeValue === '-') {
-            continue; // Bỏ qua nếu có dữ liệu thiếu
-        }
-    
-        // Tạo khóa duy nhất
-        $combinationKey = "$colorValue-$sizeValue-$colorCodeValue";
-    
-        // Kiểm tra trùng lặp
-        if (!isset($uniqueCombinations[$combinationKey])) {
-            $uniqueCombinations[$combinationKey] = true;
-            $pl = new ProductClass();
-            $pl->product_id = $product->id;
-            $pl->product_code = $request->product_code . '-' . str_pad($codeCounter, 3, '0', STR_PAD_LEFT);
-            $pl->color = $colorValue;
-            $pl->size = $sizeValue;
-            $pl->color_code = $colorCodeValue;
-            $pl->create_staff = Auth::guard('admin')->id();
-            $pl->created_at = Carbon::now();
-            $pl->save();
-            $codeCounter++;
-        }
-        }
+                
+                // ✅ Lưu ảnh đại diện nếu có ảnh upload
                 if ($request->hasFile('product_image') && count($request->file('product_image')) > 0) {
-                    foreach ($request->file('product_image') as $image) {
+                    $images = $request->file('product_image');
+        
+                    // Lưu ảnh đầu tiên vào bảng product (ảnh đại diện)
+                    $firstImage = $images[0];
+                    $firstPath = $firstImage->store('product_images', 'public');
+                    $product->product_image = $firstPath;
+                }
+        
+                $product->save(); // lưu product trước để lấy id
+        
+                // ✅ Lưu các ảnh còn lại vào bảng product_images
+                if (isset($images)) {
+                    foreach (array_slice($images, 1) as $image) {
                         $path = $image->store('product_images', 'public');
                         $productImage = new ProductImage();
                         $productImage->product_id = $product->id;
@@ -153,17 +108,58 @@ class ProductController extends Controller
                         $productImage->save();
                     }
                 }
+        
+                // ✅ Lưu product_class như bạn đã làm (để nguyên đoạn này)
+                $colors = array_values(array_filter($request->input('color', []), fn($c) => !empty($c)));
+                $color_codes = array_values(array_filter($request->input('color_code', []), fn($c) => !empty($c)));
+                $sizes = array_values(array_filter($request->input('size', []), fn($s) => !empty($s)));
+        
+                $minCount = min(count($colors), count($color_codes), count($sizes));
+                $colors = array_slice($colors, 0, $minCount);
+                $color_codes = array_slice($color_codes, 0, $minCount);
+                $sizes = array_slice($sizes, 0, $minCount);
+        
+                $uniqueCombinations = [];
+                $codeCounter = 1;
+        
+                for ($i = 0; $i < $minCount; $i++) {
+                    $colorValue = $colors[$i];
+                    $colorCodeValue = $color_codes[$i];
+                    $sizeValue = $sizes[$i];
+        
+                    $combinationKey = "$colorValue-$sizeValue-$colorCodeValue";
+        
+                    if (!isset($uniqueCombinations[$combinationKey])) {
+                        $uniqueCombinations[$combinationKey] = true;
+        
+                        $pl = new ProductClass();
+                        $pl->product_id = $product->id;
+                        $pl->product_code = $request->product_code . '-' . str_pad($codeCounter, 3, '0', STR_PAD_LEFT);
+                        $pl->color = $colorValue;
+                        $pl->size = $sizeValue;
+                        $pl->color_code = $colorCodeValue;
+                        $pl->create_staff = Auth::guard('admin')->id();
+                        $pl->created_at = Carbon::now();
+                        $pl->save();
+        
+                        $codeCounter++;
+                    }
+                }
+        
                 DB::commit();
                 return redirect()->route('product.index')->with('success', 'Sản phẩm đã được thêm thành công.');
-    
             } catch (\Exception $e) {
                 DB::rollBack();
                 return redirect()->back()->with('error', 'Lỗi: ' . $e->getMessage());
             }
         }
+        
     
         public function destroy($id)
         {
+            // if (Auth::guard('admin')->user()->role_id == 1) {
+            //     return redirect()->route('product.index')->with('error', 'Bạn không có quyền xóa sản phẩm.');
+            // }
             DB::beginTransaction();
         
             try {
@@ -210,6 +206,10 @@ class ProductController extends Controller
     
     public function edit($id)
     {
+        // if (Auth::guard('admin')->user()->role_id == 1) {
+        //     // Nhân viên không có quyền chỉnh sửa sản phẩm
+        //     return redirect()->route('product.index')->with('error', 'Bạn không có quyền sửa thông tin sản phẩm.');
+        // }
         $product = Product::with(['category', 'maker', 'productClasses', 'productImages'])->findOrFail($id);
         $makers = Maker::all();
         $categories = Category::all();
@@ -225,137 +225,159 @@ class ProductController extends Controller
         })->unique()->toArray();
         return view('product.edit', compact('product', 'makers', 'categories', 'colorPairs', 'sizes', 'productClasses'));
     }
-    public function update(Request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'product_code' => 'required|string|max:255|unique:product,product_code,' . $id,
-            'product_name' => 'required|string|max:255',
-            'maker_id' => 'required|exists:maker,id',
-            'category_id' => 'required|exists:category,id',
-            'note' => 'nullable|string',
-            'product_image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'color' => 'nullable|array',
-            'color.*' => 'nullable|string|max:255',
-            'color_code' => 'nullable|array',
-            'color_code.*' => 'nullable|string|max:255',
-            'size' => 'nullable|array',
-            'size.*' => 'nullable|string|max:255',
+public function update(Request $request, $id)
+{
+    // if (Auth::guard('admin')->user()->role_id == 1) {
+    //     return redirect()->route('product.index')->with('error', 'Bạn không có quyền sửa sản phẩm.');
+    // }
+    $validatedData = $request->validate([
+        'product_code' => 'required|string|max:255|unique:product,product_code,' . $id,
+        'product_name' => 'required|string|max:255',
+        'maker_id' => 'required|exists:maker,id',
+        'category_id' => 'required|exists:category,id',
+        'note' => 'nullable|string',
+        'main_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'product_image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'color' => 'nullable|array',
+        'color.*' => 'nullable|string|max:255',
+        'color_code' => 'nullable|array',
+        'color_code.*' => 'nullable|string|max:255',
+        'size' => 'nullable|array',
+        'size.*' => 'nullable|string|max:255',
+    ]);
+
+    DB::beginTransaction();
+
+    try {
+        $product = Product::findOrFail($id);
+
+        // Cập nhật thông tin sản phẩm trước
+        $product->fill([
+            'product_code' => $validatedData['product_code'],
+            'product_name' => $validatedData['product_name'],
+            'maker_id' => $validatedData['maker_id'],
+            'category_id' => $validatedData['category_id'],
+            'note' => $validatedData['note'],
+            'update_staff' => Auth::guard('admin')->id(),
         ]);
-    
-        DB::beginTransaction();
-    
-        try {
-            $product = Product::findOrFail($id);
-            $product->update([
-                'product_code' => $validatedData['product_code'],
-                'product_name' => $validatedData['product_name'],
-                'maker_id' => $validatedData['maker_id'],
-                'category_id' => $validatedData['category_id'],
-                'note' => $validatedData['note'],
-                'update_staff' => Auth::guard('admin')->id(),
-            ]);
-    
-            $colors = collect($request->color)->filter()->values();
-            $colorCodes = collect($request->color_code)->filter()->values();
-            $sizes = collect($request->size)->filter()->values();
-    
-            // Nếu không nhập màu, lấy danh sách màu hiện có trong database
-            if ($colors->isEmpty()) {
-                $existingColors = ProductClass::where('product_id', $product->id)
-                    ->select('color', 'color_code')
-                    ->distinct()
-                    ->get();
-    
-                $colors = $existingColors->pluck('color');
-                $colorCodes = $existingColors->pluck('color_code');
+
+        // Xử lý ảnh chính (main_image)
+        if ($request->hasFile('main_image')) {
+            // Xóa ảnh cũ nếu có
+            if ($product->product_image && Storage::disk('public')->exists($product->product_image)) {
+                Storage::disk('public')->delete($product->product_image);
             }
-    
-            $existingCount = ProductClass::where('product_id', $product->id)->count();
-            $codeCounter = $existingCount + 1;
-    
-            // Ghép màu với size để tạo danh sách cần thêm/cập nhật
-            $submittedCombinations = collect($colors)
-                ->map(function ($color, $index) use ($colorCodes) {
-                    return [
-                        'color' => $color,
-                        'color_code' => $colorCodes[$index] ?? '-',
-                    ];
-                })
-                ->flatMap(function ($colorPair) use ($sizes) {
-                    return $sizes->map(function ($size) use ($colorPair) {
-                        return array_merge($colorPair, ['size' => $size]);
-                    });
-                })
-                ->unique();
-    
-            foreach ($submittedCombinations as $combination) {
-                $color = $combination['color'];
-                $size = $combination['size'];
-                $colorCode = $combination['color_code'];
-    
-                $pl = ProductClass::withTrashed()
-                    ->where('product_id', $product->id)
-                    ->where('color', $color)
-                    ->where('color_code', $colorCode)
-                    ->where('size', $size)
-                    ->first();
-    
-                if ($pl && $pl->trashed()) {
-                    $pl->restore();
-                } elseif (!$pl) {
-                    $pl = new ProductClass([
-                        'product_id' => $product->id,
-                        'color' => $color,
-                        'size' => $size,
-                        'color_code' => $colorCode,
-                        'product_code' => $product->product_code . '-' . str_pad($codeCounter, 3, '0', STR_PAD_LEFT),
-                    ]);
-                    $codeCounter++;
-                }
-    
-                $pl->updated_at = now();
-                $pl->update_staff = Auth::guard('admin')->id();;
-                $pl->save();
-            }
-            if ($request->hasFile('product_image')) {
-                                        foreach ($request->file('product_image') as $image) {
-                                            $path = $image->store('product_images', 'public');
-                            
-                                            $existingProductImage = ProductImage::where('product_id', $product->id)
-                                                ->where('product_image', $path)
-                                                ->first();
-                            
-                                            if (!$existingProductImage) {
-                                                $productImage = new ProductImage();
-                                                $productImage->product_id = $product->id;
-                                                $productImage->product_image = $path;
-                                                $productImage->updated_at = now();
-                                                $productImage->update_staff = Auth::guard('admin')->id();
-                                                $productImage->save();
-                                            }
-                                        }
-                                    }
-                                    if ($request->has('deleted_images')) {
-                                        foreach ($request->input('deleted_images') as $imageId) {
-                                            if ($imageId) {
-                                                $productImage = ProductImage::find($imageId);
-                                                if ($productImage) {
-                                                    $productImage->delete_staff = Auth::guard('admin')->id();
-                                                    $productImage->save();
-                                                    $productImage->delete();
-                                                }
-                                            }
-                                        }
-                                    }
-    
-            DB::commit();
-            return redirect()->route('product.index')->with('success', 'Cập nhật sản phẩm thành công!');
-        } catch (\Exception $e) {
-            DB::rollBack();
-            logger('Lỗi: ' . $e->getMessage());
-            return redirect()->back()->with('error', 'Đã xảy ra lỗi: ' . $e->getMessage());
+
+            // Lưu ảnh mới
+            $mainImage = $request->file('main_image');
+            $mainImagePath = $mainImage->store('main_product_images', 'public');
+            $product->product_image = $mainImagePath; // đảm bảo cập nhật vào DB
         }
+
+        $product->save(); // Save sau khi xử lý cả ảnh
+
+        // Xử lý phân loại sản phẩm
+        $colors = collect($request->color)->filter()->values();
+        $colorCodes = collect($request->color_code)->filter()->values();
+        $sizes = collect($request->size)->filter()->values();
+
+        if ($colors->isEmpty()) {
+            $existingColors = ProductClass::where('product_id', $product->id)
+                ->select('color', 'color_code')->distinct()->get();
+
+            $colors = $existingColors->pluck('color');
+            $colorCodes = $existingColors->pluck('color_code');
+        }
+
+        $existingCount = ProductClass::where('product_id', $product->id)->count();
+        $codeCounter = $existingCount + 1;
+
+        $submittedCombinations = collect($colors)
+            ->map(function ($color, $index) use ($colorCodes) {
+                return [
+                    'color' => $color,
+                    'color_code' => $colorCodes[$index] ?? '-',
+                ];
+            })
+            ->flatMap(function ($colorPair) use ($sizes) {
+                return $sizes->map(function ($size) use ($colorPair) {
+                    return array_merge($colorPair, ['size' => $size]);
+                });
+            })
+            ->unique();
+
+        foreach ($submittedCombinations as $combination) {
+            $color = $combination['color'];
+            $size = $combination['size'];
+            $colorCode = $combination['color_code'];
+
+            $pl = ProductClass::withTrashed()
+                ->where('product_id', $product->id)
+                ->where('color', $color)
+                ->where('color_code', $colorCode)
+                ->where('size', $size)
+                ->first();
+
+            if ($pl && $pl->trashed()) {
+                $pl->restore();
+            } elseif (!$pl) {
+                $pl = new ProductClass([
+                    'product_id' => $product->id,
+                    'color' => $color,
+                    'size' => $size,
+                    'color_code' => $colorCode,
+                    'product_code' => $product->product_code . '-' . str_pad($codeCounter, 3, '0', STR_PAD_LEFT),
+                ]);
+                $codeCounter++;
+            }
+
+            $pl->updated_at = now();
+            $pl->update_staff = Auth::guard('admin')->id();
+            $pl->save();
+        }
+
+        // Xử lý ảnh phụ
+        if ($request->hasFile('product_image')) {
+            foreach ($request->file('product_image') as $image) {
+                $path = $image->store('product_images', 'public');
+
+                $existingProductImage = ProductImage::where('product_id', $product->id)
+                    ->where('product_image', $path)
+                    ->first();
+
+                if (!$existingProductImage) {
+                    $productImage = new ProductImage();
+                    $productImage->product_id = $product->id;
+                    $productImage->product_image = $path;
+                    $productImage->updated_at = now();
+                    $productImage->update_staff = Auth::guard('admin')->id();
+                    $productImage->save();
+                }
+            }
+        }
+
+        // Xóa ảnh phụ
+        if ($request->has('deleted_images')) {
+            foreach ($request->input('deleted_images') as $imageId) {
+                if ($imageId) {
+                    $productImage = ProductImage::find($imageId);
+                    if ($productImage) {
+                        $productImage->delete_staff = Auth::guard('admin')->id();
+                        $productImage->save();
+                        $productImage->delete();
+                    }
+                }
+            }
+        }
+
+        DB::commit();
+        return redirect()->route('product.index')->with('success', 'Cập nhật sản phẩm thành công!');
+    } catch (\Exception $e) {
+        DB::rollBack();
+        logger('Lỗi: ' . $e->getMessage());
+        return redirect()->back()->with('error', 'Đã xảy ra lỗi: ' . $e->getMessage());
     }
-    
+}
+
     
 }
