@@ -39,8 +39,25 @@
                                 </span>
                             </div>
                 
-                            <div class="my-recommended-product__card-cta">
+{{-- 
+                            <form action="{{ route('cart.add') }}" method="POST" id="form-{{ $item->id }}">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $item->id }}">
+                                <input type="hidden" name="product_class_id" value="{{ $item->productClasses[0]->id }}" class="product-class-id">
+                                <input type="hidden" name="product_images_id" value="{{  $item->productImages->first()->id }}">
                                 <button type="submit" class="card-cta">Mua ngay</button>
+                            </form> --}}
+
+
+                            <div class="my-recommended-product__card-cta">
+                                
+                            <form action="{{ route('cart.add') }}" method="POST" id="form-{{ $item->id }}">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $item->id }}">
+                                <input type="hidden" name="product_class_id" value="{{ $item->productClasses[0]->id }}" class="product-class-id">
+                                <input type="hidden" name="product_images_id" value="{{  $item->productImages->first()->id }}">
+                                <button type="submit" class="card-cta">Mua ngay</button>
+                            </form>
                             </div>
                         </div>
                     @endforeach

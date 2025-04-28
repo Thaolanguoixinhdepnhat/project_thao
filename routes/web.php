@@ -129,6 +129,8 @@ Route::prefix('user')->group(function () {
     Route::get('/cart', [CartController::class, 'viewCart'])->name('cart_index');
     Route::delete('/cart/delete/{id}', [CartController::class, 'destroy'])->name('cart.delete');
     Route::post('/update-cart', [CartController::class, 'updateCart'])->name('update.cart');
+    ;
+   
 });
 
 

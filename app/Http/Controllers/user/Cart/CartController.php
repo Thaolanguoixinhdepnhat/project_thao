@@ -51,7 +51,7 @@ class CartController extends Controller
             ]);
         }
     
-        return redirect()->route('cart.index')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng');
+        return redirect()->route('cart_index')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng');
     }
 
     public function viewCart()
