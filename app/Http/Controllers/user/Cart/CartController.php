@@ -58,7 +58,7 @@ class CartController extends Controller
     {
         
         $customer_id = auth()->id() ?? 9;
-        $count_cart = Cart::where('customer_id', Auth::user()->id)->get();
+        $count_cart = Cart::where('customer_id', auth()->id())->get();
         $cart = Cart::with([
                     'product',
                     'productClass',

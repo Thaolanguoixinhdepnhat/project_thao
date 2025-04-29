@@ -14,7 +14,7 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $count_cart = Cart::where('customer_id', Auth::user()->id)->get();
+        $count_cart = Cart::where('customer_id', auth()->id())->get();
         $categorys = Category::all();
         $products = Product::paginate(9);
         foreach ($products as $product) {
@@ -28,7 +28,7 @@ class ProductController extends Controller
     public function detail($id)
     {
         $products = Product::where('id', $id)->with('productClasses','productImages')->get();
-        $count_cart = Cart::where('customer_id', Auth::user()->id)->get();
+        $count_cart = Cart::where('customer_id', auth()->id())->get();
 
         foreach ($products as $product) {
             $product->productClasses = $product->productClasses->unique('color_code');

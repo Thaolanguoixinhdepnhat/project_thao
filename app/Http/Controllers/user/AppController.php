@@ -30,7 +30,7 @@ class AppController extends Controller
         // Lấy 10 sản phẩm mới nhất
         $news = Product::orderBy('id', 'desc')->take(10)->get();
 
-        $count_cart = Cart::where('customer_id', Auth::user()->id)->get();
+        $count_cart = Cart::where('customer_id', auth()->id())->get();
         // Lấy tất cả danh mục sản phẩm
         $categories = Category::all();
 
@@ -55,7 +55,7 @@ class AppController extends Controller
 
     public function home()
     {
-        $count_cart = Cart::where('customer_id', Auth::user()->id)->get();
+        $count_cart = Cart::where('customer_id', auth()->id())->get();
         return view('user.home.index', compact('count_cart'));
     }
 
