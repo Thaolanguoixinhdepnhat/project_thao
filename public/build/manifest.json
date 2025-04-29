@@ -1,15 +1,15 @@
 {
   "resources/js/app.js": {
-    "file": "assets/app-DAeWe3ys.js",
+    "file": "assets/app-Bs4hSesM.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/style-ClFuSgis.css"
+      "assets/style-CyonPs-Z.css"
     ]
   },
   "resources/scss/style.scss": {
-    "file": "assets/style-ClFuSgis.css",
+    "file": "assets/style-CyonPs-Z.css",
     "src": "resources/scss/style.scss",
     "isEntry": true
   }
