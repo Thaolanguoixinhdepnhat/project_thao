@@ -123,7 +123,7 @@ Route::delete('/staff/{id}', [StaffController::class, 'destroy'])->name('staff.d
 /* trang chủ*/
 // Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::get('/products', [UserProductController::class, 'index'])->name('xxx');
-Route::get('/cart', [CartController::class, 'index'])->name('xxx');
+// Route::get('/cart', [CartController::class, 'index'])->name('xxx');
 Route::prefix('user')->group(function () {
     Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
     Route::get('/cart', [CartController::class, 'viewCart'])->name('cart_index');
@@ -140,6 +140,7 @@ Route::prefix('user')->group(function () {
 
 // thử tìm kiếm 
 Route::get('/products', [UserProductController::class, 'index'])->name('user.products.index');
+Route::get('/details/{id}', [UserProductController::class, 'detail'])->name('user.detail');
 
 
 Route::get('/get-product-class', [AppController::class, 'getProductClassByColorAndSize'])->name('getProductClassByColorAndSize');
@@ -152,7 +153,7 @@ Route::get('/', [AppController::class, 'index'])->name('home');
 
 
 Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
-Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+Route::get('/check', [OrderController::class, 'index'])->name('order.index');
 
 
 

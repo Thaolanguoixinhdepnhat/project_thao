@@ -81,11 +81,9 @@ class CartController extends Controller
         $cartItem = Cart::findOrFail($id);
         $cartItem->delete(); // Soft delete nếu có SoftDeletes, hoặc xóa thật nếu không
     
-        return redirect()->route('cart.index')->with('success', 'Đã xóa sản phẩm khỏi giỏ hàng');
+        return redirect()->route('cart_index')->with('success', 'Đã xóa sản phẩm khỏi giỏ hàng');
     }
-    
 
-    
     public function updateCart(Request $request)
     {
         // Validate the request
@@ -99,7 +97,7 @@ class CartController extends Controller
     
         // Nếu không tìm thấy sản phẩm trong giỏ hàng
         if (!$cart) {
-            return redirect()->route('cart.index')->with('error', 'Item not found!');
+            return redirect()->route('cart_index')->with('error', 'Item not found!');
         }
     
         // Cập nhật số lượng
@@ -112,7 +110,7 @@ class CartController extends Controller
         $cart->save();
     
         // Chuyển hướng với thông báo thành công
-        return redirect()->route('cart.index')->with('success', 'Cart updated successfully!');
+        return redirect()->route('cart_index')->with('success', 'Cart updated successfully!');
     }
     
 }

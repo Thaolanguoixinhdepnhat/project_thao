@@ -3,22 +3,15 @@
 @section('title', 'Giỏ hàng')
 
 @section('content')
+    <section class="sec-cart">
+        <h2 class="title">Giỏ hàng của bạn</h2>
 
     <div class="cart">
         <div class="container">
+            @if ($cart)
             <div class="content">
-                <h6 id="cart-message">Bạn có
-                    <?php
-                    $totalQuantity = 0;
-                    foreach ($cart as $item) {
-                        $totalQuantity += $item['quantity'];
-                    }
-                    echo $totalQuantity;
-                    ?> sản phẩm trong giỏ hàng
-                </h6>
                 <div class="cart__card">
                     <div class="left">
-
                         @foreach ($cart as $item)
                             <div class="item">
                                 <div class="product-image-cart">
@@ -121,13 +114,9 @@
                             </div>
                         </div>
                       
-                        <form action="{{ route('checkout') }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn-checkout">Thanh toán</button>
-                        </form>
+                      
+                        <a href="{{route('order.index')}}" class="btn-checkout">Thanh toán</a>
                         
-                        
-                    
                         
                         <div class="title">
                             <p>Bằng cách gửi đơn đặt hàng, bạn đồng ý với Điều khoản & điều kiện và chúng tôi sẽ sử dụng dữ
@@ -181,11 +170,17 @@
                     </div>
                 </div>
 
-            </div>
+            </div> 
+            @else
+                Bạn chưa mua gì!!
+            @endif
+            
         </div>
     </div>
+    </section>
 
 @endsection
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>

@@ -104,7 +104,7 @@
                                             alt="{{ $firstProduct->product_name }}">
                                         <div class="text-image">
                                             <span class="title">{{ $firstProduct->product_name }}</span>
-                                            <button class="btn-register1">Mua ngay</button>
+                                            <a href="" class="btn-register1">Xem thêm</a>
                                         </div>
                                     </div>
                                 </div>
@@ -123,7 +123,7 @@
                                                     <span>{{ $product->product_name }}</span>
                                                 </div>
                                             </div>
-                                            <button class="btn-register1">Mua ngay</button>
+                                            <a href="" class="btn-register1">Xem thêm</a>
                                         </div>
                                     @endif
                                 @endforeach
@@ -146,7 +146,7 @@
                                             alt="{{ $firstProduct->product_name }}">
                                         <div class="text-image">
                                             <span class="title">{{ $firstProduct->product_name }}</span>
-                                            <button class="btn-register1">Mua ngay</button>
+                                            <a href="" class="btn-register1">Xem thêm</a>
                                         </div>
                                     </div>
                                 </div>
@@ -165,8 +165,8 @@
                                                     <span>{{ $product->product_name }}</span>
                                                 </div>
                                             </div>
-                                            <button class="btn-register1">Mua ngay</button>
-                                      
+
+                                            <a href="" class="btn-register1">Xem thêm</a>
                                         </div>
                                     @endif
                                 @endforeach
@@ -174,8 +174,6 @@
                         </div>
                     @endforeach
                 </div>
-
-
             </div>
         </div>
     </section>
@@ -241,15 +239,14 @@
                                         <label for="">Giá:</label>
                                         <span class="price"></span>
                                     </div>
-                                    <!-- Trường ẩn để lưu id productClass -->
-                                    <input type="hidden" name="product_class_id" id="product_class_id_{{ $index }}" value="">
+                                   
                                     <div class="btn">
-                                        <a href="" class="btn-register1">Chi tiết</a>
+                                        <a href="{{route('user.detail', ['id' => $item->id])}}" class="btn-register1">Chi tiết</a>
+
                                         <form action="{{ route('cart.add') }}" method="POST" id="form-{{ $item->id }}">
                                             @csrf
                                             <input type="hidden" name="product_id" value="{{ $item->id }}">
-                                            <input type="hidden" name="product_class_id" value="{{ $item->productClasses[0]->id }}" class="product-class-id">
-                                            <input type="hidden" name="product_images_id" value="{{  $item->productImages->first()->id }}">
+                                            <input type="hidden" name="product_class_id" id="product_class_id_{{ $index }}" value="">
                                             <button type="submit" class="btn-register1">Mua ngay</button>
                                         </form>
                                     </div>
@@ -273,75 +270,69 @@
 
                         <div class="content-body wrap-slider">
                             @foreach ($dt as $index => $item)
-                            <div class="item">
-                                <form class="formAddToCart" action="{{ route('cart.add') }}" method="POST">
-                                    @csrf
-                                    <div class="img">
-                                        <img class="image__main responsive-img image--loaded"
-                                             src="{{ asset('storage/' . $item->product_image) }}"
-                                             alt="{{ $item->product_name }}">
-                                    </div>
-                                
-                                    <span class="badge-icon_red">New</span>
-                                    
-                                    <div class="txt-name">
-                                        <span>{{ $item->product_name }}</span>
-                                    </div>
-                                
-                                    <div class="color">
-                                        <label for="color_{{ $index }}">Màu sắc :</label>
-                                        <div class="list-color">
-                                            @foreach ($item->productClasses as $productClasses)
-                                                <label for="color_{{ $index }}_{{ $loop->index }}">
-                                                    <input type="radio" id="color_{{ $index }}_{{ $loop->index }}" name="color_{{ $index }}" value="{{ $productClasses->color_code }}" style="display:none;">
-                                                    <span class="color-circle" style="
-                                                        display: inline-block;
-                                                        width: 20px;
-                                                        height: 20px;
-                                                        border-radius: 50%;
-                                                        background-color: {{ $productClasses->color_code }};
-                                                        cursor: pointer;">
-                                                    </span>
-                                                </label>
-                                            @endforeach
+                                <div class="item">
+                                    <form class="formAddToCart" action="{{ route('cart.add') }}" method="POST">
+                                        @csrf
+                                        <div class="img">
+                                            <img class="image__main responsive-img image--loaded"
+                                                src="{{ asset('storage/' . $item->product_image) }}"
+                                                alt="{{ $item->product_name }}">
                                         </div>
-                                    </div>
-                                
-                                    <div class="size">
-                                        <label for="size_{{ $index }}">Ram :</label>
-                                        <div class="list-size">
-                                            @foreach ($item->productClasses as $productClasses)
-                                                <label for="size_{{ $index }}_{{ $loop->index }}">
-                                                    <span class="size-circle">{{ $productClasses->size }}</span>
-                                                    <input type="radio" id="size_{{ $index }}_{{ $loop->index }}" name="size_{{ $index }}" value="{{ $productClasses->size }}" style="display:none;">
-                                                </label>
-                                            @endforeach
+                                    
+                                        <span class="badge-icon_red">New</span>
+                                        
+                                        <div class="txt-name">
+                                            <span>{{ $item->product_name }}</span>
                                         </div>
-                                    </div>
-                                
-                                    <div class="price">
-                                        <label for="">Giá:</label>
-                                        <span class="price"></span>
-                                    </div>
-                                    <!-- Trường ẩn để lưu id productClass -->
-                                    <input type="hidden" name="product_class_id" id="product_class_id_{{ $index }}" value="">
-
-                                    <div class="btn">
-                                        <a href="" class="btn-register1">Chi tiết</a>
-                                        <form action="{{ route('cart.add') }}" method="POST" id="form-{{ $item->id }}">
-                                            @csrf
-                                            <input type="hidden" name="product_id" value="{{ $item->id }}">
-                                            <input type="hidden" name="product_class_id" value="{{ $item->productClasses[0]->id }}" class="product-class-id">
-                                            <input type="hidden" name="product_images_id" value="{{  $item->productImages->first()->id }}">
-                                            <button type="submit" class="btn-register1">Mua ngay</button>
-                                        </form>
-                                    </div>
                                     
-                           
-
+                                        <div class="color">
+                                            <label for="color_{{ $index }}">Màu sắc :</label>
+                                            <div class="list-color">
+                                                @foreach ($item->productClasses as $productClasses)
+                                                    <label for="color_{{ $index }}_{{ $loop->index }}">
+                                                        <input type="radio" id="color_{{ $index }}_{{ $loop->index }}" name="color_{{ $index }}" value="{{ $productClasses->color_code }}" style="display:none;">
+                                                        <span class="color-circle" style="
+                                                            display: inline-block;
+                                                            width: 20px;
+                                                            height: 20px;
+                                                            border-radius: 50%;
+                                                            background-color: {{ $productClasses->color_code }};
+                                                            cursor: pointer;">
+                                                        </span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
                                     
-                                </form>
-                            </div>
+                                        <div class="size">
+                                            <label for="size_{{ $index }}">Ram :</label>
+                                            <div class="list-size">
+                                                @foreach ($item->productClasses as $productClasses)
+                                                    <label for="size_{{ $index }}_{{ $loop->index }}">
+                                                        <span class="size-circle">{{ $productClasses->size }}</span>
+                                                        <input type="radio" id="size_{{ $index }}_{{ $loop->index }}" name="size_{{ $index }}" value="{{ $productClasses->size }}" style="display:none;">
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="price">
+                                            <label for="">Giá:</label>
+                                            <span class="price"></span>
+                                        </div>
+
+                                        <div class="btn">
+                                            <a href="{{route('user.detail', ['id' => $item->id])}}" class="btn-register1">Chi tiết</a>
+
+                                            <form action="{{ route('cart.add') }}" method="POST" id="form-{{ $item->id }}">
+                                                @csrf
+                                                <input type="hidden" name="product_id" value="{{ $item->id }}">
+                                                <input type="hidden" name="product_class_id" id="product_class_id_{{ $index }}" value="">
+                                                <button type="submit" class="btn-register1">Mua ngay</button>
+                                            </form>
+                                        </div>
+                                    </form>
+                                </div>
                             @endforeach
                         </div>
                     </div>
@@ -359,65 +350,69 @@
 
                         <div class="content-body wrap-slider">
                             @foreach ($tv as $index => $item)
-                            <div class="item">
-                                <form class="formAddToCart" action="{{ route('cart.add') }}" method="POST">
-                                    @csrf
-                                    <div class="img">
-                                        <img class="image__main responsive-img image--loaded"
-                                             src="{{ asset('storage/' . $item->product_image) }}"
-                                             alt="{{ $item->product_name }}">
-                                    </div>
-                                
-                                    <span class="badge-icon_red">New</span>
+                                <div class="item">
+                                    <form class="formAddToCart" action="{{ route('cart.add') }}" method="POST" id="form-{{ $item->id }}"> 
+                                        @csrf
+                                        <div class="img">
+                                            <img class="image__main responsive-img image--loaded"
+                                                src="{{ asset('storage/' . $item->product_image) }}"
+                                                alt="{{ $item->product_name }}">
+                                        </div>
                                     
-                                    <div class="txt-name">
-                                        <span>{{ $item->product_name }}</span>
-                                    </div>
-                                
-                                    <div class="color">
-                                        <label for="color_{{ $index }}">Màu sắc :</label>
-                                        <div class="list-color">
-                                            @foreach ($item->productClasses as $productClasses)
-                                                <label for="color_{{ $index }}_{{ $loop->index }}">
-                                                    <input type="radio" id="color_{{ $index }}_{{ $loop->index }}" name="color_{{ $index }}" value="{{ $productClasses->color_code }}" style="display:none;">
-                                                    <span class="color-circle" style="
-                                                        display: inline-block;
-                                                        width: 20px;
-                                                        height: 20px;
-                                                        border-radius: 50%;
-                                                        background-color: {{ $productClasses->color_code }};
-                                                        cursor: pointer;">
-                                                    </span>
-                                                </label>
-                                            @endforeach
+                                        <span class="badge-icon_red">New</span>
+                                        
+                                        <div class="txt-name">
+                                            <span>{{ $item->product_name }}</span>
                                         </div>
-                                    </div>
-                                
-                                    <div class="size">
-                                        <label for="size_{{ $index }}">Ram :</label>
-                                        <div class="list-size">
-                                            @foreach ($item->productClasses as $productClasses)
-                                                <label for="size_{{ $index }}_{{ $loop->index }}">
-                                                    <span class="size-circle">{{ $productClasses->size }}</span>
-                                                    <input type="radio" id="size_{{ $index }}_{{ $loop->index }}" name="size_{{ $index }}" value="{{ $productClasses->size }}" style="display:none;">
-                                                </label>
-                                            @endforeach
+                                    
+                                        <div class="color">
+                                            <label for="color_{{ $index }}">Màu sắc :</label>
+                                            <div class="list-color">
+                                                @foreach ($item->productClasses as $productClasses)
+                                                    <label for="color_{{ $index }}_{{ $loop->index }}">
+                                                        <input type="radio" id="color_{{ $index }}_{{ $loop->index }}" name="color_{{ $index }}" value="{{ $productClasses->color_code }}" style="display:none;">
+                                                        <span class="color-circle" style="
+                                                            display: inline-block;
+                                                            width: 20px;
+                                                            height: 20px;
+                                                            border-radius: 50%;
+                                                            background-color: {{ $productClasses->color_code }};
+                                                            cursor: pointer;">
+                                                        </span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
                                         </div>
-                                    </div>
-                                
-                                    <div class="price">
-                                        <label for="">Giá:</label>
-                                        <span class="price"></span>
-                                    </div>
-                                    <!-- Trường ẩn để lưu id productClass -->
-                                    <input type="hidden" name="product_class_id" id="product_class_id_{{ $index }}" value="">
+                                    
+                                        <div class="size">
+                                            <label for="size_{{ $index }}">Ram :</label>
+                                            <div class="list-size">
+                                                @foreach ($item->productClasses as $productClasses)
+                                                    <label for="size_{{ $index }}_{{ $loop->index }}">
+                                                        <span class="size-circle">{{ $productClasses->size }}</span>
+                                                        <input type="radio" id="size_{{ $index }}_{{ $loop->index }}" name="size_{{ $index }}" value="{{ $productClasses->size }}" style="display:none;">
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="price">
+                                            <label for="">Giá:</label>
+                                            <span class="price"></span>
+                                        </div>
 
-                                    <div class="btn">
-                                        <a href="" class="btn-register1">Chi tiết</a>
-                                        <button type="submit" class="btn-register1">Mua ngay</button>
-                                    </div>
-                                </form>
-                            </div>
+                                        <div class="btn">
+                                            <a href="{{route('user.detail', ['id' => $item->id])}}" class="btn-register1">Chi tiết</a>
+                                            
+                                            <form action="{{ route('cart.add') }}" method="POST" id="form-{{ $item->id }}">
+                                                @csrf
+                                                <input type="hidden" name="product_id" value="{{ $item->id }}">
+                                                <input type="hidden" name="product_class_id" id="product_class_id_{{ $index }}" value="">
+                                                <button type="submit" class="btn-register1">Mua ngay</button>
+                                            </form>
+                                        </div>
+                                    </form>
+                                </div>
                             @endforeach
                         </div>
                         

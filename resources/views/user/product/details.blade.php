@@ -1,0 +1,215 @@
+@extends('layout.master')
+
+@section('title', 'Danh sách sản phẩm')
+
+@section('content')
+
+<section class="sec-detail">
+    <div class="container">
+        <h2 class="title">Chi tiết sản phẩm</h2>
+        <div class="content">
+            <div class="content-left">
+                <div class="left">
+                    @foreach ($products as $item)
+                        @foreach ($item->productImages as $productImage)
+                            <div class="productImage" data-index="{{ $loop->parent->index * count($item->productImages) + $loop->index }}">
+                                <img src="{{ asset('storage/' . $productImage->product_image) }}" alt="{{ $item->product_name }}">
+                            </div>
+                        @endforeach
+                    @endforeach
+                </div>
+                <div class="right productImage-slider">
+                    @foreach ($products as $item)
+                        @foreach ($item->productImages as $productImage)
+                            <div class="item-slider">
+                                <img src="{{ asset('storage/' . $productImage->product_image) }}" alt="{{ $item->product_name }}">
+                            </div>
+                        @endforeach
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="content-right">
+                <form action="{{ route('cart.add') }}" method="POST">
+                    @foreach ($products as $index => $item)
+                        <div class="name">
+                            <span class="detail_product">Tên sản phẩm:</span>
+                            <span>{{$item->product_name}}</span>
+                        </div>
+                        <div class="name">
+                            <span class="detail_product">Thương hiệu:</span>
+                            <span>{{$item->maker->maker_name}}</span>
+                        </div>
+                        <div class="name">
+                            <span class="detail_product">Phân loại:</span>
+                            <span>{{$item->category->category_name}}</span>
+                        </div>
+
+                        <div class="color">
+                            <label for="color_{{ $index }}">Màu sắc:</label>
+                            <div class="list-color">
+                                @foreach ($item->productClasses as $productClasses)
+                                    <label for="color_{{ $index }}_{{ $loop->index }}">
+                                        <input type="radio" id="color_{{ $index }}_{{ $loop->index }}" name="color_{{ $index }}" value="{{ $productClasses->color_code }}" style="display:none;">
+                                        <span class="color-circle" style="
+                                            display: inline-block;
+                                            width: 20px;
+                                            height: 20px;
+                                            border-radius: 50%;
+                                            background-color: {{ $productClasses->color_code }};
+                                            cursor: pointer;">
+                                        </span>
+                                    </label>
+                                @endforeach
+                            </div>
+                        </div>
+                    
+                        <div class="size">
+                            <label for="size_{{ $index }}">Ram:</label>
+                            <div class="list-size">
+                                @foreach ($item->productClasses as $productClasses)
+                                    <label for="size_{{ $index }}_{{ $loop->index }}">
+                                        <span class="size-circle">{{ $productClasses->size }}</span>
+                                        <input type="radio" id="size_{{ $index }}_{{ $loop->index }}" name="size_{{ $index }}" value="{{ $productClasses->size }}" style="display:none;">
+                                    </label>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <div class="price">
+                            <span class="detail_product">Giá:</span>
+                            <span class="price"></span>
+                        </div>
+
+                        <div class="btn">
+                            <form action="{{ route('cart.add') }}" method="POST" id="form-{{ $item->id }}">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $item->id }}">
+                                <input type="hidden" name="product_class_id" id="product_class_id_{{ $index }}" value="">
+                                <button type="submit" class="btn-register1">Mua ngay</button>
+                            </form>
+                        </div>
+                    @endforeach
+                </form>
+            </div>
+        </div>
+        <div class="des">
+            <h3>Mô tả sản phẩm</h3>
+
+            @foreach ($products as $item)
+                <p>{{$item->description}}</p>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<script>
+   $(document).ready(function() {
+    // Khởi tạo slider
+        var $slider = $('.productImage-slider').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: false,
+        });
+
+        var $thumbnails = $('.left .productImage');
+
+        // Khi slider đổi ảnh
+        $slider.on('afterChange', function(event, slick, currentSlide){
+            $thumbnails.removeClass('active'); // Xóa active cũ
+            $thumbnails.each(function(){
+                if ($(this).data('index') == currentSlide) {
+                    $(this).addClass('active'); // Thêm active mới
+                }
+            });
+        });
+
+        // Khi click vào ảnh nhỏ
+        $thumbnails.on('click', function() {
+            var index = $(this).data('index');
+            $slider.slick('slickGoTo', index); // Nhảy tới đúng slide
+        });
+
+        // Ban đầu set active cho ảnh đầu tiên
+        $thumbnails.first().addClass('active');
+    });
+
+</script>
+
+{{-- size - color  --}}
+<script>
+    $(document).ready(function() {
+         function updateProductInfo(form) {
+             var colorCode = form.find("input[name^='color_']:checked").val();
+             var size = form.find("input[name^='size_']:checked").val();
+             var productClassId = form.find("input[name='product_class_id']");
+             var priceElement = form.find(".price span.price");
+
+             $.ajax({
+                 url: "{{ route('getProductClassByColorAndSize') }}",
+                 type: "GET",
+                 data: {
+                     color_code: colorCode,
+                     size: size
+                 },
+                 success: function(response) {
+                     if (response.product_class_id) {
+                         productClassId.val(response.product_class_id);
+                     }
+                     if (response.price) {
+                         priceElement.text(response.price.toLocaleString() + " vnđ");
+                     } else {
+                         priceElement.text("");
+                     }
+                 },
+                 error: function() {
+                     alert("Lỗi khi truy vấn dữ liệu.");
+                 }
+             });
+         }
+
+         // --- Thêm đoạn này: Set mặc định khi load trang ---
+         $('form').each(function() {
+             var form = $(this);
+
+             // Chọn color đầu tiên
+             var firstColorInput = form.find('.list-color input[type="radio"]').first();
+             firstColorInput.prop('checked', true);
+             form.find('.color-circle').removeClass('active');
+             firstColorInput.siblings('.color-circle').addClass('active');
+
+             // Chọn size đầu tiên
+             var firstSizeInput = form.find('.list-size input[type="radio"]').first();
+             firstSizeInput.prop('checked', true);
+             form.find('.size-circle').removeClass('active');
+             firstSizeInput.siblings('.size-circle').addClass('active');
+
+             // Gọi ajax lấy thông tin sản phẩm
+             updateProductInfo(form);
+         });
+
+         // --- Phần sự kiện khi chọn màu ---
+         $('.list-color input[type="radio"]').change(function() {
+             var form = $(this).closest('form');
+
+             form.find('.color-circle').removeClass('active');
+             $(this).siblings('.color-circle').addClass('active');
+
+             updateProductInfo(form);
+         });
+
+         // --- Phần sự kiện khi chọn size ---
+         $('.list-size input[type="radio"]').change(function() {
+             var form = $(this).closest('form');
+
+             form.find('.size-circle').removeClass('active');
+             $(this).siblings('.size-circle').addClass('active');
+
+             updateProductInfo(form);
+         });
+     });
+
+
+</script>
+@endsection
