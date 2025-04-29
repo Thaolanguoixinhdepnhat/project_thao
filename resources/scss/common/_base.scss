@@ -51,6 +51,62 @@ a {
     }
 }
 
+.cart-number{
+    position: relative;
+    span{
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
+        background: red;
+        border-radius: 100%;
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-weight: 500;
+    }
+}
+
+ul.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+    margin-bottom: 10rem;
+    .page-item{
+        width: 4rem;
+        height: 4rem;
+        // background: blue;
+        // border-radius: 100%;
+        // overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &.active{
+            .page-link{
+                background: #007bff;
+            color: #fff;
+            }
+
+        }
+    }
+    .page-link{
+        width: 4rem;
+        height: 4rem;
+        border: 1px solid #007bff;
+        border-radius: 100%;
+        width: 100%;
+        color: #007bff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
 @media(max-width: 1080px){
     body {
         padding-top: 10rem;

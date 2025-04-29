@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductClass;
 use App\Models\Category;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AppController extends Controller
@@ -28,6 +30,7 @@ class AppController extends Controller
         // Lấy 10 sản phẩm mới nhất
         $news = Product::orderBy('id', 'desc')->take(10)->get();
 
+        $count_cart = Cart::where('customer_id', Auth::user()->id)->get();
         // Lấy tất cả danh mục sản phẩm
         $categories = Category::all();
 
@@ -46,12 +49,14 @@ class AppController extends Controller
             $product->productClasses = $product->productClasses->unique('size');
         }
         // Trả về view với dữ liệu
-        return view('user.index', compact('tv', 'dt', 'news', 'categories'));
+        return view('user.index', compact('tv', 'dt', 'news', 'categories','count_cart'));
     }
 
 
-    public function home(){
-        return view('user.home.index');
+    public function home()
+    {
+        $count_cart = Cart::where('customer_id', Auth::user()->id)->get();
+        return view('user.home.index', compact('count_cart'));
     }
 
     public function getProductClassByColorAndSize(Request $request)

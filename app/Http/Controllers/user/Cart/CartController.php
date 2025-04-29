@@ -56,8 +56,9 @@ class CartController extends Controller
 
     public function viewCart()
     {
+        
         $customer_id = auth()->id() ?? 9;
-
+        $count_cart = Cart::where('customer_id', Auth::user()->id)->get();
         $cart = Cart::with([
                     'product',
                     'productClass',
@@ -73,7 +74,7 @@ class CartController extends Controller
             return ($item->productClass->price ?? 0) * $item->quantity;
         });
 
-        return view('user.cart.index', compact('cart', 'thanhTien'));
+        return view('user.cart.index', compact('cart', 'thanhTien','count_cart'));
     }
 
     public function destroy($id)
@@ -94,7 +95,7 @@ class CartController extends Controller
     
         // Tìm sản phẩm trong giỏ hàng
         $cart = Cart::find($request->cart_item_id);
-    
+
         // Nếu không tìm thấy sản phẩm trong giỏ hàng
         if (!$cart) {
             return redirect()->route('cart_index')->with('error', 'Item not found!');
@@ -110,7 +111,7 @@ class CartController extends Controller
         $cart->save();
     
         // Chuyển hướng với thông báo thành công
-        return redirect()->route('cart_index')->with('success', 'Cart updated successfully!');
+        return redirect()->back();
     }
     
 }

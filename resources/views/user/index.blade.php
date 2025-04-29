@@ -212,8 +212,8 @@
                                                     <input type="radio" id="color_{{ $index }}_{{ $loop->index }}" name="color_{{ $index }}" value="{{ $productClasses->color_code }}" style="display:none;">
                                                     <span class="color-circle" style="
                                                         display: inline-block;
-                                                        width: 20px;
-                                                        height: 20px;
+                                                        width: 2rem;
+                                                        height: 2rem;
                                                         border-radius: 50%;
                                                         background-color: {{ $productClasses->color_code }};
                                                         cursor: pointer;">
@@ -293,8 +293,8 @@
                                                         <input type="radio" id="color_{{ $index }}_{{ $loop->index }}" name="color_{{ $index }}" value="{{ $productClasses->color_code }}" style="display:none;">
                                                         <span class="color-circle" style="
                                                             display: inline-block;
-                                                            width: 20px;
-                                                            height: 20px;
+                                                            width: 2rem;
+                                                            height: 2rem;
                                                             border-radius: 50%;
                                                             background-color: {{ $productClasses->color_code }};
                                                             cursor: pointer;">
@@ -373,8 +373,8 @@
                                                         <input type="radio" id="color_{{ $index }}_{{ $loop->index }}" name="color_{{ $index }}" value="{{ $productClasses->color_code }}" style="display:none;">
                                                         <span class="color-circle" style="
                                                             display: inline-block;
-                                                            width: 20px;
-                                                            height: 20px;
+                                                            width: 2rem;
+                                                            height: 2rem;
                                                             border-radius: 50%;
                                                             background-color: {{ $productClasses->color_code }};
                                                             cursor: pointer;">
@@ -513,7 +513,22 @@
                 slidesToScroll: 1,
                 arrows: false,
                 dots: false,
-
+                responsive: [
+                    {
+                        breakpoint: 1025,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 856,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
             });
 
             $('.tab__item-title').on('click', function() {

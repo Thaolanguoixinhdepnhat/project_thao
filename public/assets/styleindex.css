@@ -495,3 +495,9 @@ li.business {
       height: 3rem;
     }
 }
+
+@media (max-width: 500px) {
+  .header.scrolled{
+    height: 50px;
+  }
+}
