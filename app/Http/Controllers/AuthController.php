@@ -86,7 +86,13 @@ class AuthController extends Controller
         }
     }
 
-   
+    public function logout(Request $request)
+    {
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('index_login')->with('success', 'Bạn đã đăng xuất thành công.');
+    }
 
 
     // Xử lý đổi mật khẩu

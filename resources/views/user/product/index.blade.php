@@ -4,6 +4,40 @@
 
 @section('content')
 
+<section class="sec-option">
+    <div class="container">
+        <div class="content">
+            <h2>Bộ lọc</h2>
+            <div class="content-option">
+                <form method="GET" action="{{ route('user.products.index') }}" id="productFilterForm" class="content-option">
+                    <div class="item">
+                        <label for="">Danh mục:</label>
+                        <select name="category_id">
+                            <option value="">Tất cả</option>
+                            @foreach ($categories as $item)
+                                <option value="{{ $item->id }}" {{ request('category_id') == $item->id ? 'selected' : '' }}>
+                                    {{ $item->category_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="item">
+                        <label for="">Sắp xếp:</label>
+                        <select name="sort">
+                            <option value="">Tất cả</option>
+                            <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Giá tăng dần</option>
+                            <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Giá giảm dần</option>
+                            <option value="name_asc" {{ request('sort') == 'name_asc' ? 'selected' : '' }}>Từ A -> Z</option>
+                            <option value="name_desc" {{ request('sort') == 'name_desc' ? 'selected' : '' }}>Từ Z -> A</option>
+                        </select>
+                    </div>
+                  
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="sec-tv sec-two product">
     <div class="container">
@@ -84,8 +118,99 @@
     </div>
 </section>
 
+{{-- phân trang  --}}
 <div class="pagination">
     {{ $products->links() }}
 </div>
+
+{{-- size-color  --}}
+<script>
+    $(document).ready(function() {
+         function updateProductInfo(form) {
+             var colorCode = form.find("input[name^='color_']:checked").val();
+             var size = form.find("input[name^='size_']:checked").val();
+             var productClassId = form.find("input[name='product_class_id']");
+             var priceElement = form.find(".price span.price");
+
+             $.ajax({
+                 url: "{{ route('getProductClassByColorAndSize') }}",
+                 type: "GET",
+                 data: {
+                     color_code: colorCode,
+                     size: size
+                 },
+                 success: function(response) {
+                     if (response.product_class_id) {
+                         productClassId.val(response.product_class_id);
+                     }
+                     if (response.price) {
+                         priceElement.text(response.price.toLocaleString() + " vnđ");
+                     } else {
+                         priceElement.text("");
+                     }
+                 },
+                 error: function() {
+                     alert("Lỗi khi truy vấn dữ liệu.");
+                 }
+             });
+         }
+
+         // --- Thêm đoạn này: Set mặc định khi load trang ---
+         $('form').each(function() {
+             var form = $(this);
+
+             // Chọn color đầu tiên
+             var firstColorInput = form.find('.list-color input[type="radio"]').first();
+             firstColorInput.prop('checked', true);
+             form.find('.color-circle').removeClass('active');
+             firstColorInput.siblings('.color-circle').addClass('active');
+
+             // Chọn size đầu tiên
+             var firstSizeInput = form.find('.list-size input[type="radio"]').first();
+             firstSizeInput.prop('checked', true);
+             form.find('.size-circle').removeClass('active');
+             firstSizeInput.siblings('.size-circle').addClass('active');
+
+             // Gọi ajax lấy thông tin sản phẩm
+             updateProductInfo(form);
+         });
+
+         // --- Phần sự kiện khi chọn màu ---
+         $('.list-color input[type="radio"]').change(function() {
+             var form = $(this).closest('form');
+
+             form.find('.color-circle').removeClass('active');
+             $(this).siblings('.color-circle').addClass('active');
+
+             updateProductInfo(form);
+         });
+
+         // --- Phần sự kiện khi chọn size ---
+         $('.list-size input[type="radio"]').change(function() {
+             var form = $(this).closest('form');
+
+             form.find('.size-circle').removeClass('active');
+             $(this).siblings('.size-circle').addClass('active');
+
+             updateProductInfo(form);
+         });
+     });
+
+
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('#productFilterForm');
+        const selects = form.querySelectorAll('select');
+
+        selects.forEach(select => {
+            select.addEventListener('change', () => {
+                form.submit();
+            });
+        });
+    });
+</script>
+
 
 @endsection

@@ -59,6 +59,20 @@ class CartController extends Controller
         
         $customer_id = auth()->id() ?? 9;
         $count_cart = Cart::where('customer_id', auth()->id())->get();
+        $tv = Product::where('category_id', 1)
+                        ->with('productClasses')
+                        ->take(5)
+                        ->get();
+
+        // Lấy sản phẩm với category_id = 2
+        $dt = Product::where('category_id', 2)
+                ->with('productClasses')
+                ->take(5)
+                ->get();
+
+        // Lấy 10 sản phẩm mới nhất
+        $news = Product::orderBy('id', 'desc')->take(10)->get();
+
         $cart = Cart::with([
                     'product',
                     'productClass',
@@ -74,7 +88,7 @@ class CartController extends Controller
             return ($item->productClass->price ?? 0) * $item->quantity;
         });
 
-        return view('user.cart.index', compact('cart', 'thanhTien','count_cart'));
+        return view('user.cart.index', compact('cart', 'thanhTien','count_cart','dt','tv','news'));
     }
 
     public function destroy($id)

@@ -6,14 +6,20 @@
     <title>@yield('title', 'Trang Chủ')</title>
     <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    @vite(['resources/js/app.js'])
+
 </head>
+@use('Illuminate\Support\Facades\Auth')
+
 <body>
     <header class="header">
         <div class="container">
             <div class="content">
                 <div class="sec">
                 <div class="header_title">
-                    <span>Trang bán hàng</span>
+                    <span>Quản trị</span>
                 </div>
                 <div class="btn">
                     <form method="POST" action="{{ route('admin.logout') }}">
@@ -69,6 +75,7 @@
                             </li>
                             
                         </ul> --}}
+
                         <ul class="custom_list">
                             <li class="custom_item">Trang chủ</li>
                         
@@ -80,7 +87,11 @@
                                 </li>
                             @endif
                         
-                            @if(in_array($roleId, [2, 3]))
+                            {{-- @if(in_array($roleId, [2, 3])) --}}
+                                <li class="custom_item">
+                                    <a href="{{ route('admin.order.index') }}">Đơn hàng</a>
+                                </li> 
+
                                 <li class="custom_item">
                                     <a href="{{ route('customer.index') }}">Thông tin khách hàng</a>
                                 </li>
@@ -88,13 +99,13 @@
                                     <a href="{{ route('maker.index') }}">Thông tin nhà sản xuất</a>
                                 </li>
                                 <li class="custom_item">
-                                    <a href="{{ route('category.index') }}">Loại sản phẩm</a>
+                                    <a href="{{ route('category.index') }}">Danh mục</a>
                                 </li>
                                 <li class="custom_item">
                                     <a href="{{ route('product.index') }}">Sản phẩm</a>
                                 </li> 
-                            @elseif($roleId == 1)
-                                <li class="custom_item">
+                            {{-- @elseif($roleId == 1) --}}
+                                {{-- <li class="custom_item">
                                     <a href="{{ route('customer.index') }}">Xem thông tin khách hàng</a>
                                 </li>
                                 <li class="custom_item">
@@ -107,7 +118,10 @@
                                     <a href="{{ route('product.index') }}">Xem sản phẩm</a>
                                 </li>
                             @endif
-                        
+                         --}}
+                         <li class="custom_item">
+                            <a href="{{ route('chart') }}">Biểu đồ</a>
+                        </li> 
                             <li class="custom_item">
                                 <a href="{{ route('admin.change_password') }}">Đổi mật khẩu</a>
                             </li>
@@ -131,6 +145,18 @@
             </div>
         </section>
     </main>
+    @if (session('error'))
+        <script>
+            alert("{{ session('error') }}");
+        </script>
+        </div>
+    @endif
+
+    @if (session('success'))
+        <script>
+            alert("{{ session('success') }}");
+        </script>
+    @endif
     <!-- <footer>
         <p>&copy; 2025 - Tất cả quyền được bảo lưu.</p>
     </footer> -->

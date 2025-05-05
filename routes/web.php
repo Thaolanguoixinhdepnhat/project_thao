@@ -15,6 +15,7 @@ use App\Http\Controllers\User\Order\OrderController;
 use App\Http\Controllers\User\AppController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\OrderController as AdminOrderController;
 
 use App\Http\Controllers\StatusController;
 
@@ -43,6 +44,7 @@ Route::post('/store-customer', [AuthController::class, 'store'])->name('store');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::get('/login', [AuthController::class, 'index_login'])->name('index_login');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/user/logout', [AuthController::class, 'logout'])->name('user.logout');
 
 
 Route::get('/customers', [CustomerController::class, 'index'])->name('customer.index');
@@ -80,6 +82,11 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product/create', [ProductController::class, 'store'])->name('product.store');
 
+    /* order */
+    Route::get('/order', [AdminOrderController::class, 'index'])->name('admin.order.index');
+    Route::get('/order/{id}', [AdminOrderController::class, 'detail'])->name('admin.order.detail');
+    Route::post('/order/ship', [AdminOrderController::class, 'updateOrderShipping'])->name('orders.ship');
+    Route::get('/chart-data', [AdminOrderController::class, 'revenueByMonth'])->name('chart');
 
 
 });
@@ -129,7 +136,7 @@ Route::prefix('user')->group(function () {
     Route::get('/cart', [CartController::class, 'viewCart'])->name('cart_index');
     Route::delete('/cart/delete/{id}', [CartController::class, 'destroy'])->name('cart.delete');
     Route::post('/update-cart', [CartController::class, 'updateCart'])->name('update.cart');
-    ;
+   
    
 });
 
@@ -141,10 +148,15 @@ Route::prefix('user')->group(function () {
 // thử tìm kiếm 
 Route::get('/products', [UserProductController::class, 'index'])->name('user.products.index');
 Route::get('/details/{id}', [UserProductController::class, 'detail'])->name('user.detail');
+Route::get('/search', [AppController::class, 'search'])->name('search');
 
 
 Route::get('/get-product-class', [AppController::class, 'getProductClassByColorAndSize'])->name('getProductClassByColorAndSize');
 Route::get('/home', [AppController::class, 'home'])->name('home_user');
+Route::get('/order', [AppController::class, 'order'])->name('user.order');
+Route::get('/cartttt', [AppController::class, 'cart'])->name('user.cart');
+
+Route::post('/user/update', [AppController::class, 'update'])->name('user.update');
 
 
 

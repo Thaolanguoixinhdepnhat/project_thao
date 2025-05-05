@@ -108,8 +108,8 @@
                                     });
                                 </script>                                --}}
                                 <td>{{ $maker->maker_name }}</td>
-                                <td>{{ $maker->tel }}</td>
-                                <td>{{ $maker->email }}</td>
+                                <td align="right">{{ $maker->tel }}</td>
+                                <td align="left"> {{ $maker->email }}</td>
                                 <td>{{ $maker->note }}</td>
                                 {{-- <td>
                                     <form action="{{ route('maker.destroy', $maker->id) }}" method="POST" style="display: flex; justify-content: center;">

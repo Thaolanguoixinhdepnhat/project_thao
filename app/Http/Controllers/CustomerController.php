@@ -42,8 +42,6 @@ class CustomerController extends Controller
         return view('customer.edit', compact('customer'));
     }
     
-    
-
     public function update(Request $request, $id)
     {
         $currentUser = Auth::guard('admin')->user();
@@ -89,33 +87,23 @@ class CustomerController extends Controller
     
     
     public function destroy($id)
-{
-    $currentUser = Auth::guard('admin')->user();
+    {
+        $currentUser = Auth::guard('admin')->user();
 
-    // // Kiểm tra nếu người dùng không phải là Quản trị viên (role_id = 3), không cho xóa
-    // if ($currentUser->role_id != 3) {
-    //     return back()->withErrors(['error' => 'Bạn không có quyền xóa khách hàng.']);
-    // }
+        // // Kiểm tra nếu người dùng không phải là Quản trị viên (role_id = 3), không cho xóa
+        // if ($currentUser->role_id != 3) {
+        //     return back()->withErrors(['error' => 'Bạn không có quyền xóa khách hàng.']);
+        // }
 
-    // Lấy thông tin khách hàng theo ID
-    $customer = Customer::findOrFail($id);
-    
-    // Xóa mềm khách hàng (đánh dấu là đã xóa, nhưng không xóa khỏi DB)
-    $customer->delete();
-    
-    // Chuyển hướng về trang danh sách khách hàng với thông báo thành công
-    return redirect()->route('customer.index')->with('success', 'Khách hàng đã được xóa thành công.');
-}
-
-    
-    
-
-   
-    
-    
-    
-
-
+        // Lấy thông tin khách hàng theo ID
+        $customer = Customer::findOrFail($id);
+        
+        // Xóa mềm khách hàng (đánh dấu là đã xóa, nhưng không xóa khỏi DB)
+        $customer->delete();
+        
+        // Chuyển hướng về trang danh sách khách hàng với thông báo thành công
+        return redirect()->route('customer.index')->with('success', 'Khách hàng đã được xóa thành công.');
+    }
 
 }
 

@@ -15,7 +15,6 @@
     }
 }
 
-
 .sec-two{
     margin: 10rem 0;
     .content-body{
@@ -329,5 +328,42 @@
 }
 
 .sec-two .container .content .content-head .text_block h2{
-    font-size: 3rem;
+    font-size: 4rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+
+.sec-option{
+    .container{
+        max-width: 144rem;
+        .content{
+            display: flex;
+            justify-content: space-between;
+            h2{
+                font-size: 3rem;
+                font-weight: 600;
+            }
+            .content-option{
+                display: flex;
+                gap: 3rem;
+                align-items: center;
+                .item{
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    select{
+                        border: 1px solid #ccc;
+                        border-radius: .4rem;
+                        padding: .5rem 2rem;
+                        appearance: auto;
+                        option{
+                            padding: .5rem;
+                            border-bottom: 1px solid;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

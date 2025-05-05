@@ -19,14 +19,25 @@ class Order extends Model
     protected $dates = ['deleted_at']; 
 
    // Trong model Order.php
-public function items()
-{
-    return $this->hasMany(OrderItem::class, 'order_id');
-}
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class, 'order_id');
+    }
 
     public function productClass()
     {
         return $this->belongsTo(ProductClass::class);
     }
+
+    public function customers()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class, 'status_id');
+    }
+
     public $timestamps = false;
 }

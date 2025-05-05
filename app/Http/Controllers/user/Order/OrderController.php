@@ -19,6 +19,21 @@ class OrderController extends Controller
     public function index()
     {
         $customer_id = auth()->id();
+        $count_cart = Cart::where('customer_id', auth()->id())->get();
+        $tv = Product::where('category_id', 1)
+                        ->with('productClasses')
+                        ->take(5)
+                        ->get();
+
+        // Lấy sản phẩm với category_id = 2
+        $dt = Product::where('category_id', 2)
+                ->with('productClasses')
+                ->take(5)
+                ->get();
+
+        // Lấy 10 sản phẩm mới nhất
+        $news = Product::orderBy('id', 'desc')->take(10)->get();
+
         $cart = Cart::with([
             'product',
             'productClass',
@@ -30,7 +45,7 @@ class OrderController extends Controller
         ->orderBy('created_at', 'desc')  
         ->get();
 
-        return view('user.order.index', compact('cart'));
+        return view('user.order.index', compact('cart','tv','dt','news','count_cart'));
     }
 
     public function checkout(Request $request)
@@ -75,6 +90,7 @@ class OrderController extends Controller
 
             if ($product && $productClass) {
                 $order->items()->create([
+                    'product_class_id' => $productClass->id,
                     'product_name' => $product->product_name,
                     'customer_name' => $request->customer_name,
                     'customer_address' => $request->customer_address,
@@ -82,7 +98,7 @@ class OrderController extends Controller
                     'customer_email' => $request->customer_email,
                     'quantity'     => $cartItem->quantity,
                     'cost'         => $productClass->cost,
-                    'price'        => $cartItem->quantity,
+                    'price'        => $productClass->price,
                     'status_id'    => 1,
                     'note'         => '',
                     'ship_date'    => null,

@@ -104,7 +104,7 @@
                                             alt="{{ $firstProduct->product_name }}">
                                         <div class="text-image">
                                             <span class="title">{{ $firstProduct->product_name }}</span>
-                                            <a href="" class="btn-register1">Xem thêm</a>
+                                            <a href="{{route('user.products.index')}}" class="btn-register1">Xem thêm</a>
                                         </div>
                                     </div>
                                 </div>
@@ -123,7 +123,7 @@
                                                     <span>{{ $product->product_name }}</span>
                                                 </div>
                                             </div>
-                                            <a href="" class="btn-register1">Xem thêm</a>
+                                            <a href="{{route('user.products.index')}}" class="btn-register1">Xem thêm</a>
                                         </div>
                                     @endif
                                 @endforeach
@@ -146,7 +146,7 @@
                                             alt="{{ $firstProduct->product_name }}">
                                         <div class="text-image">
                                             <span class="title">{{ $firstProduct->product_name }}</span>
-                                            <a href="" class="btn-register1">Xem thêm</a>
+                                            <a href="{{route('user.products.index')}}" class="btn-register1">Xem thêm</a>
                                         </div>
                                     </div>
                                 </div>
@@ -166,7 +166,7 @@
                                                 </div>
                                             </div>
 
-                                            <a href="" class="btn-register1">Xem thêm</a>
+                                            <a href="{{route('user.products.index')}}" class="btn-register1">Xem thêm</a>
                                         </div>
                                     @endif
                                 @endforeach
@@ -177,8 +177,6 @@
             </div>
         </div>
     </section>
-
-
 
     <section class="sec-two">
         <div class="container">
