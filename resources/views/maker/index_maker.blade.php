@@ -27,22 +27,29 @@
                         </button>
                     </div>
                     
+                    @if (auth('admin')->check())
+                    @php
+                        $adminRoleId = auth('admin')->user()->role_id;
+                    @endphp
+                
                     <script>
                         document.addEventListener("DOMContentLoaded", function () {
-                            const roleId = @json(Auth::guard('admin')->user()->role_id); // Truyền role_id từ PHP sang JS
-                    
+                            const roleId = @json($adminRoleId);
+                
                             const registerLink = document.querySelector(".register-maker-link");
-                            
+                
                             if (registerLink) {
                                 registerLink.addEventListener("click", function (event) {
                                     if (roleId === 1) { // 1 = Nhân viên
-                                        alert("Bạn không có quyền truy cập chức năng đăng ký nhà sản xuất!");
+                                        alert("Bạn không có quyền truy cập chức năng đăng ký nhà sản xuất !");
                                         event.preventDefault();
                                     }
                                 });
                             }
                         });
                     </script>
+                @endif
+                
                     
                 </form>
                             {{-- thông báo @if(session('success'))
@@ -118,17 +125,19 @@
                                         <button type="submit" class="deleted" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
                                     </form>
                                 </td> --}}
-                                            @if(Auth::guard('admin')->user()->role_id == 3)
-                <td>
-                    <form action="{{ route('maker.destroy', $maker->id) }}" method="POST" style="display: flex; justify-content: center;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="deleted" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
-                    </form>
-                </td>
-            @else
-                <td></td> 
-            @endif
+                                @if (auth('admin')->user() && auth('admin')->user()->role_id == 3)
+                                <td>
+                                    <form action="{{ route('maker.destroy', $maker->id) }}"
+                                        method="POST" style="display: flex; justify-content: center;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="deleted"
+                                            onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
+                                    </form>
+                                </td>
+                            @else
+                                <td></td>
+                            @endif
 
                             </tr>
                             @empty

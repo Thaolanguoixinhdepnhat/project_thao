@@ -11,7 +11,7 @@
     @vite(['resources/js/app.js'])
 
 </head>
-@use('Illuminate\Support\Facades\Auth')
+  @use('Illuminate\Support\Facades\Auth')  
 
 <body>
     <header class="header">
@@ -34,6 +34,7 @@
             </div>
         </div>
     </header>
+
     <main class="main">
         <section class="sec-head">
             <div class="container">
@@ -145,6 +146,7 @@
             </div>
         </section>
     </main>
+
     @if (session('error'))
         <script>
             alert("{{ session('error') }}");

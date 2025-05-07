@@ -315,19 +315,72 @@
         }
     }
 }
+.sec_one1 {
+    width: 100%;
+    max-width: 122rem;
+    margin: 0 auto;
+    position: relative;
+    top: -2rem;
+    .container {
+      .content {
+        .layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+  
+          .cot1, .cot2, .cot3 {
+            width: 100%;
+            flex: 1;
+            border: 2px solid #a3d5f2;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+  
+            &:hover {
+              box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            }
+  
+            img {
+                width: 100%;
+                height: 20rem;     
+                object-fit: cover;  
+                transition: all 0.4s ease;
+              
+                &:hover {
+                  opacity: 0.8;
+                  transform: scale(1.05);
+                }
+              }
+          }
+        }
+      }
+    }
+  }
+
 .sec-product {
-    margin: 10rem 0;
+    margin: 5rem 0;
     .container {
         .content {
             .content-head {
                 .text_block {
-                    h2 {
-                        text-align: center;
+                .section-title {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                         font-size: 4rem;
                         color: #000;
                         font-weight: 700;
                         line-height: 1.47;
                         padding: 1rem 0;
+                        position: relative;
+                        &::before,
+                        &::after {
+                            content: "";
+                            flex: 1;
+                            border-bottom: 1px solid #ccc;
+                            margin: 0 2rem;
+                        }
                     }
                 }
 
@@ -360,7 +413,7 @@
                                     content: "";
                                     position: absolute;
                                     bottom: 0;
-                                    top: 2.1rem;
+                                    top: 3.5rem;
                                     left: 50%;
                                     height: 0.2rem;
                                     background-color: #000;
@@ -450,7 +503,7 @@
                                 flex-direction: column;
                                 align-items: center;
                                 transition: all 0.3s ease-in-out;
-                                max-width: 22rem;     
+                                max-width: 30rem;     
                                  white-space: normal;
                                 word-break: break-word;
 
@@ -474,7 +527,7 @@
                                 transform: translate(-50%, 2rem);
                                 color: white;
                                 background-color: black;
-                                padding: 1rem 2rem;
+                                padding: 1rem 1rem;
                                 border-radius: 3rem;
                                 font-size: 1.6rem;
                                 font-weight: 400;
@@ -498,6 +551,7 @@
 
                                 .btn-register1 {
                                     opacity: 1;
+                                    top: 70%;
                                     visibility: visible;
                                     transform: translate(-50%, 0);
                                 }
@@ -602,6 +656,7 @@
                             .txt-image {
                                 position: absolute;
                                 left: 50%;
+                                top: 70%;
                                 transform: translate(-50%, -50%);
                                 color: black;
                                 padding: 1rem 1.5rem;
@@ -925,6 +980,48 @@
             }
         }
     }
+    .sec_one1 {
+        width: 100%;
+        max-width: 122rem;
+        margin: 0 auto;
+        position: relative;
+        top: -9rem;
+        .container {
+          .content {
+            .layout {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+      
+              .cot1, .cot2, .cot3 {
+                width: 100%;
+                flex: 1;
+                border: 2px solid #a3d5f2;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                transition: box-shadow 0.3s;
+      
+                &:hover {
+                  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+                }
+      
+                img {
+                    width: 100%;
+                    height: auto;     
+                    object-fit: cover;  
+                    transition: all 0.4s ease;
+                  
+                    &:hover {
+                      opacity: 0.8;
+                      transform: scale(1.05);
+                    }
+                  }
+              }
+            }
+          }
+        }
+      }
     .sec-product{
         transform: translateY(-10rem);
         .container{
@@ -1212,7 +1309,7 @@
             }
         }
     }
-         
+        
  }
 
  @media (max-width: 768px) {
@@ -1552,7 +1649,48 @@
             }
         }
     }
-
+    .sec_one1 {
+        width: 100%;
+        max-width: 122rem;
+        margin: 0 auto;
+        position: relative;
+        top: -9rem;
+        .container {
+          .content {
+            .layout {
+                display: flex ;
+                 flex-direction: column;
+                gap: 2rem;
+      
+              .cot1, .cot2, .cot3 {
+                width: 100%;
+                flex: 1;
+                border: 2px solid #a3d5f2;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                transition: box-shadow 0.3s;
+      
+                &:hover {
+                  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+                }
+      
+                img {
+                    width: 100%;
+                    height: auto;     
+                    object-fit: cover;  
+                    transition: all 0.4s ease;
+                  
+                    &:hover {
+                      opacity: 0.8;
+                      transform: scale(1.05);
+                    }
+                  }
+              }
+            }
+          }
+        }
+      }
     .sec-product{
         transform: translateY(-10rem);
         .container{
@@ -2175,6 +2313,7 @@
             }
         }
     }
+   
 
     .sec-product{
         transform: translateY(-10rem);

@@ -93,20 +93,19 @@
                                         <td>{{ $customer->email }}</td>
                                         <td>{{ $customer->address }}</td>
                                         <td align="right">{{ $customer->phone }}</td>
-
-                                        @if (Auth::guard('admin')->user()->role_id == 3)
-                                            <td>
-                                                <form action="{{ route('customer.destroy', $customer->id) }}"
-                                                    method="POST" style="display: flex; justify-content: center;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="deleted"
-                                                        onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
-                                                </form>
-                                            </td>
-                                        @else
-                                            <td></td>
-                                        @endif
+                                        @if (auth('admin')->user() && auth('admin')->user()->role_id == 3)
+                                        <td>
+                                            <form action="{{ route('customer.destroy', $customer->id) }}"
+                                                method="POST" style="display: flex; justify-content: center;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="deleted"
+                                                    onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
+                                            </form>
+                                        </td>
+                                    @else
+                                        <td></td>
+                                    @endif
                                     </tr>
                                 @empty
                                     <tr>

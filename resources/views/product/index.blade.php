@@ -47,22 +47,29 @@
                                 Đăng ký nhà sản xuất
                             </a>
                         </button>
+                        @if (auth('admin')->check())
+                        @php
+                            $adminRoleId = auth('admin')->user()->role_id;
+                        @endphp
+                    
                         <script>
                             document.addEventListener("DOMContentLoaded", function () {
-                                const roleId = @json(Auth::guard('admin')->user()->role_id); 
-                        
+                                const roleId = @json($adminRoleId);
+                    
                                 const registerLink = document.querySelector(".register-maker-link");
-                                
+                    
                                 if (registerLink) {
                                     registerLink.addEventListener("click", function (event) {
                                         if (roleId === 1) { // 1 = Nhân viên
-                                            alert("Bạn không có quyền truy cập chức năng đăng ký sản phẩm!");
+                                            alert("Bạn không có quyền truy cập chức năng đăng ký loại sản phẩm!");
                                             event.preventDefault();
                                         }
                                     });
                                 }
                             });
                         </script>
+                    @endif
+                    
                         
                         
                     </div>
@@ -99,9 +106,6 @@
                                 <th>Mã sản phẩm</th>
                                 <th>Tên sản phẩm</th>
                                 <th>Ghi chú</th>
-                                {{-- <th>Mã màu</th>
-                                <th>Màu</th>
-                                <th>Kích cỡ</th> --}}
                                 <th>Hình ảnh sản phẩm</th>
                                 <th style="width:10px"></th>
                             </tr>
@@ -135,24 +139,7 @@
                                 <!-- Ghi chú -->
                                 <td>{{ $product->note }}</td>
                         
-                                {{-- <!-- Mã màu -->
-                                 <td>{{ $product->productClasses->first()->color_code ?? 'Không có dữ liệu' }}</td>
-                        
-                                <!-- Màu -->
-                                <td>{{ $product->productClasses->first()->color ?? 'Không có dữ liệu' }}</td>
-                        
-                                <!-- Kích cỡ -->
-                                <td>{{ $product->productClasses->first()->size ?? 'Không có dữ liệu' }}</td>
-                                 --}}
-                                {{-- <td>
-                                    @if($product->productImages->isNotEmpty())
-                                        @foreach($product->productImages as $image)
-                                            <img src="{{ asset('storage/' . $image->product_image) }}" width="50" height="50" style="margin-right: 5px;">
-                                        @endforeach
-                                    @else
-                                        Không có ảnh
-                                    @endif
-                                </td> --}}
+                           
                               
                                     <td>
                                         @if($product->product_image)
@@ -170,16 +157,18 @@
                                         <button type="submit" class="deleted" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
                                     </form>
                                 </td> --}}
-                                @if(Auth::guard('admin')->user()->role_id == 3)
+                                @if (auth('admin')->user() && auth('admin')->user()->role_id == 3)
                                 <td>
-                                    <form action="{{ route('product.destroy', $product->id) }}" method="POST" style="display: flex; justify-content: center;">
+                                    <form action="{{ route('maker.destroy', $maker->id) }}"
+                                        method="POST" style="display: flex; justify-content: center;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="deleted" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
+                                        <button type="submit" class="deleted"
+                                            onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
                                     </form>
                                 </td>
                             @else
-                                <td></td> 
+                                <td></td>
                             @endif
                             </tr>
                             @empty

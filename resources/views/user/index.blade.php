@@ -67,13 +67,32 @@
             </div>
         </div>
     </section>
+    <section class="sec_one1">
+        <div class="container">
+            <div class="content">
+                <div class="layout">
+                    <div class="cot1">
+                        <img src="{{ asset('storage/product_images/banner-06.jpg') }}" alt="Banner" />
+                    </div>
+                   
+                    <div class="cot2">
+                        <img src="{{ asset('storage/product_images/banner_group_1.jpg') }}" alt="Banner" />
+                    </div>
+                    <div class="cot3">
+                        <img src="{{ asset('storage/product_images/banner_group_3.jpg') }}" alt="Banner" />
+                    </div>
+                 
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="sec-product">
         <div class="container">
             <div class="content">
                 <div class="content-head">
                     <div class="text_block">
-                        <h2>Sản Phẩm Nổi Bật</h2>
+                        <h2 class="section-title">Sản Phẩm Nổi Bật</h2>
                     </div>
                     <div class="content-list__common">
                         <ul class="list">
@@ -183,8 +202,8 @@
             <div class="content">
                 <div class="content-head">
                     <div class="text_block">
-                        <h2>Gợi ý dành cho bạn</h2>
-
+                        <h2 class="section-title">Gợi ý dành cho bạn</h2>
+                        <span class="subtitle">Dành riêng cho bạn những sản phẩm phù hợp nhất</span>
                         <div class="content-body wrap-slider">
                             @foreach ($news as $index => $item)
                             <div class="item">
@@ -258,13 +277,22 @@
         </div>
 
     </section>
-
+    <section class="sec-two1">
+        <div class="container">
+            <div class="content">
+                <div class="main">
+                    <img src="{{ asset('storage/product_images/banner4.jpg') }}" alt="Banner" />
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="sec-dt sec-two">
         <div class="container">
             <div class="content">
                 <div class="content-head">
                     <div class="text_block">
-                        <h2>Điện thoại mới nhất</h2>
+                        <h2 class="section-title">Điện thoại </h2>
+                        <span class="subtitle">Khám phá những siêu phẩm công nghệ vừa ra mắt</span>
 
                         <div class="content-body wrap-slider">
                             @foreach ($dt as $index => $item)
@@ -344,9 +372,59 @@
             <div class="content">
                 <div class="content-head">
                     <div class="text_block">
-                        <h2>Tivi mới nhất</h2>
+                        <h2 class="section-title">PC </h2>
+                    <div class="two-column-layout">
+                    <div class="left-column">
+                        <img src="{{ asset('storage/product_images/build-pc-gigabyte-3.jpg') }}" alt="Banner" />
+                    </div>
+                    <div class="right-column">
+                        @foreach ($tv as $index => $item)
+                            <div class="item">
+                                <form class="formAddToCart" action="{{ route('cart.add') }}" method="POST" id="form-{{ $item->id }}"> 
+                                    @csrf
+                                    <div class="img">
+                                        <img class="image__main responsive-img image--loaded"
+                                            src="{{ asset('storage/' . $item->product_image) }}"
+                                            alt="{{ $item->product_name }}">
+                                    </div>
+                                
+                                    <span class="badge-icon_red">New</span>
+                                    
+                                    <div class="txt-name">
+                                        <span>{{ $item->product_name }}</span>
+                                    </div>
+                                
+                                    <div class="price">
+                                        <label for="">Giá:</label>
+                                        <span class="price"></span>
+                                    </div>
 
-                        <div class="content-body wrap-slider">
+                                    <div class="btn">
+                                        <a href="{{route('user.detail', ['id' => $item->id])}}" class="btn-register1">Chi tiết</a>
+                                        
+                                        <form action="{{ route('cart.add') }}" method="POST" id="form-{{ $item->id }}">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{ $item->id }}">
+                                            <input type="hidden" name="product_class_id" id="product_class_id_{{ $index }}" value="">
+                                            <button type="submit" class="btn-register1">Mua ngay</button>
+                                        </form>
+                                    </div>
+                                </form>
+                            </div>
+                        @endforeach
+                    </div>
+                    </div>
+                  
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+          {{-- <div class="content-body wrap-slider">
                             @foreach ($tv as $index => $item)
                                 <div class="item">
                                     <form class="formAddToCart" action="{{ route('cart.add') }}" method="POST" id="form-{{ $item->id }}"> 
@@ -412,13 +490,7 @@
                                     </form>
                                 </div>
                             @endforeach
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                        </div> --}}
     
 {{-- size - color  --}}
     <script>
