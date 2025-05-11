@@ -63,35 +63,61 @@ class StaffController extends Controller
           return view('admin.change_password'); 
       }
   
+    // public function changePassword(Request $request)
+    // {
+    //     // Xác thực dữ liệu đầu vào
+    //     $request->validate([
+    //         'current_password' => 'required',
+    //         'new_password' => 'required|min:3',
+    //         'confirm_password' => 'required|same:new_password',
+    //     // ], [
+    //     //     'current_password.required' => 'Mật khẩu hiện tại không được bỏ trống.',
+    //     //     'new_password.required' => 'Mật khẩu mới không được bỏ trống.',
+    //     //     'new_password.min' => 'Mật khẩu mới phải có ít nhất 8 ký tự.',
+    //     //     'confirm_password.required' => 'Vui lòng xác nhận lại mật khẩu.',
+    //     //     'confirm_password.same' => 'Mật khẩu xác nhận không trùng khớp.',
+    //     ]);
+
+    //     // Lấy thông tin người dùng hiện tại
+    //     $user = Auth::guard('admin')->user();
+
+    //     // Kiểm tra mật khẩu hiện tại
+    //     if ($request->current_password !== $user->password) {
+    //         return back()->withErrors(['current_password' => 'Mật khẩu hiện tại không đúng!']);
+    //     }
+
+    //     // Cập nhật mật khẩu mới (Không mã hóa)
+    //     $user->password = $request->new_password;
+    //     $user->save();
+
+    //     return back()->with('success', 'Mật khẩu đã được thay đổi thành công.');
+    // }
+
+
     public function changePassword(Request $request)
     {
-        // Xác thực dữ liệu đầu vào
         $request->validate([
             'current_password' => 'required',
-            'new_password' => 'required|min:8',
+            'new_password' => 'required|min:3',
             'confirm_password' => 'required|same:new_password',
-        // ], [
-        //     'current_password.required' => 'Mật khẩu hiện tại không được bỏ trống.',
-        //     'new_password.required' => 'Mật khẩu mới không được bỏ trống.',
-        //     'new_password.min' => 'Mật khẩu mới phải có ít nhất 8 ký tự.',
-        //     'confirm_password.required' => 'Vui lòng xác nhận lại mật khẩu.',
-        //     'confirm_password.same' => 'Mật khẩu xác nhận không trùng khớp.',
         ]);
-
-        // Lấy thông tin người dùng hiện tại
+    
         $user = Auth::guard('admin')->user();
-
-        // Kiểm tra mật khẩu hiện tại
-        if ($request->current_password !== $user->password) {
+    
+        // So sánh mật khẩu đúng cách
+        if (!Hash::check($request->current_password, $user->password)) {
             return back()->withErrors(['current_password' => 'Mật khẩu hiện tại không đúng!']);
         }
-
-        // Cập nhật mật khẩu mới (Không mã hóa)
-        $user->password = $request->new_password;
+    
+        // Cập nhật mật khẩu mới (CẦN mã hóa)
+        $user->password = Hash::make($request->new_password);
         $user->save();
-
+    
         return back()->with('success', 'Mật khẩu đã được thay đổi thành công.');
     }
+
+    
+
 
     public function index(Request $request)
     {
@@ -204,6 +230,54 @@ class StaffController extends Controller
 
         return redirect()->route('admin.register_index')->with('success', 'Cập nhật tài khoản thành công!');
     }
+
+
+
+    public function showHomePage()
+    {
+        $staff = Auth::guard('admin')->user();
+        $roles = Role::all(); 
+    
+        return view('homeadmin.index', compact('staff', 'roles'));
+    }
+    
+    
+    public function updateProfile(Request $request)
+{
+    // Lấy thông tin người dùng hiện tại
+    $staff = Auth::guard('admin')->user();
+
+    // Xác thực dữ liệu đầu vào
+    $request->validate([
+   'username' => 'required|string|max:255|regex:/^[^0-9]*$/'
+    ], [
+        'username.string' => 'Họ và tên  phải là chuỗi ký tự.',
+        'username.max' => 'Họ và tên không được quá 255 ký tự.',
+        'username.regex' => 'Họ và tên  không được chứa số.',
+    ]);
+
+    // Cập nhật thông tin (chỉ username)
+    $staff->username = $request->username;
+    $staff->update_staff = Auth::guard('admin')->id(); 
+    $staff->updated_at = now();
+    $staff->save();
+
+  
+
+    // Làm mới lại session user
+    Auth::guard('admin')->setUser($staff->fresh());
+
+    // Quay lại với thông báo
+    return redirect()->route('homeadmin.index')->with('success', 'Cập nhật thông tin thành công!');
+}
+
+    
+    
+
+
+   
+    
+    
 
 }
 

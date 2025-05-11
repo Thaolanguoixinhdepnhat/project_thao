@@ -15,27 +15,52 @@
                         @foreach ($cart as $item)
                             <div class="item">
                                 <div class="product-image-cart">
-                                    @if ($item->product->productImages->isNotEmpty())
+                                    {{-- @if ($item->product->productImages->isNotEmpty())
                                         <img src="{{ asset('storage/' . $item->product->productImages->first()->product_image) }}"
                                             alt="">
-                                    @endif
+                                    @endif --}}
+                                    @if ($item->product && $item->product->productImages->isNotEmpty())
+    <img src="{{ asset('storage/' . $item->product->productImages->first()->product_image) }}" alt="">
+@else
+    <img src="{{ asset('images/no-image.jpg') }}" alt="Không có ảnh">
+@endif
+
                                 </div>
                                 <div class="product-txt">
-                                    <h3>{{ $item->product->product_name }}</h3>
+                                    {{-- <h3>{{ $item->product->product_name }}</h3>
                                     <span class="cart__options">{{ $item->productClass->color }}</span>
                                     <span class="cart__options">,</span>
                                     <span class="cart__options"> {{ $item->productClass->size }}</span>
                                     <div class="cart__sku">{{ $item->productClass->stock_quantity }} Chiếc</div>
-                                    <div class="cart__stock">Còn hàng</div>
+                                    <div class="cart__stock">Còn hàng</div> --}}
+                                    @if ($item->product)
+    <h3>{{ $item->product->product_name }}</h3>
+    <span class="cart__options">{{ $item->productClass->color ?? 'N/A' }}</span>
+    <span class="cart__options">,</span>
+    <span class="cart__options">{{ $item->productClass->size ?? 'N/A' }}</span>
+    <div class="cart__sku">{{ $item->productClass->stock_quantity ?? 0 }} Chiếc</div>
+    <div class="cart__stock">Còn hàng</div>
+@else
+    <h3>Sản phẩm không tồn tại</h3>
+@endif
+
                                 </div>
                                 <div class="cart-details">
                                     <div class="cart-price">
-                                        <span
+                                        {{-- <span
                                             class="current-price">{{ number_format($item->productClass->price, 0, ',', '.') }}
                                             VNĐ</span>
                                         <span
                                             class="original-price">{{ number_format($item->productClass->cost, 0, ',', '.') }}
-                                            VNĐ</span>
+                                            VNĐ</span> --}}
+                                            @if ($item->productClass)
+    <span class="current-price">{{ number_format($item->productClass->price, 0, ',', '.') }} VNĐ</span>
+    <span class="original-price">{{ number_format($item->productClass->cost, 0, ',', '.') }} VNĐ</span>
+@else
+    <span class="current-price">0 VNĐ</span>
+    <span class="original-price">0 VNĐ</span>
+@endif
+
                                     </div>
                                     <div class="delete">
                                         <form action="{{ route('cart.delete', $item->id) }}" method="POST"

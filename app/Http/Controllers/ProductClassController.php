@@ -117,74 +117,224 @@ class ProductClassController extends Controller
         return redirect()->back()->with('error', 'Xóa thất bại!');
     }
 }
+// public function update(Request $request, $id)
+// {
+//     DB::beginTransaction();
+
+//     try {
+//         // Xóa dấu phẩy trong dữ liệu trước khi validate
+//         $productClasses = $request->input('product_classes', []);
+//         foreach ($productClasses as $key => $data) {
+//             $productClasses[$key]['cost'] = isset($data['cost']) ? str_replace(',', '', $data['cost']) : null;
+//             $productClasses[$key]['price'] = isset($data['price']) ? str_replace(',', '', $data['price']) : null;
+//             $productClasses[$key]['stock_quantity'] = isset($data['stock_quantity']) ? str_replace(',', '', $data['stock_quantity']) : null;
+//         }
+//         $request->merge(['product_classes' => $productClasses]);
+
+//         // Validate dữ liệu
+//         $validatedData = $request->validate([
+//             'product_classes'               => 'required|array|min:1',
+//             'product_classes.*.id'          => 'required|exists:product_class,id', // Giữ nguyên đúng tên bảng
+//             'product_classes.*.cost'        => 'sometimes|required|numeric|min:0',
+//             'product_classes.*.price'       => 'sometimes|required|numeric|min:0',
+//             'product_classes.*.stock_quantity' => 'sometimes|required|numeric|min:0',
+//             'product_classes.*.note'        => 'nullable|string|max:255',
+//         ]);
+
+//         // Cập nhật dữ liệu
+//         foreach ($validatedData['product_classes'] as $data) {
+//             $updateData = array_filter([
+//                 'cost'           => !empty($data['cost']) ? $data['cost'] : null,
+//                 'price'          => !empty($data['price']) ? $data['price'] : null,
+//                 'stock_quantity' => !empty($data['stock_quantity']) ? $data['stock_quantity'] : null,
+//                 'note'           => !empty($data['note']) ? $data['note'] : null,
+//                 'updated_at'     => now(),
+//                 'update_staff'   => Auth::guard('admin')->id() 
+//             ], fn($value) => $value !== null && $value !== '');
+
+//             if (!empty($updateData)) {
+//                 ProductClass::where('id', $data['id'])->update($updateData);
+//             }
+//         }
+
+//         DB::commit();
+
+//         return redirect()->route('productclass.edit', ['id' => $id])->with('success', 'Cập nhật thành công!');
+
+//     } catch (ValidationException $e) {
+//         DB::rollBack();
+
+//         return redirect()->back()
+//             ->withErrors($e->validator)
+//             ->withInput()
+//             ->with('error', 'Dữ liệu không hợp lệ, vui lòng kiểm tra lại!');
+//     } catch (\Exception $e) {
+//         DB::rollBack();
+
+//         //  Ghi log chi tiết để debug
+//         Log::error('Lỗi cập nhật ProductClass:', [
+//             'message'      => $e->getMessage(),
+//             'file'         => $e->getFile(),
+//             'line'         => $e->getLine(),
+//             'trace'        => $e->getTraceAsString(),
+//             'request_data' => $request->all()
+//         ]);
+
+//         return redirect()->back()
+//             ->withInput()
+//             ->with('error', 'Lỗi hệ thống: ' . $e->getMessage() . ' - File: ' . $e->getFile() . ' - Dòng: ' . $e->getLine());
+//     }
+// }
+
+
+
+// public function update(Request $request, $id)
+// {
+//     DB::beginTransaction();
+
+//     try {
+//         // Xóa dấu chấm trong dữ liệu trước khi validate
+//         $productClasses = $request->input('product_classes', []);
+//         foreach ($productClasses as $key => $data) {
+//             // Thay dấu chấm bằng dấu phẩy trước khi xử lý
+//             $productClasses[$key]['cost'] = isset($data['cost']) ? str_replace('.', '', $data['cost']) : null;
+//             $productClasses[$key]['price'] = isset($data['price']) ? str_replace('.', '', $data['price']) : null;
+//             $productClasses[$key]['stock_quantity'] = isset($data['stock_quantity']) ? str_replace('.', '', $data['stock_quantity']) : null;
+//         }
+//         $request->merge(['product_classes' => $productClasses]);
+
+//         // Validate dữ liệu
+//         $validatedData = $request->validate([
+//             'product_classes'               => 'required|array|min:1',
+//             'product_classes.*.id'          => 'required|exists:product_class,id',
+//             'product_classes.*.cost'        => 'sometimes|required|numeric|min:0',
+//             'product_classes.*.price'       => 'sometimes|required|numeric|min:0',
+//             'product_classes.*.stock_quantity' => 'sometimes|required|numeric|min:0',
+//             'product_classes.*.note'        => 'nullable|string|max:255',
+//         ]);
+
+//         // Cập nhật dữ liệu
+//         foreach ($validatedData['product_classes'] as $data) {
+//             $updateData = array_filter([
+//                 'cost'           => !empty($data['cost']) ? $data['cost'] : null,
+//                 'price'          => !empty($data['price']) ? $data['price'] : null,
+//                 'stock_quantity' => !empty($data['stock_quantity']) ? $data['stock_quantity'] : null,
+//                 'note'           => !empty($data['note']) ? $data['note'] : null,
+//                 'updated_at'     => now(),
+//                 'update_staff'   => Auth::guard('admin')->id() 
+//             ], fn($value) => $value !== null && $value !== '');
+
+//             if (!empty($updateData)) {
+//                 ProductClass::where('id', $data['id'])->update($updateData);
+//             }
+//         }
+
+//         DB::commit();
+
+//         return redirect()->route('productclass.edit', ['id' => $id])->with('success', 'Cập nhật thành công!');
+
+//     } catch (ValidationException $e) {
+//         DB::rollBack();
+
+//         return redirect()->back()
+//             ->withErrors($e->validator)
+//             ->withInput()
+//             ->with('error', 'Dữ liệu không hợp lệ, vui lòng kiểm tra lại!');
+//     } catch (\Exception $e) {
+//         DB::rollBack();
+
+//         Log::error('Lỗi cập nhật ProductClass:', [
+//             'message'      => $e->getMessage(),
+//             'file'         => $e->getFile(),
+//             'line'         => $e->getLine(),
+//             'trace'        => $e->getTraceAsString(),
+//             'request_data' => $request->all()
+//         ]);
+
+//         return redirect()->back()
+//             ->withInput()
+//             ->with('error', 'Lỗi hệ thống: ' . $e->getMessage() . ' - File: ' . $e->getFile() . ' - Dòng: ' . $e->getLine());
+//     }
+// }
+
+
+
+
+
+
 public function update(Request $request, $id)
-{
-    DB::beginTransaction();
+    {
+        DB::beginTransaction();
 
-    try {
-        // Xóa dấu phẩy trong dữ liệu trước khi validate
-        $productClasses = $request->input('product_classes', []);
-        foreach ($productClasses as $key => $data) {
-            $productClasses[$key]['cost'] = isset($data['cost']) ? str_replace(',', '', $data['cost']) : null;
-            $productClasses[$key]['price'] = isset($data['price']) ? str_replace(',', '', $data['price']) : null;
-            $productClasses[$key]['stock_quantity'] = isset($data['stock_quantity']) ? str_replace(',', '', $data['stock_quantity']) : null;
-        }
-        $request->merge(['product_classes' => $productClasses]);
-
-        // Validate dữ liệu
-        $validatedData = $request->validate([
-            'product_classes'               => 'required|array|min:1',
-            'product_classes.*.id'          => 'required|exists:product_class,id', // Giữ nguyên đúng tên bảng
-            'product_classes.*.cost'        => 'sometimes|required|numeric|min:0',
-            'product_classes.*.price'       => 'sometimes|required|numeric|min:0',
-            'product_classes.*.stock_quantity' => 'sometimes|required|numeric|min:0',
-            'product_classes.*.note'        => 'nullable|string|max:255',
-        ]);
-
-        // Cập nhật dữ liệu
-        foreach ($validatedData['product_classes'] as $data) {
-            $updateData = array_filter([
-                'cost'           => !empty($data['cost']) ? $data['cost'] : null,
-                'price'          => !empty($data['price']) ? $data['price'] : null,
-                'stock_quantity' => !empty($data['stock_quantity']) ? $data['stock_quantity'] : null,
-                'note'           => !empty($data['note']) ? $data['note'] : null,
-                'updated_at'     => now(),
-                'update_staff'   => Auth::guard('admin')->id() 
-            ], fn($value) => $value !== null && $value !== '');
-
-            if (!empty($updateData)) {
-                ProductClass::where('id', $data['id'])->update($updateData);
+        try {
+            // Làm sạch và chuẩn hóa dữ liệu trước khi validate
+            $productClasses = $request->input('product_classes', []);
+            foreach ($productClasses as $key => $data) {
+                // Thay thế dấu chấm và dấu phẩy trong số liệu
+                $productClasses[$key]['cost'] = isset($data['cost']) ? str_replace(['.', ','], '', $data['cost']) : null;
+                $productClasses[$key]['price'] = isset($data['price']) ? str_replace(['.', ','], '', $data['price']) : null;
+                $productClasses[$key]['stock_quantity'] = isset($data['stock_quantity']) ? str_replace(['.', ','], '', $data['stock_quantity']) : null;
             }
+            $request->merge(['product_classes' => $productClasses]);
+
+            // Kiểm tra dữ liệu đầu vào
+            Log::info('Dữ liệu đã làm sạch:', $productClasses); // Log kiểm tra
+
+            // Validate dữ liệu
+            $validatedData = $request->validate([
+                'product_classes'               => 'required|array|min:1',
+                'product_classes.*.id'          => 'required|exists:product_class,id',
+                'product_classes.*.cost'        => 'sometimes|required|numeric|min:0',
+                'product_classes.*.price'       => 'sometimes|required|numeric|min:0',
+                'product_classes.*.stock_quantity' => 'sometimes|required|numeric|min:0',
+                'product_classes.*.note'        => 'nullable|string|max:255',
+            ]);
+
+            // Cập nhật dữ liệu
+            foreach ($validatedData['product_classes'] as $data) {
+                $updateData = array_filter([
+                    'cost'           => !empty($data['cost']) ? $data['cost'] : null,
+                    'price'          => !empty($data['price']) ? $data['price'] : null,
+                    'stock_quantity' => !empty($data['stock_quantity']) ? $data['stock_quantity'] : null,
+                    'note'           => !empty($data['note']) ? $data['note'] : null,
+                    'updated_at'     => now(),
+                    'update_staff'   => Auth::guard('admin')->id() 
+                ], fn($value) => $value !== null && $value !== '');
+
+                // Cập nhật vào database
+                if (!empty($updateData)) {
+                    ProductClass::where('id', $data['id'])->update($updateData);
+                }
+            }
+
+            DB::commit();
+
+            return redirect()->route('productclass.edit', ['id' => $id])->with('success', 'Cập nhật thành công!');
+
+        } catch (ValidationException $e) {
+            DB::rollBack();
+
+            return redirect()->back()
+                ->withErrors($e->validator)
+                ->withInput()
+                ->with('error', 'Dữ liệu không hợp lệ, vui lòng kiểm tra lại!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            Log::error('Lỗi cập nhật ProductClass:', [
+                'message'      => $e->getMessage(),
+                'file'         => $e->getFile(),
+                'line'         => $e->getLine(),
+                'trace'        => $e->getTraceAsString(),
+                'request_data' => $request->all()
+            ]);
+
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Lỗi hệ thống: ' . $e->getMessage() . ' - File: ' . $e->getFile() . ' - Dòng: ' . $e->getLine());
         }
-
-        DB::commit();
-
-        return redirect()->route('productclass.edit', ['id' => $id])->with('success', 'Cập nhật thành công!');
-
-    } catch (ValidationException $e) {
-        DB::rollBack();
-
-        return redirect()->back()
-            ->withErrors($e->validator)
-            ->withInput()
-            ->with('error', 'Dữ liệu không hợp lệ, vui lòng kiểm tra lại!');
-    } catch (\Exception $e) {
-        DB::rollBack();
-
-        //  Ghi log chi tiết để debug
-        Log::error('Lỗi cập nhật ProductClass:', [
-            'message'      => $e->getMessage(),
-            'file'         => $e->getFile(),
-            'line'         => $e->getLine(),
-            'trace'        => $e->getTraceAsString(),
-            'request_data' => $request->all()
-        ]);
-
-        return redirect()->back()
-            ->withInput()
-            ->with('error', 'Lỗi hệ thống: ' . $e->getMessage() . ' - File: ' . $e->getFile() . ' - Dòng: ' . $e->getLine());
     }
-}
+
 
 
 

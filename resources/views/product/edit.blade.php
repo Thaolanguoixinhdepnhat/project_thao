@@ -361,6 +361,11 @@ function softDeleteImage(imageId) {
 
 </script>
 <div class="form-group">
+    <label for="description" class="form-group__labels">Mô tả sản phẩm</label>
+    <textarea id="description" name="description" class="form-group__input form-group__input--notes">{{ old('description', $product->description) }}</textarea>
+
+</div>  
+<div class="form-group">
     <label for="note" class="form-group__labels">Ghi chú</label>
     <textarea id="note" name="note" class="form-group__input form-group__input--notes">{{ old('note', $product->note) }}</textarea>
 
@@ -375,26 +380,30 @@ function softDeleteImage(imageId) {
                         </td>                                              
                         
                     </div>
+                    @if (auth('admin')->check())
+                    @php
+                        $adminRoleId = auth('admin')->user()->role_id;
+                    @endphp
+                
                     <script>
                         document.addEventListener("DOMContentLoaded", function () {
-                            // Lấy thông tin người dùng hiện tại từ hệ thống (trong ví dụ này, sử dụng Blade để truyền role_id vào JavaScript)
-                            const roleId = @json(Auth::guard('admin')->user()->role_id); // Truyền role_id từ PHP sang JS
-                    
-                            // Chọn liên kết có class 'edit-id'
+                            const roleId = @json($adminRoleId); // truyền từ Blade sang JS
+                
                             const editLink = document.querySelector(".btn-update");
-                            
-                            // Lắng nghe sự kiện 'click' vào liên kết
-                            editLink.addEventListener("click", function (event) {
-                                // Nếu người dùng là Nhân viên (role_id = 1), ngừng hành động và hiển thị thông báo
-                                if (roleId === 1) {
-                                    alert("Bạn không có quyền cập nhập vào trang này!");
-                                    
-                                    // Ngừng hành động mặc định của liên kết (không chuyển hướng)
-                                    event.preventDefault();
-                                }
-                            });
+                
+                            if (editLink) {
+                                editLink.addEventListener("click", function (event) {
+                                    if (roleId === 1) {
+                                        alert("Bạn không có quyền cập nhật trang này!");
+                                        event.preventDefault();
+                                    }
+                                });
+                            }
                         });
-                    </script> 
+                    </script>
+                @endif
+                
+                   
                 </form>
                 
                 {{-- @if ($errors->any())

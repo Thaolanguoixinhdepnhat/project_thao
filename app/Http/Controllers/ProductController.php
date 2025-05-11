@@ -55,16 +55,12 @@ class ProductController extends Controller
         }
         public function store(Request $request)
         {
-    //   // Kiểm tra quyền của người dùng
-    // if (Auth::guard('admin')->user()->role_id == 1) {
-    //     // Nhân viên không có quyền tạo sản phẩm
-    //     return redirect()->route('product.index')->with('error', 'Bạn không có quyền tạo sản phẩm.');
-    // }
             $request->validate([
                 'product_code'      => 'required|unique:product,product_code',
                 'product_name'      => 'required|string|max:255',
                 'maker_id'          => 'required|exists:maker,id',
                 'category_id'       => 'required|exists:category,id',
+                 'description'        => 'nullable|string',
                 'note'              => 'nullable|string',
                 'product_image'     => 'nullable|array|min:1',
                 'product_image.*'   => 'image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -81,6 +77,7 @@ class ProductController extends Controller
                 $product->product_name = $request->product_name;
                 $product->maker_id = $request->maker_id;
                 $product->category_id = $request->category_id;
+                $product->description = $request->description;
                 $product->note = $request->note;
                 $product->create_staff = Auth::guard('admin')->id();
                 
@@ -157,9 +154,6 @@ class ProductController extends Controller
     
         public function destroy($id)
         {
-            // if (Auth::guard('admin')->user()->role_id == 1) {
-            //     return redirect()->route('product.index')->with('error', 'Bạn không có quyền xóa sản phẩm.');
-            // }
             DB::beginTransaction();
         
             try {
@@ -206,10 +200,6 @@ class ProductController extends Controller
     
     public function edit($id)
     {
-        // if (Auth::guard('admin')->user()->role_id == 1) {
-        //     // Nhân viên không có quyền chỉnh sửa sản phẩm
-        //     return redirect()->route('product.index')->with('error', 'Bạn không có quyền sửa thông tin sản phẩm.');
-        // }
         $product = Product::with(['category', 'maker', 'productClasses', 'productImages'])->findOrFail($id);
         $makers = Maker::all();
         $categories = Category::all();
@@ -227,14 +217,12 @@ class ProductController extends Controller
     }
 public function update(Request $request, $id)
 {
-    // if (Auth::guard('admin')->user()->role_id == 1) {
-    //     return redirect()->route('product.index')->with('error', 'Bạn không có quyền sửa sản phẩm.');
-    // }
     $validatedData = $request->validate([
         'product_code' => 'required|string|max:255|unique:product,product_code,' . $id,
         'product_name' => 'required|string|max:255',
         'maker_id' => 'required|exists:maker,id',
         'category_id' => 'required|exists:category,id',
+        'description' => 'nullable|string',
         'note' => 'nullable|string',
         'main_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         'product_image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -257,6 +245,7 @@ public function update(Request $request, $id)
             'product_name' => $validatedData['product_name'],
             'maker_id' => $validatedData['maker_id'],
             'category_id' => $validatedData['category_id'],
+            'description' => $validatedData['description'],
             'note' => $validatedData['note'],
             'update_staff' => Auth::guard('admin')->id(),
         ]);
@@ -335,8 +324,6 @@ public function update(Request $request, $id)
             $pl->update_staff = Auth::guard('admin')->id();
             $pl->save();
         }
-
-        // Xử lý ảnh phụ
         if ($request->hasFile('product_image')) {
             foreach ($request->file('product_image') as $image) {
                 $path = $image->store('product_images', 'public');

@@ -20,6 +20,7 @@ class Product extends Model
         'maker_id',
         'category_id',
         'note',
+        'description',
         'product_image',
         'create_staff',
         'update_staff',

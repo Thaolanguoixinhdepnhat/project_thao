@@ -191,5 +191,6 @@ return [
         'product_name'          => 'Tên sản phẩm',
         'role_name'          => 'Chức vụ',
         'role_id'          => 'Chức vụ',
+    
     ],
 ];

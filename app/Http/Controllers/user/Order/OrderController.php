@@ -113,5 +113,10 @@ class OrderController extends Controller
         return redirect()->route('home')->with('success', 'Chúc mừng! Bạn đã đặt hàng thành công.');
     }
 
+
+
+
+
+
     
 }

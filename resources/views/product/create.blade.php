@@ -256,7 +256,11 @@
                                     }
                                 }
                             </script>
+ <div class="form-group">
+                                <label for="description" class="form-group__labels">Mô tả sản phẩm</label>
+                                <textarea id="description" name="description" class="form-group__input form-group__input--notes">{{ old('description') }}</textarea>
 
+                            </div>
                             <div class="form-group">
                                 <label for="note" class="form-group__labels">Ghi chú</label>
                                 <textarea id="note" name="note" class="form-group__input form-group__input--notes">{{ old('note') }}</textarea>

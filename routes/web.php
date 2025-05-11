@@ -17,6 +17,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\OrderController as AdminOrderController;
 
+
 use App\Http\Controllers\StatusController;
 
 //abc
@@ -84,9 +85,14 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     /* order */
     Route::get('/order', [AdminOrderController::class, 'index'])->name('admin.order.index');
+    Route::get('/order/summary', [AdminOrderController::class, 'summary'])->name('order.summary');
     Route::get('/order/{id}', [AdminOrderController::class, 'detail'])->name('admin.order.detail');
     Route::post('/order/ship', [AdminOrderController::class, 'updateOrderShipping'])->name('orders.ship');
     Route::get('/chart-data', [AdminOrderController::class, 'revenueByMonth'])->name('chart');
+
+
+    // thử tính số đơn số tiền
+
 
 
 });
@@ -123,7 +129,10 @@ Route::put('/staff/{id}', [StaffController::class, 'update'])->name('staff.updat
 // Xóa nhân viên
 Route::delete('/staff/{id}', [StaffController::class, 'destroy'])->name('staff.destroy');
 
+// thử đổ thông tin nhân viên ra
 
+Route::get('/admin/home', [StaffController::class, 'showHomePage'])->name('homeadmin.index');
+Route::post('/admin/update-profile', [StaffController::class, 'updateProfile'])->name('homeadmin.update');
 
 
 
@@ -172,6 +181,11 @@ Route::get('/check', [OrderController::class, 'index'])->name('order.index');
 Route::get('/layout', function () {
     return view('layout.app');
 })->name('layout.app');
+
+
+
+
+
 
 
 

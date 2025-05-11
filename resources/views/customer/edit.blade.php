@@ -73,7 +73,7 @@
                     <div class="customer-actions">
                         <button type="submit" class="btn-update">Cập nhật</button>
                     </div>
-                    <script>
+                    {{-- <script>
                         document.addEventListener("DOMContentLoaded", function () {
                             // Lấy thông tin người dùng hiện tại từ hệ thống (trong ví dụ này, sử dụng Blade để truyền role_id vào JavaScript)
                             const roleId = @json(Auth::guard('admin')->user()->role_id); // Truyền role_id từ PHP sang JS
@@ -92,7 +92,29 @@
                                 }
                             });
                         });
+                    </script> --}}
+                    @if (auth('admin')->check())
+                    @php
+                        $adminRoleId = auth('admin')->user()->role_id;
+                    @endphp
+                
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            const roleId = @json($adminRoleId); // truyền từ Blade sang JS
+                
+                            const editLink = document.querySelector(".btn-update");
+                
+                            if (editLink) {
+                                editLink.addEventListener("click", function (event) {
+                                    if (roleId === 1) {
+                                        alert("Bạn không có quyền cập nhật trang này!");
+                                        event.preventDefault();
+                                    }
+                                });
+                            }
+                        });
                     </script>
+                        @endif
                 </form>
                 
                 

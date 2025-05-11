@@ -98,4 +98,47 @@ class OrderController extends Controller
 
         return view('order.chart', compact('revenues'));
     }
+
+
+
+public function summary()
+{
+    $today = Carbon::today(); // 👈 Thêm dòng này
+
+    $totalRevenue = Order::sum('amount');
+    $totalOrders = Order::count();
+
+    // Doanh thu theo ngày
+    $dailyRevenue = Order::selectRaw('DATE(created_at) as date, SUM(amount) as total, COUNT(id) as orders')
+        ->groupBy('date')
+        ->orderBy('date', 'asc')
+        ->get();
+
+    $todayOrders = Order::whereDate('created_at', $today)->count();
+
+    // Doanh thu theo tuần
+    $weeklyRevenue = Order::selectRaw('YEARWEEK(created_at, 1) as week, SUM(amount) as total')
+        ->groupBy('week')
+        ->orderBy('week', 'asc')
+        ->get();
+
+    // Doanh thu theo tháng
+    $monthlyRevenue = Order::selectRaw('DATE_FORMAT(created_at, "%Y-%m") as month, SUM(amount) as total')
+        ->groupBy('month')
+        ->orderBy('month', 'asc')
+        ->get();
+
+    // Doanh thu theo năm
+    $yearlyRevenue = Order::selectRaw('YEAR(created_at) as year, SUM(amount) as total')
+        ->groupBy('year')
+        ->orderBy('year', 'asc')
+        ->get();
+
+    return view('order.summary', compact(
+        'totalRevenue', 'totalOrders', 'todayOrders', 
+        'dailyRevenue', 'weeklyRevenue', 'monthlyRevenue', 'yearlyRevenue'
+    ));
+}
+           
+
 }

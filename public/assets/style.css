@@ -3,15 +3,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-/* .input{
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    outline: none;
-    transition: 0.3s;
-
-} */
 .header {
     position: relative; 
     width: 100%;
@@ -172,7 +163,7 @@
     position: absolute;
     top: -10px;
     left: 10px;
-    background-color: #fff;
+    background-color:#f8f9fa;
     padding: 0 5px;
     font-size: 14px;
     color: #007bff;
@@ -583,7 +574,7 @@ input#email.form-group__input-email {
     margin: 0 auto;
 }
 .change-password .container .content h4{
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #343A40;
     font-weight: 500;
     margin-bottom: 1rem;
@@ -606,7 +597,7 @@ input#email.form-group__input-email {
     font-size: 14px;
     font-weight: bold;
     color: #007bff;
-    background: white;
+    background-color: #f8f9fa;
     padding: 0 5px;
 }
 .form-group input {
@@ -649,16 +640,16 @@ input#current_password {
 }
 
 .index_maker .container .content .sec-three h4 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #343A40;
     font-weight: 500;
 }
 
 .index_maker .container .content .sec-three .hr {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     border: 0;
-    border-top: 1px solid rgba(0, 0, 0, .1);
+ border-top: 1px solid rgba(100, 100, 100, .3);
 }
 
 .index_maker .container .content .sec-three .maker-form {
@@ -671,6 +662,7 @@ input#current_password {
     align-items: center;
     margin-right: 20px;
 }
+
 
 .form-field {
     position: relative;
@@ -688,7 +680,7 @@ input#current_password {
     font-size: 14px;
     font-weight: bold;
     color: #007bff;
-    background: white;
+    background: #f8f9fa;
     padding: 0 5px;
 }
 
@@ -734,48 +726,40 @@ input#current_password {
     background-color: #0056b3;
 }
 
-.index_maker .container .content .sec-three table {
+.index_maker .container .content .sec-three .table {
     width: 90%;
     min-width: 500px;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
-.index_maker .container .content .sec-three table td td:first-child {
+.index_maker .container .content .sec-three .table td td:first-child {
     text-align: center;
 }
-.index_maker .container .content .sec-three table td:nth-child(2),
-.index_maker .container .content .sec-three table td:nth-child(4){
-    text-align: right;
-}
-.index_maker .container .content .sec-three table td:nth-child(3) ,
-.index_maker .container .content .sec-three table td:nth-child(5),
-.index_maker .container .content .sec-three table td:nth-child(6) 
+.index_maker .container .content .sec-three .table td:nth-child(2),
+.index_maker .container .content .sec-three .table td:nth-child(4),
+.index_maker .container .content .sec-three .table td:nth-child(5)
  {
     text-align: left;
 }
-
-.index_maker .container .content .sec-three table th,
-.index_maker .container .content .sec-three table td {
+.index_maker .container .content .sec-three .table td:nth-child(3)
+ {
+    text-align: right;
+}
+.index_maker .container .content .sec-three .table th,
+.index_maker .container .content .sec-three .table td {
     padding: 10px;
     border: 1px solid #ddd;
 }
 
-.index_maker .container .content .sec-three table th {
-    background-color: #f8f9fa;
-    font-weight: 300;
+.index_maker .container .content .sec-three .table th {
+background-color: #a3d5f2;
+    font-weight: 500;
+    text-align: center;
 }
 
-.index_maker .container .content .sec-three table td {
+.index_maker .container .content .sec-three .table td {
     background-color: #ffffff;
     font-size: 14px;
-}
-
-.index_maker .container .content .sec-three table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.index_maker .container .content .sec-three table tr:hover {
-    background-color: #e9ecef;
 }
 .index_maker .container .content .sec-three a{
     text-decoration: none;
@@ -783,7 +767,7 @@ input#current_password {
 }
 /* edi_maker*/
 .maker-section h4 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #343A40;
     font-weight: 500;
     margin-bottom: 1rem;
@@ -792,7 +776,7 @@ input#current_password {
     margin-top: 1rem;
     margin-bottom: 1rem;
     border: 0;
-    border-top: 1px solid rgba(0, 0, 0, .1);
+    border-top: 1px solid rgba(0, 0, 0, .3);
 }
 .maker-edit .maker-form .form-group__row{
     margin-top: 30px;
@@ -844,16 +828,16 @@ textarea#note.form-group__input.form-group__input--note:focus {
 }
 
 .index_category .container .content .sec-four h4 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #343A40;
     font-weight: 500;
 }
 
 .index_category .container .content .sec-four .hr {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     border: 0;
-    border-top: 1px solid rgba(0, 0, 0, .1);
+ border-top: 1px solid rgba(100, 100, 100, .3);
 }
 
 .index_category .container .content .sec-four .category-form {
@@ -866,6 +850,7 @@ textarea#note.form-group__input.form-group__input--note:focus {
     align-items: center;
     margin-right: 20px;
 }
+
 
 .form-field {
     position: relative;
@@ -883,7 +868,7 @@ textarea#note.form-group__input.form-group__input--note:focus {
     font-size: 14px;
     font-weight: bold;
     color: #007bff;
-    background: white;
+    background: #f8f9fa;
     padding: 0 5px;
 }
 
@@ -929,42 +914,35 @@ textarea#note.form-group__input.form-group__input--note:focus {
     background-color: #0056b3;
 }
 
-.index_category .container .content .sec-four table {
-    width: 65%;
+.index_category .container .content .sec-four .table {
+    width: 62%;
     min-width: 500px;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
-.index_category .container .content .sec-four table td td:first-child {
+.index_category .container .content .sec-four .table td td:first-child {
     text-align: center;
 }
-.index_category .container .content .sec-four table td:nth-child(2)
+.index_category .container .content .sec-four .table td:nth-child(2)
  {
     text-align: left;
 }
 
-.index_category .container .content .sec-four table th,
-.index_category .container .content .sec-four table td {
+.index_category .container .content .sec-four .table th,
+.index_category .container .content .sec-four .table td {
     padding: 10px;
     border: 1px solid #ddd;
 }
 
-.index_category .container .content .sec-four table th {
-    background-color: #f8f9fa;
-    font-weight: 300;
+.index_category .container .content .sec-four .table th {
+background-color: #a3d5f2;
+    font-weight: 500;
+    text-align: center;
 }
 
-.index_category .container .content .sec-four table td {
+.index_category .container .content .sec-four .table td {
     background-color: #ffffff;
     font-size: 14px;
-}
-
-.index_category .container .content .sec-four table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.index_category .container .content .sec-four table tr:hover {
-    background-color: #e9ecef;
 }
 .index_category .container .content .sec-four a{
     text-decoration: none;
@@ -993,48 +971,34 @@ input#category_id.form-group__input {
 }
 
 .index_product .container .content .sec-six h4 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #343A40;
     font-weight: 500;
 }
 
 .index_product .container .content .sec-six .hr {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     border: 0;
-    border-top: 1px solid rgba(0, 0, 0, .1);
+ border-top: 1px solid rgba(100, 100, 100, .3);
 }
 
-/* .index_product .container .content .sec-six .product-form {
-    margin-bottom: 20px;
+.index_product .container .content .sec-six .product-form {
+    gap: 2rem;
     display: flex;
-    flex-wrap: wrap;
 }
 
 .index_product .container .content .sec-six .product-form .form-field {
     display: flex;
     align-items: center;
-    margin-right: 20px;
 }
+
 
 .form-field {
     position: relative;
     margin-bottom: 15px;
-} */
-
-
-
-.index_product .container .content .sec-six .product-form {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 10px;
 }
 
-.index_product .container .content .sec-six .product-form .form-field {
-    display: flex;
-    gap: 10px;
-}
 .index_product .container .content .sec-six .product-form label {
     margin-right: 5px;
 }
@@ -1046,30 +1010,27 @@ input#category_id.form-group__input {
     font-size: 14px;
     font-weight: bold;
     color: #007bff;
-    background: white;
+    background: #f8f9fa;
     padding: 0 5px;
 }
 
 .index_product .container .content .sec-six .product-form input {
     padding: 8px;
-    border: 1px solid rgba(0, 0, 0, .1);
+    border: 1px solid #ccc;
     border-radius: 4px;
     width: 200px;
     transition: border-color 0.2s ease;
     height: 38px; 
 }
-
 .index_product .container .content .sec-six .product-form input:focus {
     outline: none; 
     border-color: #007bff; 
 }
-
-.index_product .container .content .sec-six .product-form .form-buttons {
+.index_product .container .content .sec-six .product-form  .form-buttons {
     display: flex;
     gap: 10px;
 }
-
-.btn-primery, .btn-danger {
+.btn-primery {
     width: 100px;
     background-color: #007bff;
     color: white;
@@ -1078,77 +1039,64 @@ input#category_id.form-group__input {
     border-radius: 5px;
     cursor: pointer;
     height: 38px; 
-    text-align: center;
+   text-align: center;
 }
-
-.btn-danger {
+.btn-danger{
     width: 200px;
-}
-
-
-
-.index_product .container .content .sec-six table td td:first-child {
-    text-align: center;
-}
-.index_product .container .content .sec-six table td:nth-child(2),
-.index_product .container .content .sec-six table td:nth-child(3),
-.index_product .container .content .sec-six table td:nth-child(5),
-.index_product .container .content .sec-six table td:nth-child(6)
- {
-    text-align: left;
-}
-.index_product .container .content .sec-six table td:nth-child(4)
-{
-    text-align: center;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 38px; 
+   text-align: center;
 }
 .btn-primery:hover, .btn-danger:hover {
     background-color: #0056b3;
 }
-.index_product .container .content .sec-six .table-responsive {
+
+.index_product .container .content .sec-six .table {
     width: 100%;
-    overflow-x: auto;
-}
-.index_product .container .content .sec-six table {
-    width: 100%;
-    min-width: 800px; 
+    min-width: 500px;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
+.index_product .container .content .sec-six .table td td:first-child {
+    text-align: center;
+}
+.index_product .container .content .sec-six .table td:nth-child(2),
+.index_product .container .content .sec-six .table td:nth-child(3),
+.index_product .container .content .sec-six .table td:nth-child(4),
+.index_product .container .content .sec-six .table td:nth-child(5),
+.index_product .container .content .sec-six .table td:nth-child(6)
+ {
+    text-align: left;
+}
 
-.index_product .container .content .sec-six table th,
-.index_product .container .content .sec-six table td {
+.index_product .container .content .sec-six .table th,
+.index_product .container .content .sec-six .table td {
     padding: 10px;
     border: 1px solid #ddd;
-    white-space: nowrap; 
 }
 
-.index_product .container .content .sec-six table th {
-    background-color: #f8f9fa;
-    font-weight: 300;
+.index_product .container .content .sec-six .table th {
+background-color: #a3d5f2;
+    font-weight: 500;
+    text-align: center;
 }
 
-.index_product .container .content .sec-six table td {
+.index_product .container .content .sec-six .table td {
     background-color: #ffffff;
     font-size: 14px;
 }
-
-.index_product .container .content .sec-six table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-
-.index_product .container .content .sec-six table tr:hover {
-    background-color: #e9ecef;
-}
-
-.index_product .container .content .sec-six a {
+.index_product .container .content .sec-six a{
     text-decoration: none;
     color: #007BFF;
 }
 
 select.form-group__input-maker_id1 {
     width: 100%;
-    max-width: 200px;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 16px;
@@ -1158,20 +1106,38 @@ select.form-group__input-maker_id1 {
     height: 38px;
     appearance: auto;
 }
-select.form-group__input-category_id1{
+select.form-group__input-category_id5 {
     width: 100%;
-    max-width: 200px;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 16px;
+    line-height: 1.5;
+    padding: 5px 10px;
+    outline: none;
+    transition: 0.3s;
+    cursor: pointer;
+    height: auto; 
+    white-space: nowrap;
+}
+select.form-group__input-category_id5 {
+    width: 18rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 5px 10px;
     outline: none;
     transition: 0.3s;
     cursor: pointer;
     height: 38px;
-    appearance: auto;
-
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-
+select.form-group__input-category_id5,
+select.form-group__input-maker_id1 {
+    box-sizing: border-box;
+}
 
 /*create_product*/
 select#maker_id.form-group__input.form-group__input-maker_id {
@@ -1232,6 +1198,22 @@ textarea#note.form-group__input.form-group__input--notes:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
 }
+textarea#description.form-group__input.form-group__input--notes {
+    width: 400px; 
+    line-height: 1.5;
+    padding: 12px;
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    box-sizing: border-box; 
+    resize: vertical; 
+    overflow-y: auto; 
+    margin-top: 20px;
+}
+textarea#description.form-group__input.form-group__input--notes:focus {
+    border-color: #007bff; 
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+}
 label.form-group__labels {
     top: 11px;
 }
@@ -1242,6 +1224,7 @@ label.form-group__labels {
     cursor: pointer;
     width: 100px;
     height: 45px;
+    text-align: center;
 }
 .remove-btn:hover{
     background-color: #a02222; 
@@ -1256,6 +1239,7 @@ label.form-group__labels {
     border: none;
     width: 150px;
     padding: 10px 15px;
+    text-align: center;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 15px;
@@ -1344,28 +1328,28 @@ input#id1.form-group__input.form-group__input{
 }
 
 .edit-productclass .container .content .sec-seven h4 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #343A40;
     font-weight: 500;
 }
 
 .edit-productclass .container .content .sec-seven .hr {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     border: 0;
-    border-top: 1px solid rgba(0, 0, 0, .1);
+ border-top: 1px solid rgba(100, 100, 100, .3);
 }
 
 .edit-productclass .container .content .sec-seven .search-form {
-    margin-bottom: 20px;
+    gap: 2rem;
     display: flex;
 }
 
 .edit-productclass .container .content .sec-seven .search-form .form-field {
     display: flex;
     align-items: center;
-    margin-right: 20px;
 }
+
 
 .form-field {
     position: relative;
@@ -1383,13 +1367,13 @@ input#id1.form-group__input.form-group__input{
     font-size: 14px;
     font-weight: bold;
     color: #007bff;
-    background: white;
+    background: #f8f9fa;
     padding: 0 5px;
 }
 
 .edit-productclass .container .content .sec-seven .search-form input {
     padding: 8px;
-    border-color: rgba(0, 0, 0, .1);
+    border: 1px solid #ccc;
     border-radius: 4px;
     width: 200px;
     transition: border-color 0.2s ease;
@@ -1428,49 +1412,82 @@ input#id1.form-group__input.form-group__input{
 .btn-primery:hover, .btn-danger:hover {
     background-color: #0056b3;
 }
-.edit-productclass .container .content .sec-seven table {
-    width: 70%;
-    min-width: 600px;
+
+.edit-productclass .container .content .sec-seven .table {
+    width: 95%;
+    min-width: 500px;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
-.edit-productclass .container .content .sec-seven table th,
-.edit-productclass .container .content .sec-seven table td {
+.edit-productclass .container .content .sec-seven .table td td:first-child {
+    text-align: center;
+}
+
+.edit-productclass .container .content .sec-seven .table td:nth-child(3)
+
+
+ {
+    text-align: left;
+}
+.edit-productclass .container .content .sec-seven .table td:nth-child(1),
+.edit-productclass .container .content .sec-seven .table td:nth-child(2)
+{
+        text-align: center;
+}
+.edit-productclass .container .content .sec-seven .table td:nth-child(4),
+.edit-productclass .container .content .sec-seven .table td:nth-child(5),
+.edit-productclass .container .content .sec-seven .table td:nth-child(6),
+.edit-productclass .container .content .sec-seven .table td:nth-child(7),
+.edit-productclass .container .content .sec-seven .table td:nth-child(8)
+{
+    text-align: right;
+}
+
+.edit-productclass .container .content .sec-seven .table th,
+.edit-productclass .container .content .sec-seven .table td {
     padding: 10px;
     border: 1px solid #ddd;
 }
 
-.edit-productclass .container .content .sec-seven table th {
-    background-color: #f8f9fa;
-    font-weight: 300;
+.edit-productclass .container .content .sec-seven .table th {
+background-color: #a3d5f2;
+    font-weight: 500;
+    text-align: center;
 }
 
-.edit-productclass .container .content .sec-seven table td {
+.edit-productclass .container .content .sec-seven .table td {
     background-color: #ffffff;
     font-size: 14px;
-}
-
-.edit-productclass .container .content .sec-seven table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.edit-productclass .container .content .sec-seven table tr:hover {
-    background-color: #e9ecef;
 }
 .edit-productclass .container .content .sec-seven a{
     text-decoration: none;
     color: #007BFF;
 }
 
-.edit-productclass .container .content .sec-seven table th {
-    background-color: #f8f9fa;
-    text-align: center; 
-    vertical-align: middle; 
-    white-space: nowrap;
-    height: 50px;
+select.form-group__input-maker_id1 {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+    cursor: pointer;
+    height: 38px;
+    appearance: auto;
 }
-
-
+select.form-group__input-category_id5 {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 5px 10px;
+    outline: none;
+    transition: 0.3s;
+    cursor: pointer;
+    height: auto; 
+    white-space: nowrap;
+}
  .editable-textarea {
     width: 150px;
     height: 40px;
@@ -1501,19 +1518,6 @@ input.editable-input:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
-.edit-productclass .container .content .sec-seven table td:first-child {
-    text-align: center !important;
-}
-.edit-productclass .container .content .sec-seven table td:nth-child(2),
-.edit-productclass .container .content .sec-seven table td:nth-child(3)
-
- {
-    text-align: left;
-}
-.edit-productclass .container .content .sec-seven table td:nth-child(4){
-    text-align: right;
-}
-
 
 /*index staff*/
 .index_staff {
@@ -1530,16 +1534,16 @@ input.editable-input:focus {
 }
 
 .index_staff .container .content .sec-three h4 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #343A40;
     font-weight: 500;
 }
 
 .index_staff .container .content .sec-three .hr {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     border: 0;
-    border-top: 1px solid rgba(0, 0, 0, .1);
+ border-top: 1px solid rgba(100, 100, 100, .3);
 }
 
 .index_staff .container .content .sec-three .staff-form {
@@ -1552,6 +1556,7 @@ input.editable-input:focus {
     align-items: center;
     margin-right: 20px;
 }
+
 
 .form-field {
     position: relative;
@@ -1569,7 +1574,7 @@ input.editable-input:focus {
     font-size: 14px;
     font-weight: bold;
     color: #007bff;
-    background: white;
+    background: #f8f9fa;
     padding: 0 5px;
 }
 
@@ -1615,43 +1620,40 @@ input.editable-input:focus {
     background-color: #0056b3;
 }
 
-.index_staff .container .content .sec-three table {
+.index_staff .container .content .sec-three .table {
     width: 65%;
     min-width: 500px;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
-.index_staff .container .content .sec-three table td td:first-child {
+.index_staff .container .content .sec-three .table td td:first-child {
     text-align: center;
 }
-.index_staff .container .content .sec-three table td:nth-child(2),
-.index_staff .container .content .sec-three table td:nth-child(3)
+.index_staff .container .content .sec-three .table td:nth-child(2),
+.index_staff .container .content .sec-three .table td:nth-child(3)
  {
     text-align: left;
 }
-.index_staff .container .content .sec-three table th,
-.index_staff .container .content .sec-three table td {
+.index_staff .container .content .sec-three .table th,
+.index_staff .container .content .sec-three .table td {
     padding: 10px;
     border: 1px solid #ddd;
 }
 
-.index_staff .container .content .sec-three table th {
-    background-color: #f8f9fa;
-    font-weight: 300;
+.index_staff .container .content .sec-three .table th {
+background-color: #a3d5f2;
+    font-weight: 500;
+    text-align: center;
 }
 
-.index_staff .container .content .sec-three table td {
+.index_staff .container .content .sec-three .table td {
     background-color: #ffffff;
     font-size: 14px;
 }
 
-.index_staff .container .content .sec-three table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
 
-.index_staff .container .content .sec-three table tr:hover {
-    background-color: #e9ecef;
-}
+
+
 .index_staff .container .content .sec-three a{
     text-decoration: none;
     color: #007BFF;
@@ -1694,3 +1696,296 @@ input#username.form-group__input.form-group__input--username {
  input#id.form-group__input.form-group__input{
     max-width: 320px;
  }
+ /*index oder*/
+.index_staff {
+    width: 100%;
+}
+
+.index_staff .container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.index_staff .content .sec-three1 {
+    width: 100%;
+}
+
+.index_staff .container .content .sec-three1 h4 {
+    font-size: 2rem;
+    color: #343A40;
+    font-weight: 500;
+}
+
+.index_staff .container .content .sec-three1 .hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: 0;
+ border-top: 1px solid rgba(100, 100, 100, .3);
+}
+
+.index_staff .container .content .sec-three1 .staff-form {
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.index_staff .container .content .sec-three1 .staff-form .form-field {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+
+.form-field {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.index_staff .container .content .sec-three .staff-form label {
+    margin-right: 5px;
+}
+
+.staff-form label {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #007bff;
+    background: #f8f9fa;
+    padding: 0 5px;
+}
+
+.index_staff .container .content .sec-three1 .staff-form input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+    transition: border-color 0.2s ease;
+    height: 38px; 
+}
+.index_staff .container .content .sec-three1 .staff-form input:focus {
+    outline: none; 
+    border-color: #007bff; 
+}
+.index_staff .container .content .sec-three1 .staff-form  .form-buttons {
+    display: flex;
+    gap: 10px;
+}
+.btn-primery {
+    width: 100px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 38px; 
+   text-align: center;
+}
+.btn-danger{
+    width: 200px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 38px; 
+   text-align: center;
+}
+.btn-primery:hover, .btn-danger:hover {
+    background-color: #0056b3;
+}
+
+.index_staff .container .content .sec-three1 .table {
+    width:100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.index_staff .container .content .sec-three1 .table td td:first-child {
+    text-align: center;
+}
+.index_staff .container .content .sec-three1 .table td:nth-child(2),
+.index_staff .container .content .sec-three1 .table td:nth-child(3)
+ {
+    text-align: right;
+}
+.index_staff .container .content .sec-three1 .table td:nth-child(4)
+ {
+    text-align: left;
+}
+.index_staff .container .content .sec-three1 .table th,
+.index_staff .container .content .sec-three1 .table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.index_staff .container .content .sec-three1 .table th {
+background-color: #a3d5f2;
+    font-weight: 500;
+    text-align: center;
+}
+
+.index_staff .container .content .sec-three1 .table td {
+    background-color: #ffffff;
+    font-size: 14px;
+}
+
+.index_staff .container .content .sec-three1 a{
+    text-decoration: none;
+    color: #007BFF;
+}
+
+
+
+
+ /*detail oder*/
+.index_staff {
+    width: 100%;
+}
+
+.index_staff .container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.index_staff .content .sec-three2 {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.index_staff .container .content .sec-three2 h4 {
+    font-size: 2rem;
+    color: #343A40;
+    font-weight: 500;
+}
+
+.index_staff .container .content .sec-three2 .hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: 0;
+ border-top: 1px solid rgba(100, 100, 100, .3);
+}
+
+.index_staff .container .content .sec-three2 .staff-form {
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.index_staff .container .content .sec-three2 .staff-form .form-field {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+
+.form-field {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.index_staff .container .content .sec-three .staff-form label {
+    margin-right: 5px;
+}
+
+.staff-form label {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #007bff;
+    background: #f8f9fa;
+    padding: 0 5px;
+}
+
+.index_staff .container .content .sec-three2 .staff-form input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+    transition: border-color 0.2s ease;
+    height: 38px; 
+}
+.index_staff .container .content .sec-three2 .staff-form input:focus {
+    outline: none; 
+    border-color: #007bff; 
+}
+.index_staff .container .content .sec-three2 .staff-form  .form-buttons {
+    display: flex;
+    gap: 10px;
+}
+.btn-primery {
+    width: 100px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 38px; 
+   text-align: center;
+}
+.btn-danger{
+    width: 200px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 38px; 
+   text-align: center;
+}
+.btn-primery:hover, .btn-danger:hover {
+    background-color: #0056b3;
+}
+
+.index_staff .container .content .sec-three2 .table {
+    width:100%;
+     min-width: 220rem;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.index_staff .container .content .sec-three2 .table td td:first-child {
+    text-align: center;
+}
+.index_staff .container .content .sec-three2 .table td:nth-child(2),
+.index_staff .container .content .sec-three2 .table td:nth-child(8),
+.index_staff .container .content .sec-three2 .table td:nth-child(9),
+.index_staff .container .content .sec-three2 .table td:nth-child(10),
+.index_staff .container .content .sec-three2 .table td:nth-child(12),
+.index_staff .container .content .sec-three2 .table td:nth-child(15)
+ {
+    text-align: right;
+}
+.index_staff .container .content .sec-three2 .table td:nth-child(3),
+.index_staff .container .content .sec-three2 .table td:nth-child(4),
+.index_staff .container .content .sec-three2 .table td:nth-child(5),
+.index_staff .container .content .sec-three2 .table td:nth-child(6),
+.index_staff .container .content .sec-three2 .table td:nth-child(8),
+.index_staff .container .content .sec-three2 .table td:nth-child(14)
+ {
+    text-align: left;
+}
+.index_staff .container .content .sec-three2 .table th,
+.index_staff .container .content .sec-three2 .table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.index_staff .container .content .sec-three2 .table th {
+background-color: #a3d5f2;
+    font-weight: 500;
+    text-align: center;
+}
+
+.index_staff .container .content .sec-three2 .table td {
+    background-color: #ffffff;
+    font-size: 14px;
+}
+
+.index_staff .container .content .sec-three2 a{
+    text-decoration: none;
+    color: #007BFF;
+}
