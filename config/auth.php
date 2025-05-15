@@ -44,6 +44,7 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+     
     ],
 
     /*
@@ -73,6 +74,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Staff::class,
         ],
+    
     ],
 
     /*

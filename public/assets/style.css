@@ -1119,7 +1119,7 @@ select.form-group__input-category_id5 {
     height: auto; 
     white-space: nowrap;
 }
-select.form-group__input-category_id5 {
+select.form-group__input-category_id9 {
     width: 18rem;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -1134,7 +1134,7 @@ select.form-group__input-category_id5 {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-select.form-group__input-category_id5,
+select.form-group__input-category_id9,
 select.form-group__input-maker_id1 {
     box-sizing: border-box;
 }
@@ -1989,3 +1989,8 @@ background-color: #a3d5f2;
     text-decoration: none;
     color: #007BFF;
 }
+
+
+
+
+/* index order user */

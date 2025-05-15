@@ -32,17 +32,30 @@
 
 </head>
 @use('Illuminate\Support\Facades\Auth')
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const toggleMenuButton = document.getElementById('toggle-menu');
-        const navMenu = document.querySelector('.nav-menu');
 
-        toggleMenuButton.addEventListener('click', function(event) {
-            event.stopPropagation();
-            navMenu.classList.toggle('active');
-        });
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleMenuButton = document.getElementById('toggle-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    toggleMenuButton.addEventListener('click', function (event) {
+      event.stopPropagation();
+      navMenu.classList.toggle('active');
+      toggleMenuButton.classList.toggle('active');
     });
+
+    // Optional: click outside to close
+    document.addEventListener('click', function (event) {
+      if (!navMenu.contains(event.target) && !toggleMenuButton.contains(event.target)) {
+        navMenu.classList.remove('active');
+        toggleMenuButton.classList.remove('active');
+      }
+    });
+  });
 </script>
+
 
 <script>
     document.querySelectorAll('.faq-toggle').forEach(function(toggle) {
@@ -118,7 +131,22 @@
                             </a>
                         </div>
                         <ul class="nav-menu">
+                            {{-- <li class="dropdown"> 
+                                   <div class="search-box1" id="searchForm">
+                                <button type="button" class="btn-search" id="toggleSearch">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                        width="24px" fill="#666666">
+                                        <path
+                                            d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="keyword" id="searchInput"
+                                    value="{{ request('keyword') }}" placeholder="Tìm kiếm..." autocomplete="off">
+                            </div>
+                            </li> --}}
                             <li class="dropdown">
+                               
+
                                 <a href="#">Di Động</a>
                                 <div class="dropdown-menu">
                                     <div class="dropdown-left">
@@ -290,7 +318,7 @@
                                 <input type="text" name="keyword" id="searchInput"
                                     value="{{ request('keyword') }}" placeholder="Tìm kiếm..." autocomplete="off">
                             </div>
-
+                            
                         </div>
                         <div id="searchResults"
                             style="position: absolute; top: 100%;left: 0;background: #f5f5f5;width: 100%;overflow-y: scroll;height: 0;">
@@ -555,6 +583,7 @@
             });
         });
     </script>
+
 
     @if (session('error'))
         <script>

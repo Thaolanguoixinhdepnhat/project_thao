@@ -127,6 +127,17 @@ class CartController extends Controller
         // Chuyển hướng với thông báo thành công
         return redirect()->back();
     }
+
+
+
+
+
+
+
+
+
+
+    
     
 }
 

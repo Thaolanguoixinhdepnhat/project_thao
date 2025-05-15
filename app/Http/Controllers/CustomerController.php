@@ -6,6 +6,7 @@ use App\Models\Customer;
 use Carbon\Carbon; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 
 class CustomerController extends Controller
@@ -104,6 +105,38 @@ class CustomerController extends Controller
         // Chuyển hướng về trang danh sách khách hàng với thông báo thành công
         return redirect()->route('customer.index')->with('success', 'Khách hàng đã được xóa thành công.');
     }
+
+public function changePassword(Request $request)
+{
+    // Xác thực dữ liệu đầu vào
+    $request->validate([
+        'current_password' => 'required',
+        'new_password' => 'required|min:3',
+        'confirm_password' => 'required|same:new_password',
+    ]);
+
+    // Lấy thông tin người dùng hiện tại (customer) từ guard mặc định
+    $customer = Auth::user();  // Guard mặc định 'web' sẽ sử dụng provider 'users'
+
+    // Kiểm tra mật khẩu hiện tại
+    if (!Hash::check($request->current_password, $customer->password)) {
+        return back()->withErrors(['current_password' => 'Mật khẩu hiện tại không đúng!']);
+    }
+
+    // Cập nhật mật khẩu mới
+    $customer->password = Hash::make($request->new_password);
+    $customer->save();
+
+    return back()->with('success', 'Mật khẩu đã được thay đổi thành công.');
+}
+
+
+
+public function showChangePasswordForm()
+{
+    return view('user.home.change_password'); 
+}
+
 
 }
 

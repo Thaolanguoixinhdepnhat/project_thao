@@ -145,8 +145,11 @@ Route::prefix('user')->group(function () {
     Route::get('/cart', [CartController::class, 'viewCart'])->name('cart_index');
     Route::delete('/cart/delete/{id}', [CartController::class, 'destroy'])->name('cart.delete');
     Route::post('/update-cart', [CartController::class, 'updateCart'])->name('update.cart');
+
    
    
+
+
 });
 
 
@@ -166,6 +169,11 @@ Route::get('/order', [AppController::class, 'order'])->name('user.order');
 Route::get('/cartttt', [AppController::class, 'cart'])->name('user.cart');
 
 Route::post('/user/update', [AppController::class, 'update'])->name('user.update');
+
+
+
+Route::get('/doi-mat-khau', [CustomerController::class, 'showChangePasswordForm'])->name('user.show_change_password');
+Route::post('/doi-mat-khau', [CustomerController::class, 'changePassword'])->name('user.change_password');
 
 
 

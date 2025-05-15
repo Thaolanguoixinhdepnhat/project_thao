@@ -23,7 +23,7 @@
 
                     <div class="form-field">
                         <label for="product_name"><i class="fas fa-tags text-warning" style="color: #6c757d !important;"></i> Danh mục sản phẩm</label>
-                        <select name="category_id" name="category_id"  class="form-group__input form-group__input-category_id5">
+                        <select name="category_id" name="category_id"  class="form-group__input form-group__input-category_id9">
                             <option value="">Chọn danh mục</option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>

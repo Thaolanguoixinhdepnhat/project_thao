@@ -14,7 +14,7 @@
         }
     }
 }
-
+  
 .sec-two{
     margin: 5rem 0;
     .content-body{
@@ -33,6 +33,33 @@
                 margin: 1.2rem;
                 gap: 1rem;
                 border-radius: .8rem;
+           
+
+.img {
+    background-color: #f2f2f2;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+   width: 100%;
+img {
+    min-height: 22rem;
+    object-fit: cover;
+    mix-blend-mode: multiply; 
+     object-fit: cover;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+   &:hover {
+    img {
+      transform: scale(1.1);     
+      opacity: 0.8;              
+    }
+  }
+}
+
+
+
+
+
                 .badge-icon_red{
                     position: absolute;
                     top: 1rem;
@@ -47,6 +74,7 @@
                 }
 
                 .txt-name{
+                    height: 5rem;
                     font-size: 1.8rem;
                     font-weight: bold;
                     text-align: center;
@@ -421,136 +449,5 @@
 
 
 
-  .sec-tv.sec-two {
-    padding: 40px 0;
-    background: #fff;
-  
-    .container {
-      max-width: 1440px;
-      margin: auto;
-      padding: 0 20px;
-  
-      .content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-  
-        .content-head {
-          width: 100%;
-  
-          .text_block {
-            text-align: center;
-  
-            .section-title {
-              font-size: 36px;
-              font-weight: 700;
-              margin-bottom: 30px;
-              color: #222;
-            }
-  
-            .two-column-layout {
-              display: flex;
-              flex-wrap: wrap;
-              gap: 30px;
-  
-              .left-column {
-                flex: 1 1 35%;
-                img {
-                  width: 100%;
-                  border-radius: 10px;
-                  object-fit: cover;
-                }
-              }
-  
-              .right-column {
-                flex: 1 1 60%;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 20px;
-                justify-content: space-between;
-  
-                .item {
-                  background: #f9f9f9;
-                  border-radius: 12px;
-                  padding: 15px;
-                  width: calc(33.333% - 14px);
-                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-                  position: relative;
-                  transition: transform 0.3s ease;
-  
-                  &:hover {
-                    transform: translateY(-5px);
-                  }
-  
-                  .img {
-                    text-align: center;
-                    margin-bottom: 10px;
-  
-                    img {
-                      width: 100%;
-                      max-height: 200px;
-                      object-fit: contain;
-                    }
-                  }
-  
-                  .badge-icon_red {
-                    position: absolute;
-                    top: 10px;
-                    left: 10px;
-                    background: #e74c3c;
-                    color: #fff;
-                    font-size: 12px;
-                    padding: 2px 6px;
-                    border-radius: 4px;
-                    font-weight: bold;
-                  }
-  
-                  .txt-name {
-                    font-size: 16px;
-                    font-weight: 600;
-                    text-align: center;
-                    margin: 10px 0;
-                    color: #333;
-                  }
-  
-                  .price {
-                    font-size: 14px;
-                    color: #666;
-                    text-align: center;
-                    margin-bottom: 10px;
-                  }
-  
-                  .btn {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 8px;
-  
-                    .btn-register1 {
-                      background: #3498db;
-                      color: #fff;
-                      padding: 8px 10px;
-                      border: none;
-                      border-radius: 6px;
-                      text-align: center;
-                      text-decoration: none;
-                      font-weight: 600;
-                      transition: background 0.3s ease;
-  
-                      &:hover {
-                        background: #2980b9;
-                      }
-                    }
-  
-                    button.btn-register1 {
-                      cursor: pointer;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+
   
