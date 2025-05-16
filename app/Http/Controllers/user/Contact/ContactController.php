@@ -35,4 +35,16 @@ class ContactController extends Controller
             'news' => $news
         ]);
     }
+public function tvtt()
+{
+    $count_cart = Cart::where('customer_id', auth()->id())->get();
+
+    return view('user.contact.tvtt', [
+        'count_cart' => $count_cart,
+        'dt' => [],// Truyền mảng rỗng để không lỗi
+         'tv' => [] 
+    ]);
+}
+
+
 }

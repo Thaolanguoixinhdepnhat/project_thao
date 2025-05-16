@@ -320,6 +320,16 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+    &::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  a::before {
+    content: none !important;
+    display: none !important;
+  }
+
 }
 
 .promo__image {

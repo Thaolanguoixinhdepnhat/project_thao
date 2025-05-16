@@ -150,6 +150,7 @@ Route::get('/product/{id}', [ProductController::class, 'detail'])->name('product
 
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::get('/contact/tvtt', [ContactController::class, 'tvtt'])->name('contact.tvtt');
 
 
 
