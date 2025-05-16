@@ -174,20 +174,20 @@ public function index(Request $request)
     ]);
 }
 
-    public function detail($id)
-    {
-        $products = Product::where('id', $id)->with('productClasses','productImages')->get();
-        $count_cart = Cart::where('customer_id', auth()->id())->get();
-        $tv = Product::where('category_id', 1)
-        ->with('productClasses')
-        ->take(5)
-        ->get();
+    // public function detail($id)
+    // {
+    //     $products = Product::where('id', $id)->with('productClasses','productImages')->get();
+    //     $count_cart = Cart::where('customer_id', auth()->id())->get();
+    //     $tv = Product::where('category_id', 1)
+    //     ->with('productClasses')
+    //     ->take(5)
+    //     ->get();
 
-        // Lấy sản phẩm với category_id = 2
-        $dt = Product::where('category_id', 2)
-                ->with('productClasses')
-                ->take(5)
-                ->get();
+    //     // Lấy sản phẩm với category_id = 2
+    //     $dt = Product::where('category_id', 2)
+    //             ->with('productClasses')
+    //             ->take(5)
+    //             ->get();
 
 
 
@@ -195,36 +195,83 @@ public function index(Request $request)
           
 
 
-        // Lấy 10 sản phẩm mới nhất
-        $news = Product::orderBy('id', 'desc')->take(10)->get();
+    //     // Lấy 10 sản phẩm mới nhất
+    //     $news = Product::orderBy('id', 'desc')->take(10)->get();
         
-        // Lọc màu & size sau khi lấy xong sản phẩm
-        foreach ($products as $product) {
-            $seenSizes = [];
-            $seenColorCodes = [];
-            $result = [];
+    //     // Lọc màu & size sau khi lấy xong sản phẩm
+    //     foreach ($products as $product) {
+    //         $seenSizes = [];
+    //         $seenColorCodes = [];
+    //         $result = [];
         
-            foreach ($product->productClasses as $item) {
-                $sizeKey = explode('｜', trim((string) $item->size))[0]; // Or keep the full size string if needed
-                $comboKey = $item->color_code . '-' . $sizeKey;
+    //         foreach ($product->productClasses as $item) {
+    //             $sizeKey = explode('｜', trim((string) $item->size))[0]; // Or keep the full size string if needed
+    //             $comboKey = $item->color_code . '-' . $sizeKey;
         
-                // Check if the color_code and sizeKey combination has already been seen
-                if (!in_array($sizeKey, $seenSizes) && !in_array($item->color_code, $seenColorCodes)) {
-                    $seenSizes[] = $sizeKey;
-                    $seenColorCodes[] = $item->color_code;
-                    $result[] = $item;
-                }
-            }
+    //             // Check if the color_code and sizeKey combination has already been seen
+    //             if (!in_array($sizeKey, $seenSizes) && !in_array($item->color_code, $seenColorCodes)) {
+    //                 $seenSizes[] = $sizeKey;
+    //                 $seenColorCodes[] = $item->color_code;
+    //                 $result[] = $item;
+    //             }
+    //         }
         
-            $product->productClasses = collect($result);
-        }
-        // return $products;
-        return view('user.product.details', ['products' => $products , 'count_cart' => $count_cart,'dt' => $dt,
-            'tv' => $tv,
-            'news' => $news,]);
+    //         $product->productClasses = collect($result);
+    //     }
+    //     // return $products;
+    //     return view('user.product.details', ['products' => $products , 'count_cart' => $count_cart,'dt' => $dt,
+    //         'tv' => $tv,
+    //         'news' => $news,]);
 
+    // }
+
+public function detail($id)
+{
+    $products = Product::where('id', $id)->with('productClasses','productImages')->get();
+    $count_cart = Cart::where('customer_id', auth()->id())->get();
+    $tv = Product::where('category_id', 1)->with('productClasses')->take(5)->get();
+    $dt = Product::where('category_id', 2)->with('productClasses')->take(5)->get();
+    $news = Product::orderBy('id', 'desc')->take(10)->get();
+
+    // Lấy category_id của sản phẩm hiện tại để lấy sản phẩm liên quan
+    $currentProduct = $products->first();
+    $relatedProducts = collect();
+    if ($currentProduct) {
+        $relatedProducts = Product::where('category_id', $currentProduct->category_id)
+            ->where('id', '!=', $currentProduct->id) // trừ sản phẩm đang xem
+            ->take(5)
+            ->get();
     }
 
+    // Lọc màu & size cho sản phẩm hiện tại
+    foreach ($products as $product) {
+        $seenSizes = [];
+        $seenColorCodes = [];
+        $result = [];
+
+        foreach ($product->productClasses as $item) {
+            $sizeKey = explode('｜', trim((string) $item->size))[0];
+            $comboKey = $item->color_code . '-' . $sizeKey;
+
+            if (!in_array($sizeKey, $seenSizes) && !in_array($item->color_code, $seenColorCodes)) {
+                $seenSizes[] = $sizeKey;
+                $seenColorCodes[] = $item->color_code;
+                $result[] = $item;
+            }
+        }
+
+        $product->productClasses = collect($result);
+    }
+
+    return view('user.product.details', [
+        'products' => $products,
+        'count_cart' => $count_cart,
+        'dt' => $dt,
+        'tv' => $tv,
+        'news' => $news,
+        'relatedProducts' => $relatedProducts, // truyền dữ liệu này ra view
+    ]);
+}
 
 
 

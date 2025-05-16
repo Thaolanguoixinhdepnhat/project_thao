@@ -49,11 +49,18 @@
                             <div class="item">
                                 <form class="formAddToCart" action="{{ route('cart.add') }}" method="POST" id="form-{{ $item->id }}"> 
                                     @csrf
-                                    <div class="img">
+                                    {{-- <div class="img">
                                         <img class="image__main responsive-img image--loaded"
                                             src="{{ asset('storage/' . $item->product_image) }}"
                                             alt="{{ $item->product_name }}">
-                                    </div>
+                                    </div> --}}
+                                         <a href="{{ route('user.detail', ['id' => $item->id]) }}">
+                                        <div class="img">
+                                            <img class="image__main responsive-img image--loaded"
+                                                src="{{ asset('storage/' . $item->product_image) }}"
+                                                alt="{{ $item->product_name }}">
+                                        </div>
+                                    </a>
                                 
                                     <span class="badge-icon_red">New</span>
                                     
@@ -98,7 +105,7 @@
                                     </div>
 
                                     <div class="btn">
-                                        <a href="{{route('user.detail', ['id' => $item->id])}}" class="btn-register1">Chi tiết</a>
+                                        {{-- <a href="{{route('user.detail', ['id' => $item->id])}}" class="btn-register1">Chi tiết</a> --}}
                                         
                                         <form action="{{ route('cart.add') }}" method="POST" id="form-{{ $item->id }}">
                                             @csrf

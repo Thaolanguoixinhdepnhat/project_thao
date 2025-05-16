@@ -37,7 +37,7 @@
 
 .img {
     background-color: #f2f2f2;
-    height: 300px;
+
     overflow: hidden;
     position: relative;
    width: 100%;
@@ -217,7 +217,7 @@ img {
             &:after{
                 position: absolute;
                 content: '';
-                width: 50%;
+                width: 90%;
                 height: 1px;
                 left: 50%;
                 bottom: 0;
@@ -269,11 +269,12 @@ img {
                 span{
                     font-size: 2rem;
                     font-weight: 500;
-                    margin-left: 2rem;
+                    margin-left: 2rem; 
                     &.detail_product{
                         margin: 0;
                     }
                 }
+           
                 .color{
                     display: flex;
                     align-items: center;
@@ -341,6 +342,7 @@ img {
 
                 .btn-register1{
                     color: white;
+                    max-width: 35rem;
                     background-color: black;
                     padding: 1rem 2rem;
                     border-radius: 3rem;
@@ -359,6 +361,40 @@ img {
                         border: 1px solid #000;
                     }
                 }
+   .d-flex {
+  gap: 1rem;
+}
+
+.d-flex a.btn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  
+  color: inherit;
+  font-size: initial; 
+
+  i {
+    font-size: 1.5rem;
+    transition: color 0.3s ease, font-size 0.3s ease;
+  }
+
+  &:hover {
+  color: #0d6efd; 
+ background-color: #c0c0c0;
+  text-decoration: none;
+  }
+
+  &:hover i {
+    font-size: 1.75rem;  
+ 
+  }
+}
+
+
+
             }
         }
 

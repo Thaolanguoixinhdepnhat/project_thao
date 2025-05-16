@@ -89,6 +89,43 @@
                                 <button type="submit" class="btn-register1">Mua ngay</button>
                             </form>
                         </div>
+
+           <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<div class="d-flex gap-3 justify-content-start p-3">
+  <a href="https://www.facebook.com/?locale=vi_VN" class="btn btn-outline-dark rounded-circle position-relative" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://x.com/i/flow/login" class="btn btn-outline-dark rounded-circle position-relative" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="https://mail.google.com/mail/u/0/#inbox" class="btn btn-outline-dark rounded-circle position-relative" data-bs-toggle="tooltip" data-bs-placement="top" title="Mail">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a href="https://www.pinterest.com/" class="btn btn-outline-dark rounded-circle position-relative" data-bs-toggle="tooltip" data-bs-placement="top" title="Pinterest">
+    <i class="fab fa-pinterest-p"></i>
+  </a>
+  <a href="https://www.linkedin.com/" class="btn btn-outline-dark rounded-circle position-relative" data-bs-toggle="tooltip" data-bs-placement="top" title="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+</div>
+
+<!-- Bootstrap JS + Popper (for tooltips) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Init tooltip -->
+<script>
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el))
+</script>
+
+
+
+
+                        
                     @endforeach
                 </form>
             </div>
@@ -102,6 +139,58 @@
         </div>
     </div>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
    $(document).ready(function() {

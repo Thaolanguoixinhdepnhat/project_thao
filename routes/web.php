@@ -15,6 +15,7 @@ use App\Http\Controllers\User\Order\OrderController;
 use App\Http\Controllers\User\AppController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\User\Contact\ContactController;
 use App\Http\Controllers\OrderController as AdminOrderController;
 
 
@@ -145,13 +146,24 @@ Route::prefix('user')->group(function () {
     Route::get('/cart', [CartController::class, 'viewCart'])->name('cart_index');
     Route::delete('/cart/delete/{id}', [CartController::class, 'destroy'])->name('cart.delete');
     Route::post('/update-cart', [CartController::class, 'updateCart'])->name('update.cart');
+Route::get('/product/{id}', [ProductController::class, 'detail'])->name('product.detail');
 
-   
-   
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+
+
+
+
 
 
 });
 
+
+
+
+
+
+  
 
 
 
