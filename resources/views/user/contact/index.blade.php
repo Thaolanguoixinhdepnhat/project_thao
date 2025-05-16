@@ -9,6 +9,7 @@
                 <div class="contac-font">
                     <div class="img">
                           <img src="/storage/product_images/Contact_Us_KV_1440x640.jpg" alt="load,...">
+                          <h2>sjsdskds</h2>
                     </div>
                 </div>
                 </div>

@@ -30,10 +30,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
-  
-
-
 </head>
 @use('Illuminate\Support\Facades\Auth')
 
@@ -157,12 +153,9 @@
                                         <div class="dropdown-left-main">
                                             <div class="dropdown-column">
                                                 <h5>Di Động</h5>
-                                                {{-- @foreach ($dt as $item)
-                                                    <a href="">{{ $item->product_name }}</a>
-                                                @endforeach --}}
                                                 @foreach ($dt as $item)
-                                                <a href="{{ route('user.detail', ['id' => $item->id]) }}">{{ $item->product_name }}</a>
-                                            @endforeach
+                                                    <a href="">{{ $item->product_name }}</a>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -177,13 +170,7 @@
                                                             src="{{ asset('storage/' . $item->product_image) }}"
                                                             alt="load...">
                                                     </div>
-                                                    {{-- <p class="promo__text">{{ $item->product_name }}</p> --}}
-                                                      <p class="promo__text">
-                                                        <a class="s" href="{{ route('user.detail', ['id' => $item->id]) }}">
-                                                            {{ $item->product_name }}
-                                                        </a>
-                                                    </p>
-                                                   
+                                                    <p class="promo__text">{{ $item->product_name }}</p>
                                                 </div>
                                             @endforeach
                                         </div>
@@ -198,13 +185,9 @@
                                         <div class="dropdown-left-main">
                                             <div class="dropdown-column">
                                                 <h5>Tivi</h5>
-                                                {{-- @foreach ($tv as $item)
-                                                    <a href="">{{ $item->product_name }}</a>
-                                                @endforeach --}}
                                                 @foreach ($tv as $item)
-                                                <a href="{{ route('user.detail', ['id' => $item->id]) }}">{{ $item->product_name }}</a>
-                                            @endforeach
-
+                                                    <a href="">{{ $item->product_name }}</a>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -219,14 +202,7 @@
                                                             src="{{ asset('storage/' . $item->product_image) }}"
                                                             alt="load...">
                                                     </div>
-                                                    {{-- <p class="promo__text">{{ $item->product_name }}</p> --}}
-                                                   <p class="promo__text">
-                                                        <a class="s" href="{{ route('user.detail', ['id' => $item->id]) }}">
-                                                            {{ $item->product_name }}
-                                                        </a>
-                                                    </p>
-
-
+                                                    <p class="promo__text">{{ $item->product_name }}</p>
                                                 </div>
                                             @endforeach
                                         </div>
@@ -313,31 +289,19 @@
                                     </div>
                                 </div>
                             </li>
-{{-- 
+
                             <li class="dropdown">
-                                <a href="" class="business">
+                                <a href="#" class="business">
                                     Liên hệ
                                     <i class="fa-solid fa-arrow-up-long"></i>
                                 </a>
                             </li>
-                         --}}
-
-<li class="dropdown">
-    <a href="{{ route('contact.index') }}" class="business">
-        Liên hệ
-        <i class="fa-solid fa-arrow-up-long"></i>
-    </a>
-</li>
-
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown">
                                     Về chúng tôi
                                 </a>
                             </li>
-                  
-
-
                         </ul>
                     </div>
 
@@ -412,7 +376,6 @@
             </div>
         </div>
     </header>
-
 
 
     <main>
