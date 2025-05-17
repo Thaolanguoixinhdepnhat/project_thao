@@ -28,6 +28,25 @@
 
                               </div>
                         </div>
+                        <div class="box">
+                        <div class="group-box">
+                              <div class="txt">
+                                    <h2>Đặt Hẹn Lịch Sửa Chữa</h2>
+                              </div>
+                              <div class="lbl">
+                                    <span>Ưu tiên phục vụ, Tiết kiệm thời gian của bạn</span>
+                              </div>
+                               <div class="btn">
+                                     {{-- <button  type="submit" class="btn_submit">Chat qua Zalo</button> --}}
+                                     <a href="{{ route('contact.dhlsc') }}">
+                                          <button type="button" class="btn_submit">Bắt đầu </button>
+                                    </a>
+
+                              </div>
+                        </div>
+                        
+                        </div>
+                        
                         </div>
                 </div>
             </div>

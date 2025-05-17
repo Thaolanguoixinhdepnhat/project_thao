@@ -41,7 +41,17 @@ public function tvtt()
 
     return view('user.contact.tvtt', [
         'count_cart' => $count_cart,
-        'dt' => [],// Truyền mảng rỗng để không lỗi
+        'dt' => [],
+         'tv' => [] 
+    ]);
+}
+public function dhlsc()
+{
+    $count_cart = Cart::where('customer_id', auth()->id())->get();
+
+    return view('user.contact.dhlsc', [
+        'count_cart' => $count_cart,
+        'dt' => [],
          'tv' => [] 
     ]);
 }
