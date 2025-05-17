@@ -462,6 +462,7 @@ display: flex;
   &__figure {
     margin: 0;
     position: relative;
+      overflow: hidden; 
   }
 }
 
@@ -508,13 +509,367 @@ display: flex;
      font-size: 5rem;
   }
 }
+.ai{
+  display: flex;
+    justify-content: space-around;
+    margin-bottom: 30rem;
+}
+.Now{
+color: #fff;
+text-align: center;
+font-size: 2.5rem;
+
+}
 
 
 
 }
   }
 }
+.ssai {
+  width: 100%;
+  margin: 0 auto;
+  font-family: 'SamsungOne', sans-serif;
 
+  .container {
+    width: 100%;
+
+    .content {
+      position: relative; 
+
+      .carousel-item {
+        position: relative;
+        max-width: 144rem;
+        margin: 0 auto;
+
+        img {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+
+        .voucher-text {
+          position: absolute;
+          top: 60%; 
+          left: 15%;
+          transform: translate(-50%, -50%);
+          color: white;
+          z-index: 2;
+          display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+          p {
+            font-size: 1.5rem;
+            font-weight: 500;
+          }
+
+          .register-btn {
+            text-decoration: none;
+
+            .btn-primary  {
+              background-color:white;
+              border: none;
+             padding: 1rem 1rem;
+              color: black;
+              font-size: 1.6rem;
+              cursor: pointer;
+               font-weight: 400;
+              border-radius: 3rem;
+
+              &:hover {
+                background-color: #000; 
+                color: white; 
+                border: 1px solid white;
+              }
+            
+            }
+          }
+        }
+      }
+      .lbl{
+        width: 100%;
+        max-width: 144rem;
+       background-color:black;
+       margin: 0 auto;
+       
+       h1{
+        text-align: center;
+        font-size: 4.5rem;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 3rem;
+       }
+       .video{
+        display: flex;
+        gap: 2rem;
+        width: 100%;
+        max-width: 80%;
+        margin: 0 auto;
+        .left{
+          width: 100%;
+        }
+        .right{
+          width: 100%;
+          color: white;
+           display: flex;
+            gap: 1rem;
+            flex-direction: column;
+          h1{
+                font-size: 2.5rem;
+                text-align: left;
+          }
+          span{
+            font-size: 1.5rem;
+          }
+        }
+       }
+      }
+      .txt{
+        width: 100%;
+        max-width: 144rem;
+       background-color:black;
+       margin: 0 auto;
+       h1{
+        padding: 1rem;
+        color: #fff;
+        text-align: center;
+        font-size: 4rem;
+        font-weight: 800;
+       }
+       .list{
+  width: 100%;
+    padding: 2rem;
+  display: grid
+;
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+    margin-bottom: 3rem;
+  .item1{
+display: flex;
+    padding: 2rem;
+    flex-direction: column;
+  .icon{
+    width: 100%;
+  }
+  .text{
+    display: flex
+;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+    p{
+      font-size: 2rem;
+      font-weight: 400;
+       color:white;
+       text-align: center;
+    }
+  }
+  }
+}
+      }
+      .text_book{
+          width: 100%;
+        max-width: 144rem;
+       background-color:black;
+       margin: 0 auto;
+       h1{
+        color: white;
+        padding: 1rem;
+        font-size: 4rem;
+        font-weight: bold;
+        text-align: center;
+       }
+             .list{
+  width: 100%;
+  padding: 2rem;
+  display: grid
+;
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  .item1{
+display: flex;
+    padding: 2rem;
+    flex-direction: column;
+  .icon{
+    width: 100%;
+  }
+  .text{
+    display: flex
+;
+gap: 1rem;
+    align-items: center;
+    flex-direction: column;
+    h2{
+      font-size: 3rem;
+      font-weight: 400;
+       color:white;
+    }
+    p{
+      font-size: 1.5rem;
+      font-weight: 400;
+       color:white;
+       text-align: center;
+    }
+  }
+  }
+}
+      }
+    }
+  }
+}
+.sale{
+   width: 100%;
+   margin-bottom: 5rem;
+  font-family: 'SamsungOne', sans-serif;
+  background-color:#e2f0fd;
+
+  .container{
+    width: 100%;
+    .content{
+      position: relative; 
+      .sale-main{
+        display: flex;
+        gap: 2rem;
+        flex-direction: column;
+  
+      .carousel-item {
+        position: relative;
+        max-width: 144rem;
+        margin: 0 auto;
+
+        img {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+
+        .voucher-text {
+          position: absolute;
+          top: 60%; 
+          left: 15%;
+          transform: translate(-50%, -50%);
+          color:black;
+          z-index: 2;
+          display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+          h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            
+          }
+
+          .register-btn {
+            text-decoration: none;
+
+            span {
+              background-color:white;
+              border: none;
+             padding: 1rem 1rem;
+              color: black;
+              font-size: 1.6rem;
+              cursor: pointer;
+               font-weight: 400;
+              border-radius: 3rem;
+
+             
+            
+            }
+          }
+        }
+      }
+      .item1{
+        margin: 0 auto;
+      }
+      .lbl{
+        .text{
+          text-align: center;
+         padding: 2rem;
+          font-size: 3.5rem;
+          font-weight: bold;
+          h2{
+            color:black;
+          }
+        }
+         .group_list{
+  width: 80%;
+  display: grid;
+  margin: 0 auto;
+    grid-template-columns: repeat(auto-fill, minmax(36rem, 1fr));
+  .item{
+display: flex;
+    padding: 2rem;
+    flex-direction: column;
+  .icon{
+    width: 100%;
+  }
+  .text1{
+    display: flex
+;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;
+    h2{
+        font-size: 2.5rem;
+      font-weight: 700;
+       color:black;
+       height: 8rem;
+       text-align: center;
+    }
+    p{
+      font-size: 1.5rem;
+      font-weight: 400;
+       color:black;
+       text-align: center;
+    }
+  }
+  }
+}
+      }
+      .text_book{
+        width: 100%;
+        margin: 0 auto;
+        .txt{
+          color: black;
+          h2{
+            font-size:3.5rem;
+            font-weight: bold;
+            text-align: center;
+          }
+        }
+        .group-item{
+         width:100%;
+         gap: 2rem;
+         margin: 0 auto;
+        display: flex;
+        padding: 5rem;
+        justify-content: center;
+         .item{
+          display: flex;
+          gap: 2rem;
+          padding: 3rem 0;
+          .left{
+            img{
+                  object-fit: contain;
+                  mix-blend-mode: multiply;
+            }
+          }
+          .right{
+            span{
+              font-weight: bold;
+              font-size: 1.5rem;
+              color: black;
+            }
+          }
+         }
+        }
+      }
+
+
+    }
+    }
+  }
+}
 
 
 

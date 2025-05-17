@@ -31,7 +31,10 @@
                             <h2>Samsung AI TV đỉnh cao<br>
                                 AI toàn năng, thăng hạng toàn diện</h2>
                             <p>Combo quà tặng AI TV lên đến 40 triệu</p>
-                            <button class="banner-button">Mua ngay</button>
+                             <a href="{{route('user.products.index')}}" class="btn-primary">
+                                  <button class="banner-button">Mua ngay</button>
+                             </a>
+                          
                         </div>
                     </div>
                     <div class="carousel-item">
@@ -40,7 +43,9 @@
                         <div class="voucher-text">
                             <p>Đăng ký sớm nhận voucher 1 Triệu đồng.</p>
                             <p>Duy nhất từ 12.03 - 25.03</p>
+                               <a href="{{route('contact.ssai')}}" class="btn-primary">
                             <button class="register-btn">Đăng ký ngay</button>
+                               </a>
                         </div>
                     </div>
                     <div class="carousel-item">
@@ -51,6 +56,7 @@
                             <h1>Sale hội tưng bừng<br>Mừng đời sang trang</h1>
                             <p>Ăn mừng cột mốc bạn mới đạt được với ưu đãi<br>lên đến 50% từ
                                 Samsung<br>#AnMungVoiSamSung</p>
+                                  <a href="{{route('contact.sale')}}" class="btn-primary">
                             <button class="btn-register">Mua ngay</a>
                         </div>
                     </div>
