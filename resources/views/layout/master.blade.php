@@ -120,7 +120,7 @@
 </script>
 
 <body>
-    <header class="header">
+    <header id="header" class="header" >
         <div class="container">
             <div class="content">
                 <nav class="navbar">
@@ -511,6 +511,11 @@
         </div>
 
     </section>
+<a href="#top" class="arrow-up" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+  <i class="fa-solid fa-circle-arrow-up" style="font-size: 32px;"></i>
+</a>
+
+
 
     {{-- header cuộn --}}
     <script>

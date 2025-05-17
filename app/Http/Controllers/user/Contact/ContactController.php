@@ -55,6 +55,28 @@ public function dhlsc()
          'tv' => [] 
     ]);
 }
+ public function GlxS25()
+    {
+        $count_cart = Cart::where('customer_id', auth()->id())->get();
 
+        $tv = Product::where('category_id', 1)
+            ->with('productClasses')
+            ->take(5)
+            ->get();
+
+        $dt = Product::where('category_id', 2)
+            ->with('productClasses')
+            ->take(5)
+            ->get();
+
+        $news = Product::orderBy('id', 'desc')->take(10)->get();
+
+        return view('user.contact.glxs25', [
+            'count_cart' => $count_cart,
+            'tv' => $tv,
+            'dt' => $dt,
+            'news' => $news
+        ]);
+    }
 
 }

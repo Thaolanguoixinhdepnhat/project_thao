@@ -17,8 +17,10 @@
                         <div class="video-main_txt">
                             <h3>Thu cũ đổi mới hỗ trợ thêm 2 triệu</h3>
                             <div class="btn-group">
+                                  <a href="{{ route('contact.glxs25') }}">
                                 <button class="btn-outline"><span>Tìm hiểu thêm</span></button>
-                                <button class="btn-primary">Mua ngay</button>
+                                  </a>
+                                   <a href="{{route('user.products.index')}}" class="btn-primary">Mua ngay</a>
                             </div>
                         </div>
                     </div>
