@@ -22,12 +22,15 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $order = Order::get();
+        // $order = Order::get();
+        $order = Order::paginate(5); 
+
         return view('order.index', compact('order'));
     }
 
     public function detail($id)
     {
+       
         $order = Order::where('id', $id)->with('items')->get();
         return view('order.detail', compact('order'));
     }

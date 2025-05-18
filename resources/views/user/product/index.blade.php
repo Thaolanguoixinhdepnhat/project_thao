@@ -4,6 +4,24 @@
 
 @section('content')
 
+@php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('home')],
+        ['label' => 'Sản phẩm', 'url' => route('user.products.index')],
+    ];
+@endphp
+<style>
+     .mb-4{
+    padding-left: 3rem !important;
+    display: flex;
+    font-size: 2rem !important;
+    gap: 1rem;
+    a{
+        color:black;
+    text-decoration: none;
+    }
+    }
+    </style>
 <section class="sec-option">
     <div class="container">
         <div class="content">

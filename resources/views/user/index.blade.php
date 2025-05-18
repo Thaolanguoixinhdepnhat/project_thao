@@ -66,6 +66,7 @@
                         <div class="voucher">
                             <h1>Săn E-Voucher 500k<br>Chỉ với 100k</h1>
                             <p>Áp dụng khi mua Galaxy A56 | A36</p>
+                              <a href="{{route('contact.sane')}}" class="btn-primary">
                             <button class="btn-register">Mua ngay</a>
                         </div>
                     </div>

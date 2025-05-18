@@ -360,6 +360,9 @@
             </div>
         </div>
     </div>
+       <div class="pagination-container">
+                    {{ $productClasses->links('vendor.pagination.default') }}
+                </div>
 </section>
 
 <script>

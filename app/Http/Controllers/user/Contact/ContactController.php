@@ -124,4 +124,27 @@ public function ssai()
             'news' => $news
         ]);
     }
+     public function sane()
+    {
+        $count_cart = Cart::where('customer_id', auth()->id())->get();
+
+        $tv = Product::where('category_id', 1)
+            ->with('productClasses')
+            ->take(5)
+            ->get();
+
+        $dt = Product::where('category_id', 2)
+            ->with('productClasses')
+            ->take(5)
+            ->get();
+
+        $news = Product::orderBy('id', 'desc')->take(10)->get();
+
+        return view('user.contact.sane', [
+            'count_cart' => $count_cart,
+            'tv' => $tv,
+            'dt' => $dt,
+            'news' => $news
+        ]);
+    }
 }

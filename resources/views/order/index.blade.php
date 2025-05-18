@@ -96,6 +96,18 @@
 
 
 @section('content')
+<style>
+    .text-left {
+        text-align: left;
+    }
+    .text-right {
+        text-align: right;
+    }
+    .text-center {
+        text-align: center;
+    }
+</style>
+
 <form action="{{ route('admin.order.complete') }}" method="POST" id="complete-form">
     @csrf
 <section class="index_staff">
@@ -127,27 +139,41 @@
                                 @foreach ($item->items as $loopIndex => $orderitem)
                                     <tr>
                                         
-                                        @if ($loop->first)
-                                            <td rowspan="{{ $item->items->count() }}">
-                                                @if ($item->status_id == 3 || $item->status_id == 1)
-                                                    <input type="checkbox" disabled>
-                                                @else
-                                                    <input type="checkbox" name="order_ids[]" value="{{ $item->id }}">
-                                                @endif
-                                            </td>
-                                            <td rowspan="{{ $item->items->count() }}" align="center" style="text-decoration: underline">
-                                                <a href="{{ route('admin.order.detail', ['id' => $item->id ]) }}">{{ $item->id }}</a>
-                                            </td>
-                                            <td rowspan="{{ $item->items->count() }}">{{ $item->order_date }}</td>
-                                        @endif
-                                        <td>{{ $orderitem->product_class_id }}</td>
-                                        <td>{{ $orderitem->product_name }}</td>
-                                        @if ($orderitem->product_class->stock_quantity < $orderitem->quantity)
-                                            <td align="right" style="color: red;">{{ $orderitem->product_class->stock_quantity }}</td>
-                                        @else
-                                            <td align="right">{{ $orderitem->product_class->stock_quantity }}</td>
-                                        @endif
-                                        {{-- @if ($orderitem->product_class)
+                                     @if ($loop->first)
+    <td rowspan="{{ $item->items->count() }}" class="text-center">
+        @if ($item->status_id == 3 || $item->status_id == 1)
+            <input type="checkbox" disabled>
+        @else
+            <input type="checkbox" name="order_ids[]" value="{{ $item->id }}">
+        @endif
+    </td>
+
+    <td rowspan="{{ $item->items->count() }}" class="text-center" style="text-decoration: underline">
+        <a href="{{ route('admin.order.detail', ['id' => $item->id ]) }}">{{ $item->id }}</a>
+    </td>
+
+    <td rowspan="{{ $item->items->count() }}" class="text-left">{{ $item->order_date }}</td>
+@endif
+
+<td class="text-center">{{ $orderitem->product_class_id }}</td> <!-- Mã phân loại -->
+<td class="text-left">{{ $orderitem->product_name }}</td> <!-- Tên sản phẩm -->
+
+@if ($orderitem->product_class->stock_quantity < $orderitem->quantity)
+    <td class="text-right" style="color: red;">{{ $orderitem->product_class->stock_quantity }}</td>
+@else
+    <td class="text-right">{{ $orderitem->product_class->stock_quantity }}</td>
+@endif
+
+<td class="text-right">{{ $orderitem->quantity }}</td>
+<td class="text-right">{{ $orderitem->product_class->cost ?? $orderitem->cost }}</td>
+<td class="text-right">{{ $orderitem->price }}</td>
+
+@if ($loop->first)
+    <td rowspan="{{ $item->items->count() }}" class="text-right">{{ $item->amount }}</td>
+    <td rowspan="{{ $item->items->count() }}" class="text-left">{{ $item->status->status_name }}</td>
+@endif
+
+                                                                {{-- @if ($orderitem->product_class)
     @if ($orderitem->product_class->stock_quantity < $orderitem->quantity)
         <td align="right" style="color: red;">{{ $orderitem->product_class->stock_quantity }}</td>
     @else
@@ -158,14 +184,6 @@
     <td align="right" style="color: red;">Không có dữ liệu</td>
     <td align="right">-</td>
 @endif --}}
-
-                                        <td align="right">{{ $orderitem->quantity }}</td>
-                                        <td align="right">{{ $orderitem->product_class->cost ?? $orderitem->cost }}</td>
-                                        <td align="right">{{ $orderitem->price }}</td>
-                                        @if ($loop->first)
-                                            <td rowspan="{{ $item->items->count() }}" align="right">{{ $item->amount }}</td>
-                                            <td rowspan="{{ $item->items->count() }}">{{ $item->status->status_name }}</td>
-                                        @endif
                                     </tr>
                                 @endforeach
                             @endforeach
@@ -180,7 +198,9 @@
 <button type="submit" class="btn-primary btn" style="max-width: 20rem;padding: 1rem 0;font-size: 1.6rem">
         Hoàn thành
     </button>
-
+   <div class="pagination-container">
+                    {{ $order->links('vendor.pagination.default') }}
+                </div>
 </form>
 @endsection
 
