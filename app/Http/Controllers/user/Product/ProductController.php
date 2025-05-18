@@ -10,6 +10,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
 
+
 class ProductController extends Controller
 {
     // public function index(Request $request)

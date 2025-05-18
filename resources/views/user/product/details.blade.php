@@ -216,7 +216,6 @@
 
 
 
-
 <script>
    $(document).ready(function() {
     // Khởi tạo slider

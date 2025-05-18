@@ -140,7 +140,7 @@
             <div class="card-content">
                 <div>
                     <h5>📈 Doanh Thu Hôm Nay</h5>
-                    <p class="number" id="today-revenue">0 VNĐ</p>
+                    <p class="number" id="today-revenue">VNĐ</p>
                 </div>
                 <i class="icon bi bi-graph-up"></i>
             </div>
@@ -193,7 +193,7 @@ const yearlyRevenue = @json($yearlyRevenue);
 const todayOrdersFromServer = @json($todayOrders);
 
 function formatNumber(n) {
-    return n.toLocaleString('vi-VN');
+    return Number(n).toLocaleString('vi-VN');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -201,10 +201,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const todayData = dailyRevenue.find(d => d.date === today);
     const revenue = todayData ? todayData.total : 0;
 
-    // ✅ Chỉ cập nhật doanh thu hôm nay từ dữ liệu biểu đồ
+    // Chuyển sang Number rồi format mới có dấu phân cách hàng nghìn
     document.getElementById('today-revenue').innerText = formatNumber(revenue) + ' VNĐ';
 
-    // ✅ Sử dụng đúng số đơn hàng từ server đã có
     document.getElementById('today-orders').innerText = formatNumber(todayOrdersFromServer) + ' đơn hàng';
 
     renderChart(dailyRevenue, 'dailyRevenueChart', 'line', 'Ngày');
@@ -254,6 +253,7 @@ function renderChart(data, canvasId, type, labelPrefix) {
         }
     });
 }
+
 </script>
 
 @endsection

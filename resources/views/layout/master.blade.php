@@ -328,15 +328,16 @@
                                             </div>
                                             <div class="dropdown-column">
                                                 <h5>Liên Hệ</h5>
-                                                <a href="#" class="business">Tư Vấn Trực Tuyến
+                                                 <a  class="business" href="{{ route('contact.tvtt') }}">Tư Vấn Trực Tuyến
                                                     <i class="fa-solid fa-arrow-up-long"></i>
                                                 </a>
-                                                <a href="#">Gọi Điện Thoại
-                                                </a>
-                                                <a href="#" class="business">Gửi Email
+                                                
+                                                  <a  class="business" href="{{ route('contact.dhlsc') }}">Đặt lịch sửa chữa
                                                     <i class="fa-solid fa-arrow-up-long"></i>
-                                                </a>
-                                                <a href="#" class="business">Ngôn Ngữ Ký Hiệu</a>
+                                                  </a>
+                                                  <a href="{{ route('home') }}">Bắt đầu mua hàng
+                                                  
+                                                  </a>
                                             </div>
                                         </div>
                                         <div class="dropdown-left-side">
@@ -349,22 +350,26 @@
                                             </div>
                                             <div class="dropdown-column">
                                                 <h5> Tìm Thêm Thông Tin</h5>
-                                                <a href="#">Tin Tức & Cảnh Báo</a>
-                                                <a href="#">Dịch Vụ Sửa Chữa Tiết Kiệm </a>
+                                               <a href="{{ route('contact.sane') }}">Tin Tức & Cảnh Báo</a>
+                                                 <a href="{{ route('contact.dhlsc') }}">Dịch Vụ Sửa Chữa Tiết Kiệm </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="dropdown-right">
-                                        <h5 class="dropdown-right__title">MỚI & NỔI BẬT</h5>
+                                        <h5 class="dropdown-right__title">KHÁM PHÁ</h5>
                                         <div class="promo__list">
                                             <div class="promo__item">
                                                 <div class="promo">
-                                                    <span class="promo__tag">Mới</span>
+                                                    <a href="{{ route('contact.index') }}">
+                               
                                                     <img class="promo__image"
-                                                        src="/storage/product_images/ar12tyhqasinsv-1.jpg"
+                                                        src="/storage/product_images/ht.jpg"
                                                         alt="load,...">
+                                                     </a>
                                                 </div>
-                                                <p class="promo__text">Ưu đãi điều hòa</p>
+                                                 
+                                                <p class="promo__text">Liên Hệ</p>
+                                                
                                             </div>
                                             <div class="promo__item">
                                                 <div class="promo">
@@ -400,12 +405,12 @@
                                     <i class="fa-solid fa-arrow-up-long"></i>
                                 </a>
                             </li> --}}
-                            <li class="dropdown">
+                            {{-- <li class="dropdown">
                                 <a href="{{ route('contact.index') }}" class="business">
                                     Liên hệ
                                     <i class="fa-solid fa-arrow-up-long"></i>
                                 </a>
-                            </li>
+                            </li> --}}
 
 
                             <li class="dropdown">

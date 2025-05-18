@@ -27,6 +27,7 @@
 
     <div class="cart">
         <div class="container">
+            
             @if ($cart)
             <div class="content">
                 <div class="cart__card">
@@ -219,6 +220,11 @@
                 Bạn chưa mua gì!!
             @endif
             
+
+
+
+
+
         </div>
     </div>
     </section>
@@ -260,3 +266,8 @@
         });
     });
 </script>
+
+
+
+
+    

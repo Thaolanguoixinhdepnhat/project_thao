@@ -6,13 +6,121 @@
     <section class="sane">
         <div class="container">
             <div class="content">
-               
+                <div class="san">
+                    <figure class="video-container">
+                        <video class="video-player" playsinline autoplay loop muted disableremoteplayback>
+                            <source
+                                src="//images.samsung.com/is/content/samsung/assets/vn/offer/galaxy-a56-a36-5g/kv-banner/HOME_Galaxy-A56_A36_Main-KV_1440x640_pc_LTR.mp4"
+                                type="video/mp4">
+                        </video>
 
+                        <div class="video-text-overlay">
+                            <h2>Galaxy A56 | A36 5G</h2>
+                            <p>Khám phá ngay ưu đãi mua Galaxy A56 | A36 5G mới</p>
+                        </div>
+                    </figure>
+                    <div class="text_book">
+                        <div class="txt">
+                            <h2>Ưu đãi độc quyền</h2>
+                        </div>
+                        <div class="group-item">
+                            <div class="item">
+                                <div class="left">
+                                    <img src="/storage/product_images/s11.jpg" alt="">
+                                </div>
+                                <div class="right">
+                                    <h3>E-voucher ưu đãi 500k</h3>
+                                    <span>
+                                        Mua thêm E-Voucher chỉ với 100k, giảm ngay thêm 500k khi mua Galaxy A56 | A36
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="left">
+                                    <img src="/storage/product_images/s12.jpg" alt="">
+                                </div>
+                                <div class="right">
+                                    <h3>Thu cũ đổi mới</h3>
+                                    <span>
+                                        Thu cũ đổi mới tặng ngay Samsung <br>Care+ 1 năm
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="left">
+                                    <img src="/storage/product_images/s13.jpg" alt="">
+                                </div>
+                                <div class="right">
+                                    <h3>Ưu đãi khi mua kèm</h3>
+                                    <span>
+                                        Giảm 3 triệu khi mua kèm Galaxy <br>Watch Ultra và Watch7. Giảm 1,7 triệu<br> khi
+                                        mua kèm Galaxy Buds3 Pro và 1,2 triệu khi mua kèm Galaxy Buds 3
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="left">
+                                    <img src="/storage/product_images/s14.jpg" alt="">
+                                </div>
+                                <div class="right">
+                                    <h3>Ưu đãi khi mua kèm</h3>
+                                    <span>
+                                        Giảm 50% khi mua kèm củ sạc 45W hoặc mua kèm củ sạc 25W với chỉ 149k
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                      <div class="carousel-item">
+                      <img src="/storage/product_images/1440x640_PC-Notext.jpg" alt="">
+                     
+                    <div class="voucher-text">
+                        <h2>Săn E-voucher 500k với<br> chỉ 100k</h2>
+                        <p>Áp dụng khi mua Galaxy A56 | A36 5G mới</p>
+
+                        <button class="register-btn"><a href="{{ route('user.products.index') }}" class="btn-primary">Mua
+                                ngay</a></button>
+
+                    </div>
+                    
+                    
+                </div>
+                    <div class="carousel-item1">
+                      <img src="/storage/product_images/vn-feature-filters-just-for-you-545212106.jpg" alt="">
+                     
+                    <div class="voucher-text">
+                        <h2>Bộ lọc màu mang đậm <br>dấu ấn cá nhân</h2>
+                        <p>Thỏa sức sáng tạo các bộ lọc màu đậm dấu ấn cá nhân và phong cách nghệ<br> thuật riêng biệt.
+
+</p>
+
+                    
+
+                    </div>
+                    
+                </div>
+                   <div class="carousel-item2">
+                      <img src="/storage/product_images/vn-feature-turn-photos-into-masterpieces-545212062.jpg" alt="">
+                     
+                    <div class="voucher-text">
+                        <h2>Biến mọi ảnh chụp<br> thành tuyệt tác của<br> riêng bạn</h2>
+                        <p>Tính năng Object Eraser tự động nhận diện và gợi ý xóa các đối tượng thừa<br> trong bức ảnh, giúp tạo ra bức ảnh hoàn hảo và ưng ý nhất.
+
+</p>
+
+                    
+
+                    </div>
+                    
+                </div>
+
+                </div>
             </div>
         </div>
         </div>
     </section>
-       <section class="footer__link">
+    <section class="footer__link">
         <div class="container">
             <div class="content">
                 <div class="footer-column">
@@ -177,6 +285,18 @@
         </div>
     </section>
 
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('.video-player');
+            if (video) {
+                video.muted = true;
+                video.play().catch(error => {
+                    console.log("Không thể tự động phát video:", error);
+                });
+            }
+        });
+    </script>
 
 
 @endsection

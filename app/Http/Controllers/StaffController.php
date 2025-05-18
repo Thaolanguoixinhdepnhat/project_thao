@@ -15,7 +15,11 @@ class StaffController extends Controller
     {
         return view('admin.login');
     }
-
+  public function __construct()
+    {
+        // Áp dụng middleware auth:admin cho tất cả các phương thức trừ login và showLoginForm
+        $this->middleware('auth:admin')->except(['showLoginForm', 'login']);
+    }
     public function login(Request $request)
     {
         // Validate input

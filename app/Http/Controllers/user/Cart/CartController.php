@@ -13,46 +13,85 @@ use Carbon\Carbon;
 
 class CartController extends Controller
 {
-    public function addToCart(Request $request)
-    {
-        $product_id = $request->input('product_id');
-        $product_class_id = $request->input('product_class_id');
-        // $product_images_id = $request->input('product_images_id');
+    // public function addToCart(Request $request)
+    // {
+    //     $product_id = $request->input('product_id');
+    //     $product_class_id = $request->input('product_class_id');
+    //     // $product_images_id = $request->input('product_images_id');
     
-        // Gán customer_id, nếu chưa đăng nhập thì mặc định là 9
-        $customer_id = auth()->id();
+    //     // Gán customer_id, nếu chưa đăng nhập thì mặc định là 9
+    //     $customer_id = auth()->id();
     
-        // Kiểm tra sản phẩm có tồn tại không
-        $product = Product::findOrFail($product_id);
+    //     // Kiểm tra sản phẩm có tồn tại không
+    //     $product = Product::findOrFail($product_id);
     
-        $productClass = ProductClass::where('id', $product_class_id)
-                            ->where('product_id', $product_id)
-                            ->firstOrFail();
+    //     $productClass = ProductClass::where('id', $product_class_id)
+    //                         ->where('product_id', $product_id)
+    //                         ->firstOrFail();
 
     
-        // Kiểm tra giỏ hàng đã có sản phẩm và biến thể tương ứng chưa
-        $cartItem = Cart::where('customer_id', $customer_id)
-                        ->where('product_id', $product_id)
-                        ->where('product_class_id', $product_class_id)
-                        ->first();
+    //     // Kiểm tra giỏ hàng đã có sản phẩm và biến thể tương ứng chưa
+    //     $cartItem = Cart::where('customer_id', $customer_id)
+    //                     ->where('product_id', $product_id)
+    //                     ->where('product_class_id', $product_class_id)
+    //                     ->first();
     
-        if ($cartItem) {
-            // Nếu đã có rồi thì tăng số lượng lên
-            $cartItem->increment('quantity');
-        } else {
-            // Nếu chưa có thì thêm mới vào giỏ hàng
-            Cart::create([
-                'customer_id'       => $customer_id,
-                'product_id'        => $product_id,
-                'product_class_id'  => $product_class_id,
-                // 'product_images_id' => $product_images_id,
-                'quantity'          => 1,
-                'created_at'        => now(),
-            ]);
-        }
+    //     if ($cartItem) {
+    //         // Nếu đã có rồi thì tăng số lượng lên
+    //         $cartItem->increment('quantity');
+    //     } else {
+    //         // Nếu chưa có thì thêm mới vào giỏ hàng
+    //         Cart::create([
+    //             'customer_id'       => $customer_id,
+    //             'product_id'        => $product_id,
+    //             'product_class_id'  => $product_class_id,
+    //             // 'product_images_id' => $product_images_id,
+    //             'quantity'          => 1,
+    //             'created_at'        => now(),
+    //         ]);
+    //     }
     
-        return redirect()->route('cart_index')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng');
+    //     return redirect()->route('cart_index')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng');
+    // }
+    public function addToCart(Request $request)
+{
+    // Kiểm tra người dùng đã đăng nhập chưa
+    if (!auth()->check()) {
+        return redirect()->route('login')->with('error', 'Bạn phải đăng nhập để thêm sản phẩm vào giỏ hàng.');
     }
+
+    $product_id = $request->input('product_id');
+    $product_class_id = $request->input('product_class_id');
+    $customer_id = auth()->id(); // Bây giờ đã chắc chắn có giá trị
+
+    // Kiểm tra sản phẩm tồn tại
+    $product = Product::findOrFail($product_id);
+
+    $productClass = ProductClass::where('id', $product_class_id)
+        ->where('product_id', $product_id)
+        ->firstOrFail();
+
+    // Kiểm tra giỏ hàng đã có chưa
+    $cartItem = Cart::where('customer_id', $customer_id)
+        ->where('product_id', $product_id)
+        ->where('product_class_id', $product_class_id)
+        ->first();
+
+    if ($cartItem) {
+        $cartItem->increment('quantity');
+    } else {
+        Cart::create([
+            'customer_id' => $customer_id,
+            'product_id' => $product_id,
+            'product_class_id' => $product_class_id,
+            'quantity' => 1,
+            'created_at' => now(),
+        ]);
+    }
+
+    return redirect()->route('cart_index')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng');
+}
+
 
     public function viewCart()
     {
