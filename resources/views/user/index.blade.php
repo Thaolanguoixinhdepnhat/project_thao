@@ -291,7 +291,15 @@
 
     </section>
 
-
+    <section class="sec-two1">
+        <div class="container">
+            <div class="content">
+                <div class="main">
+                    <img src="{{ asset('storage/product_images/banner4.jpg') }}" alt="Banner" />
+                </div>
+            </div>
+        </div>
+    </section>
     
     <section class="sec-dt sec-two" id="section-phone">
         <div class="container">
