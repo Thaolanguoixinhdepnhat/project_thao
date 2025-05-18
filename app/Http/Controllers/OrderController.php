@@ -99,6 +99,32 @@ class OrderController extends Controller
         return view('order.chart', compact('revenues'));
     }
 
+    public function markComplete(Request $request)
+{
+    $orderIds = $request->input('order_ids', []);
+
+    if (empty($orderIds)) {
+        return redirect()->back()->with('error', 'Chọn đơn hàng trước.');
+    }
+
+    // Lấy các đơn hàng theo ID
+    $orders = Order::whereIn('id', $orderIds)->get();
+
+    // Kiểm tra nếu có đơn hàng đã hoàn thành
+    $completedOrders = $orders->filter(function ($order) {
+        return $order->status_id == 3;
+    });
+
+    if ($completedOrders->isNotEmpty()) {
+        return redirect()->back()->with('error', 'Có đơn hàng đã hoàn thành, không thể cập nhật.');
+    }
+
+    // Cập nhật trạng thái cho các đơn hàng chưa hoàn thành
+    Order::whereIn('id', $orderIds)->update(['status_id' => 3]);
+
+    return redirect()->back()->with('success', 'Cập nhật trạng thái thành công.');
+}
+
 
 
 public function summary()

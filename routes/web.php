@@ -97,6 +97,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
 
 });
+    Route::post('/order/complete', [AdminOrderController::class, 'markComplete'])->name('admin.order.complete');
 
 Route::get('/admin/login', [StaffController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [StaffController::class, 'login'])->name('admin.login.submit');

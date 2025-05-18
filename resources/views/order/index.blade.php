@@ -90,10 +90,14 @@
 
 
 
- @extends('layout.app')
+@extends('layout.app')
 @section('title', 'Danh sách đơn hàng')
 
+
+
 @section('content')
+<form action="{{ route('admin.order.complete') }}" method="POST" id="complete-form">
+    @csrf
 <section class="index_staff">
     <div class="container">
         <div class="content">
@@ -105,6 +109,7 @@
                     <table class="table table-bordered table-hover table-striped">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th><i class="fas fa-id-badge" style="color:#0d6efd;"></i> Số thứ tự</th>
                                 <th><i class="fas fa-calendar-day" style="color:#20c997;"></i> Ngày đặt hàng</th>
                                 <th><i class="fas fa-barcode" style="color:#ffc107;"></i> Mã sản phẩm</th>
@@ -121,7 +126,15 @@
                             @foreach ($order as $index => $item)
                                 @foreach ($item->items as $loopIndex => $orderitem)
                                     <tr>
+                                        
                                         @if ($loop->first)
+                                            <td rowspan="{{ $item->items->count() }}">
+                                                @if ($item->status_id == 3 || $item->status_id == 1)
+                                                    <input type="checkbox" disabled>
+                                                @else
+                                                    <input type="checkbox" name="order_ids[]" value="{{ $item->id }}">
+                                                @endif
+                                            </td>
                                             <td rowspan="{{ $item->items->count() }}" align="center" style="text-decoration: underline">
                                                 <a href="{{ route('admin.order.detail', ['id' => $item->id ]) }}">{{ $item->id }}</a>
                                             </td>
@@ -163,5 +176,11 @@
         </div>
     </div>
 </section>
+
+<button type="submit" class="btn-primary btn" style="max-width: 20rem;padding: 1rem 0;font-size: 1.6rem">
+        Hoàn thành
+    </button>
+
+</form>
 @endsection
 
