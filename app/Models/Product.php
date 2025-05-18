@@ -64,6 +64,11 @@ class Product extends Model
     {
         return $this->hasMany(ProductImage::class, 'product_id');
     }
+
+    public function comment()
+    {
+        return $this->hasMany(Comment::class, 'product_id');
+    }
     // Định nghĩa cột cho xóa mềm
     protected $dates = ['deleted_at'];
 }

@@ -160,6 +160,7 @@ Route::get('/contact/sale', [ContactController::class, 'sale'])->name('contact.s
 
 });
 
+Route::post('/submit-rating', [AppController::class, 'comment'])->name('submit.rating');
 
 
 

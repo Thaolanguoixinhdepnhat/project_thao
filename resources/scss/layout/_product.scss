@@ -484,4 +484,35 @@ img {
 
 
 
-  
+  .comment{
+    max-width: 80rem;
+    margin-top: 5rem;
+    h3{
+        font-size: 2.4rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+    }
+    font-size: 1.6rem;
+
+    .group{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .item{
+        display: flex;
+        flex-direction: column;
+        .date{
+            font-size: 1.4rem;
+        }
+    }
+    .txt{
+        margin-top: .6rem;
+        margin-left: 1rem;
+    }
+    .list{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+  }

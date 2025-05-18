@@ -11,7 +11,7 @@ use App\Models\Cart;
 use App\Models\Customer;
 use App\Models\Order;
 use App\Models\OrderItem;
-
+use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -204,4 +204,23 @@ class AppController extends Controller
         return response()->json(['product_class_id' => null]);
     }
 
+    public function comment(Request $request)
+    {
+        $request->validate([
+            'rating' => 'required|integer|min:1|max:5',
+            'note' => 'nullable|string|max:1000',
+        ]);
+
+        $command = new Comment();
+        $command->product_id = $request->product_id;
+        $command->customer_id = auth()->id();
+        $command->rating = $request->rating;
+        $command->note = $request->note;
+        $command->create_at = now();
+        $command->save();
+
+        return redirect()->route('user.detail', ['id' => $request->product_id])
+        ->with('success', 'Xem lại đánh giá của bạn.');
+
+    }
 }
