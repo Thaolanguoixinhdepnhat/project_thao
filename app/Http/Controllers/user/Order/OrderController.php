@@ -91,6 +91,7 @@ class OrderController extends Controller
             if ($product && $productClass) {
                 $order->items()->create([
                     'product_class_id' => $productClass->id,
+                    'product_id' => $productClass->product_id,
                     'product_name' => $product->product_name,
                     'customer_name' => $request->customer_name,
                     'customer_address' => $request->customer_address,

@@ -1805,7 +1805,7 @@ input#username.form-group__input.form-group__input--username {
 .index_staff .container .content .sec-three1 .table td td:first-child {
     text-align: center;
 }
-.index_staff .container .content .sec-three1 .table td:nth-child(2),
+/* .index_staff .container .content .sec-three1 .table td:nth-child(2),
 .index_staff .container .content .sec-three1 .table td:nth-child(3)
  {
     text-align: right;
@@ -1813,7 +1813,7 @@ input#username.form-group__input.form-group__input--username {
 .index_staff .container .content .sec-three1 .table td:nth-child(4)
  {
     text-align: left;
-}
+} */
 .index_staff .container .content .sec-three1 .table th,
 .index_staff .container .content .sec-three1 .table td {
     padding: 10px;

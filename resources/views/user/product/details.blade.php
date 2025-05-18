@@ -3,7 +3,30 @@
 @section('title', 'Danh sách sản phẩm')
 
 @section('content')
+
+@php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('home')],
+        ['label' => 'Sản phẩm', 'url' => route('user.products.index')],
+        
+        ['label' => 'Chi tiết sản phẩm'],
+    ];
+@endphp
+
+
 <style>
+    
+    .mb-4{
+    padding-left: 3rem !important;
+    display: flex;
+    font-size: 2rem !important;
+    gap: 1rem;
+    a{
+        color:black;
+    text-decoration: none;
+    }
+    }
+
     .stars {
     display: inline-block;
 }
@@ -16,6 +39,9 @@
 }
 
 </style>
+
+
+
 <section class="sec-detail">
     <div class="container">
         <h2 class="title">Chi tiết sản phẩm</h2>

@@ -596,7 +596,62 @@
     gap: 2rem;
 }
 
-
+    .load{
+            position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    z-index: 999999999999;
+    transition: 1s ease;
+    }
+.loader {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  transform: rotate(45deg);
+  animation: l3-0 1.5s infinite linear;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  width: 50%;
+  background: pink;
+  clip-path: polygon(0 50%,100% 0,100% 100%);
+  animation: inherit;
+  animation-name: l3-1;
+}
+.loader:after {
+  clip-path: polygon(0 0,100% 50%,0% 100%);
+  animation-name: l3-2;
+}
+@keyframes l3-0 {
+  25% {width:50px;height:50px;transform:rotate(0)}
+  50% {width:50px;height:50px}
+  75% {width:70.70px;height:35.35px}
+  100%{width:70.70px;height:35.35px;transform:rotate(0)}
+}
+@keyframes l3-1 {
+  0%,25% {clip-path: polygon(0 50% ,100% 0,100% 100%);transform:translate(0.3px)}
+  50%    {clip-path: polygon(0 50% ,100% 0,100% 100%);transform:translate(-5px)}
+  75%    {clip-path: polygon(0 100%,0    0,100% 100%);transform:translate(-5px)}
+  100%   {clip-path: polygon(0 100%,0    0,100% 100%);transform:translate(17.7px)}
+}
+@keyframes l3-2 {
+  0%,25% {clip-path: polygon(0 0,100% 50%,0    100%);transform:translate(-0.3px) }
+  50%    {clip-path: polygon(0 0,100% 50%,0    100%);transform:translate(5px) }
+  75%    {clip-path: polygon(0 0,100% 0  ,100% 100%);transform:translate(5px)}
+  100%   {clip-path: polygon(0 0,100% 0  ,100% 100%);transform:translate(-17.7px) }
+}
+.load.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
 
 
 
@@ -606,6 +661,17 @@
 
 
     @php use Illuminate\Support\Facades\Auth; @endphp
+    <div class="load" id="loader">
+    <div class="loader"></div>
+</div>
+   <script>
+    window.addEventListener('load', function () {
+        setTimeout(function () {
+            const loader = document.getElementById('loader');
+            loader.classList.add('fade-out');
+        }, 1000); // 1 giây
+    });
+</script>
 <div class="nav-bar">
     <div class="container">
         <div class="content">

@@ -3,6 +3,25 @@
 @section('title', 'Giỏ hàng')
 
 @section('content')
+@php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('home')],
+        ['label' => 'Sản phẩm', 'url' => route('user.products.index')],
+        ['label' => 'Giỏ hàng'],
+    ];
+@endphp
+<style>
+     .mb-4{
+    padding-left: 3rem !important;
+    display: flex;
+    font-size: 2rem !important;
+    gap: 1rem;
+    a{
+        color:black;
+    text-decoration: none;
+    }
+    }
+    </style>
     <section class="sec-cart">
         <h2 class="title">Giỏ hàng của bạn</h2>
 

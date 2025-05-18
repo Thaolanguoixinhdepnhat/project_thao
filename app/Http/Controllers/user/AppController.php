@@ -20,9 +20,15 @@ class AppController extends Controller
     public function index(Request $request)
     {
         // Lấy sản phẩm với category_id = 1
-        $tv = Product::where('category_id', 1)
+        // lấy 5 sản phẩm mới nhất
+        // $tv = Product::where('category_id', 1)
+        //             ->with('productClasses')
+        //             ->take(5)
+        //             ->orderBy('id', 'desc')
+        //             ->get();
+              $tv = Product::where('category_id', 1)
                     ->with('productClasses')
-                    ->take(5)
+                    ->take(5) 
                     ->get();
 
         // Lấy sản phẩm với category_id = 2
@@ -150,6 +156,7 @@ class AppController extends Controller
     public function order()
     {
         $order = Order::where('customer_id', Auth()->id())->with('items')->get();
+        // return $order;
         return view('user.home.order', compact('order'));
     }
 

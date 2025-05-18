@@ -115,23 +115,23 @@
             background-color: #f8f9fa;
         }
 
-        .sec-user .container .content.v2 .table td:nth-child(1) {
-            text-align: center;
-        }
 
-        .sec-user .container .content.v2 .table td:nth-child(2),
-        .sec-user .container .content.v2 .table td:nth-child(7),
+        /* .sec-user .container .content.v2 .table td:nth-child(2), */
+
         .sec-user .container .content.v2 .table td:nth-child(9),
         .sec-user .container .content.v2 .table td:nth-child(10) {
             text-align: right;
         }
 
+        .sec-user .container .content.v2 .table td:nth-child(7) {
+            text-align: left;
+        }
+
         .sec-user .container .content.v2 .table td:nth-child(3),
-        .sec-user .container .content.v2 .table td:nth-child(4),
+        /* .sec-user .container .content.v2 .table td:nth-child(4), */
         .sec-user .container .content.v2 .table td:nth-child(5),
         .sec-user .container .content.v2 .table td:nth-child(6),
-        .sec-user .container .content.v2 .table td:nth-child(8),
-        .sec-user .container .content.v2 .table td:nth-child(11) {
+        .sec-user .container .content.v2 .table td:nth-child(8) .sec-user .container .content.v2 .table td:nth-child(11) {
             text-align: left;
         }
     </style>
@@ -213,6 +213,20 @@
         button:hover {
             background-color: #e0b810;
         }
+
+        .text-left {
+            text-align: left;
+        }
+
+        /* Căn phải cho số */
+        .text-right {
+            text-align: right;
+        }
+
+        /* Căn giữa cho mã/số thứ tự */
+        .text-center {
+            text-align: center;
+        }
     </style>
 
     <section class="sec-user">
@@ -238,35 +252,40 @@
                             </tr>
                         </thead>
                         <tbody>
+                            
                             @foreach ($order as $index => $item)
                                 @foreach ($item->items as $loopIndex => $orderitem)
                                     <tr>
+                         
                                         @if ($loop->first)
-                                            <td rowspan="{{ $item->items->count() }}" align="center">{{ $index + 1 }}
-                                            </td>
-                                            <td rowspan="{{ $item->items->count() }}">{{ $item->id }}</td>
-                                            <td rowspan="{{ $item->items->count() }}">{{ $item->status->status_name }}</td>
-                                        @endif
-                                        
+                                            <td rowspan="{{ $item->items->count() }}" class="text-center">
+                                                {{ $index + 1 }}</td> <!-- Số thứ tự -->
+                                            <td rowspan="{{ $item->items->count() }}" class="text-start">{{ $item->order_date }}
+                                            </td> <!-- Ngày -->
+                                            <td rowspan="{{ $item->items->count() }}" class="text-start">
+                                                {{ $item->status->status_name }}</td> <!-- Trạng thái -->
 
-                                        @if ($item->status_id == 3)
-                                            <td style="text-decoration: underline">
-                                                <td><a href="#" class="open-modal" data-product-id="{{ $item->id }}">Đánh giá</a></td>
+                                            <td rowspan="{{ $item->items->count() }}" class="text-center">
+                                                @if ($item->status_id == 3)
+                                                    <a href="#" class="open-modal"
+                                                        data-product-id="{{ $orderitem->product_id }}">Đánh giá</a>
+                                                @else
+                                                    <span style="cursor: not-allowed;">Đánh giá</span>
+                                                @endif
                                             </td>
-                                        @else
-                                            <td style="cursor: not-allowed;">Đánh giá</td>
+
+                                            <td rowspan="{{ $item->items->count() }}" class="text-start">
+                                                {{ $item->customers->username ?? '' }}</td> <!-- Người đặt -->
                                         @endif
-                                        <td rowspan="{{ $item->items->count() }}">{{ $item->customers->username ?? '' }}
-                                        </td>
-                                        <td>{{ $orderitem->customer_name }}</td>
-                                        <td>{{ $orderitem->customer_address }}</td>
-                                        <td>{{ $orderitem->customer_email }}</td>
-                                        <td align="right">{{ $orderitem->customer_phone }}</td>
-                                        <td>{{ $orderitem->product_name }}</td>
-                                        <td align="right">{{ $orderitem->quantity }}</td>
+                                        <td class="text-start">{{ $orderitem->customer_name }}</td>
+                                        <td class="text-start">{{ $orderitem->customer_address }}</td>
+                                        <td class="text-start">{{ $orderitem->customer_email }}</td>
+                                        <td class="text-end">{{ $orderitem->customer_phone }}</td>
+                                        <td class="text-start">{{ $orderitem->product_name }}</td>
+                                        <td class="text-end">{{ $orderitem->quantity }}</td>
 
                                         @if ($loop->first)
-                                            <td rowspan="{{ $item->items->count() }}" align="right">{{ $item->amount }}
+                                            <td rowspan="{{ $item->items->count() }}" class="text-end">{{ $item->amount }}
                                             </td>
                                         @endif
                                     </tr>
@@ -294,7 +313,6 @@
                                             </form>
                                         </div>
                                     </div>
-
                                 @endforeach
                             @endforeach
                         </tbody>
@@ -304,62 +322,62 @@
         </div>
     </section>
 
-    
+
 
 
 
     <script>
-    const modal = document.getElementById('review-modal');
-    const closeBtn = document.getElementById('close-modal');
-    const productIdInput = document.getElementById('modal-product-id');
-    const ratingInput = document.getElementById('rating-input');
-    const stars = document.querySelectorAll('.star');
+        const modal = document.getElementById('review-modal');
+        const closeBtn = document.getElementById('close-modal');
+        const productIdInput = document.getElementById('modal-product-id');
+        const ratingInput = document.getElementById('rating-input');
+        const stars = document.querySelectorAll('.star');
 
-    let currentRating = 0;
+        let currentRating = 0;
 
-    // Gán sự kiện mở modal cho tất cả nút "Đánh giá"
-    document.querySelectorAll('.open-modal').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const productId = this.getAttribute('data-product-id');
-            productIdInput.value = productId;
-            modal.style.display = 'block';
-            clearStars();
+        // Gán sự kiện mở modal cho tất cả nút "Đánh giá"
+        document.querySelectorAll('.open-modal').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const productId = this.getAttribute('data-product-id');
+                productIdInput.value = productId;
+                modal.style.display = 'block';
+                clearStars();
+            });
         });
-    });
 
-    // Đóng modal
-    closeBtn.addEventListener('click', function() {
-        modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', function(e) {
-        if (e.target === modal) {
+        // Đóng modal
+        closeBtn.addEventListener('click', function() {
             modal.style.display = 'none';
-        }
-    });
-
-    // Click sao
-    stars.forEach(star => {
-        star.addEventListener('click', function () {
-            currentRating = this.getAttribute('data-value');
-            ratingInput.value = currentRating;
-            updateStars(currentRating);
         });
-    });
 
-    function updateStars(rating) {
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Click sao
         stars.forEach(star => {
-            star.classList.toggle('active', star.getAttribute('data-value') <= rating);
+            star.addEventListener('click', function() {
+                currentRating = this.getAttribute('data-value');
+                ratingInput.value = currentRating;
+                updateStars(currentRating);
+            });
         });
-    }
 
-    function clearStars() {
-        currentRating = 0;
-        ratingInput.value = '';
-        stars.forEach(star => star.classList.remove('active'));
-    }
-</script>
+        function updateStars(rating) {
+            stars.forEach(star => {
+                star.classList.toggle('active', star.getAttribute('data-value') <= rating);
+            });
+        }
+
+        function clearStars() {
+            currentRating = 0;
+            ratingInput.value = '';
+            stars.forEach(star => star.classList.remove('active'));
+        }
+    </script>
 
 
 

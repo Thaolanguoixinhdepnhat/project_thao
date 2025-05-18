@@ -42,6 +42,7 @@ class ProductClassController extends Controller
     
         // Lấy danh sách sản phẩm
         $productClasses = $query->get();
+
     
         // Đảm bảo `$productClass` luôn tồn tại (tránh lỗi undefined variable)
         $productClass = $productClasses->first() ?? new ProductClass();
@@ -64,8 +65,8 @@ class ProductClassController extends Controller
             // Lấy biến thể theo tiền tố
             $productClasses = ProductClass::where('product_code', 'like', $prefix . '%')
                 ->orderBy('id')
-                ->get();
-    
+                // ->get();
+       ->paginate(20);
             return view('productclass.edit_productclass', compact('productClass', 'productClasses', 'xxx'));
         } catch (\Exception $e) {
             Log::error('Lỗi khi lấy dữ liệu ProductClass: ' . $e->getMessage());

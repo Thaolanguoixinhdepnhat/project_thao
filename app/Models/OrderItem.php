@@ -13,7 +13,7 @@ class OrderItem extends Model
     use HasFactory, SoftDeletes; // Kích hoạt SoftDeletes
 
     protected $table = 'order_item'; 
-    protected $fillable = ['order_id', 'product_name', 'quantity', 'cost', 'price', 'note', 'status_id', 'ship_date','created_at','updated_at','deleted_at', 'create_staff', 'update_staff', 'delete_staff','customer_name','customer_address','customer_phone','customer_email','product_class_id']; 
+    protected $fillable = ['order_id', 'product_name', 'quantity','product_id', 'cost', 'price', 'note', 'status_id', 'ship_date','created_at','updated_at','deleted_at', 'create_staff', 'update_staff', 'delete_staff','customer_name','customer_address','customer_phone','customer_email','product_class_id']; 
 
     // Định nghĩa cột cho xóa mềm
     protected $dates = ['deleted_at']; 

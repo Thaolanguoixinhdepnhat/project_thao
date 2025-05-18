@@ -1,110 +1,12 @@
 @extends('layout.master')
 
-@section('title', 'sale')
+@section('title', 'sane')
 
 @section('content')
-    <section class="sale1">
+    <section class="sane">
         <div class="container">
             <div class="content">
-                <div class="sale-main">
-
-                    <div class="carousel-item">
-                        <img class="bg-image" src="/storage/product_images/sl1.jpg" alt="Ảnh nền">
-                        <div class="voucher-text">
-                            <h2>Flash sales bùng nổ <br>Giảm sốc giờ vàng</h2>
-                            <span>
-                                Săn deal cực giới hạn từ <strong>10h đến 14h</strong><br>
-                                Duy nhất <strong>thứ 3, thứ 4, thứ 5 hàng tuần</strong>
-                            </span>
-
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img class="bg-image" src="/storage/product_images/sl2.jpg" alt="Ảnh nền">
-                    </div>
-                    <div class="item1">
-                        <img class="bg-image" src="/storage/product_images/sl3.jpg" alt="Ảnh nền">
-                    </div>
-                    <div class="lbl">
-                        <div class="text">
-                            <h2>Ưu đãi chồng ưu đãi</h2>
-                        </div>
-                        <ul class="group_list">
-                            <li class="item">
-                                <div class="icon">
-                                    <img src="/storage/product_images/sl4.jpg" alt="">
-                                </div>
-                                <div class="text1">
-                                    <h2>Thu cũ đổi mới</h2>
-                                    <p>Thu cũ đổi đa ngành hàng - đa thương hiệu - tiện lợi và dễ dàng</p>
-                                </div>
-
-                            </li>
-                            <li class="item">
-                                <div class="icon">
-                                    <img src="/storage/product_images/sl5.jpg" alt="">
-                                </div>
-                                <div class="text1">
-                                    <h2>Gấp đôi giá trị đổi điểm qua <br>Samsung Rewards</h2>
-                                    <p>Nhân đôi giá trị đổi điểm Samsung Rewards, tối đa 1 triệu khi thanh toán.</p>
-                                </div>
-
-                            </li>
-                            <li class="item">
-                                <div class="icon">
-                                    <img src="/storage/product_images/sl6.jpg" alt="">
-                                </div>
-                                <div class="text1">
-                                    <h2>Ví điện tử thanh toán online</h2>
-                                    <p>Thanh toán online giảm thêm 5% tối đa 1 triệu.</p>
-                                </div>
-                            </li>
-
-                        </ul>
-
-                    </div>
-                    <div class="text_book"> 
-                        <div class="txt">
-                            <h2>Thêm ưu đãi đặc quyền</h2>
-                        </div>
-                            <div class="group-item"> 
-                            <div class="item">
-                                <div class="left">
-                                     <img src="/storage/product_images/sal1.jpg" alt="">
-                                </div>
-                                <div class="right">
-                                    <span>
-                                        Trả góp<br>Thoải mái lên đời
-                                    </span>
-                                </div>
-                             </div>
-                             <div class="item">
-                                <div class="left">
-                                     <img src="https://images.samsung.com/is/image/samsung/assets/vn/offer/megasale/flashsale/icon-voucher/delivery_MO.png?$48_48_PNG$" alt="">
-                                </div>
-                                <div class="right">
-                                    <span>
-                                        Miễn phí vận chuyển<br>& hỗ trợ lắp đặt
-                                    </span>
-                                </div>
-                             </div>
-                              <div class="item">
-                                <div class="left">
-                                   <img src="/storage/product_images/sale3.jpg" alt="">
-                                </div>
-                                <div class="right">
-                                    <span>
-                                       Bảo hành<br>chính hãng
-                                    </span>
-                                </div>
-                             </div>
-                            </div>
-                           
-                            </div>
-                            </div>
-                            
-                    </div>
-                </div>
+               
 
             </div>
         </div>
