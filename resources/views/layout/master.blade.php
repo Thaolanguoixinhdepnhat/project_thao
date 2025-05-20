@@ -319,13 +319,13 @@
                                 <div class="dropdown-menu">
                                     <div class="dropdown-left">
                                         <div class="dropdown-left-main">
-                                            <div class="dropdown-column">
+                                            {{-- <div class="dropdown-column">
                                                 <h5>Hỗ Trợ Sản Phẩm</h5>
                                                 <a href="#">Trang chủ Hỗ Trợ</a>
                                                 <a href="#">Hướng dẫn sử dụng & Software</a>
                                                 <a href="#">Tìm kiếm</a>
                                                 <a href="#">FAQ Hỗ trợ mua trực tuyến</a>
-                                            </div>
+                                            </div> --}}
                                             <div class="dropdown-column">
                                                 <h5>Liên Hệ</h5>
                                                  <a  class="business" href="{{ route('contact.tvtt') }}">Tư Vấn Trực Tuyến
@@ -343,10 +343,10 @@
                                         <div class="dropdown-left-side">
                                             <div class="dropdown-column">
                                                 <h5>Dịch VỤ Bảo Hành Và <br>Sửa Chữa</h5>
-                                                <a href="#">Thông tin Bảo hành</a>
-                                                <a href="#">Bảng giá linh kiện</a>
-                                                <a href="#">Tìm Trung Tâm Bảo Hành</a>
-                                                <a href="#">Tình Trạng Sửa Chữa</a>
+                                                 <a href="{{ route('contact.bh') }}">Thông tin Bảo hành</a>
+                                           
+                                                <a href="{{ route('contact.bh') }}">Tìm Trung Tâm Bảo Hành</a>
+                                              
                                             </div>
                                             <div class="dropdown-column">
                                                 <h5> Tìm Thêm Thông Tin</h5>
@@ -373,27 +373,18 @@
                                             </div>
                                             <div class="promo__item">
                                                 <div class="promo">
+                                                    <a href="{{ route('contact.bh') }}">
+                               
                                                     <img class="promo__image"
-                                                        src="/storage/product_images/samsungshop2.png" alt="load,...">
-                                                </div>
-                                                <p class="promo__text">Samsung Shop App</p>
-                                            </div>
-
-                                            <div class="promo__item">
-                                                <div class="promo">
-                                                    <img class="promo__image"
-                                                        src="/storage/product_images/dtsamsung.jpg" alt="load,...">
-                                                </div>
-                                                <p class="promo__text">Mega Sale</p>
-                                            </div>
-
-                                            <div class="promo__item">
-                                                <div class="promo">
-                                                    <img class="promo__image" src="/storage/product_images/tulanh.jpg"
+                                                        src="/storage/product_images/bh.jpg"
                                                         alt="load,...">
+                                                     </a>
                                                 </div>
-                                                <p class="promo__text">Thu Cũ Đổi Mới</p>
+                                                <p class="promo__text">Thông tin bảo hành</p>
                                             </div>
+
+
+                                     
                                         </div>
                                     </div>
                                 </div>

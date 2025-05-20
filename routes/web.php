@@ -157,7 +157,7 @@ Route::get('/contact/glxs25', [ContactController::class, 'glxs25'])->name('conta
 Route::get('/contact/ssai', [ContactController::class, 'ssai'])->name('contact.ssai');
 Route::get('/contact/sale', [ContactController::class, 'sale'])->name('contact.sale');
 Route::get('/contact/sane', [ContactController::class, 'sane'])->name('contact.sane');
-
+Route::get('/contact/bh', [ContactController::class, 'bh'])->name('contact.bh');
 
 });
 

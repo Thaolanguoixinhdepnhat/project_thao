@@ -311,9 +311,11 @@ body {
 .promo {
   width: 100%;
   text-align: center;
-  background: #D3D3D3;
+  /* background:#C4C4C4; */
   border-radius: 1rem; /* 10px */
   flex: 1;
+  border: 2px dotted black;
+ /* border: 2px dotted #C4C4C4; */
   position: relative;
   padding: 1.5rem; /* 15px */
   display: flex;

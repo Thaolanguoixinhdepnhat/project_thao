@@ -959,7 +959,7 @@
                                 </svg></span>
                         </p>
                         <div class="menu-content">
-                            <li><a href="#">Điện Thoại Thông Minh</a></li>
+                            <li><a href="https://www.samsung.com/vn/smartphones/" target="_blank">Điện Thoại Thông Minh</a></li>
                             <li><a href="#">Máy Tính Bảng</a></li>
                             <li><a href="#">Thiết Bị Âm Thanh</a></li>
                             <li><a href="#">Thiết Bị Đeo</a></li>
