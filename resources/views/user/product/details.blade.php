@@ -186,6 +186,9 @@
                         <div class="item">
                             <div class="group">
                                 <div class="left">
+                                 <p>{{ auth()->user()->name }}</p>
+
+
                                     <div class="name">Khách hàng: {{ Auth()->user()->username }}</div>
                                     <div class="name">Sản phẩm: {{ $item->product_name }}</div>
                                 </div>
