@@ -25,8 +25,10 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="//images.samsung.com/is/image/samsung/assets/vn/home/2024/PC_1.jpg?imwidth=1536"
-                            alt="Samsung AI TV">
+                        <video class="main-video" autoplay muted name="media">
+                        <source src="//images.samsung.com/is/content/samsung/assets/vn/home/2025/25Y_Vision_AI_TV_KV_PO_PC_0203.mp4" type="video/mp4"></video>
+                        {{-- <img src="//images.samsung.com/is/image/samsung/assets/vn/home/2024/PC_1.jpg?imwidth=1536" --}}
+                          
                         <div class="banner-text">
                             <h2>Samsung AI TV đỉnh cao<br>
                                 AI toàn năng, thăng hạng toàn diện</h2>

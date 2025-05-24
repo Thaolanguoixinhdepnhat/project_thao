@@ -405,7 +405,7 @@
 
 
                             <li class="dropdown">
-                                <a href="#" class="dropdown">
+                                <a href="{{ route('contact.vct') }}" class="dropdown">
                                     Về chúng tôi
                                 </a>
                             </li>

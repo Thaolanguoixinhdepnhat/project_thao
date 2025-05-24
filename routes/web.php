@@ -158,6 +158,7 @@ Route::get('/contact/ssai', [ContactController::class, 'ssai'])->name('contact.s
 Route::get('/contact/sale', [ContactController::class, 'sale'])->name('contact.sale');
 Route::get('/contact/sane', [ContactController::class, 'sane'])->name('contact.sane');
 Route::get('/contact/bh', [ContactController::class, 'bh'])->name('contact.bh');
+Route::get('/contact/vct', [ContactController::class, 'vct'])->name('contact.vct');
 
 });
 

@@ -1339,6 +1339,203 @@ h2 {
     }
   }
 }
+.vct{
+     width: 100%;
+   margin-bottom: 5rem;
+  font-family: 'SamsungOne', sans-serif;
+  .container{
+           width: 100%;
+    .content{
+       .carousel-item {
+        position: relative;
+        max-width: 144rem;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+        display: inline !important;
+
+        img {
+          width: 100%;
+          height: auto;
+          display: block;
+          
+        }
+.mask{
+  position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+        .voucher-text {
+          position: absolute;
+          top: 30%; 
+        
+              align-items: center;
+              width: 100%;
+          color: white;
+          z-index: 2;
+          display: flex;
+    flex-direction: column;
+    gap: 2rem;
+h2{
+   font-size: 4.5rem;
+    font-weight:bold;
+    line-height: 1.9;
+}
+p{
+  font-size: 1.5rem;
+}  
+
+
+          
+        }
+
+      }
+.hang2 {
+  margin-top: 20px;
+  padding: 0 10%;
+  display: flex;
+  gap: 20px;
+
+  .cot1 {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    width: 70%;
+    border:2px dotted black;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    p {
+      color: rgba(0, 0, 0, 0.8);
+
+      &:last-child {
+        label {
+          margin: 10px 0 5px 0;
+          font-size: 20px;
+          position: relative;
+
+          i {
+            border-radius: 50%;
+            padding: 7px;
+            background-color: #fdc215;
+            color: white;
+            position: relative;
+
+            &:hover {
+              background-color: #1e73be;
+              cursor: pointer;
+
+              .fa-icon-text {
+                display: block;
+                font-size: 14px;
+                position: absolute;
+                top: -98%;
+                left: 0;
+                padding: 5px 10px;
+                background-color: black;
+                color: white;
+                font-family: Arial;
+                font-weight: normal;
+
+                &::before {
+                  content: "";
+                  border-left: 5px solid transparent;
+                  border-right: 5px solid transparent;
+                  border-top: 5px solid black;
+                  position: absolute;
+                  top: 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .cot2 {
+    width: 30%;
+    height: 100vh;
+
+    img {
+      width: 100%;
+    }
+
+    div {
+      margin-bottom: 10px;
+
+      p {
+        text-align: center;
+        padding: 10px 0;
+        color: white;
+        background-color: #669933;
+      }
+
+      &:nth-child(2) {
+        border: 2px dotted black;
+
+        div:not(:first-child) {
+          display: flex;
+          gap: 10px;
+          font-family: sans-serif;
+          padding-left: 10px;
+          border: none;
+
+          img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+          }
+
+          span {
+            &:hover {
+              color: #669933;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      &:last-child {
+        border: 2px dotted black;
+
+        ul {
+          padding: 0;
+
+          li {
+            margin: 10px 0;
+
+            a {
+              text-decoration: none;
+              color: black;
+              font-size: 16px;
+
+              &:hover {
+                color: #669933;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+     
+
+    }
+  }
+}
+
 
 
 
