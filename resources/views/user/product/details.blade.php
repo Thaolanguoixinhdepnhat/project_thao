@@ -189,7 +189,7 @@
                                  <p>{{ auth()->user()->name }}</p>
 
 
-                                    <div class="name">Khách hàng: {{ Auth()->user()->username }}</div>
+                                    <div class="name">Khách hàng: {{ $comments->customer->username }}</div>
                                     <div class="name">Sản phẩm: {{ $item->product_name }}</div>
                                 </div>
 

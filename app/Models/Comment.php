@@ -24,8 +24,9 @@ class Comment extends Model
     public $timestamps = false;
 
 
-
-
-
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id');
+    }
 
 }
