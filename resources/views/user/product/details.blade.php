@@ -167,6 +167,8 @@
                     @endforeach
                 </form>
             </div>
+
+
         </div>
 
         <div class="des">
@@ -189,8 +191,8 @@
                                  <p>{{ auth()->user()->name }}</p>
 
 
-                                    <div class="name">Khách hàng: {{ $comments->customer->username }}</div>
-                                    <div class="name">Sản phẩm: {{ $item->product_name }}</div>
+                                    <div class="name"><strong>Khách hàng :</strong> {{ $comments->customer->username }}</div>
+                                    <div class="name"><strong class="uppercase">Sản phẩm : </strong><span class="italic" style=" font-style: italic;">{{ $item->product_name }}</span></div>
                                 </div>
 
                                 <div class="right">
@@ -211,6 +213,11 @@
             </div>
 
         </div>
+
+
+
+ 
+
     </div>
 </section>
 
@@ -274,7 +281,7 @@
                          productClassId.val(response.product_class_id);
                      }
                      if (response.price) {
-                         priceElement.text(response.price.toLocaleString() + " vnđ");
+                         priceElement.text(response.price.toLocaleString() + " VNĐ");
                      } else {
                          priceElement.text("");
                      }

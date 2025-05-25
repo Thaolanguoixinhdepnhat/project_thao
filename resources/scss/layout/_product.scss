@@ -207,6 +207,7 @@ img {
             text-align: center;
         }
         .content{
+            margin-bottom: 5rem;
             display: flex;
             align-items: flex-start;
             justify-content: center;
@@ -217,7 +218,7 @@ img {
             &:after{
                 position: absolute;
                 content: '';
-                width: 50%;
+                width: 80%;
                 height: 1px;
                 left: 50%;
                 bottom: 0;
@@ -396,18 +397,27 @@ img {
 
             }
         }
-        .des{
-            margin-top: 5rem;
-            h3{
-                font-size: 2.4rem;
-                font-weight: 700;
-            }
-            p{
-                font-size: 1.8rem;
-                font-weight: 500;
-                margin-top: 1rem;
-            }
-        }
+      .des {
+
+        width: 80%;
+    margin: 0 auto;
+
+    h3 {
+        font-size: 2.4rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    p {
+        font-size: 1.8rem;
+        font-style: italic;
+        font-weight: 400;
+        border-left: 3px solid #ccc;
+        padding-left: 2rem;
+        line-height: 1.6;
+    }
+}
+
     }
 }
 
@@ -485,12 +495,12 @@ img {
 
 
   .comment{
-    max-width: 80rem;
-    margin-top: 5rem;
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 3rem;
     h3{
         font-size: 2.4rem;
         font-weight: 700;
-        margin-bottom: 2rem;
     }
     font-size: 1.6rem;
 
@@ -505,6 +515,7 @@ img {
         .date{
             font-size: 1.4rem;
         }
+     
     }
     .txt{
         margin-top: .6rem;
@@ -516,3 +527,61 @@ img {
         gap: 2rem;
     }
   }
+
+
+.slider-wrapper {
+    position: relative;
+}
+
+.btn-prev,
+.btn-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+  background-color: rgba(200, 200, 200, 0.8);
+    border: none;
+    padding: 8px 15px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.btn-prev i,
+.btn-next i {
+    color: #333;
+}
+
+.slider-wrapper:hover .btn-prev,
+.slider-wrapper:hover .btn-next {
+    opacity: 1;
+    visibility: visible;
+}
+
+.btn-prev:hover,
+.btn-next:hover {
+      background-color: #ccc;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.btn-prev {
+    left: -10px;
+}
+
+.btn-next {
+    right: -10px;
+}
+.btn-prev i,
+.btn-next i {
+    color: white;
+}
+
+
+
+
+

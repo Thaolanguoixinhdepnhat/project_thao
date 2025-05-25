@@ -30,9 +30,12 @@ class ProductController extends Controller
         // Get 5 most recent DT products
         $dt = Product::where('category_id', 2)
             ->with('productClasses')
-            ->orderBy('created_at', 'desc')  // Ensure it's ordered by created_at descending
+            ->orderBy('created_at', 'desc')  
             ->take(5)
             ->get();
+
+
+           
 
         // Get 10 most recent products
         $news = Product::orderBy('id', 'desc')->take(10)->get();

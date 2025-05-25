@@ -169,7 +169,7 @@
                          productClassId.val(response.product_class_id);
                      }
                      if (response.price) {
-                         priceElement.text(response.price.toLocaleString() + " vnđ");
+                         priceElement.text(response.price.toLocaleString() + " VNĐ");
                      } else {
                          priceElement.text("");
                      }

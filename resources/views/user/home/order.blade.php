@@ -275,7 +275,7 @@
                                             </td>
 
                                             <td rowspan="{{ $item->items->count() }}" class="text-start">
-                                                {{ $item->customers->username ?? '' }}</td> <!-- Người đặt -->
+                                                {{ $item->customers->username ?? '' }}</td> 
                                         @endif
                                         <td class="text-start">{{ $orderitem->customer_name }}</td>
                                         <td class="text-start">{{ $orderitem->customer_address }}</td>
@@ -290,7 +290,7 @@
                                         @endif
                                     </tr>
 
-                                    <div class="modal" id="review-modal">
+                                     <div class="modal" id="review-modal">
                                         <div class="modal-content">
                                             <span class="close" id="close-modal">&times;</span>
                                             <h3>Đánh giá sản phẩm</h3>
@@ -310,9 +310,11 @@
 
                                                 <textarea name="note" placeholder="Nhập đánh giá..."></textarea>
                                                 <button type="submit">Gửi đánh giá</button>
+                                 
                                             </form>
                                         </div>
-                                    </div>
+                                    </div> 
+                                    
                                 @endforeach
                             @endforeach
                         </tbody>
