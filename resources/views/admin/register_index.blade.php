@@ -5,6 +5,12 @@
     <div class="container">
         <div class="content">
             <div class="sec-three">
+                           @php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('layout.app')],
+        ['label' => 'Quản lý thông tin nhân viên ', 'url' => route('admin.register_index')],
+    ];
+@endphp
                 <h4><i class="fas fa-users-cog" style="color: #0d6efd;"></i> Quản lý thông tin nhân viên</h4>
                 <hr class="hr">
                 <form class="staff-form" method="GET" action="{{ route('admin.register_index') }}">

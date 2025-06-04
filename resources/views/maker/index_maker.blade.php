@@ -149,6 +149,12 @@
     <div class="container">
         <div class="content">
             <div class="sec-three">
+                @php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('layout.app')],
+        ['label' => 'Danh sách nhà sản xuất ', 'url' => route('maker.index')],
+    ];
+@endphp
                 <h4><i class="fas fa-industry" style="color: #0d6efd;"></i> Danh sách nhà sản xuất</h4>
                 <hr class="hr">
                 <form class="maker-form" method="GET" action="{{ route('maker.index') }}">

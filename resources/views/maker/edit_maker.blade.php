@@ -1,6 +1,7 @@
 @extends('layout.app')
 @section('title', 'Chỉnh sửa thông tin nhà sản xuất')
 @section('content')
+
 <section class="maker-edit">
     <div class="container">
         <div class="content">
@@ -8,6 +9,14 @@
                 <h4>Chỉnh sửa thông tin nhà sản xuất</h4>
                 <hr class="hr">
                 <form action="{{ route('maker.update', $maker->id) }}" method="POST" class="maker-form">
+                         @php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('layout.app')],
+        ['label' => 'Danh sách nhà sản xuất', 'url' => route('maker.index')],
+     ['label' => 'Sửa thông tin nhà sản xuất', 'url' => isset($maker) ? route('maker.update', ['id' => $maker->id]) : '#'],
+
+    ];
+@endphp
                     @csrf
                     @method('PUT')
                       <div class="form-group__row">

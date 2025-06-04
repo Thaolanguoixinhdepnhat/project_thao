@@ -140,6 +140,13 @@
     <div class="container">
         <div class="content">
             <div class="sec-four">
+                                                @php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('layout.app')],
+        ['label' => 'Danh sách loại sản phẩm ', 'url' => route('category.index')],
+      
+    ];
+@endphp
                 <h4><i class="fas fa-list-alt" style="color: #0d6efd;"></i> Danh sách loại sản phẩm</h4>
                 <hr class="hr">
 

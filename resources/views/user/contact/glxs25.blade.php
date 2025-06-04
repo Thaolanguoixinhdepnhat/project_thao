@@ -3,6 +3,7 @@
 @section('title', 'Galaxys25')
 
 @section('content')
+
     <div class="glxs25">
         <div class="container">
             <div class="content">
@@ -329,7 +330,6 @@
             </div>
         </div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const videoBlocks = document.querySelectorAll('.common-video');
@@ -389,6 +389,22 @@
             });
         });
     </script>
-
-
+    <style>
+     .mb-4{
+    padding-left: 3rem !important;
+    display: flex;
+    font-size: 2rem !important;
+    gap: 1rem;
+    a{
+        color:black;
+    text-decoration: none;
+    }
+    }
+    </style>
+    @php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('home')],
+        ['label' => 'Galaxy S25 Ultra', 'url' => route('contact.glxs25')],
+    ];
+@endphp
 @endsection

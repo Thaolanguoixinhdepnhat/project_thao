@@ -226,6 +226,13 @@
     <div class="container">
         <div class="content">
             <div class="sec-seven">
+                                                                                    @php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('layout.app')],
+        ['label' => 'Danh sách  sản phẩm ', 'url' => route('product.index')],
+           ['label' => 'Chi tiết sản phẩm', 'url' => isset( $productClass) ? route('productclass.update', ['id' =>  $productClass->id]) : '#'],
+    ];
+@endphp
                 <h4>Chi tiết sản phẩm</h4>
                 <hr class="hr">
                 <form method="GET" class="search-form" action="{{ route('productclass.search') }}">

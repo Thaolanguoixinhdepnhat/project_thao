@@ -1994,3 +1994,36 @@ background-color: #a3d5f2;
 
 
 /* index order user */
+
+
+.mb-4 {
+    display: flex;
+    font-size: 2rem !important;
+    gap: 1rem;
+}
+/* quản trị */
+.qt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:50rem;
+  text-align: center;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow 5s linear infinite;
+
+    @keyframes rainbow {
+      0% {
+        background-position: 0%;
+      }
+      100% {
+        background-position: 100%;
+      }
+    }
+  }
+}

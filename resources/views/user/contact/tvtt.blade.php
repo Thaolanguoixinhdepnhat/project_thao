@@ -56,7 +56,25 @@ function confirmRedirect(event) {
     </div>
   </div>
 </div>
-
+<style>
+     .mb-4{
+    padding-left: 3rem !important;
+    display: flex;
+    font-size: 2rem !important;
+    gap: 1rem;
+    a{
+        color:black;
+    text-decoration: none;
+    }
+    }
+    </style>
+    @php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('home')],
+        ['label' => ' Bảo hành', 'url' => route('contact.bh')],
+            ['label' => ' Tư vấn trực tuyến', 'url' => route('contact.tvtt')],
+    ];
+@endphp
 
 
 @endsection

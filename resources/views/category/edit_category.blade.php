@@ -5,6 +5,13 @@
     <div class="container">
         <div class="content">
             <div class="maker-section">
+                                      @php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('layout.app')],
+          ['label' => 'Danh sách loại sản phẩm ', 'url' => route('category.index')],
+        ['label' => 'Chỉnh sửa thông tin loại sản phẩm', 'url' => isset($category) ? route('category.update', ['id' => $category->id]) : '#'],
+    ];
+@endphp
                 <h4>Chỉnh sửa thông tin loại sản phẩm</h4>
                 <hr class="hr">
                 <form action="{{ route('category.update', $category->id) }}" method="POST" class="maker-form">

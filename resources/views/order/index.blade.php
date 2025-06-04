@@ -107,7 +107,12 @@
         text-align: center;
     }
 </style>
-
+                    @php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('layout.app')],
+        ['label' => 'Danh sách đơn hàng ', 'url' => route('admin.order.complete')],
+    ];
+@endphp
 <form action="{{ route('admin.order.complete') }}" method="POST" id="complete-form">
     @csrf
 <section class="index_staff">

@@ -7,6 +7,13 @@
     <div class="customer-container">
         <div class="customer-content">
             <div class="customer-section">
+                             @php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('layout.app')],
+        ['label' => 'Danh sách khách hàng ', 'url' => route('customer.index')],
+        ['label' => 'Chỉnh sửa thông tin khách hàng', 'url' => isset($customer) ? route('customer.update', ['id' => $customer->id]) : '#'],
+    ];
+@endphp
                 <h4>Chỉnh sửa thông tin khách hàng</h4>
 
                 <div class="divider"></div>

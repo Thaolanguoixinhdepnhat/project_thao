@@ -115,7 +115,7 @@
 
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+  <link rel="shortcut icon" href="{{ asset('storage/product_images/S.jpg') }}">
     <!-- Vite -->
     @vite(['resources/js/app.js'])
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

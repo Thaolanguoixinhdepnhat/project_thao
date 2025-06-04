@@ -296,5 +296,22 @@
         });
     </script>
 
-
+  <style>
+     .mb-4{
+    padding-left: 3rem !important;
+    display: flex;
+    font-size: 2rem !important;
+    gap: 1rem;
+    a{
+        color:black;
+    text-decoration: none;
+    }
+    }
+    </style>
+    @php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('home')],
+        ['label' => ' Săn Galaxy A56 | A36 5G', 'url' => route('contact.sane')],
+    ];
+@endphp
 @endsection

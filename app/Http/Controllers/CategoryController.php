@@ -178,10 +178,8 @@ public function destroy($id)
     return redirect()->route('category.index')->with('success', 'Loại sản phẩm đã được xóa.');
 }
 
-   
-            
 
 
-  
+
 
 } 

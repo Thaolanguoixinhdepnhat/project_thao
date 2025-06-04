@@ -216,12 +216,109 @@
 
 
 
- 
 
+
+    {{-- <div class="lq">
+         <h3>Sản phẩm tương tự</h3>
+    </div> --}}
+    {{-- <div class="related-products mt-10">
+    <h3 class="text-2xl font-semibold mb-4">Sản phẩm liên quan</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        @foreach ($relatedProducts as $product)
+            <div class="border rounded-lg shadow p-4 hover:shadow-lg transition">
+                <a href="{{ route('product.detail', ['id' => $product->id]) }}">
+                    <img src="{{ asset('storage/' . $product->product_image) }}" alt="{{ $product->name }}" class="w-full h-40 object-cover rounded mb-2">
+                    <h4 class="text-lg font-medium text-gray-800">{{ $product->name }}</h4>
+                </a>
+                @if ($product->productClasses->isNotEmpty())
+                    <p class="text-red-500 font-semibold mt-1">
+                        {{ number_format($product->productClasses->first()->price) }}₫
+                    </p>
+                @else
+                    <p class="text-gray-500 mt-1">Giá đang cập nhật</p>
+                @endif
+            </div>
+        @endforeach
     </div>
+    </div> --}}
+
+
+
+   <div class="content-body slider-wrapper">
+    <!-- Nút Prev -->
+    <button class="btn-prev"><i class="fas fa-chevron-left"></i></button>
+
+    <!-- Slider -->
+    <div class="wrap-slider">
+        @foreach ($relatedProducts as $index => $item)
+            <div class="item">
+                <form class="formAddToCart" action="{{ route('cart.add') }}" method="POST">
+                    @csrf
+                    <a href="{{ route('user.detail', ['id' => $item->id]) }}">
+                        <div class="img">
+                            <img class="image__main responsive-img image--loaded"
+                                src="{{ asset('storage/' . $item->product_image) }}"
+                                alt="{{ $item->product_name }}">
+                        </div>
+                    </a>
+                    <div class="txt-name">
+                        <span>{{ $item->product_name }}</span>
+                    </div>
+                    <div class="btn">
+                        <a href="{{route('user.detail', ['id' => $item->id])}}" class="btn-register1" style="text-decoration: none;">Xem thêm</a>
+                        {{-- <button type="submit" class="btn-register1">Xem thêm</button> --}}
+                    </div>
+     
+
+                </form>
+            </div>
+        @endforeach
+    </div>
+
+    <!-- Nút Next -->
+    <button class="btn-next"><i class="fas fa-chevron-right"></i></button>
+</div>
+
 </section>
 
+{{-- js thằng sản phẩm  liên quan --}}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const wrapper = document.querySelector(".wrap-slider");
+        const items = document.querySelectorAll(".wrap-slider .item");
+        const btnPrev = document.querySelector(".btn-prev");
+        const btnNext = document.querySelector(".btn-next");
 
+        const visibleItems = 3;
+        let currentIndex = 0;
+        const totalItems = items.length;
+
+        // Tính độ rộng một item (kể cả margin nếu cần)
+        const itemWidth = items[0].offsetWidth + 20; // 20 là khoảng cách gap (có thể điều chỉnh)
+
+        function updateSlider() {
+            const offset = -currentIndex * itemWidth;
+            wrapper.style.transform = `translateX(${offset}px)`;
+        }
+
+        btnNext.addEventListener("click", () => {
+            if (currentIndex < totalItems - visibleItems) {
+                currentIndex++;
+                updateSlider();
+            }
+        });
+
+        btnPrev.addEventListener("click", () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+        });
+
+        // Đảm bảo slider không bị tràn
+        wrapper.style.transition = "transform 0.4s ease";
+    });
+</script>
 
 
 

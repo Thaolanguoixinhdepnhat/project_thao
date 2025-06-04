@@ -124,7 +124,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="shortcut icon" href="{{ asset('assets1/images/favicon.png') }}">
+   <link rel="shortcut icon" href="{{ asset('storage/product_images/S.jpg') }}">
     <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -788,14 +788,20 @@
           
           
         <ul class="nav flex-column">
-                 <li class="nav-item">
+                 {{-- <li class="nav-item">
     <a class="nav-link" href="{{ route('order.summary') }}">
+        <i class="bi bi-house-door me-2"></i><span>Trang chủ</span>
+    </a>
+                    </li> --}}
+                       <li class="nav-item">
+    <a class="nav-link" href="{{ route('layout.app') }}">
         <i class="bi bi-house-door me-2"></i><span>Trang chủ</span>
     </a>
                     </li>
     
 </li>
 
+ 
             @php $roleId = Auth::guard('admin')->user()->role_id; @endphp
             @if($roleId == 3)
             <li class="nav-item"><a class="nav-link" href="{{ route('admin.register_index') }}"><i class="bi bi-people me-2"></i><span>Quản trị thành viên</span></a></li>
@@ -805,7 +811,8 @@
             <li class="nav-item"><a class="nav-link" href="{{ route('maker.index') }}"><i class="bi bi-building me-2"></i><span>Nhà sản xuất</span></a></li>
             <li class="nav-item"><a class="nav-link" href="{{ route('category.index') }}"><i class="bi bi-list me-2"></i><span>Danh mục</span></a></li>
             <li class="nav-item"><a class="nav-link" href="{{ route('product.index') }}"><i class="bi bi-box me-2"></i><span>Sản phẩm</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ route('chart') }}"><i class="bi bi-bar-chart me-2"></i><span>Biểu đồ</span></a></li>
+            {{-- <li class="nav-item"><a class="nav-link" href="{{ route('chart') }}"><i class="bi bi-bar-chart me-2"></i><span>Biểu đồ</span></a></li> --}}
+            <li class="nav-item"><a class="nav-link" href="{{ route('order.summary') }}"><i class="bi bi-bar-chart me-2"></i><span>Biểu đồ</span></a></li>
             <li class="nav-item"><a class="nav-link" href="{{ route('admin.change_password') }}"><i class="bi bi-key me-2"></i><span>Đổi mật khẩu</span></a></li>
              
             <li class="nav-item">
@@ -819,9 +826,50 @@
 
 
    
-    <div class="main-content" id="main-content">
-        @yield('content')
+    {{-- <div class="main-content" id="main-content">
+                    @if (isset($breadcrumbs) && is_array($breadcrumbs))
+    <div class="breadcrumb mb-4 text-sm text-gray-600">
+        @foreach ($breadcrumbs as $breadcrumb)
+            @if (!$loop->last)
+                <a href="{{ $breadcrumb['url'] }}" class="text-blue-600 hover:underline">
+                    {{ $breadcrumb['label'] }}
+                </a> /
+            @else
+                <span>{{ $breadcrumb['label'] }}</span>
+            @endif
+        @endforeach
     </div>
+@endif
+        @yield('content')
+        <div class="qt">
+   <h1>Chào mừng bạn đến với trang quản trị  </h1>
+        </div>
+    </div> --}}
+
+<div class="main-content" id="main-content">
+    @if (isset($breadcrumbs) && is_array($breadcrumbs))
+        <div class="breadcrumb mb-4 text-sm text-gray-600">
+            @foreach ($breadcrumbs as $breadcrumb)
+                @if (!$loop->last)
+                    <a href="{{ $breadcrumb['url'] }}" class="text-blue-600 hover:underline">
+                        {{ $breadcrumb['label'] }}
+                    </a> /
+                @else
+                    <span>{{ $breadcrumb['label'] }}</span>
+                @endif
+            @endforeach
+        </div>
+    @endif
+
+    @yield('content')
+
+    @if (! $__env->hasSection('content'))
+        <div class="qt">
+            <h1>Chào mừng bạn đến với trang quản trị</h1>
+        </div>
+    @endif
+</div>
+
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

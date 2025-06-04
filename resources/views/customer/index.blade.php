@@ -109,6 +109,12 @@
     <div class="container">
         <div class="content">
             <div class="sec-three">
+                       @php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('layout.app')],
+        ['label' => 'Danh sách khách hàng ', 'url' => route('customer.index')],
+    ];
+@endphp
                 <h4><i class="fas fa-users" style="color: #0d6efd;"></i> Danh sách khách hàng</h4>
                 <hr class="hr">
 

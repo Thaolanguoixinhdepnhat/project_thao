@@ -6,8 +6,16 @@
     <div class="container">
         <div class="content">
             <div class="sec-six">
+                                                      @php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('layout.app')],
+        ['label' => 'Danh sách  sản phẩm ', 'url' => route('product.index')],
+      
+    ];
+@endphp
                <h4><i class="fas fa-box-open text-primary"></i> Danh sách sản phẩm</h4>
                 <hr class="hr">
+
                 <form class="product-form" method="GET" action="{{ route('product.index') }}">
                     <div class="form-field">
                         <label for="maker_name"><i class="fas fa-barcode text-primary" style="color: #6c757d !important;"></i>Nhà sản xuất</label>
@@ -47,7 +55,7 @@
                         </button>
                          <button type="button" class="btn btn-danger">
                             <a href="{{ route('product.create') }}" style="color: white; text-decoration: none;">
-                                 <i class="fas fa-user-plus"></i> Đăng ký nhà sản xuất
+                                 <i class="fas fa-user-plus"></i> Đăng ký sản phẩm
                             </a>
                         </button>
                         @if (auth('admin')->check())

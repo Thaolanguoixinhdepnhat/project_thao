@@ -5,6 +5,14 @@
     <div class="container">
         <div class="content">
             <div class="maker-section">
+                                                         @php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('layout.app')],
+        ['label' => 'Quản lý thông tin nhân viên ', 'url' => route('admin.register_index')],
+      ['label' => 'Chỉnh sửa thông tin nhân viên', 'url' => isset($staff) ? route('staff.update', ['id' => $staff->id]) : '#'],
+    ];
+@endphp
+                    
                 <h4>Chỉnh sửa thông tin nhân viên</h4>
                 <hr class="hr">
                 <form action="{{ route('staff.update', $staff->id) }}" method="POST" class="maker-form">

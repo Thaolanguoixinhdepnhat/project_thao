@@ -5,6 +5,13 @@
         <div class="container">
             <div class="content">
                 <div class="maker-section">
+                                                                      @php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('layout.app')],
+        ['label' => 'Danh sách  sản phẩm ', 'url' => route('product.index')],
+        ['label' => 'Đăng ký sản phẩm ', 'url' => route('product.store')],
+    ];
+@endphp
                     <h4>Đăng ký sản phẩm</h4>
                     <hr class="hr">
                     <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data" >

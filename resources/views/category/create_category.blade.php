@@ -7,6 +7,14 @@
             <div class="maker-section">
                 <h4>Đăng ký loại sản phẩm</h4>
                 <hr class="hr">
+                                                @php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('layout.app')],
+          ['label' => 'Danh sách loại sản phẩm ', 'url' => route('category.index')],
+            ['label' => 'Đăng ký loại sản phẩm', 'url' => route('category.store')],
+      
+    ];
+@endphp
         <form action="{{ route('category.store') }}" method="POST">
         @csrf
     

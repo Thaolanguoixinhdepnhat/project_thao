@@ -120,6 +120,14 @@
     <div class="container">
         <div class="content">
             <div class="sec-three2">
+                             @php
+    $breadcrumbs = [
+        ['label' => 'Trang chủ', 'url' => route('layout.app')],
+        // ['label' => 'Danh sách đơn hàng ', 'url' => route('admin.order.complete')],
+        ['label' => ' Chi tiết đơn hàng ', 'url' => route('orders.ship')],
+       
+    ];
+@endphp
                 <h4><i class="fas fa-box" style="color: #0d6efd;"></i> Chi tiết đơn hàng</h4>
                 <hr class="hr">
                 <form action="{{ route('orders.ship') }}" method="POST">
