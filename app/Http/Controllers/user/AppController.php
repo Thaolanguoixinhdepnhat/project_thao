@@ -228,14 +228,33 @@ class AppController extends Controller
 
         return redirect()->route('user.detail', ['id' => $request->product_id])
         ->with('success', 'Xem lại đánh giá của bạn.');
+    }
 
+    public function cancel($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->status_id = 4;
+        $order->save();
+
+        return redirect()->back()->with('success', 'Đơn đã được hủy.');
     }
 
 
+    public function updadeComment(Request $request,$id)
+    {
+        $command = Comment::findOrFail($id);
+        $command->note = $request->note;
+        $command->create_at = now();
+        $command->save();
 
+        return redirect()->back()->with('success', 'Cập nhập thành công.');
+    }
 
-
-
+    public function listComment()
+    {
+        $comment = Comment::where('customer_id', auth()->user()->id)->with('product')->get();
+        return view('user.home.comment', compact('comment'));
+    }
 
 
 

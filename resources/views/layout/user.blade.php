@@ -375,6 +375,11 @@
                             </a>
                         </li>
                         <li class="nav-item mb-2">
+                            <a class="nav-link" href="{{ route('listComment') }}">
+                                <i class="fas fa-box-open me-2 history-icon"></i> <span>Lịch sử đánh giá</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
                             <a class="nav-link" href="{{ route('user.change_password') }}">
                                 <i class="fas fa-key me-2 password-icon"></i> <span>Đổi mật khẩu</span>
                             </a>

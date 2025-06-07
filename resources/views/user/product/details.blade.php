@@ -189,8 +189,6 @@
                             <div class="group">
                                 <div class="left">
                                  <p>{{ auth()->user()->name }}</p>
-
-
                                     <div class="name"><strong>Khách hàng :</strong> {{ $comments->customer->username }}</div>
                                     <div class="name"><strong class="uppercase">Sản phẩm : </strong><span class="italic" style=" font-style: italic;">{{ $item->product_name }}</span></div>
                                 </div>
@@ -205,7 +203,23 @@
                                 </div>
                             </div>
                             <div class="txt">
-                                <p>{{ $comments->note }}</p>
+                                {{-- Chỉ hiển thị nút chỉnh sửa nếu là user đã viết comment --}}
+                                @if (auth()->user()->id === $comments->customer_id)
+                                    <form action="{{ route('comments.update', $comments->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT') {{-- Laravel RESTful update --}}
+                                        <div class="group" style="display: flex;flex-direction: column; gap: 1rem; align-items: flex-start">
+                                            <textarea name="note"
+                                                    style="border: 1px solid #ccc; border-radius: .8rem; padding: 1rem; width: 80%; min-height: 5rem;">{{ $comments->note }}</textarea>
+                                            <button type="submit" class="btn-edit" style="color: #007bff; border: none; background: none; cursor: pointer;">
+                                                Cập nhật
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                @else
+                                    <p>{{ $comments->note }}</p>
+                                @endif
                             </div>
                         </div>
                     @endforeach

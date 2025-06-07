@@ -239,6 +239,7 @@
                             <tr>
                                 <th><i class="fas fa-id-badge" style="color:#0d6efd;"></i> Số thứ tự</th>
                                 <th><i class="fas fa-calendar-day" style="color:#20c997;"></i> Ngày đặt hàng</th>
+                                <th></th>
                                 <th><i class="fas fa-exclamation-triangle" style="color:#dc3545;"></i> Trạng thái</th>
                                 <th><i class="fas fa-exclamation-triangle" style="color:#dc3545;"></i> Đánh giá</th>
                                 <th><i class="fas fa-user" style="color:#6610f2;"></i> Người đặt</th>
@@ -262,6 +263,9 @@
                                                 {{ $index + 1 }}</td> <!-- Số thứ tự -->
                                             <td rowspan="{{ $item->items->count() }}" class="text-start">{{ $item->order_date }}
                                             </td> <!-- Ngày -->
+                                            <td>
+                                                <a href="{{ route('orders.cancel', $item->id) }}" style="background: #dc3545; color: #fff; padding: .5rem 1rem; text-align: center;white-space: nowrap;">Hủy đơn</a>
+                                            </td>
                                             <td rowspan="{{ $item->items->count() }}" class="text-start">
                                                 {{ $item->status->status_name }}</td> <!-- Trạng thái -->
 

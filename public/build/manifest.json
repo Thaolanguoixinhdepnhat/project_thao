@@ -1,15 +1,15 @@
 {
   "resources/js/app.js": {
-    "file": "assets/app-Bs4hSesM.js",
+    "file": "assets/app-VdDDJgJe.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/style-CyonPs-Z.css"
+      "assets/style-Bzs_TLSE.css"
     ]
   },
   "resources/scss/style.scss": {
-    "file": "assets/style-CyonPs-Z.css",
+    "file": "assets/style-Bzs_TLSE.css",
     "src": "resources/scss/style.scss",
     "isEntry": true
   }

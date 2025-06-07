@@ -189,6 +189,9 @@ Route::get('/get-product-class', [AppController::class, 'getProductClassByColorA
 Route::get('/home', [AppController::class, 'home'])->name('home_user');
 Route::get('/order', [AppController::class, 'order'])->name('user.order');
 Route::get('/cartttt', [AppController::class, 'cart'])->name('user.cart');
+Route::get('/orders/{id}/cancel', [AppController::class, 'cancel'])->name('orders.cancel');
+Route::put('/comments/{id}/edit', [AppController::class, 'updadeComment'])->name('comments.update');
+Route::get('/list-comment', [AppController::class, 'listComment'])->name('listComment');
 
 Route::post('/user/update', [AppController::class, 'update'])->name('user.update');
 
