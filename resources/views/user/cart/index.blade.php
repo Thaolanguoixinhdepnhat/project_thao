@@ -12,6 +12,7 @@
 @endphp
 <style>
      .mb-4{
+      margin-top: 12rem !important;
     padding-left: 3rem !important;
     display: flex;
     font-size: 2rem !important;
