@@ -244,7 +244,7 @@ class AppController extends Controller
     {
         $command = Comment::findOrFail($id);
         $command->note = $request->note;
-        $command->create_at = now();
+        $command->update_at = now();
         $command->save();
 
         return redirect()->back()->with('success', 'Cập nhập thành công.');
